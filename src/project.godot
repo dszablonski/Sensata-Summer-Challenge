@@ -15,6 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Sensata Summer Challenge"
+run/main_scene="res://ui/ui.tscn"
 config/icon="res://icon.png"
 
 [rendering]
