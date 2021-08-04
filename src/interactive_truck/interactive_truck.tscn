@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://interactive_truck/truck.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interactive_truck/interactive_truck.gd" type="Script" id=2]
+
+[node name="InteractiveTruck" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="CameraPivot" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( -4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -8, 2, 0 )
+current = true
+
+[node name="Truck" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
