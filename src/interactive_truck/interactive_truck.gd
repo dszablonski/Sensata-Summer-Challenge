@@ -8,7 +8,7 @@ extends Node2D
 # essentially ignore all events caused by forcibly setting the mouse's position.
 const MAX_MOUSE_MOTION_DIST := 300
 const MIN_DIST_TO_ORIGIN := -4.0
-const MAX_DIST_TO_ORIGIN := -30.0
+const MAX_DIST_TO_ORIGIN := -20.0
 const ZOOM_IN_SPEED := 1.0
 const ZOOM_OUT_SPEED := 1.0
 
