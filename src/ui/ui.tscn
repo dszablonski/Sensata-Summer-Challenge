@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -36,11 +37,27 @@ margin_right = 502.0
 margin_bottom = 98.0
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HSplitContainer/LeftSide/Timeline"]
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer/LeftSide/Timeline"]
 margin_left = 7.0
-margin_top = 33.0
+margin_top = 7.0
 margin_right = 495.0
-margin_bottom = 47.0
+margin_bottom = 73.0
+
+[node name="Clock" parent="HSplitContainer/LeftSide/Timeline/HSplitContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 91.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/LeftSide/Timeline/HSplitContainer"]
+margin_left = 103.0
+margin_top = 26.0
+margin_right = 488.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
 text = "Timeline"
 align = 1
 
