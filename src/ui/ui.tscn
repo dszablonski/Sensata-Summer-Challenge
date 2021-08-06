@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/date_time.gd" type="Script" id=3]
+[ext_resource path="res://ui/ui.gd" type="Script" id=4]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -10,6 +12,7 @@ custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
 custom_constants/margin_bottom = 4
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,8 +31,9 @@ size_flags_horizontal = 3
 [node name="DateTime" type="Label" parent="HSplitContainer/LeftSide"]
 margin_right = 502.0
 margin_bottom = 14.0
-text = "1/6/2021 10:00"
+text = "1/6/2021 00:00"
 align = 1
+script = ExtResource( 3 )
 
 [node name="Timeline" type="PanelContainer" parent="HSplitContainer/LeftSide"]
 margin_top = 18.0
@@ -131,3 +135,5 @@ margin_right = 495.0
 margin_bottom = 105.0
 text = "Priority Statistics"
 align = 1
+
+[connection signal="time_changed" from="HSplitContainer/RightSide/TabContainer/Time Selection" to="." method="_on_Time_Selection_time_changed"]

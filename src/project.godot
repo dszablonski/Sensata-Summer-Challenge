@@ -8,8 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "Clock",
+"language": "GDScript",
+"path": "res://ui/clock/clock.gd"
+}, {
+"base": "Object",
+"class": "Util",
+"language": "GDScript",
+"path": "res://misc_scripts/utility.gd"
+} ]
 _global_script_class_icons={
+"Clock": "",
+"Util": ""
 }
 
 [application]

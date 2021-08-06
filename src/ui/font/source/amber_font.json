@@ -1,0 +1,40 @@
+{
+	"$baseURI": "https://yal.cc/r/20/pixelfont/",
+	"$version": "1.0",
+	"in-glyphs": [
+		"0123456789",
+		"abcdefghij",
+		"klmnopqrst",
+		"uvwxyz:/-!"
+	],
+	"glyph-color": "auto",
+	"in-kerning": [
+		""
+	],
+	"glyph-width": 4,
+	"glyph-height": 5,
+	"glyph-ofs-x": 1,
+	"glyph-ofs-y": 1,
+	"glyph-sep-x": 1,
+	"glyph-sep-y": 1,
+	"glyph-base-x": 0,
+	"glyph-baseline": 3,
+	"glyph-spacing": 1,
+	"font-is-mono": false,
+	"font-em-square": 1024,
+	"font-line-gap": 0,
+	"font-ascend": 384,
+	"font-descend": -256,
+	"font-px-size": 128,
+	"font-name": "Amber Font",
+	"font-author": "Amber Team",
+	"font-copy": "(c)",
+	"font-version": "Version 1.0",
+	"font-desc": "Sweet fonts to leave your worries behind you",
+	"font-license": "Unlicensed",
+	"font-license-url": "https://unlicense.org/",
+	"font-sample-text": "Sample text!",
+	"font-preview-text": [
+		"00:00"
+	]
+}
