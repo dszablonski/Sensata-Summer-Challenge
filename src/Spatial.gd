@@ -2,34 +2,28 @@ extends Spatial
 
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
-var db_path = "res://Database/database.db"
+var db_name = "res://Database/database"
 var csv_path= "res://Database/Telemetrydatacommaseperated.csv"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-func _run():
-	pass
-	
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	fetchcsv() # Replace with function body.
+	db=SQLite.new()
+	fetchcsv()
 
 func fetchcsv():
-	var maindata={}
+	var tablename="Database"
+	var maindata=[]
+	var fields=["DateTime","Hour","TruckTyrePressureA","TruckTyrePressureB","TruckTyrePressureC","TruckTyrePressureD","TruckTyrePressureE","TruckTyrePressureF","TruckBrakePadsA","TruckBrakePadsB","TruckWheelBearingTempA","TruckWheelBearingTempB","TruckWheelBearingTempD","TruckWheelBearingTempF","TrailerTyrePressureA","TrailerTyrePressureB","TrailerTyrePressureC","TrailerTyrePressureD","TrailerTyrePressureE","TrailerTyrePressureF","TrailerTemperatureA","TrailerTemperatureB","TrailerTemperatureC","TrailerTemperatureD","TrailerTemperatureE","TrailerTemperatureF","TrailerWeightA","TrailerWeightC","TrailerWeightD","TrailerWeightF","TrailerWeightG","TrailerBrakePadsA","TrailerBrakePadsB","TrailerBrakePadsC","TrailerBrakePadsD","TrailerBrakePadsE","TrailerBrakePadsF"]
 	var file=File.new()
+	db.path=db_name
+	db.open_db()
 	file.open(csv_path, file.READ)
-	for i in range(1,240):
-		while !file.eof_reached():
-			var data_set=Array(file.get_csv_line())
-			maindata=data_set
-			print(maindata)
-			return maindata
+	while !file.eof_reached():
+		var data_set=Array(file.get_csv_line())
+		if len(data_set) == 1:
+			continue
+		var data_set_dict={}
+		for i in range(0,36):
+			data_set_dict[fields[i]]=data_set[i]
+		maindata.append(data_set_dict)
 	file.close()
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	db.insert_rows(tablename, maindata)
