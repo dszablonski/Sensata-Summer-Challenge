@@ -18,7 +18,6 @@ onready var tree := get_tree()
 onready var root := tree.get_root()
 
 onready var viewport := get_viewport()
-onready var viewport_rect := get_viewport_rect()
 onready var viewport_size := viewport.size
 
 onready var camera_pivot: Spatial = $CameraPivot
@@ -50,6 +49,7 @@ func _input(event: InputEvent) -> void:
 
 func _is_mouse_inside_viewport() -> bool:
 	var mouse_pos := get_global_mouse_position()
+	var viewport_rect := get_viewport_rect()
 	return viewport_rect.has_point(mouse_pos)
 
 
