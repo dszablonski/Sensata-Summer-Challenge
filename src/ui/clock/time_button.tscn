@@ -14,11 +14,14 @@ margin_bottom = 18.0
 focus_mode = 0
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
 custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.407843, 0.219608, 0.423529, 1 )
 custom_colors/font_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
 custom_colors/font_color_hover = Color( 0.352941, 0.411765, 0.533333, 1 )
 custom_colors/font_color_pressed = Color( 0.407843, 0.219608, 0.423529, 1 )
+toggle_mode = true
 text = "00:00"
 __meta__ = {
 "_edit_use_anchors_": false

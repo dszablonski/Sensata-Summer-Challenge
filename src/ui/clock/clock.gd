@@ -1,5 +1,8 @@
 tool
+class_name Clock
 extends Control
+
+signal time_changed(new_time)
 
 const TIME_BUTTON_SCENE := preload("res://ui/clock/time_button.tscn")
 
@@ -55,9 +58,11 @@ export (Array, int) var hour_safety_values := [
 
 var _center: Vector2
 var _clock_radius: float
+var _time_to_buttons := {}
 
 
 func _ready() -> void:
+	_add_time_buttons()
 	_on_rect_changed()
 
 
@@ -65,6 +70,52 @@ func _draw() -> void:
 	_draw_hour_safety_sectors()
 	_draw_hour_safety_segments()
 	_draw_main_circle()
+
+
+func force_press_time_button(time: float) -> void:
+	var button: Button = _time_to_buttons[time]
+	button.pressed = true
+	button.disabled = true
+
+
+func _add_time_buttons() -> void:
+	var time_diff := 24.0 / TIME_NUM_SEGMENTS
+	for i in TIME_NUM_SEGMENTS:
+		var time: float = time_diff * i
+		var button := TIME_BUTTON_SCENE.instance()
+		button.text = Util.to_time_string(time)
+		add_child(button)
+		button.connect("pressed", self, "_on_Time_Button_pressed", [button, time])
+		_time_to_buttons[time] = button
+
+
+func _on_rect_changed() -> void:
+	_center = rect_size / 2
+	_clock_radius = min(rect_size.x, rect_size.y) / 2
+	if Engine.editor_hint:
+		return
+	_set_time_button_positions()
+
+
+func _set_time_button_positions() -> void:
+	var segment_angle := TAU / TIME_NUM_SEGMENTS
+	for i in get_child_count():
+		var button := get_child(i)
+		var angle: float = segment_angle * i
+		var dir := Vector2.UP.rotated(angle)
+		var vec := dir * _clock_radius
+		var offset: Vector2 = -button.rect_size / 2
+		button.rect_position = _center + vec + offset
+
+
+func _on_Time_Button_pressed(button: Button, time: float) -> void:
+	for child in get_children():
+		if child == button:
+			child.disabled = true
+			continue
+		child.pressed = false
+		child.disabled = false
+	emit_signal("time_changed", time)
 
 
 func _draw_main_circle() -> void:
@@ -115,43 +166,6 @@ func _draw_sector(
 
 func _on_Clock_item_rect_changed() -> void:
 	_on_rect_changed()
-
-
-func _on_rect_changed() -> void:
-	_center = rect_size / 2
-	_clock_radius = min(rect_size.x, rect_size.y) / 2
-	if Engine.editor_hint:
-		return
-	_add_time_buttons()
-
-
-func _add_time_buttons() -> void:
-	for child in get_children():
-		child.queue_free()
-	var segment_angle := TAU / TIME_NUM_SEGMENTS
-	var time_diff := 24.0 / TIME_NUM_SEGMENTS
-	for i in TIME_NUM_SEGMENTS:
-		var angle: float = segment_angle * i
-		var time: float = time_diff * i
-		var dir := Vector2.UP.rotated(angle)
-		var vec := dir * _clock_radius
-		var button := TIME_BUTTON_SCENE.instance()
-		button.text = _to_time_string(time)
-		add_child(button)
-		var offset: Vector2 = -button.rect_size / 2
-		button.rect_position = _center + vec + offset
-		button.connect("pressed", self, "_on_Time_pressed", [time])
-
-
-func _to_time_string(num_hours: float) -> String:
-	var whole_hours := int(num_hours)
-	var remaining_hours := num_hours - whole_hours
-	var remaining_mins := remaining_hours * 60
-	return "%02d:%02d" % [whole_hours, remaining_mins]
-
-
-func _on_Time_pressed(time: float) -> void:  # TODO
-	print("Time %s was pressed!" % time)
 
 
 func _set_hour_safety_values(value: Array) -> void:
