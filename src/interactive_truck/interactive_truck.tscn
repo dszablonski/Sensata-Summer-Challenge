@@ -15,7 +15,9 @@ script = ExtResource( 2 )
 [node name="Camera" type="Camera" parent="CameraPivot"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0, 0 )
 environment = SubResource( 1 )
+projection = 1
 current = true
+size = 10.0
 
 [node name="Truck" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
