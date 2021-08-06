@@ -63,26 +63,10 @@ func _draw() -> void:
 	_draw_hour_safety_sectors()
 	_draw_hour_safety_segments()
 	_draw_main_circle()
-	_draw_inner_circle()
 
 
 func _draw_main_circle() -> void:
 	draw_arc(_center, _clock_radius, 0, TAU, 64, OUTLINE_COLOR, OUTLINE_THICKNESS)
-
-
-func _draw_inner_circle() -> void:
-	var radius := _clock_radius * INNER_CIRCLE_RADIUS_PROPORTION
-	draw_arc(_center, radius, 0, TAU, 64, OUTLINE_COLOR, OUTLINE_THICKNESS)
-	_draw_inner_circle_segments(radius)
-
-
-func _draw_inner_circle_segments(length: float) -> void:
-	var segment_angle := TAU / INNER_CIRCLE_NUM_SEGMENTS
-	for i in INNER_CIRCLE_NUM_SEGMENTS:
-		var angle: float = segment_angle * i
-		var dir := Vector2.UP.rotated(angle)
-		var vec := dir * length
-		draw_line(_center, _center + vec, OUTLINE_COLOR, INNER_CIRCLE_OUTLINE_THICKNESS)
 
 
 func _draw_hour_safety_sectors() -> void:
