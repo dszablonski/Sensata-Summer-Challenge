@@ -1,6 +1,8 @@
 tool
 extends Control
 
+const TIME_BUTTON_SCENE := preload("res://ui/clock/time_button.tscn")
+
 const OUTLINE_COLOR := Color("181425")
 const OUTLINE_THICKNESS := 2.0
 
@@ -133,11 +135,11 @@ func _add_time_buttons() -> void:
 		var time: float = time_diff * i
 		var dir := Vector2.UP.rotated(angle)
 		var vec := dir * _clock_radius
-		var button = Button.new()
-		button.rect_position = _center + vec
+		var button := TIME_BUTTON_SCENE.instance()
 		button.text = _to_time_string(time)
 		add_child(button)
-		button.rect_position -= button.rect_size / 2
+		var offset: Vector2 = -button.rect_size / 2
+		button.rect_position = _center + vec + offset
 		button.connect("pressed", self, "_on_Time_pressed", [time])
 
 
