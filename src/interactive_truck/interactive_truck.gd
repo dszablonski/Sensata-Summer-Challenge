@@ -7,10 +7,10 @@ extends Node2D
 # Therefore, by ignoring all events which move the mouse too far, we can
 # essentially ignore all events caused by forcibly setting the mouse's position.
 const MAX_MOUSE_MOTION_DIST := 300
-const MIN_DIST_TO_ORIGIN := -4.0
-const MAX_DIST_TO_ORIGIN := -20.0
 const ZOOM_IN_SPEED := 1.0
 const ZOOM_OUT_SPEED := 1.0
+const MIN_CAMERA_SIZE := 4.0
+const MAX_CAMERA_SIZE := 25.0
 
 var _was_prev_panning_camera := false
 
@@ -40,11 +40,11 @@ func _input(event: InputEvent) -> void:
 		_was_prev_panning_camera = false
 
 	if Input.is_action_pressed("zoom_in"):
-		camera.translation.x += ZOOM_IN_SPEED
-		camera.translation.x = min(MIN_DIST_TO_ORIGIN, camera.translation.x)
+		camera.size -= ZOOM_IN_SPEED
+		camera.size = max(MIN_CAMERA_SIZE, camera.size)
 	elif Input.is_action_pressed("zoom_out"):
-		camera.translation.x -= ZOOM_OUT_SPEED
-		camera.translation.x = max(MAX_DIST_TO_ORIGIN, camera.translation.x)
+		camera.size += ZOOM_OUT_SPEED
+		camera.size = min(MAX_CAMERA_SIZE, camera.size)
 
 
 func _is_mouse_inside_viewport() -> bool:
