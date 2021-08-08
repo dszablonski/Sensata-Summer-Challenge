@@ -115,6 +115,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 size_flags_stretch_ratio = 1.5
 stretch = true
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,6 +124,7 @@ __meta__ = {
 size = Vector2( 494, 403 )
 handle_input_locally = false
 render_target_update_mode = 3
+physics_object_picking = true
 
 [node name="InteractiveTruck" parent="VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/TruckViewport" instance=ExtResource( 1 )]
 
