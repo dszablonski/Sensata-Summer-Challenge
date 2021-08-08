@@ -8,8 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Control",
+"class": "Clock",
+"language": "GDScript",
+"path": "res://ui/clock/clock.gd"
+}, {
+"base": "Object",
+"class": "Util",
+"language": "GDScript",
+"path": "res://misc_scripts/utility.gd"
+} ]
 _global_script_class_icons={
+"Clock": "",
+"Util": ""
 }
 
 [application]
@@ -17,6 +29,10 @@ _global_script_class_icons={
 config/name="Sensata Summer Challenge"
 run/main_scene="res://ui/ui.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [input]
 

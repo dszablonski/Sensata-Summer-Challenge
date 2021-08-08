@@ -20,7 +20,7 @@ current = true
 size = 10.0
 
 [node name="Truck" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.65 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.245756, -0.735694, 0.631157, 0.798891, 0.522488, 0.29796, -0.548979, 0.431, 0.716143, 3.84328, 1.80628, 7.51762 )
