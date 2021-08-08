@@ -1,0 +1,203 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/warnings/warnings.gd" type="Script" id=2]
+[ext_resource path="res://ui/warnings/limits_popup.tscn" type="PackedScene" id=3]
+
+[node name="Warnings" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LimitsButton" type="Button" parent="."]
+margin_left = 928.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 26.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "View Limits"
+align = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+mouse_filter = 2
+collapsed = true
+dragger_visibility = 2
+
+[node name="TopRow" type="HBoxContainer" parent="VSplitContainer"]
+margin_right = 1010.0
+margin_bottom = 19.0
+mouse_filter = 2
+
+[node name="CriticalLabel" type="Label" parent="VSplitContainer/TopRow"]
+margin_top = 3.0
+margin_right = 481.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Critical"
+align = 1
+
+[node name="PingButton" type="Button" parent="VSplitContainer/TopRow"]
+margin_left = 485.0
+margin_right = 525.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ping"
+
+[node name="CautionLabel" type="Label" parent="VSplitContainer/TopRow"]
+margin_left = 529.0
+margin_top = 3.0
+margin_right = 1010.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "Caution"
+align = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
+margin_top = 19.0
+margin_right = 1010.0
+margin_bottom = 586.0
+collapsed = true
+dragger_visibility = 2
+
+[node name="Critical" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+margin_right = 505.0
+margin_bottom = 567.0
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/Critical"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 498.0
+margin_bottom = 560.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer"]
+margin_right = 315.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_right = 315.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Truck wheel bearing B too hot! (61°C)"
+
+[node name="Label2" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_top = 17.0
+margin_right = 315.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Truck wheel bearing A too hot! (60°C)"
+
+[node name="Label3" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 315.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "Trailer weight at point G too heavy! (750 kg)"
+
+[node name="Label4" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_top = 51.0
+margin_right = 315.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "Trailer weight not evenly dispersed!"
+
+[node name="Caution" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
+margin_left = 505.0
+margin_right = 1010.0
+margin_bottom = 567.0
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/Caution"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 498.0
+margin_bottom = 560.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer"]
+margin_right = 371.0
+margin_bottom = 132.0
+
+[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_right = 371.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Truck tyre A too pressurized! (123 psi)"
+
+[node name="Label2" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 17.0
+margin_right = 371.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Truck tyre A too pressurized! (122 psi)"
+
+[node name="Label3" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 371.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "Truck brake pads A too worn down! 16%"
+
+[node name="Label4" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 51.0
+margin_right = 371.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "Truck brake pads B too worn down! 18%"
+
+[node name="Label5" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 371.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 1 )
+text = "Trailer weight at point A is too unbalanced! (600 kg)"
+
+[node name="Label6" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 85.0
+margin_right = 371.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 1 )
+text = "Trailer weight at point C is too unbalanced! (620 kg)"
+
+[node name="Label7" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 102.0
+margin_right = 371.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 1 )
+text = "Trailer weight at point D is too unbalanced! (635 kg)"
+
+[node name="Label8" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 119.0
+margin_right = 371.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 1 )
+text = "Trailer weight at point F is too unbalanced! (640 kg)"
+
+[node name="LimitsPopup" parent="." instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 400.0
+margin_bottom = 164.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[connection signal="pressed" from="LimitsButton" to="." method="_on_LimitsButton_pressed"]
+[connection signal="pressed" from="VSplitContainer/TopRow/PingButton" to="." method="_on_PingButton_pressed"]
