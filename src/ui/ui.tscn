@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/date_time.gd" type="Script" id=3]
 [ext_resource path="res://ui/ui.gd" type="Script" id=4]
 [ext_resource path="res://ui/warnings/warnings.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=6]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -37,24 +38,26 @@ size_flags_horizontal = 3
 
 [node name="DateTime" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide"]
 margin_right = 502.0
-margin_bottom = 14.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 6 )
 text = "1/6/2021 00:00"
 align = 1
 script = ExtResource( 3 )
 
 [node name="Timeline" type="PanelContainer" parent="VSplitContainer/HSplitContainer/LeftSide"]
-margin_top = 18.0
+margin_top = 17.0
 margin_right = 502.0
 margin_bottom = 76.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline"]
 margin_left = 7.0
-margin_top = 22.0
+margin_top = 23.0
 margin_right = 495.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
+custom_fonts/font = ExtResource( 6 )
 text = "Timeline"
 align = 1
 
@@ -69,7 +72,8 @@ size_flags_stretch_ratio = 2.0
 margin_left = 7.0
 margin_top = 52.0
 margin_right = 495.0
-margin_bottom = 66.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 6 )
 text = "Priority Statistics"
 align = 1
 
@@ -84,7 +88,8 @@ size_flags_stretch_ratio = 4.0
 margin_left = 7.0
 margin_top = 111.0
 margin_right = 495.0
-margin_bottom = 125.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 6 )
 text = "Graphs"
 align = 1
 
@@ -99,12 +104,13 @@ margin_right = 502.0
 margin_bottom = 438.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 6 )
 
 [node name="Truck Viewer" type="ViewportContainer" parent="VSplitContainer/HSplitContainer/RightSide/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 31.0
 margin_right = -4.0
 margin_bottom = -4.0
 size_flags_stretch_ratio = 1.5
@@ -114,7 +120,7 @@ __meta__ = {
 }
 
 [node name="TruckViewport" type="Viewport" parent="VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer"]
-size = Vector2( 494, 402 )
+size = Vector2( 494, 403 )
 handle_input_locally = false
 render_target_update_mode = 3
 
