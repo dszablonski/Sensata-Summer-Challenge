@@ -30,6 +30,10 @@ config/name="Sensata Summer Challenge"
 run/main_scene="res://ui/ui.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [input]
 
 pan_camera={
