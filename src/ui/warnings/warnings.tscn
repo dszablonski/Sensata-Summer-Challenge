@@ -11,17 +11,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LimitsButton" type="Button" parent="."]
+margin_left = 928.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 26.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "View Limits"
+align = 2
+
 [node name="VSplitContainer" type="VSplitContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1017.0
 margin_bottom = 593.0
+mouse_filter = 2
 collapsed = true
 dragger_visibility = 2
 
 [node name="TopRow" type="HBoxContainer" parent="VSplitContainer"]
 margin_right = 1010.0
 margin_bottom = 19.0
+mouse_filter = 2
 
 [node name="CriticalLabel" type="Label" parent="VSplitContainer/TopRow"]
 margin_top = 3.0
