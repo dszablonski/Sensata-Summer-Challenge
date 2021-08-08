@@ -6,7 +6,7 @@ signal time_changed(new_time)
 
 const TIME_BUTTON_SCENE := preload("res://ui/clock/time_button.tscn")
 
-const IS_ANTIALISED := true
+const IS_ANTIALIASED := true
 
 const OUTLINE_COLOR := Color("181425")
 const OUTLINE_THICKNESS := 2.0
@@ -121,7 +121,7 @@ func _on_Time_Button_pressed(button: Button, time: float) -> void:
 
 
 func _draw_main_circle() -> void:
-	draw_arc(_center, _clock_radius, 0, TAU, 64, OUTLINE_COLOR, OUTLINE_THICKNESS, IS_ANTIALISED)
+	draw_arc(_center, _clock_radius, 0, TAU, 64, OUTLINE_COLOR, OUTLINE_THICKNESS, IS_ANTIALIASED)
 
 
 func _draw_hour_safety_sectors() -> void:
@@ -131,7 +131,7 @@ func _draw_hour_safety_sectors() -> void:
 		var end_angle := hour_angle * (i + 1) - TAU / 4
 		var safety_value: float = hour_safety_values[i]
 		var color: Color = SAFETY_VALUE_TO_COLOR[safety_value]
-		_draw_sector(_center, _clock_radius, start_angle, end_angle, color, IS_ANTIALISED)
+		_draw_sector(_center, _clock_radius, start_angle, end_angle, color, IS_ANTIALIASED)
 
 
 func _draw_hour_safety_segments() -> void:
@@ -144,7 +144,7 @@ func _draw_hour_safety_segments() -> void:
 			var dir := Vector2.UP.rotated(angle)
 			var vec := dir * _clock_radius
 			var final_pos := _center + vec
-			draw_line(_center, final_pos, OUTLINE_COLOR, OUTLINE_THICKNESS, IS_ANTIALISED)
+			draw_line(_center, final_pos, OUTLINE_COLOR, OUTLINE_THICKNESS, IS_ANTIALIASED)
 
 
 func _draw_sector(
