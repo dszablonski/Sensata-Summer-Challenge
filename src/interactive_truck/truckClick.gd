@@ -74,6 +74,6 @@ func get_data():
 		# clear selection
 		pass	
 
-func _input_event(camera, event, click_position, click_normal, shape_idx):
+func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		print(get_data())
