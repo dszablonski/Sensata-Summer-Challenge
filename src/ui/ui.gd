@@ -2,8 +2,8 @@ extends MarginContainer
 
 export var time := 0.0
 
-onready var date_time_label: Label = $HSplitContainer/LeftSide/DateTime
-onready var clock: Clock = $"HSplitContainer/RightSide/TabContainer/Time Selection"
+onready var date_time_label: Label = $VSplitContainer/HSplitContainer/LeftSide/DateTime
+onready var clock: Clock = $"VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection"
 
 
 func _ready() -> void:
