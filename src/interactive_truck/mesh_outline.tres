@@ -4,4 +4,4 @@
 flags_unshaded = true
 params_cull_mode = 1
 params_grow = true
-params_grow_amount = 0.055
+params_grow_amount = 0.08
