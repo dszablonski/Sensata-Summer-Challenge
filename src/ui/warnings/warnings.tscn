@@ -87,35 +87,48 @@ margin_bottom = 560.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer"]
-margin_right = 315.0
-margin_bottom = 64.0
+margin_right = 491.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
-margin_right = 315.0
-margin_bottom = 13.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_right = 491.0
+margin_bottom = 14.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck wheel bearing B too hot! (61°C)"
 text = "Truck wheel bearing B too hot! (61°C)"
+fit_content_height = true
 
-[node name="Label2" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
-margin_top = 17.0
-margin_right = 315.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel2" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 491.0
+margin_bottom = 32.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck wheel bearing A too hot! (60°C)"
 text = "Truck wheel bearing A too hot! (60°C)"
+fit_content_height = true
 
-[node name="Label3" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
-margin_top = 34.0
-margin_right = 315.0
-margin_bottom = 47.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel3" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 491.0
+margin_bottom = 50.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Trailer weight at point G too heavy! (750 kg)"
 text = "Trailer weight at point G too heavy! (750 kg)"
+fit_content_height = true
 
-[node name="Label4" type="Label" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
-margin_top = 51.0
-margin_right = 315.0
-margin_bottom = 64.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel4" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 491.0
+margin_bottom = 68.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Trailer weight not evenly dispersed!"
 text = "Trailer weight not evenly dispersed!"
+fit_content_height = true
 
 [node name="Caution" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
 margin_left = 505.0
@@ -131,63 +144,88 @@ margin_bottom = 560.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer"]
-margin_right = 371.0
-margin_bottom = 132.0
+margin_right = 491.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_right = 371.0
-margin_bottom = 13.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_right = 491.0
+margin_bottom = 14.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck tyre A too pressurized! (123 psi)"
 text = "Truck tyre A too pressurized! (123 psi)"
+fit_content_height = true
 
-[node name="Label2" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 17.0
-margin_right = 371.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel2" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 491.0
+margin_bottom = 32.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck tyre A too pressurized! (122 psi)"
 text = "Truck tyre A too pressurized! (122 psi)"
+fit_content_height = true
 
-[node name="Label3" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 34.0
-margin_right = 371.0
-margin_bottom = 47.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel3" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 491.0
+margin_bottom = 50.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck brake pads A too worn down! (16% left)"
 text = "Truck brake pads A too worn down! (16% left)"
+fit_content_height = true
 
-[node name="Label4" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 51.0
-margin_right = 371.0
-margin_bottom = 64.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel4" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 491.0
+margin_bottom = 68.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck brake pads B too worn down! (18% left)"
 text = "Truck brake pads B too worn down! (18% left)"
+fit_content_height = true
 
-[node name="Label5" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 68.0
-margin_right = 371.0
-margin_bottom = 81.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel5" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 491.0
+margin_bottom = 86.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Trailer weight at point A is too unbalanced! (600 kg)"
 text = "Trailer weight at point A is too unbalanced! (600 kg)"
+fit_content_height = true
 
-[node name="Label6" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 85.0
-margin_right = 371.0
-margin_bottom = 98.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel6" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 491.0
+margin_bottom = 104.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Trailer weight at point C is too unbalanced! (620 kg)"
 text = "Trailer weight at point C is too unbalanced! (620 kg)"
+fit_content_height = true
 
-[node name="Label7" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 102.0
-margin_right = 371.0
-margin_bottom = 115.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel7" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 491.0
+margin_bottom = 122.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Trailer weight at point D is too unbalanced! (635 kg)"
 text = "Trailer weight at point D is too unbalanced! (635 kg)"
+fit_content_height = true
 
-[node name="Label8" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
-margin_top = 119.0
-margin_right = 371.0
-margin_bottom = 132.0
-custom_fonts/font = ExtResource( 1 )
+[node name="RichTextLabel8" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
+margin_top = 126.0
+margin_right = 491.0
+margin_bottom = 140.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Truck tyre A too pressurized! (123 psi)"
 text = "Trailer weight at point F is too unbalanced! (640 kg)"
+fit_content_height = true
 
 [node name="LimitsPopup" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
