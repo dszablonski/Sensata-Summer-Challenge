@@ -76,8 +76,6 @@ const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s very heavy! (
 const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight not evenly dispersed!"
 const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight not very evenly dispersed!"
 
-const WEIGHT_UNBALANCED_CAUTION_WARNING := "Trailer weight at point %s too unbalanced! (%s kg)"
-
 var _critical_warnings: Array
 var _caution_warnings: Array
 
@@ -94,7 +92,7 @@ func _update_warnings(data: Dictionary) -> void:
 	_clear_warning_labels()
 	_critical_warnings = []
 	_caution_warnings = []
-	var trailer_weights := {}
+	var trailer_weights := []
 	var sensors := _get_sorted_sensors(data)
 	for i in range(len(sensors)):
 		var sensor: String = sensors[i]
@@ -156,7 +154,7 @@ func _update_warnings(data: Dictionary) -> void:
 					FRIDGE_TEMP_WARM_CRITICAL_WARNING
 				)
 		elif "TrailerWeight" in sensor:
-			trailer_weights[sensor] = value
+			trailer_weights.append(value)
 			_add_warning_text(
 				value,
 				[identifier, value],
@@ -170,8 +168,7 @@ func _update_warnings(data: Dictionary) -> void:
 				TRAILER_HEAVY_CAUTION_WARNING
 			)
 		if i == DATA.keys().find("TrailerWeightG"):
-			var weight_values := trailer_weights.values()
-			var weight_differential: int = weight_values.max() - weight_values.min()
+			var weight_differential: int = trailer_weights.max() - trailer_weights.min()
 			_add_warning_text(
 				weight_differential,
 				[],
@@ -184,11 +181,6 @@ func _update_warnings(data: Dictionary) -> void:
 				CautionLimits.MAX_WEIGHT_DIFFERENTIAL,
 				WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING
 			)
-			for weight_sensor in trailer_weights:
-				var weight_identifier: String = weight_sensor[-1]
-				var weight_value: int = trailer_weights[weight_sensor]
-				var warning := WEIGHT_UNBALANCED_CAUTION_WARNING % [weight_identifier, weight_value]
-				_caution_warnings.append(warning)
 	_add_warning_labels()
 
 
