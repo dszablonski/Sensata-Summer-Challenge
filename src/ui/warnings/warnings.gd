@@ -2,8 +2,6 @@ extends PanelContainer
 
 const WARNING_LABEL_SCENE := preload("res://ui/warnings/warning_label.tscn")
 
-const LIMITS_POPUP_SIZE_RATIO := 0.38
-
 # Placeholder data while the database is being worked on
 const DATA := {
 	"TruckTyrePressureA": 130,
