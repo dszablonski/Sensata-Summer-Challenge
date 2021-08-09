@@ -56,25 +56,25 @@ const DATA_CATEGORY_SORT_DESCENDING := [
 	false,
 ]
 
-const TYRE_UNPRESSURIZED_CRITICAL_WARNING := "%s tyre %s too unpressurized! (%s psi)"
-const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s almost too unpressurized! (%s psi)"
-const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s too pressurized! (%s psi)"
-const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s almost too pressurized! (%s psi)"
+const TYRE_UNPRESSURIZED_CRITICAL_WARNING := "%s tyre %s pressure too low! (%s psi)"
+const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s pressure very low! (%s psi)"
+const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s pressure too high! (%s psi)"
+const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s pressure very high! (%s psi)"
 
 const BRAKE_PADS_CRITICAL_WARNING := "%s brake pad %s too worn down! (%s%% left)"
-const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s almost too worn down! (%s%% left)"
+const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s very worn down! (%s%% left)"
 
 const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s too hot! (%s°C)"
-const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s almost too hot! (%s°C)"
+const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s very hot! (%s°C)"
 
 const FREEZER_TEMP_COLD_CRITICAL_WARNING := "Freezer temperature at point %s too cold! (%s°C)"
 const FRIDGE_TEMP_WARM_CRITICAL_WARNING := "Fridge temperature at point %s too warm! (%s°C)"
 
 const TRAILER_HEAVY_CRITICAL_WARNING := "Trailer weight at point %s too heavy! (%s kg)"
-const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s almost too heavy! (%s kg)"
+const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s very heavy! (%s kg)"
 
 const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight not evenly dispersed!"
-const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight almost not evenly dispersed!"
+const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight not very evenly dispersed!"
 
 const WEIGHT_UNBALANCED_CAUTION_WARNING := "Trailer weight at point %s too unbalanced! (%s kg)"
 
