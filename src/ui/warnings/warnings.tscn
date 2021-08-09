@@ -152,14 +152,14 @@ margin_top = 34.0
 margin_right = 371.0
 margin_bottom = 47.0
 custom_fonts/font = ExtResource( 1 )
-text = "Truck brake pads A too worn down! 16%"
+text = "Truck brake pads A too worn down! (16% left)"
 
 [node name="Label4" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
 margin_top = 51.0
 margin_right = 371.0
 margin_bottom = 64.0
 custom_fonts/font = ExtResource( 1 )
-text = "Truck brake pads B too worn down! 18%"
+text = "Truck brake pads B too worn down! (18% left)"
 
 [node name="Label5" type="Label" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
 margin_top = 68.0
