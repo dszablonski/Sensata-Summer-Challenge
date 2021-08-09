@@ -61,8 +61,8 @@ const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s almost too unpressurized
 const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s too pressurized! (%s psi)"
 const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s almost too pressurized! (%s psi)"
 
-const BRAKE_PADS_CRITICAL_WARNING := "%s brake pads %s too worn down! (%s%% left)"
-const BRAKE_PADS_CAUTION_WARNING := "%s brake pads %s almost too worn down! (%s%% left)"
+const BRAKE_PADS_CRITICAL_WARNING := "%s brake pad %s too worn down! (%s%% left)"
+const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s almost too worn down! (%s%% left)"
 
 const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s too hot! (%s°C)"
 const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s almost too hot! (%s°C)"
