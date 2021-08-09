@@ -3,7 +3,7 @@ extends ViewportContainer
 onready var viewport: Viewport = $TruckViewport
 
 
-func _input(event: InputEvent) -> void:
+func _gui_input(event: InputEvent) -> void:
 	# Relevant issue: https://github.com/godotengine/godot/issues/17326
 	# Workaround: https://github.com/godotengine/godot/issues/17326#issuecomment-431186323
 	if event is InputEventMouse:
