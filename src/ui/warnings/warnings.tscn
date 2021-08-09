@@ -154,7 +154,7 @@ margin_bottom = 14.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Truck tyre A too pressurized! (123 psi)"
-text = "Truck tyre A too pressurized! (123 psi)"
+text = "Truck tyre A almost too pressurized! (123 psi)"
 fit_content_height = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
@@ -164,7 +164,7 @@ margin_bottom = 32.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Truck tyre A too pressurized! (122 psi)"
-text = "Truck tyre A too pressurized! (122 psi)"
+text = "Truck tyre A almost too pressurized! (122 psi)"
 fit_content_height = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
@@ -174,7 +174,7 @@ margin_bottom = 50.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Truck brake pads A too worn down! (16% left)"
-text = "Truck brake pads A too worn down! (16% left)"
+text = "Truck brake pads A almost too worn down! (16% left)"
 fit_content_height = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
@@ -184,7 +184,7 @@ margin_bottom = 68.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Truck brake pads B too worn down! (18% left)"
-text = "Truck brake pads B too worn down! (18% left)"
+text = "Truck brake pads B almost too worn down! (18% left)"
 fit_content_height = true
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer/VBoxContainer"]
