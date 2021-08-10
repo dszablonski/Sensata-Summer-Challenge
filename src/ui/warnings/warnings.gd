@@ -22,11 +22,11 @@ const DATA := {
 	"TrailerTyrePressureD": 113,
 	"TrailerTyrePressureE": 108,
 	"TrailerTyrePressureF": 109,
-	"TrailerTemperatureA": -3,
-	"TrailerTemperatureB": -3,
+	"TrailerTemperatureA": -4,
+	"TrailerTemperatureB": -5,
 	"TrailerTemperatureC": -3,
-	"TrailerTemperatureD": 5,
-	"TrailerTemperatureE": 5,
+	"TrailerTemperatureD": 7,
+	"TrailerTemperatureE": 6,
 	"TrailerTemperatureF": 5,
 	"TrailerWeightA": 745,
 	"TrailerWeightC": 786,
@@ -56,25 +56,25 @@ const DATA_CATEGORY_SORT_DESCENDING := [
 	false,
 ]
 
-const TYRE_UNPRESSURIZED_CRITICAL_WARNING := "%s tyre %s pressure too low! (%s psi)"
-const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s pressure very low! (%s psi)"
-const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s pressure too high! (%s psi)"
-const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s pressure very high! (%s psi)"
+const TYRE_UNPRESSURIZED_CRITICAL_WARNING := "%s tyre %s [color=#ff0000]pressure too low![/color] (%s psi)"
+const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s [color=#FFFF00]pressure very low![/color] (%s psi)"
+const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s [color=#ff0000]pressure too high![/color] (%s psi)"
+const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s [color=#FFFF00]pressure very high![/color] (%s psi)"
 
-const BRAKE_PADS_CRITICAL_WARNING := "%s brake pad %s too worn down! (%s%% left)"
-const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s very worn down! (%s%% left)"
+const BRAKE_PADS_CRITICAL_WARNING := "%s brake pad %s [color=#ff0000]too worn down![/color] (%s%% left)"
+const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s [color=#FFFF00]very worn down![/color] (%s%% left)"
 
-const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s too hot! (%s°C)"
-const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s very hot! (%s°C)"
+const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s [color=#ff0000]too hot![/color] (%s°C)"
+const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s [color=#FFFF00]very hot![/color] (%s°C)"
 
-const FREEZER_TEMP_COLD_CRITICAL_WARNING := "Freezer temperature at point %s too cold! (%s°C)"
-const FRIDGE_TEMP_WARM_CRITICAL_WARNING := "Fridge temperature at point %s too warm! (%s°C)"
+const FREEZER_TEMP_COLD_CRITICAL_WARNING := "Freezer temperature at point %s [color=#ff0000]too cold![/color] (%s°C)"
+const FRIDGE_TEMP_WARM_CRITICAL_WARNING := "Fridge temperature at point %s [color=#ff0000]too warm![/color] (%s°C)"
 
-const TRAILER_HEAVY_CRITICAL_WARNING := "Trailer weight at point %s too heavy! (%s kg)"
-const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s very heavy! (%s kg)"
+const TRAILER_HEAVY_CRITICAL_WARNING := "Trailer weight at point %s [color=#ff0000]too heavy![/color] (%s kg)"
+const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s [color=#FFFF00]very heavy![/color] (%s kg)"
 
-const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight not evenly dispersed!"
-const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight not very evenly dispersed!"
+const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight [color=#ff0000]not evenly dispersed![/color]"
+const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight [color=#FFFF00]not very evenly dispersed![/color]"
 
 var _critical_warnings: Array
 var _caution_warnings: Array
