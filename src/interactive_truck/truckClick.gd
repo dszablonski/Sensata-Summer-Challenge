@@ -1,5 +1,10 @@
 extends StaticBody
 
+signal truck_wheel_a
+signal freezer
+signal clear
+
+
 func get_data():
 	
 	
@@ -17,8 +22,10 @@ func get_data():
 		# perhaps this sensor could be returned when the wheels are clicked
 		# rather when the the bar itself is clicked
 		return "brake wear Sensor AB clicked"
+		
 	elif $CollisionShape.is_in_group("truckWheelA"):
-		return "truck wheel A clicked"
+		emit_signal("truck_wheel_a")
+		return "Truck wheel A selected"
 		
 	elif $CollisionShape.is_in_group("truckWheelB"):
 		return "truck wheel B clicked"
@@ -66,12 +73,16 @@ func get_data():
 		return "trailer wheel F"
 		
 	elif $CollisionShape.is_in_group("freezer"):
+		emit_signal("freezer")
 		return "freezer clicked"
 		
 	elif $CollisionShape.is_in_group("fridge"):
 		return "fridge clicked"
+	elif $CollisionShape.is_in_group("truck"):
+		pass
+		emit_signal("clear")
 	else:
-		# clear selection
+		emit_signal("clear")
 		pass	
 
 func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):
