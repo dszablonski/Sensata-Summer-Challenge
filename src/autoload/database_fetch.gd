@@ -30,7 +30,7 @@ func readfromdb():
 
 func read_db_time(day, hour):
 	var hourtoget
-	hourtoget=(day*24)+hour
+	hourtoget=((day-1)*24)+hour+1
 	db.query("select * from " + tablename + " where ID=" + str(hourtoget))
 	return db.query_result
 # Called every frame. 'delta' is the elapsed time since the previous frame.
