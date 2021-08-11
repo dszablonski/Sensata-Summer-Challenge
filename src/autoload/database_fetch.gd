@@ -25,7 +25,7 @@ func _ready():
 func readfromdb():
 	db.query("select * from " + tablename + " where ID=" + str(ID))
 	var telemetry_data=db.query_result
-	print(telemetry_data)
+#	print(telemetry_data)
 	ID=ID+1
 
 func read_db_time(day, hour):
