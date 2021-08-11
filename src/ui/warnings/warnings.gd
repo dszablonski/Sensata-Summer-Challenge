@@ -2,45 +2,6 @@ extends PanelContainer
 
 const WARNING_LABEL_SCENE := preload("res://ui/warnings/warning_label.tscn")
 
-# Placeholder data while the database is being worked on
-const DATA := {
-	"TruckTyrePressureA": 130,
-	"TruckTyrePressureB": 135,
-	"TruckTyrePressureC": 122,
-	"TruckTyrePressureD": 121,
-	"TruckTyrePressureE": 119,
-	"TruckTyrePressureF": 123,
-	"TruckBrakePadsA": 13,
-	"TruckBrakePadsB": 12,
-	"TruckWheelBearingTempA": 56,
-	"TruckWheelBearingTempB": 56,
-	"TruckWheelBearingTempD": 57,
-	"TruckWheelBearingTempF": 56,
-	"TrailerTyrePressureA": 112,
-	"TrailerTyrePressureB": 110,
-	"TrailerTyrePressureC": 107,
-	"TrailerTyrePressureD": 113,
-	"TrailerTyrePressureE": 108,
-	"TrailerTyrePressureF": 109,
-	"TrailerTemperatureA": -4,
-	"TrailerTemperatureB": -5,
-	"TrailerTemperatureC": -3,
-	"TrailerTemperatureD": 7,
-	"TrailerTemperatureE": 6,
-	"TrailerTemperatureF": 5,
-	"TrailerWeightA": 745,
-	"TrailerWeightC": 786,
-	"TrailerWeightD": 545,
-	"TrailerWeightF": 654,
-	"TrailerWeightG": 658,
-	"TrailerBrakePadsA": 13,
-	"TrailerBrakePadsB": 16,
-	"TrailerBrakePadsC": 15,
-	"TrailerBrakePadsD": 14,
-	"TrailerBrakePadsE": 16,
-	"TrailerBrakePadsF": 14,
-}
-
 const DATA_CATEGORY_INDEXES := [0, 6, 8, 12, 18, 21, 24, 29]
 
 const TRAILER_START_INDEX := 12
@@ -76,6 +37,9 @@ const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s [color=#FFFF0
 const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight [color=#ff0000]not evenly dispersed![/color]"
 const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight [color=#FFFF00]not very evenly dispersed![/color]"
 
+const PLACEHOLDER_DAY := 4
+const PLACEHOLDER_HOUR := 11
+
 var _critical_warnings: Array
 var _caution_warnings: Array
 
@@ -85,14 +49,19 @@ onready var limits_popup: Popup = $LimitsPopup
 
 
 func _ready() -> void:
-	_update_warnings(DATA)
+	var data := DatabaseFetch.read_db_time(PLACEHOLDER_DAY, PLACEHOLDER_HOUR)
+	data.erase("ID")
+	data.erase("DateTime")
+	data.erase("Hour")
+	_update_warnings(data)
 
 
 func _update_warnings(data: Dictionary) -> void:
 	_clear_warning_labels()
 	_critical_warnings = []
 	_caution_warnings = []
-	var trailer_weights := []
+	var trailer_weights := _get_trailer_weights(data)
+	var has_cargo := _has_cargo(trailer_weights)
 	var sensors := _get_sorted_sensors(data)
 	for i in range(len(sensors)):
 		var sensor: String = sensors[i]
@@ -135,6 +104,8 @@ func _update_warnings(data: Dictionary) -> void:
 				WHEEL_BEARING_CAUTION_WARNING
 			)
 		elif "TrailerTemperature" in sensor:
+			if not has_cargo:
+				continue
 			if identifier in ["A", "B", "C"]:
 				_add_warning_text(
 					value,
@@ -154,7 +125,6 @@ func _update_warnings(data: Dictionary) -> void:
 					FRIDGE_TEMP_WARM_CRITICAL_WARNING
 				)
 		elif "TrailerWeight" in sensor:
-			trailer_weights.append(value)
 			_add_warning_text(
 				value,
 				[identifier, value],
@@ -167,7 +137,7 @@ func _update_warnings(data: Dictionary) -> void:
 				CautionLimits.MAX_WEIGHT,
 				TRAILER_HEAVY_CAUTION_WARNING
 			)
-		if i == DATA.keys().find("TrailerWeightG"):
+		if i == data.keys().find("TrailerWeightG"):
 			var weight_differential: int = trailer_weights.max() - trailer_weights.min()
 			_add_warning_text(
 				weight_differential,
@@ -189,6 +159,22 @@ func _clear_warning_labels() -> void:
 		label.queue_free()
 	for label in caution_warnings_vbox.get_children():
 		label.queue_free()
+
+
+func _get_trailer_weights(data: Dictionary) -> Array:
+	var trailer_weights := []
+	for sensor in data:
+		if "TrailerWeight" in sensor:
+			var value: int = data[sensor]
+			trailer_weights.append(value)
+	return trailer_weights
+
+
+func _has_cargo(trailer_weights: Array) -> bool:
+	for weight in trailer_weights:
+		if weight > 0:
+			return true
+	return false
 
 
 func _get_sorted_sensors(data: Dictionary) -> Array:
