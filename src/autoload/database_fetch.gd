@@ -28,11 +28,11 @@ func readfromdb():
 #	print(telemetry_data)
 	ID=ID+1
 
-func read_db_time(day, hour):
+func read_db_time(day: int, hour: int) -> Dictionary:
 	var hourtoget
 	hourtoget=((day-1)*24)+hour+1
 	db.query("select * from " + tablename + " where ID=" + str(hourtoget))
-	return db.query_result
+	return db.query_result[0]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
