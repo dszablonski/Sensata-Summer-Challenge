@@ -13,11 +13,14 @@ var ID=1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#var output
 	db=SQLite.new()
 	db.path=db_path
 	db.open_db(db)
 	timer.set_wait_time(1)
 	timer.start()
+	#output=read_db_time(3,5)
+	#print(output)
 
 func readfromdb():
 	db.query("select * from " + tablename + " where ID=" + str(ID))
@@ -25,10 +28,16 @@ func readfromdb():
 	print(telemetry_data)
 	ID=ID+1
 
+func read_db_time(day, hour):
+	var hourtoget
+	hourtoget=(day*24)+hour
+	db.query("select * from " + tablename + " where ID=" + str(hourtoget))
+	return db.query_result
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 
 func _on_Timer_timeout():
+	#pass
 	readfromdb()
