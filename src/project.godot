@@ -50,6 +50,10 @@ DatabaseFetch="*res://autoload/database_fetch.tscn"
 
 gdscript/warnings/return_value_discarded=false
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-sqlite/plugin.cfg" )
+
 [input]
 
 pan_camera={
