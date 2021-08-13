@@ -110,11 +110,10 @@ func get_data():
 	elif $CollisionShape.is_in_group("fridge"):
 		emit_signal("fridge")
 		return "fridge clicked"
-	elif $CollisionShape.is_in_group("truck"):
+	elif $CollisionShape.is_in_group("void"):
 		emit_signal("clear")
 	else:
 		emit_signal("clear")
-		pass	
 
 func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
