@@ -22,8 +22,10 @@ func fetchcsv():
 		if len(data_set) == 1:
 			continue
 		var data_set_dict={}
-		for i in range(0,36):
+		for i in range(len(fields)):
 			data_set_dict[fields[i]]=data_set[i]
 		maindata.append(data_set_dict)
 	file.close()
+	db.delete_rows(tablename, "true")
+	db.query("update sqlite_sequence set seq=0 where name='%s'" % tablename)
 	db.insert_rows(tablename, maindata)
