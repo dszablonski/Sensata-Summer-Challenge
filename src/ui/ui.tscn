@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/warnings/warnings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=6]
 [ext_resource path="res://ui/truck_viewer.gd" type="Script" id=7]
+[ext_resource path="res://ui/graphs/graphs.tscn" type="PackedScene" id=8]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -62,21 +63,12 @@ custom_fonts/font = ExtResource( 6 )
 text = "Timeline"
 align = 1
 
-[node name="Graphs" type="PanelContainer" parent="VSplitContainer/HSplitContainer/LeftSide"]
+[node name="Graphs" parent="VSplitContainer/HSplitContainer/LeftSide" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 104.0
 margin_right = 502.0
 margin_bottom = 438.0
-size_flags_vertical = 3
-size_flags_stretch_ratio = 4.0
-
-[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide/Graphs"]
-margin_left = 7.0
-margin_top = 160.0
-margin_right = 495.0
-margin_bottom = 173.0
-custom_fonts/font = ExtResource( 6 )
-text = "Graphs"
-align = 1
 
 [node name="RightSide" type="VBoxContainer" parent="VSplitContainer/HSplitContainer"]
 margin_left = 514.0

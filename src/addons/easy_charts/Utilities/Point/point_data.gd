@@ -8,9 +8,8 @@ var position : Vector2 = Vector2()
 var OFFSET : Vector2 = Vector2(15,35)
 var GAP : Vector2 = Vector2(0,15)
 
-onready var Data : Label = $PointData/Value/x
-onready var Value : Label = $PointData/Value/y
-onready var Function : Label = $PointData/Function
+onready var Data : Label = $Value/x
+onready var Value : Label = $Value/y
 
 func _ready():
 	hide()
@@ -33,12 +32,11 @@ func update_datas(point : Control):
 		font_color = Color(0,0,0,1)
 	Data.set("custom_colors/font_color",font_color)
 	Value.set("custom_colors/font_color",font_color)
-	Function.set("custom_colors/font_color",font_color)
 	get("custom_styles/panel").set("border_color",font_color)
 	
-	Data.set_text(point.point_value[0]+":")
-	Value.set_text(point.point_value[1])
-	Function.set_text(point.function)
+	var time_str := Util.to_time_string(int(point.point_value[0]))  # Hack ;)
+	Data.set_text(time_str + ":")
+	Value.set_text(point.point_value[1] + " kg")  # Hack ;)
 	update()
 	show()
 
@@ -54,12 +52,10 @@ func update_slice_datas(slice : Slice):
 		font_color = Color(0,0,0,1)
 	Data.set("custom_colors/font_color",font_color)
 	Value.set("custom_colors/font_color",font_color)
-	Function.set("custom_colors/font_color",font_color)
 	get("custom_styles/panel").set("border_color",font_color)
 	
 	Data.set_text(slice.x_value+":")
 	Value.set_text(slice.y_value)
-	Function.set_text(slice.function)
 	update()
 	show()
 

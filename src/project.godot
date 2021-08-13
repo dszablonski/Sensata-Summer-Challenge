@@ -167,7 +167,6 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/easy_charts/plugin.cfg" )
 enabled=PoolStringArray( "res://addons/godot-sqlite/plugin.cfg" )
 
 [input]
