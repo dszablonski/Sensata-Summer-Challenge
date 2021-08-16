@@ -26,8 +26,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _draw():
-	if point_value[1] == "0":  # Hack ;)
-		return
 	if mouse_entered:
 		draw_point(7,color_outline)
 	draw_point(5,color)
