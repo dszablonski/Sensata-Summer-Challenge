@@ -5,12 +5,12 @@ const PLACEHOLDER_DAY := 5
 var _selected_chart: Chart
 var _selected_chart_old_x_decim: int
 
-onready var graphs_grid: GridContainer = $GraphsGrid
-onready var graphs_grid_columns_default = graphs_grid.columns
+onready var charts_grid: GridContainer = $ChartsGrid
+onready var charts_grid_columns_default = charts_grid.columns
 
 
 func _ready() -> void:
-	for chart in graphs_grid.get_children():
+	for chart in charts_grid.get_children():
 		chart = chart as LineChart
 		chart.connect("clicked", self, "_on_LineChart_clicked", [chart])
 		chart.origin_at_zero = true
@@ -38,25 +38,25 @@ func _plot_data(specific_chart: Chart = null) -> void:
 	if specific_chart:
 		specific_chart.plot_from_array(formatted_data)
 	else:
-		for chart in graphs_grid.get_children():
+		for chart in charts_grid.get_children():
 			chart = chart as LineChart
 			chart.plot_from_array(formatted_data)
 
 
 func _on_LineChart_clicked(chart: LineChart) -> void:
 	if chart == _selected_chart:
-		graphs_grid.columns = graphs_grid_columns_default
-		for graph in graphs_grid.get_children():
-			graph.visible = true
+		charts_grid.columns = charts_grid_columns_default
+		for chart in charts_grid.get_children():
+			chart.visible = true
 		_selected_chart.x_decim = _selected_chart_old_x_decim
 		_selected_chart.show_points = false
 		_plot_data(_selected_chart)
 		_selected_chart = null
 	else:
 		_selected_chart = chart
-		graphs_grid.columns = 1
-		for graph in graphs_grid.get_children():
-			graph.visible = graph == _selected_chart
+		charts_grid.columns = 1
+		for chart in charts_grid.get_children():
+			chart.visible = chart == _selected_chart
 		_selected_chart_old_x_decim = _selected_chart.x_decim
 		_selected_chart.x_decim = 1
 		_selected_chart.show_points = true

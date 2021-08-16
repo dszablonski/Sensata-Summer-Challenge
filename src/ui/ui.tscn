@@ -7,7 +7,7 @@
 [ext_resource path="res://ui/warnings/warnings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=6]
 [ext_resource path="res://ui/truck_viewer.gd" type="Script" id=7]
-[ext_resource path="res://ui/graphs/graphs.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/charts/charts.tscn" type="PackedScene" id=8]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -63,7 +63,7 @@ custom_fonts/font = ExtResource( 6 )
 text = "Timeline"
 align = 1
 
-[node name="Graphs" parent="VSplitContainer/HSplitContainer/LeftSide" instance=ExtResource( 8 )]
+[node name="Charts" parent="VSplitContainer/HSplitContainer/LeftSide" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 104.0
