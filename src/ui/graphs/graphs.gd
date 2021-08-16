@@ -2,7 +2,7 @@ extends PanelContainer
 
 const PLACEHOLDER_DAY := 5
 
-onready var column_chart: ColumnChart = $ColumnChart
+onready var line_chart: LineChart = $LineChart
 
 
 func _ready() -> void:
@@ -23,5 +23,5 @@ func _ready() -> void:
 		var average_weight := int(total_weight_acting_on_sensors / num_weight_sensors)
 		formatted_data[0].append(i)
 		formatted_data[1].append(average_weight)
-	column_chart.origin_at_zero = true
-	column_chart.plot_from_array(formatted_data)
+	line_chart.origin_at_zero = true
+	line_chart.plot_from_array(formatted_data)
