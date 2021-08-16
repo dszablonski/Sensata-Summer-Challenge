@@ -503,15 +503,16 @@ func calculate_tics():
 	if not show_x_values_as_labels:
 		x_margin_min = x_range[0]
 		var x_margin_max = x_range[1]
-		h_dist = x_decim * pow(10.0, calculate_position_significant_figure(x_margin_max - x_margin_min) - 1)
+#		h_dist = x_decim * pow(10.0, calculate_position_significant_figure(x_margin_max - x_margin_min) - 1)
+		h_dist = x_decim  # Hack ;)
 
 		if x_margin_min < 0 and x_margin_max >= 0:
-			calculate_interval_tics(0, x_margin_min, -h_dist, x_labels) #Negative tics
-			calculate_interval_tics(0, x_margin_max, h_dist, x_labels, false) #Positive tics
+			calculate_interval_tics(0, x_margin_min, -h_dist, x_labels, true, true) #Negative tics
+			calculate_interval_tics(0, x_margin_max, h_dist, x_labels, false, true) #Positive tics
 			x_labels.sort()
 			x_margin_min = min(x_margin_min, x_labels[0])
 		else:
-			calculate_interval_tics(x_margin_min, x_margin_max, h_dist, x_labels)
+			calculate_interval_tics(x_margin_min, x_margin_max, h_dist, x_labels, true, true)
 		for i in x_labels.size():
 			x_labels[i] = String(x_labels[i])
 		x_chors = x_labels
@@ -629,7 +630,7 @@ func calculate_position_significant_figure(number):
 	return floor(log(abs(number))/log(10) + 1) #If number = 0 Godot returns -#INF and it behaves correctly on the pow call on calculate_tics
 
 
-func calculate_interval_tics(v_from:float, v_to:float, dist:float, chords:Array, include_first := true):
+func calculate_interval_tics(v_from:float, v_to:float, dist:float, chords:Array, include_first := true, dont_surpass_to := false):
 	# Appends to array chords the tics calculated between v_from and v_to with
 	# a given distance between tics.
 	#include_first is used to tell if v_from should be appended or ignored
@@ -645,3 +646,5 @@ func calculate_interval_tics(v_from:float, v_to:float, dist:float, chords:Array,
 		p = (dist * multi) + v_from
 		missing_tics = p < v_to if dist > 0 else p > v_to
 		chords.append(p)
+	if dont_surpass_to and chords[-1] > v_to:  # Hack ;)
+		chords[-1] = ""
