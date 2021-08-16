@@ -60,7 +60,8 @@ __meta__ = {
 
 [node name="ChartName" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 14.0
+margin_top = 6.0
+margin_bottom = 20.0
 align = 1
 valign = 1
 __meta__ = {
@@ -86,10 +87,11 @@ __meta__ = {
 [node name="PointData" parent="." instance=ExtResource( 1 )]
 
 [node name="PointData" parent="PointData" index="0"]
-margin_left = -458.75
-margin_top = -164.504
-margin_right = -458.886
-margin_bottom = -163.704
+visible = false
+margin_left = -133.584
+margin_top = -266.642
+margin_right = -133.72
+margin_bottom = -265.842
 theme = SubResource( 1 )
 
 [editable path="PointData"]
