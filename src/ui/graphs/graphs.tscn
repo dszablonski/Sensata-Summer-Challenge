@@ -14,18 +14,93 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineChart" parent="." instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="GraphsGrid" type="GridContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1017.0
 margin_bottom = 593.0
-chart_name = "Average Cargo Weight (kg) over Time"
-Chart_Properties/show_x_values_as_labels = true
+columns = 2
+
+[node name="LineChart" parent="GraphsGrid" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 503.0
+margin_bottom = 291.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+chart_name = "Avg Cargo Weight (kg) over Time"
+Chart_Display/autoscale_x = false
+Chart_Display/min_x_range = 0
+Chart_Display/max_x_range = 23.0
+Chart_Display/x_decim = 4.0
 Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
 Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/font = ExtResource( 3 )
 Chart_Style/font_color = Color( 0, 0, 0, 1 )
 Chart_Style/use_template = false
+Chart_Display/show_points = false
+
+[node name="LineChart2" parent="GraphsGrid" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 507.0
+margin_right = 1010.0
+margin_bottom = 291.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+chart_name = "Avg Cargo Weight (kg) over Time"
+Chart_Display/autoscale_x = false
+Chart_Display/min_x_range = 0
+Chart_Display/max_x_range = 23.0
+Chart_Display/x_decim = 4.0
+Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
+Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/font = ExtResource( 3 )
+Chart_Style/font_color = Color( 0, 0, 0, 1 )
+Chart_Style/use_template = false
+Chart_Display/show_points = false
+
+[node name="LineChart3" parent="GraphsGrid" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 295.0
+margin_right = 503.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+chart_name = "Avg Cargo Weight (kg) over Time"
+Chart_Display/autoscale_x = false
+Chart_Display/min_x_range = 0
+Chart_Display/max_x_range = 23.0
+Chart_Display/x_decim = 4.0
+Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
+Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/font = ExtResource( 3 )
+Chart_Style/font_color = Color( 0, 0, 0, 1 )
+Chart_Style/use_template = false
+Chart_Display/show_points = false
+
+[node name="LineChart4" parent="GraphsGrid" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 507.0
+margin_top = 295.0
+margin_right = 1010.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+chart_name = "Avg Cargo Weight (kg) over Time"
+Chart_Display/autoscale_x = false
+Chart_Display/min_x_range = 0
+Chart_Display/max_x_range = 23.0
+Chart_Display/x_decim = 4.0
+Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
+Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/font = ExtResource( 3 )
+Chart_Style/font_color = Color( 0, 0, 0, 1 )
+Chart_Style/use_template = false
+Chart_Display/show_points = false
