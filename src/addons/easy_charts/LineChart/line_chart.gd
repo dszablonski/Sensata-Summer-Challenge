@@ -14,6 +14,8 @@ class_name LineChart
 # In these cases they are known as run charts.
 # Source: Wikipedia
 
+signal clicked  # Hack ;)
+
 var show_points := true
 var function_line_width : int = 2
 
@@ -88,3 +90,8 @@ func draw_lines():
 				function_colors[function],
 				function_line_width, 
 				false)
+
+
+func _on_Points_gui_input(event: InputEvent) -> void:  # Hack ;)
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		emit_signal("clicked")
