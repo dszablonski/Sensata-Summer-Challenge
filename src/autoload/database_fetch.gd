@@ -28,6 +28,7 @@ func readfromdb():
 #	print(telemetry_data)
 	ID=ID+1
 
+# 
 func read_db_time(day: int, hour: int) -> Dictionary:
 	var hourtoget
 	hourtoget=((day-1)*24)+hour+1

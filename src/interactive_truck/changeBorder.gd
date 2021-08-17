@@ -1,10 +1,10 @@
 extends MeshInstance
 
 # Selected colour, red
-const selected = Color(1,0,0)
+const selected = Color(0,0,0)
 # Clear colour, white
 const clear = Color(1,1,1)
-onready var meshInstance
+
 
 # Function to make all borders white
 func clear_borders(node, colour):
@@ -50,10 +50,6 @@ func _on_StaticBody_truck_wheel_a():
 func _on_StaticBody_freezer():
 	main(self.get_node("."))
 
-# Brake Wear Sensor AB
-func _on_StaticBody_brake_wear_sensor_ab():
-	main(self.get_node("."))
-
 # This function will be run when the clear signal is sent out, running the
 # clear_borders function
 func _on_StaticBody_clear():
@@ -77,18 +73,6 @@ func _on_StaticBody_truck_wheel_e():
 
 # Truck Wheel F
 func _on_StaticBody_truck_wheel_f():
-	main(self.get_node("."))
-
-# Brake Wear Sensor EB
-func _on_StaticBody_brake_wear_sensor_eb():
-	main(self.get_node("."))
-
-# Brake Wear Sensor DA
-func _on_StaticBody_brake_wear_sensor_da():
-	main(self.get_node("."))
-
-# Brake Wear Sensor FC
-func _on_StaticBody_brake_wear_sensor_fc():
 	main(self.get_node("."))
 
 # Trailer Wheel A
