@@ -4,15 +4,7 @@ extends MeshInstance
 const selected = Color(0,0,0)
 # Clear colour, white
 const clear = Color(1,1,1)
-# When everything is okay, green
-const good = Color(0,1,0)
-# When something is near a limit, yellow
-const caution = Color(1,1,0)
-# When something is at a critical point, red
-const warning = Color(1,0,0)
 
-var current_date = 1
-var current_time = 0
 
 # Function to make all borders white
 func clear_borders(node, colour):
