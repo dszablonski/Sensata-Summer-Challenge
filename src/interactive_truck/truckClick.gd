@@ -106,7 +106,7 @@ func get_data():
 		return "freezer clicked"
 		
 	elif $CollisionShape.is_in_group("fridge"):
-		# Will get Sensors for Fridge Weight 
+		# Will get Sensors for Fridge Weight and Fridge Temp
 		emit_signal("fridge")
 		return "fridge clicked"
 	# The signal clear will be called whenever the void mesh is clicked. 
