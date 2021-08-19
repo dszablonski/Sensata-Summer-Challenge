@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interactive_truck/truck.tscn" type="PackedScene" id=1]
+[ext_resource path="res://interactive_truck/interactive_truck.gd" type="Script" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+ambient_light_color = Color( 0.784314, 0.784314, 0.784314, 1 )
+
+[node name="InteractiveTruck" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CameraPivot" type="Spatial" parent="."]
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 0, 0 )
+environment = SubResource( 1 )
+projection = 1
+current = true
+size = 10.0
+
+[node name="Truck" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.65 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.245756, -0.735694, 0.631157, 0.798891, 0.522488, 0.29796, -0.548979, 0.431, 0.716143, 3.84328, 1.80628, 7.51762 )
+light_energy = 0.31
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( -0.957697, 0, 0.287778, -0.0402698, 0.990161, -0.134014, -0.284947, -0.139934, -0.948274, 0, -2.14908, -9.20733 )
+light_energy = 0.35
