@@ -2,6 +2,8 @@ tool
 extends PanelContainer
 class_name PointData
 
+export var units := ""  # Hack ;)
+
 var value : String = ""
 var position : Vector2 = Vector2()
 
@@ -36,7 +38,8 @@ func update_datas(point : Control):
 	
 	var time_str := Util.to_time_string(int(point.point_value[0]))  # Hack ;)
 	Data.set_text(time_str + ":")
-	Value.set_text(point.point_value[1] + " kg")  # Hack ;)
+	var value_text = str(point.point_value[1]) + units  # Hack ;)
+	Value.set_text(value_text)
 	update()
 	show()
 
