@@ -7,6 +7,7 @@ const caution = Color(1,1,0)
 # When something is at a critical point, red
 const warning = Color(1,0,0)
 
+
 # These are placeholders for now until we get the date/time selection working
 var current_date = 1
 var current_time = 14
@@ -186,3 +187,4 @@ func set_status(id):
 func _process(delta):
 	current_id = DatabaseFetch.read_db_time(current_date, current_time)
 	set_status(current_id)
+
