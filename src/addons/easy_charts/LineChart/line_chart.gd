@@ -89,7 +89,7 @@ func draw_lines():
 				point_positions[function][function_point],
 				function_colors[function],
 				function_line_width, 
-				false)
+				true)
 
 
 func _on_Points_gui_input(event: InputEvent) -> void:  # Hack ;)
