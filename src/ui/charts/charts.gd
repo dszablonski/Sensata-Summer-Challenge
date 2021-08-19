@@ -3,7 +3,7 @@ extends PanelContainer
 const PLACEHOLDER_DAY := 5
 
 var _selected_chart: Chart
-var _selected_chart_old_x_decim: int
+var _selected_chart_old_x_decim: float
 
 onready var charts_grid: GridContainer = $ChartsGrid
 onready var charts_grid_columns_default = charts_grid.columns
