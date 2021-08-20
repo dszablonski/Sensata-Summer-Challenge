@@ -7,10 +7,6 @@ const caution = Color(1,1,0)
 # When something is at a critical point, red
 const warning = Color(1,0,0)
 
-# These are placeholders for now until we get the date/time selection working
-var current_date = 1
-var current_time = 14
-
 var current_id
 
 # A dictionary of the meshes and the sensors which they are tied to. 
@@ -46,6 +42,9 @@ onready var trailer_wheel_c = get_node("Trailer Wheel C")
 onready var trailer_wheel_d = get_node("Trailer Wheel D")
 onready var trailer_wheel_e = get_node("Trailer Wheel E")
 onready var trailer_wheel_f = get_node("Trailer Wheel F")
+
+var global_date
+var global_hour
 
 func fridge_limits(id: Dictionary):
 		var sensor = sensors["Cube001"]
@@ -184,5 +183,7 @@ func set_status(id):
 	set_material(trailer_wheel_f, trailer_wheel_limits(id, "Trailer Wheel F"))
 	
 func _process(delta):
-	current_id = DatabaseFetch.read_db_time(current_date, current_time)
+	global_date = GlobalDate.GlobalDay
+	global_hour = GlobalDate.hour
+	current_id = DatabaseFetch.read_db_time(1, global_hour)
 	set_status(current_id)
