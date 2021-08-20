@@ -1,13 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/date_time.gd" type="Script" id=3]
+[ext_resource path="res://ui/RichTextLabel7.gd" type="Script" id=3]
 [ext_resource path="res://ui/ui.gd" type="Script" id=4]
 [ext_resource path="res://ui/warnings/warnings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=6]
 [ext_resource path="res://ui/truck_viewer.gd" type="Script" id=7]
 [ext_resource path="res://ui/charts/charts.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/RichTextLabel5.gd" type="Script" id=9]
+[ext_resource path="res://ui/RichTextLabel1.gd" type="Script" id=10]
+[ext_resource path="res://ui/DateTimeDisplayer.gd" type="Script" id=11]
+[ext_resource path="res://ui/RichTextLabel4.gd" type="Script" id=12]
+[ext_resource path="res://ui/RichTextLabel2.gd" type="Script" id=13]
+[ext_resource path="res://ui/RichTextLabel6.gd" type="Script" id=14]
+[ext_resource path="res://ui/RichTextLabel3.gd" type="Script" id=15]
+[ext_resource path="res://calender.png" type="Texture" id=16]
+[ext_resource path="res://RightArrow.png" type="Texture" id=17]
+[ext_resource path="res://LeftArrow.png" type="Texture" id=18]
+[ext_resource path="res://ui/Month1 text.gd" type="Script" id=19]
+[ext_resource path="res://ui/Month2 Text.gd" type="Script" id=20]
 
 [node name="UI" type="MarginContainer"]
 anchor_right = 1.0
@@ -38,35 +50,317 @@ margin_right = 502.0
 margin_bottom = 438.0
 size_flags_horizontal = 3
 
-[node name="DateTime" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide"]
+[node name="MarginContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/LeftSide"]
 margin_right = 502.0
-margin_bottom = 13.0
+margin_bottom = 29.0
+
+[node name="LeftMonth" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
+margin_top = 8.0
+margin_right = 113.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Month 1"
+align = 1
+script = ExtResource( 19 )
+
+[node name="LeftArrow" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
+margin_left = 117.0
+margin_right = 190.0
+margin_bottom = 29.0
+icon = ExtResource( 18 )
+
+[node name="DateTime" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 307.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
 text = "1/6/2021 00:00"
 align = 1
-script = ExtResource( 3 )
+script = ExtResource( 11 )
+
+[node name="RightArrow" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
+margin_left = 311.0
+margin_right = 384.0
+margin_bottom = 29.0
+icon = ExtResource( 17 )
+
+[node name="RightMonth" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
+margin_left = 388.0
+margin_top = 8.0
+margin_right = 502.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+text = "Month 2"
+align = 1
+script = ExtResource( 20 )
 
 [node name="Timeline" type="PanelContainer" parent="VSplitContainer/HSplitContainer/LeftSide"]
-margin_top = 17.0
+margin_top = 33.0
 margin_right = 502.0
-margin_bottom = 100.0
+margin_bottom = 113.0
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline"]
 margin_left = 7.0
-margin_top = 35.0
+margin_top = 7.0
 margin_right = 495.0
-margin_bottom = 48.0
+margin_bottom = 73.0
+alignment = 1
+
+[node name="Day" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_right = 66.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.0
-custom_fonts/font = ExtResource( 6 )
-text = "Timeline"
-align = 1
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
+margin_right = 66.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
+margin_right = 66.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day2" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_left = 70.0
+margin_right = 136.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button2" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2"]
+margin_right = 66.0
+margin_bottom = 66.0
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2"]
+margin_right = 66.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day3" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_left = 140.0
+margin_right = 206.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3"]
+margin_right = 66.0
+margin_bottom = 66.0
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3"]
+margin_right = 66.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day4" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_left = 210.0
+margin_right = 277.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4"]
+margin_right = 67.0
+margin_bottom = 66.0
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4"]
+margin_right = 67.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 67.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day5" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_left = 281.0
+margin_right = 347.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button5" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5"]
+margin_right = 66.0
+margin_bottom = 66.0
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5"]
+margin_right = 66.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day6" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_left = 351.0
+margin_right = 417.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button6" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6"]
+margin_right = 66.0
+margin_bottom = 66.0
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6"]
+margin_right = 66.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 66.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Day7" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
+margin_left = 421.0
+margin_right = 488.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button7" type="Button" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7"]
+margin_right = 67.0
+margin_bottom = 66.0
+icon = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7"]
+margin_right = 67.0
+margin_bottom = 66.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+custom_constants/margin_left = 9
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer"]
+margin_left = 9.0
+margin_top = 12.0
+margin_right = 67.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 20, 0 )
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "31"
+fit_content_height = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Charts" parent="VSplitContainer/HSplitContainer/LeftSide" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 104.0
+margin_top = 117.0
 margin_right = 502.0
 margin_bottom = 438.0
 
@@ -122,4 +416,31 @@ margin_right = 1016.0
 margin_bottom = 592.0
 size_flags_stretch_ratio = 1.0
 
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightMonth" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftMonth" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/Button" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/Button2" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button2_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/Button3" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button3_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/Button4" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button4_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/Button5" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button5_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/Button6" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button6_pressed"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/Button7" to="VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button7_pressed"]
 [connection signal="time_changed" from="VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection" to="." method="_on_Time_Selection_time_changed"]
