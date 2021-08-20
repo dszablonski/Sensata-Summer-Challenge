@@ -1,10 +1,9 @@
 class_name DateTimeLabel
 extends Label
 func _ready():#This sets the varibles for the time
-	var time = OS.get_datetime()
-	GlobalDate.GlobalDay=time["day"]#
-	GlobalDate.GlobalMonth=time["month"]#
-	GlobalDate.GlobalYear=time["year"]#
+	GlobalDate.GlobalDay=GlobalDate.OriginalDay#
+	GlobalDate.GlobalMonth=GlobalDate.OriginalMonth#
+	GlobalDate.GlobalYear=GlobalDate.OriginalYear#
 	UpdateDate()
 	
 func UpdateDate():#This updates the displayed date text
