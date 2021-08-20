@@ -24,3 +24,5 @@ var ButtonClickedLimit=0
 var MonthName1=""
 var MonthName2=""
 #I'll use this to dettermine the weeks away the display date is from the current date :p
+
+var hour := 0.0
