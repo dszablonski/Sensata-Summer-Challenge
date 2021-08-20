@@ -62,8 +62,8 @@ func _update_warnings(data: Dictionary) -> void:
 	_clear_warning_labels()
 	_critical_warnings = []
 	_caution_warnings = []
-	var trailer_weights := _get_trailer_weights(data)
-	var has_cargo := _has_cargo(trailer_weights)
+	var trailer_weights := Util.get_trailer_weights(data)
+	var has_cargo := Util.has_cargo(trailer_weights)
 	var sensors := _get_sorted_sensors(data)
 	for i in range(len(sensors)):
 		var sensor: String = sensors[i]
@@ -161,22 +161,6 @@ func _clear_warning_labels() -> void:
 		label.queue_free()
 	for label in caution_warnings_vbox.get_children():
 		label.queue_free()
-
-
-func _get_trailer_weights(data: Dictionary) -> Array:
-	var trailer_weights := []
-	for sensor in data:
-		if "TrailerWeight" in sensor:
-			var value: int = data[sensor]
-			trailer_weights.append(value)
-	return trailer_weights
-
-
-func _has_cargo(trailer_weights: Array) -> bool:
-	for weight in trailer_weights:
-		if weight > 0:
-			return true
-	return false
 
 
 func _get_sorted_sensors(data: Dictionary) -> Array:
