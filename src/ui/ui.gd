@@ -1,7 +1,7 @@
-extends MarginContainer
+extends Control
 
-onready var date_time: DateTimeLabel = $VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime
-onready var clock: Clock = $"VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection"
+onready var date_time: DateTimeLabel = $MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime
+onready var clock: Clock = $"MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection"
 
 
 func _ready() -> void:
