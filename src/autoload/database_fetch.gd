@@ -25,13 +25,26 @@ func _ready():
 func readfromdb():
 	db.query("select * from " + tablename + " where ID=" + str(ID))
 	var telemetry_data=db.query_result
-#	print(telemetry_data)
+	#print(telemetry_data)
 	ID=ID+1
 
-# 
-func read_db_time(day: int, hour: int) -> Dictionary:
+func read_db_time(day: int, hour: int) -> Dictionary:  # Deprecated
 	var hourtoget
 	hourtoget=((day-1)*24)+hour+1
+	db.query("select * from " + tablename + " where ID=" + str(hourtoget))
+	return db.query_result[0]
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func read_db_time_new(year:int, month: int, day: int, hour: int) -> Dictionary:
+	var hourtoget
+	var monthtotals=[0,31,59,90,120,151,181,212,243,273,304,334]
+	var days=((year-2021)*365)+(monthtotals[month-1])
+	if year==2021:
+		days=days-151
+	days=days+day
+	hourtoget=((days-1)*24)+hour+1
 	db.query("select * from " + tablename + " where ID=" + str(hourtoget))
 	return db.query_result[0]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
