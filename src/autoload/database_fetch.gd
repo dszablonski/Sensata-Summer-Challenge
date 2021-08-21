@@ -51,6 +51,13 @@ func read_db_time_new(year:int, month: int, day: int, hour: int) -> Dictionary:
 #func _process(delta):
 #	pass
 
+func read_db_time_current() -> Dictionary:
+	return read_db_time_new(
+		GlobalDate.GlobalYear,
+		GlobalDate.GlobalMonth,
+		GlobalDate.GlobalDay,
+		GlobalDate.hour
+	)
 
 func _on_Timer_timeout():
 	#pass
