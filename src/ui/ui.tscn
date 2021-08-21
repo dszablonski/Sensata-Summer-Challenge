@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
@@ -23,6 +23,13 @@
 [ext_resource path="res://ui/PopupPanel.gd" type="Script" id=21]
 [ext_resource path="res://addons/easy_charts/LineChart/line_chart.tscn" type="PackedScene" id=22]
 [ext_resource path="res://ui/truckStatusText.gd" type="Script" id=23]
+[ext_resource path="res://ui/Button4.gd" type="Script" id=24]
+[ext_resource path="res://ui/Button2.gd" type="Script" id=25]
+[ext_resource path="res://ui/Button3.gd" type="Script" id=26]
+[ext_resource path="res://ui/Button1.gd" type="Script" id=27]
+[ext_resource path="res://ui/Button6.gd" type="Script" id=28]
+[ext_resource path="res://ui/Button7.gd" type="Script" id=29]
+[ext_resource path="res://ui/Button5.gd" type="Script" id=30]
 
 [node name="UI" type="Control"]
 margin_left = 4.0
@@ -129,12 +136,13 @@ margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
+[node name="Button1" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
 margin_right = 65.0
 margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 16 )
+script = ExtResource( 27 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
 margin_right = 65.0
@@ -170,6 +178,7 @@ size_flags_vertical = 3
 margin_right = 66.0
 margin_bottom = 65.0
 icon = ExtResource( 16 )
+script = ExtResource( 25 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2"]
 margin_right = 66.0
@@ -205,6 +214,7 @@ size_flags_vertical = 3
 margin_right = 66.0
 margin_bottom = 65.0
 icon = ExtResource( 16 )
+script = ExtResource( 26 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3"]
 margin_right = 66.0
@@ -240,6 +250,7 @@ size_flags_vertical = 3
 margin_right = 65.0
 margin_bottom = 65.0
 icon = ExtResource( 16 )
+script = ExtResource( 24 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4"]
 margin_right = 65.0
@@ -275,6 +286,7 @@ size_flags_vertical = 3
 margin_right = 66.0
 margin_bottom = 65.0
 icon = ExtResource( 16 )
+script = ExtResource( 30 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5"]
 margin_right = 66.0
@@ -310,6 +322,7 @@ size_flags_vertical = 3
 margin_right = 66.0
 margin_bottom = 65.0
 icon = ExtResource( 16 )
+script = ExtResource( 28 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6"]
 margin_right = 66.0
@@ -345,6 +358,7 @@ size_flags_vertical = 3
 margin_right = 66.0
 margin_bottom = 65.0
 icon = ExtResource( 16 )
+script = ExtResource( 29 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7"]
 margin_right = 66.0
@@ -524,6 +538,11 @@ anchor_bottom = 0.0
 margin_right = 329.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
+Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
+Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
+Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
+Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
+Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
 [node name="LineChart2" parent="Chartspopup/HSplitContainer" instance=ExtResource( 22 )]
 anchor_right = 0.0
@@ -532,28 +551,33 @@ margin_left = 341.0
 margin_right = 671.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
+Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
+Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
+Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
+Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
+Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftMonth" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightMonth" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/Button" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/Button1" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/Button2" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button2_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/Button3" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button3_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/Button4" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button4_pressed"]
