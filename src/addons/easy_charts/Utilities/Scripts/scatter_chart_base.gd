@@ -609,6 +609,15 @@ func draw_points():
 			point.connect("_mouse_entered",self,"show_data")
 			point.connect("_mouse_exited",self,"hide_data")
 			
+			var pos = point_positions[function][function_point]  # Hack ;)
+			var value = point_values[function][function_point]
+			if value[0] == GlobalDate.hour:
+				var marker_start = Vector2(pos.x, 25)
+				var marker_end = Vector2(pos.x, rect_size.y - 23)
+				var width = get("function_line_width")
+				if not width:
+					width = 1
+				draw_line(marker_start, marker_end, Color.red, width, true)
 			point.create_point(points_shape[function], function_colors[function], 
 			Color.white, point_positions[function][function_point], 
 			point.format_value(point_values[function][function_point], false, false), 

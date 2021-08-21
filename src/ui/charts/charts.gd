@@ -36,6 +36,15 @@ func _ready() -> void:
 		_plot_data(chart, sensor_name)
 
 
+var _prev_hour = GlobalDate.hour
+func _process(delta: float) -> void:  # Temporary hack
+	if GlobalDate.hour != _prev_hour:  # If the time has been changed
+		# Update the selected chart so the hour marker changes position
+		if _selected_chart:
+			_selected_chart.update()
+		_prev_hour = GlobalDate.hour
+
+
 func _plot_data(chart: Chart, sensor_name: String) -> void:
 	# chart represents the chart we want to plot the data to.
 	# sensor_name represents the kind of sensors we want to take the values from.
