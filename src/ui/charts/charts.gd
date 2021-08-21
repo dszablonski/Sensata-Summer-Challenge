@@ -1,8 +1,5 @@
 extends PanelContainer
 
-# Represents 05/06/2021.
-const PLACEHOLDER_DAY := 5
-
 # If a chart has been clicked on then it is considered "selected".
 var _selected_chart: Chart
 # When a chart is selected the x-axis scale becomes more "zoomed in" so you can
@@ -26,21 +23,23 @@ onready var CHART_TO_SENSORS := {
 
 
 func _ready() -> void:
-	# When the date/time is changed the hour marker for the selected chart
-	# should be updated.
-	GlobalDate.connect("date_time_changed", self, "_update_selected_chart")
-
+	# When the date/time is changed the charts should be updated
+	GlobalDate.connect("date_time_changed", self, "_update_charts")
 	# Iterate over every chart.
 	for chart in charts_grid.get_children():
 		# Connects the chart's clicked signal so that when it is clicked it
 		# becomes selected.
 		chart.connect("clicked", self, "_on_LineChart_clicked", [chart])
 		chart.origin_at_zero = true
+	_update_charts()
+
+
+func _update_charts() -> void:
+	# Iterate over every chart.
+	for chart in charts_grid.get_children():
 		var sensor_name: String = CHART_TO_SENSORS[chart]
 		_plot_data(chart, sensor_name)
-
-
-func _update_selected_chart() -> void:
+	# Update the selected chart's hour marker (if there is one).
 	if _selected_chart:
 		_selected_chart.update()
 
@@ -63,7 +62,7 @@ func _plot_data(chart: Chart, sensor_name: String) -> void:
 	# Iterating through every hour (0 to 23).
 	for i in 24:
 		# Grabbing the data for that hour.
-		var hourly_data := DatabaseFetch.read_db_time(PLACEHOLDER_DAY, i)
+		var hourly_data := DatabaseFetch.read_db_time_current_date(i)
 		# To calculate the average for that hour we need the total and the
 		# number of sensors (because average = total / num).
 		var total := 0.0
