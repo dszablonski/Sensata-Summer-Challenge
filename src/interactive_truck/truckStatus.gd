@@ -182,8 +182,13 @@ func set_status(id):
 	set_material(trailer_wheel_e, trailer_wheel_limits(id, "Trailer Wheel E"))
 	set_material(trailer_wheel_f, trailer_wheel_limits(id, "Trailer Wheel F"))
 	
-func _process(delta):
+func _physics_process(delta):
 	global_date = GlobalDate.GlobalDay
 	global_hour = GlobalDate.hour
 	current_id = DatabaseFetch.read_db_time(1, global_hour)
 	set_status(current_id)
+
+
+
+
+
