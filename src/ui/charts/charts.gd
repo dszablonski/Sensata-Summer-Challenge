@@ -26,7 +26,7 @@ onready var CHART_TO_SENSORS := {
 
 
 func _ready() -> void:
-	# When the date/time is change the hour marker for the selected chart
+	# When the date/time is changed the hour marker for the selected chart
 	# should be updated.
 	GlobalDate.connect("date_time_changed", self, "_update_selected_chart")
 
