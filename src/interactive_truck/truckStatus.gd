@@ -12,7 +12,7 @@ var current_id
 # A dictionary of the meshes and the sensors which they are tied to. 
 var sensors = {
 	"Cube": ["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC", "TrailerWeightG"],
-	"Cube001": ["TrailerTemperatureD", "TrailerTemperatuerE", "TrailerTemperatureF", "TrailerWeightA", "TrailerWeightD", "TrailerWeightC", "TrailerWeightF"],
+	"Cube001": ["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF", "TrailerWeightA", "TrailerWeightD", "TrailerWeightC", "TrailerWeightF"],
 	"Truck Wheel A": ["TruckTyrePressureA", "TruckBrakePadsA", "TruckWheelBearingTempA"],
 	"Truck Wheel B": ["TruckTyrePressureB", "TruckBrakePadsB", "TruckWheelBearingTempB"],
 	"Truck Wheel C": ["TruckTyrePressureC"],
@@ -182,8 +182,13 @@ func set_status(id):
 	set_material(trailer_wheel_e, trailer_wheel_limits(id, "Trailer Wheel E"))
 	set_material(trailer_wheel_f, trailer_wheel_limits(id, "Trailer Wheel F"))
 	
-func _process(delta):
+func _physics_process(delta):
 	global_date = GlobalDate.GlobalDay
 	global_hour = GlobalDate.hour
 	current_id = DatabaseFetch.read_db_time(1, global_hour)
 	set_status(current_id)
+
+
+
+
+
