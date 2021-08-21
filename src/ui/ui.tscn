@@ -499,7 +499,6 @@ margin_bottom = 584.0
 size_flags_stretch_ratio = 1.0
 
 [node name="Chartspopup" type="PopupPanel" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
