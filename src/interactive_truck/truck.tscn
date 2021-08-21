@@ -1385,7 +1385,6 @@ script = ExtResource( 4 )
 shape = SubResource( 77 )
 
 [connection signal="clear" from="Truck/StaticBody" to="Truck" method="_on_StaticBody_clear"]
-[connection signal="mouse_entered" from="Truck Wheel A/TruckWheelStaticBody" to="." method="_on_TruckWheelStaticBody_mouse_entered"]
 [connection signal="truck_wheel_a" from="Truck Wheel A/TruckWheelStaticBody" to="Truck Wheel A" method="_on_StaticBody_truck_wheel_a"]
 [connection signal="truck_wheel_b" from="Truck Wheel B/TruckWheelBStaticBody" to="Truck Wheel B" method="_on_StaticBody_truck_wheel_b"]
 [connection signal="truck_wheel_c" from="Truck Wheel C/TruckWheelCStaticBody" to="Truck Wheel C" method="_on_StaticBody_truck_wheel_c"]
