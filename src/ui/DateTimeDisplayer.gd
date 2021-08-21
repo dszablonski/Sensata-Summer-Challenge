@@ -185,11 +185,9 @@ func _on_LeftArrow_pressed():
 
 
 func _on_RightArrow_pressed():
-	var time = OS.get_datetime()
-	var Day=time["day"]#
-	var Month=time["month"]#
-	var Year=time["year"]#
-	#print(GlobalDate.ArrowFirstClick)
+	var Day=GlobalDate.OriginalDay
+	var Month=GlobalDate.OriginalMonth
+	var Year=GlobalDate.OriginalYear
 	if GlobalDate.ArrowFirstClick==0:
 		
 		if Year==GlobalDate.StartYear:
