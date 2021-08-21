@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://interactive_truck/interactive_truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/clock/clock.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://ui/Month2 Text.gd" type="Script" id=20]
 [ext_resource path="res://ui/PopupPanel.gd" type="Script" id=21]
 [ext_resource path="res://addons/easy_charts/LineChart/line_chart.tscn" type="PackedScene" id=22]
+[ext_resource path="res://ui/truckStatusText.gd" type="Script" id=23]
 
 [node name="UI" type="Control"]
 margin_left = 4.0
@@ -397,15 +398,74 @@ margin_right = -4.0
 margin_bottom = -4.0
 dragger_visibility = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer"]
-margin_right = 490.0
-margin_bottom = 50.0
+[node name="Panel" type="PanelContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer"]
+margin_right = 494.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 0, 50 )
 
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 487.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+script = ExtResource( 23 )
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
+margin_right = 238.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
+margin_left = 242.0
+margin_right = 480.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
+margin_top = 19.0
+margin_right = 238.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
+margin_left = 242.0
+margin_top = 19.0
+margin_right = 480.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
+margin_top = 38.0
+margin_right = 238.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
+margin_left = 242.0
+margin_top = 38.0
+margin_right = 480.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+
 [node name="Truck Viewer" type="ViewportContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer"]
-margin_top = 50.0
-margin_right = 490.0
-margin_bottom = 397.0
+margin_top = 67.0
+margin_right = 494.0
+margin_bottom = 403.0
 size_flags_stretch_ratio = 1.5
 stretch = true
 script = ExtResource( 7 )
@@ -414,7 +474,7 @@ __meta__ = {
 }
 
 [node name="TruckViewport" type="Viewport" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer"]
-size = Vector2( 490, 347 )
+size = Vector2( 494, 336 )
 handle_input_locally = false
 render_target_update_mode = 3
 physics_object_picking = true
@@ -511,21 +571,49 @@ Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/Button5" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button5_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/Button6" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button6_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/Button7" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button7_pressed"]
-[connection signal="truck_wheel_a" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/StaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_a"]
-[connection signal="truck_wheel_b" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel B/StaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_b"]
-[connection signal="truck_wheel_c" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel C/StaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_c"]
-[connection signal="truck_wheel_d" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel D/StaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_d"]
-[connection signal="truck_wheel_e" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel E/StaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_e"]
-[connection signal="truck_wheel_f" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel F/StaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_f"]
-[connection signal="trailer_wheel_a" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel A/StaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_a"]
-[connection signal="trailer_wheel_b" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel B/StaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_b"]
-[connection signal="trailer_wheel_c" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel C/StaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_c"]
-[connection signal="trailer_wheel_d" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel D/StaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_d"]
-[connection signal="trailer_wheel_e" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel E/StaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_e"]
-[connection signal="trailer_wheel_f" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel F/StaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_f"]
-[connection signal="freezer" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube/StaticBody" to="Chartspopup" method="_on_StaticBody_freezer"]
-[connection signal="fridge" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube001/StaticBody" to="Chartspopup" method="_on_StaticBody_fridge"]
-[connection signal="time_changed" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection" to="MarginContainer" method="_on_Time_Selection_time_changed"]
+[connection signal="truck_wheel_a" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_a"]
+[connection signal="truck_wheel_b" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel B/TruckWheelBStaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_b"]
+[connection signal="truck_wheel_c" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel C/TruckWheelCStaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_c"]
+[connection signal="truck_wheel_d" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel D/TruckWheelDStaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_d"]
+[connection signal="truck_wheel_e" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel E/TruckWheelEStaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_e"]
+[connection signal="truck_wheel_f" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel F/TruckWheelFStaticBody" to="Chartspopup" method="_on_StaticBody_truck_wheel_f"]
+[connection signal="trailer_wheel_a" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel A/TrailerWheelAStaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_a"]
+[connection signal="trailer_wheel_b" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel B/TrailerWheelBStaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_b"]
+[connection signal="trailer_wheel_c" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel C/TrailerWheelCStaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_c"]
+[connection signal="trailer_wheel_d" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel D/TrailerWheelDStaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_d"]
+[connection signal="trailer_wheel_e" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel E/TrailerWheelEStaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_e"]
+[connection signal="trailer_wheel_f" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel F/TrailerWheelFStaticBody" to="Chartspopup" method="_on_StaticBody_trailer_wheel_f"]
+[connection signal="freezer" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube/CubeStaticBody" to="Chartspopup" method="_on_StaticBody_freezer"]
+[connection signal="fridge" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube001/FridgeStaticBody" to="Chartspopup" method="_on_StaticBody_fridge"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel B/TruckWheelBStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelBStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel B/TruckWheelBStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelBStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel C/TruckWheelCStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelCStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel C/TruckWheelCStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelCStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel D/TruckWheelDStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelDStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel D/TruckWheelDStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelDStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel E/TruckWheelEStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelEStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel E/TruckWheelEStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelEStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel F/TruckWheelFStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelFStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel F/TruckWheelFStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TruckWheelFStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel A/TrailerWheelAStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelAStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel A/TrailerWheelAStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelAStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel B/TrailerWheelBStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelBStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel B/TrailerWheelBStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelBStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel C/TrailerWheelCStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelCStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel C/TrailerWheelCStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelCStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel D/TrailerWheelDStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelDStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel D/TrailerWheelDStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelDStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel E/TrailerWheelEStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelEStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel E/TrailerWheelEStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelEStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel F/TrailerWheelFStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelFStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Trailer Wheel F/TrailerWheelFStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_TrailerWheelFStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube/CubeStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_CubeStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube/CubeStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_CubeStaticBody_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube001/FridgeStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_FridgeStaticBody_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Cube001/FridgeStaticBody" to="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer" method="_on_FridgeStaticBody_mouse_exited"]
+[connection signal="time_changed" from="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection" to="." method="_on_Time_Selection_time_changed"]
 
 [editable path="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck"]
 [editable path="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck"]

@@ -23,7 +23,6 @@ onready var viewport_size := viewport.size
 onready var camera_pivot: Spatial = $CameraPivot
 onready var camera: Camera = $CameraPivot/Camera
 
-
 func _input(event: InputEvent) -> void:
 	if not _is_mouse_inside_viewport():
 		if not _was_prev_panning_camera:
