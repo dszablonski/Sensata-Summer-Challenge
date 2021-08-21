@@ -48,6 +48,7 @@ onready var limits_popup: Popup = $LimitsPopup
 func _ready() -> void:
 	# When the date/time is changed the warnings should be updated.
 	GlobalDate.connect("date_time_changed", self, "_update_warnings_based_on_date_time")
+	_update_warnings_based_on_date_time()
 
 
 func _update_warnings_based_on_date_time() -> void:
