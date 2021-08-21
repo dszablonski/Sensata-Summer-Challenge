@@ -59,6 +59,14 @@ func read_db_time_current() -> Dictionary:
 		GlobalDate.hour
 	)
 
+func read_db_time_current_date(hour: int) -> Dictionary:
+	return read_db_time_new(
+		GlobalDate.GlobalYear,
+		GlobalDate.GlobalMonth,
+		GlobalDate.GlobalDay,
+		hour
+	)
+
 func _on_Timer_timeout():
 	#pass
 	readfromdb()
