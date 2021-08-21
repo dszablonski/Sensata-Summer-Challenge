@@ -34,7 +34,6 @@ Chart_Display/min_x_range = 0
 Chart_Display/max_x_range = 23.0
 Chart_Display/x_decim = 4.0
 Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/font = ExtResource( 2 )
@@ -46,10 +45,7 @@ Chart_Display/show_points = false
 text = "Avg Cargo Weight (kg) over Time"
 
 [node name="PointData" parent="ChartsGrid/WeightChart/PointData" index="0"]
-margin_left = -128.49
-margin_top = -188.785
-margin_right = -128.626
-margin_bottom = -187.985
+margin_bottom = 0.716766
 units = " kg"
 
 [node name="TyrePressureChart" parent="ChartsGrid" instance=ExtResource( 1 )]
@@ -77,10 +73,7 @@ Chart_Display/show_points = false
 text = "Avg Tyre Pressure (psi) over Time"
 
 [node name="PointData" parent="ChartsGrid/TyrePressureChart/PointData" index="0"]
-margin_left = -128.49
-margin_top = -188.785
-margin_right = -128.626
-margin_bottom = -187.985
+margin_bottom = 0.716766
 units = " psi"
 
 [node name="TruckWheelBearingTempChart" parent="ChartsGrid" instance=ExtResource( 1 )]
@@ -108,10 +101,7 @@ Chart_Display/show_points = false
 text = "Avg Wheel Bearing Temp (°C) over Time"
 
 [node name="PointData" parent="ChartsGrid/TruckWheelBearingTempChart/PointData" index="0"]
-margin_left = -128.49
-margin_top = -188.785
-margin_right = -128.626
-margin_bottom = -187.985
+margin_bottom = 0.716766
 units = "°C"
 
 [node name="TruckBrakePadsChart" parent="ChartsGrid" instance=ExtResource( 1 )]
@@ -140,10 +130,7 @@ Chart_Display/show_points = false
 text = "Avg Brake Wear (%) over Time"
 
 [node name="PointData" parent="ChartsGrid/TruckBrakePadsChart/PointData" index="0"]
-margin_left = -128.49
-margin_top = -188.785
-margin_right = -128.626
-margin_bottom = -187.985
+margin_bottom = 0.716766
 units = "%"
 
 [editable path="ChartsGrid/WeightChart"]
