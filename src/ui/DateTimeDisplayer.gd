@@ -2,9 +2,9 @@ class_name DateTimeLabel
 extends Label
 func _ready():#This sets the varibles for the time
 	var time = OS.get_datetime()
-	GlobalDate.GlobalDay=time["day"]#
-	GlobalDate.GlobalMonth=time["month"]#
-	GlobalDate.GlobalYear=time["year"]#
+	GlobalDate.GlobalDay=GlobalDate.OriginalDay#
+	GlobalDate.GlobalMonth=GlobalDate.OriginalMonth#
+	GlobalDate.GlobalYear=GlobalDate.OriginalYear#
 	UpdateDate()
 	
 func UpdateDate():#This updates the displayed date text
@@ -185,11 +185,9 @@ func _on_LeftArrow_pressed():
 
 
 func _on_RightArrow_pressed():
-	var time = OS.get_datetime()
-	var Day=time["day"]#
-	var Month=time["month"]#
-	var Year=time["year"]#
-	#print(GlobalDate.ArrowFirstClick)
+	var Day=GlobalDate.OriginalDay
+	var Month=GlobalDate.OriginalMonth
+	var Year=GlobalDate.OriginalYear
 	if GlobalDate.ArrowFirstClick==0:
 		
 		if Year==GlobalDate.StartYear:
