@@ -32,10 +32,8 @@
 [ext_resource path="res://ui/Button5.gd" type="Script" id=30]
 
 [node name="UI" type="Control"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 1020.0
-margin_bottom = 596.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,27 +53,27 @@ __meta__ = {
 [node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 1012.0
-margin_bottom = 588.0
+margin_right = 1020.0
+margin_bottom = 596.0
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VSplitContainer"]
-margin_right = 1008.0
-margin_bottom = 432.0
+margin_right = 1016.0
+margin_bottom = 438.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
 [node name="LeftSide" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HSplitContainer"]
-margin_right = 498.0
-margin_bottom = 432.0
+margin_right = 502.0
+margin_bottom = 438.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide"]
-margin_right = 498.0
+margin_right = 502.0
 margin_bottom = 29.0
 
 [node name="LeftMonth" type="Label" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
 margin_top = 8.0
-margin_right = 112.0
+margin_right = 113.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
@@ -84,15 +82,15 @@ align = 1
 script = ExtResource( 19 )
 
 [node name="LeftArrow" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
-margin_left = 116.0
-margin_right = 189.0
+margin_left = 117.0
+margin_right = 190.0
 margin_bottom = 29.0
 icon = ExtResource( 18 )
 
 [node name="DateTime" type="Label" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
-margin_left = 193.0
+margin_left = 194.0
 margin_top = 8.0
-margin_right = 305.0
+margin_right = 307.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
@@ -101,15 +99,15 @@ align = 1
 script = ExtResource( 11 )
 
 [node name="RightArrow" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
-margin_left = 309.0
-margin_right = 382.0
+margin_left = 311.0
+margin_right = 384.0
 margin_bottom = 29.0
 icon = ExtResource( 17 )
 
 [node name="RightMonth" type="Label" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer"]
-margin_left = 386.0
+margin_left = 388.0
 margin_top = 8.0
-margin_right = 498.0
+margin_right = 502.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
@@ -119,34 +117,34 @@ script = ExtResource( 20 )
 
 [node name="Timeline" type="PanelContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide"]
 margin_top = 33.0
-margin_right = 498.0
-margin_bottom = 112.0
+margin_right = 502.0
+margin_bottom = 113.0
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 491.0
-margin_bottom = 72.0
+margin_right = 495.0
+margin_bottom = 73.0
 alignment = 1
 
 [node name="Day" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 66.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button1" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 66.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = ExtResource( 16 )
 script = ExtResource( 27 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day"]
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 66.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -154,8 +152,8 @@ custom_constants/margin_left = 9
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer"]
 margin_left = 9.0
 margin_top = 12.0
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 66.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -168,21 +166,21 @@ __meta__ = {
 }
 
 [node name="Day2" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_left = 69.0
-margin_right = 135.0
-margin_bottom = 65.0
+margin_left = 70.0
+margin_right = 136.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button2" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 icon = ExtResource( 16 )
 script = ExtResource( 25 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -191,7 +189,7 @@ custom_constants/margin_left = 9
 margin_left = 9.0
 margin_top = 12.0
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -204,21 +202,21 @@ __meta__ = {
 }
 
 [node name="Day3" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_left = 139.0
-margin_right = 205.0
-margin_bottom = 65.0
+margin_left = 140.0
+margin_right = 206.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button3" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 icon = ExtResource( 16 )
 script = ExtResource( 26 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -227,7 +225,7 @@ custom_constants/margin_left = 9
 margin_left = 9.0
 margin_top = 12.0
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -240,21 +238,21 @@ __meta__ = {
 }
 
 [node name="Day4" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_left = 209.0
-margin_right = 274.0
-margin_bottom = 65.0
+margin_left = 210.0
+margin_right = 277.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button4" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4"]
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 67.0
+margin_bottom = 66.0
 icon = ExtResource( 16 )
 script = ExtResource( 24 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4"]
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 67.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -262,8 +260,8 @@ custom_constants/margin_left = 9
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer"]
 margin_left = 9.0
 margin_top = 12.0
-margin_right = 65.0
-margin_bottom = 65.0
+margin_right = 67.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -276,21 +274,21 @@ __meta__ = {
 }
 
 [node name="Day5" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_left = 278.0
-margin_right = 344.0
-margin_bottom = 65.0
+margin_left = 281.0
+margin_right = 347.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button5" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 icon = ExtResource( 16 )
 script = ExtResource( 30 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -299,7 +297,7 @@ custom_constants/margin_left = 9
 margin_left = 9.0
 margin_top = 12.0
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -312,21 +310,21 @@ __meta__ = {
 }
 
 [node name="Day6" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_left = 348.0
-margin_right = 414.0
-margin_bottom = 65.0
+margin_left = 351.0
+margin_right = 417.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button6" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 icon = ExtResource( 16 )
 script = ExtResource( 28 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6"]
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -335,7 +333,7 @@ custom_constants/margin_left = 9
 margin_left = 9.0
 margin_top = 12.0
 margin_right = 66.0
-margin_bottom = 65.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -348,21 +346,21 @@ __meta__ = {
 }
 
 [node name="Day7" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer"]
-margin_left = 418.0
-margin_right = 484.0
-margin_bottom = 65.0
+margin_left = 421.0
+margin_right = 488.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button7" type="Button" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7"]
-margin_right = 66.0
-margin_bottom = 65.0
+margin_right = 67.0
+margin_bottom = 66.0
 icon = ExtResource( 16 )
 script = ExtResource( 29 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7"]
-margin_right = 66.0
-margin_bottom = 65.0
+margin_right = 67.0
+margin_bottom = 66.0
 mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 9
@@ -370,8 +368,8 @@ custom_constants/margin_left = 9
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer"]
 margin_left = 9.0
 margin_top = 12.0
-margin_right = 66.0
-margin_bottom = 65.0
+margin_right = 67.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 20, 0 )
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 6 )
@@ -386,19 +384,19 @@ __meta__ = {
 [node name="Charts" parent="MarginContainer/VSplitContainer/HSplitContainer/LeftSide" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 116.0
-margin_right = 498.0
-margin_bottom = 432.0
+margin_top = 117.0
+margin_right = 502.0
+margin_bottom = 438.0
 
 [node name="RightSide" type="VBoxContainer" parent="MarginContainer/VSplitContainer/HSplitContainer"]
-margin_left = 510.0
-margin_right = 1008.0
-margin_bottom = 432.0
+margin_left = 514.0
+margin_right = 1016.0
+margin_bottom = 438.0
 size_flags_horizontal = 3
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide"]
-margin_right = 498.0
-margin_bottom = 432.0
+margin_right = 502.0
+margin_bottom = 438.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 custom_fonts/font = ExtResource( 6 )
@@ -413,14 +411,14 @@ margin_bottom = -4.0
 dragger_visibility = 2
 
 [node name="Panel" type="PanelContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer"]
-margin_right = 490.0
+margin_right = 494.0
 margin_bottom = 67.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 483.0
+margin_right = 487.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -428,15 +426,15 @@ columns = 2
 script = ExtResource( 23 )
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
-margin_right = 236.0
+margin_right = 238.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel6" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
-margin_left = 240.0
-margin_right = 476.0
+margin_left = 242.0
+margin_right = 480.0
 margin_bottom = 15.0
 size_flags_horizontal = 3
 bbcode_enabled = true
@@ -444,16 +442,16 @@ fit_content_height = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
 margin_top = 19.0
-margin_right = 236.0
+margin_right = 238.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
-margin_left = 240.0
+margin_left = 242.0
 margin_top = 19.0
-margin_right = 476.0
+margin_right = 480.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 bbcode_enabled = true
@@ -461,16 +459,16 @@ fit_content_height = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
 margin_top = 38.0
-margin_right = 236.0
+margin_right = 238.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Panel/GridContainer"]
-margin_left = 240.0
+margin_left = 242.0
 margin_top = 38.0
-margin_right = 476.0
+margin_right = 480.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 bbcode_enabled = true
@@ -478,8 +476,8 @@ fit_content_height = true
 
 [node name="Truck Viewer" type="ViewportContainer" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer"]
 margin_top = 67.0
-margin_right = 490.0
-margin_bottom = 397.0
+margin_right = 494.0
+margin_bottom = 403.0
 size_flags_stretch_ratio = 1.5
 stretch = true
 script = ExtResource( 7 )
@@ -488,7 +486,7 @@ __meta__ = {
 }
 
 [node name="TruckViewport" type="Viewport" parent="MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Truck Viewer/Truck Viewer"]
-size = Vector2( 490, 330 )
+size = Vector2( 494, 336 )
 handle_input_locally = false
 render_target_update_mode = 3
 physics_object_picking = true
@@ -507,9 +505,9 @@ size_flags_vertical = 3
 [node name="Warnings" parent="MarginContainer/VSplitContainer" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 444.0
-margin_right = 1008.0
-margin_bottom = 584.0
+margin_top = 450.0
+margin_right = 1016.0
+margin_bottom = 592.0
 size_flags_stretch_ratio = 1.0
 
 [node name="Chartspopup" type="PopupPanel" parent="."]
@@ -557,26 +555,26 @@ Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
 Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
 Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/LeftMonth" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightMonth" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day5/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day6/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day7/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/RightArrow" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day4/MarginContainer/RichTextLabel" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day/Button1" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day2/Button2" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button2_pressed"]
 [connection signal="pressed" from="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/HBoxContainer/Day3/Button3" to="MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime" method="_on_Button3_pressed"]
