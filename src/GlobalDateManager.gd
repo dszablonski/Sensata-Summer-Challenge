@@ -1,16 +1,18 @@
 extends Node
 
-
-var GlobalDay=0
-var GlobalMonth=0
-var GlobalYear=0
+var GlobalDay=0#Displayed day
+var GlobalMonth=0#Displayed month
+var GlobalYear=0#Displayed year
 var weeksD=0
 var monthsD=0
 var yearsD=0
 var time = OS.get_datetime()
-var StartDay =time["day"]+1#
-var StartYear =time["year"]#
-var StartMonth =time["month"]#
+var StartDay =10+1
+var StartMonth =6
+var StartYear =2021#
+var OriginalDay =10
+var OriginalMonth =6
+var OriginalYear =2021#
 var DaysInMonth=0
 var TimeButtonDisplay1=0
 var CautionLevel1=0
