@@ -87,11 +87,14 @@ __meta__ = {
 [node name="PointData" parent="." instance=ExtResource( 1 )]
 
 [node name="PointData" parent="PointData" index="0"]
-margin_left = 85.8256
-margin_top = -264.975
-margin_right = 85.6896
-margin_bottom = -264.175
+margin_left = 0.232231
+margin_top = -0.0832674
+margin_right = 0.0963135
+margin_bottom = 0.716738
 theme = SubResource( 1 )
+
+[node name="Value" parent="PointData/PointData" index="0"]
+margin_bottom = 19.0005
 
 [connection signal="gui_input" from="Points" to="." method="_on_Points_gui_input"]
 

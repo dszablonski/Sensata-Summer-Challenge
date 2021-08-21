@@ -26,6 +26,10 @@ onready var CHART_TO_SENSORS := {
 
 
 func _ready() -> void:
+	# When the date/time is changed the hour marker for the selected chart
+	# should be updated.
+	GlobalDate.connect("date_time_changed", self, "_update_selected_chart")
+
 	# Iterate over every chart.
 	for chart in charts_grid.get_children():
 		# Connects the chart's clicked signal so that when it is clicked it
@@ -34,6 +38,11 @@ func _ready() -> void:
 		chart.origin_at_zero = true
 		var sensor_name: String = CHART_TO_SENSORS[chart]
 		_plot_data(chart, sensor_name)
+
+
+func _update_selected_chart() -> void:
+	if _selected_chart:
+		_selected_chart.update()
 
 
 func _plot_data(chart: Chart, sensor_name: String) -> void:
