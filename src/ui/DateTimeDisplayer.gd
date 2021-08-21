@@ -184,7 +184,6 @@ func _on_LeftArrow_pressed():
 
 
 func _on_RightArrow_pressed():
-	var time = OS.get_datetime()
 	var Day=GlobalDate.OriginalDay
 	var Month=GlobalDate.OriginalMonth
 	var Year=GlobalDate.OriginalYear
