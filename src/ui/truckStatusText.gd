@@ -6,13 +6,9 @@ const good :String = "#00ff00"
 const warning :String = "#ff0000"
 const caution :String = "#ffff00"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var sensors = {
 	"Cube": ["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC", "TrailerWeightG"],
-	"Cube001": ["TrailerTemperatureD", "TrailerTemperatuerE", "TrailerTemperatureF", "TrailerWeightA", "TrailerWeightD", "TrailerWeightC", "TrailerWeightF"],
+	"Cube001": ["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF", "TrailerWeightA", "TrailerWeightD", "TrailerWeightC", "TrailerWeightF"],
 	"Truck Wheel A": ["TruckTyrePressureA", "TruckBrakePadsA", "TruckWheelBearingTempA"],
 	"Truck Wheel B": ["TruckTyrePressureB", "TruckBrakePadsB", "TruckWheelBearingTempB"],
 	"Truck Wheel C": ["TruckTyrePressureC"],
@@ -34,6 +30,7 @@ var fridge_is_loaded
 func _physics_process(delta):
 	# Checks if the freezer is loaded
 	freezer_is_loaded = id["TrailerWeightG"] > 0
+	fridge_is_loaded = id["TrailerWeightA"] > 0 or id["TrailerWeightD"] > 0 or id["TrailerWeightC"] > 0 or id["TrailerWeightF"] > 0
 	id = DatabaseFetch.read_db_time(1, GlobalDate.hour)
 
 # Clears the labels so the panel is blank
@@ -52,66 +49,76 @@ func check_tyre_pressure(sensor):
 	else:
 		return good
 
+func check_break_pads(sensor):
+	if sensor <= CriticalLimits.MIN_BRAKE_PADS:
+		return warning
+	elif sensor <= CautionLimits.MIN_BRAKE_PADS:
+		return caution
+	else:
+		return good
+
+func check_wheel_bearing(sensor):
+	if sensor >= CriticalLimits.MAX_WHEEL_BEARING_TEMP:
+		return warning
+	elif sensor >= CautionLimits.MAX_WHEEL_BEARING_TEMP:
+		return caution
+	else:
+		return good
+
+func check_temp(sensor, loaded, crit_temp):
+	if sensor >= crit_temp and loaded:
+		return warning
+	else:
+		return good
+
+func check_weight(sensor):
+	if sensor >= CriticalLimits.MAX_WEIGHT:
+		return warning
+	elif sensor >= CautionLimits.MAX_WEIGHT:
+		return caution
+	else:
+		return good
+
 func trailer_wheels(wheel:String):
-	var wheel_brake_color = good
-	var tyre_pressure_color = good
-	
-	tyre_pressure_color = check_tyre_pressure(id[sensors[wheel][0]])
-	
-	if id[sensors[wheel][1]] <= CriticalLimits.MIN_BRAKE_PADS:
-		wheel_brake_color = warning
-	elif id[sensors[wheel][1]] <= CautionLimits.MIN_BRAKE_PADS:
-		wheel_brake_color = caution
+	var wheel_brake_color = check_break_pads(id[sensors[wheel][1]])
+	var tyre_pressure_color = check_tyre_pressure(id[sensors[wheel][0]])
 	
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheel]
 	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheel][0]]]
 	$RichTextLabel2.bbcode_text = "Brake Pad Wear: [color=%s]%s[/color]%%" %[wheel_brake_color, id[sensors[wheel][1]]]
 
 func truck_wheel_df(wheels:String):
-	var tyre_pressure_color = good
-	var wheel_bearing_color = good
+	var tyre_pressure_color = check_tyre_pressure(id[sensors[wheels][0]])
+	var wheel_bearing_color = check_wheel_bearing(id[sensors[wheels][1]])
 	
-	tyre_pressure_color = check_tyre_pressure(id[sensors[wheels][0]])
-	
-	if id[sensors[wheels][1]] >= CriticalLimits.MAX_WHEEL_BEARING_TEMP:
-		wheel_bearing_color = warning
-	elif id[sensors[wheels][1]] >= CautionLimits.MAX_WHEEL_BEARING_TEMP:
-		wheel_bearing_color = caution
 	
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheels]
 	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheels][0]]]
 	$RichTextLabel2.bbcode_text = "Wheel Bearing Temperature: [color=%s]%s[/color]C" %[wheel_bearing_color, id[sensors[wheels][1]]]
 
 func truck_wheel_ce(wheels:String):
-	var tyre_pressure_color = good
-	
-	tyre_pressure_color = check_tyre_pressure(id[sensors[wheels][0]])
+	var tyre_pressure_color = check_tyre_pressure(id[sensors[wheels][0]])
 	
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheels]
 	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheels][0]]]
 
 func truck_wheel_ab(wheels:String):
-	pass
+	var tyre_pressure_color = check_tyre_pressure(id[sensors[wheels][0]])
+	var wheel_brake_color = check_break_pads(id[sensors[wheels][1]])
+	var wheel_bearing_color = check_wheel_bearing(id[sensors[wheels][2]])
+	
+	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheels]
+	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheels][0]]]
+	$RichTextLabel2.bbcode_text = "Brake Pad Wear: [color=%s]%s[/color]%%" %[wheel_brake_color, id[sensors[wheels][1]]]
+	$RichTextLabel3.bbcode_text = "Wheel Bearing Temperature: [color=%s]%s[/color]C" %[wheel_bearing_color, id[sensors[wheels][2]]]
 
 func _on_CubeStaticBody_mouse_entered():
-	var temp_a_color = good
-	var temp_b_color = good
-	var temp_c_color = good
-	var weight_g_color = good
+	var temp_a_color = check_temp(id[sensors["Cube"][0]], freezer_is_loaded, CriticalLimits.MIN_FREEZER_TEMP)
+	var temp_b_color = check_temp(id[sensors["Cube"][1]], freezer_is_loaded, CriticalLimits.MIN_FREEZER_TEMP)
+	var temp_c_color = check_temp(id[sensors["Cube"][2]], freezer_is_loaded, CriticalLimits.MIN_FREEZER_TEMP)
+	var weight_g_color = check_weight(id[sensors["Cube"][3]])
 	
-	if id[sensors["Cube"][0]] >= CriticalLimits.MIN_FREEZER_TEMP and freezer_is_loaded:
-		temp_a_color = warning
 	
-	if id[sensors["Cube"][1]] >= CriticalLimits.MIN_FREEZER_TEMP and freezer_is_loaded:
-		temp_b_color = warning
-		
-	if id[sensors["Cube"][2]] >= CriticalLimits.MIN_FREEZER_TEMP and freezer_is_loaded:
-		temp_c_color = warning
-	
-	if id[sensors["Cube"][3]] >= CriticalLimits.MAX_WEIGHT:
-		weight_g_color = warning
-	elif id[sensors["Cube"][3]] >= CautionLimits.MAX_WEIGHT:
-		weight_g_color = caution
 	
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Freezer[/color]"
 	$RichTextLabel.bbcode_text = "Temperature Sensor A : [color=%s]%s[/color]C" %[temp_a_color, int(id[sensors["Cube"][0]])]
@@ -202,7 +209,7 @@ func _on_TruckWheelCStaticBody_mouse_exited():
 
 
 func _on_TruckWheelBStaticBody_mouse_entered():
-	pass # Replace with function body.
+	truck_wheel_ab("Truck Wheel B")
 
 
 func _on_TruckWheelBStaticBody_mouse_exited():
@@ -210,7 +217,7 @@ func _on_TruckWheelBStaticBody_mouse_exited():
 
 
 func _on_TruckWheelStaticBody_mouse_entered():
-	pass # Replace with function body.
+	truck_wheel_ab("Truck Wheel A")
 
 
 func _on_TruckWheelStaticBody_mouse_exited():
@@ -218,8 +225,16 @@ func _on_TruckWheelStaticBody_mouse_exited():
 
 
 func _on_FridgeStaticBody_mouse_entered():
-	pass # Replace with function body.
-
-
+	var weight_avg = (id[sensors["Cube001"][3]] + id[sensors["Cube001"][4]] + id[sensors["Cube001"][5]] + id[sensors["Cube001"][6]]) / 4
+	var weight_color = check_weight(weight_avg)
+	var temp_d_color = check_temp(id[sensors["Cube001"][0]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
+	var temp_e_color = check_temp(id[sensors["Cube001"][1]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
+	var temp_f_color = check_temp(id[sensors["Cube001"][2]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
+	
+	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
+	$RichTextLabel.bbcode_text = "Temperature Sensor D : [color=%s]%s[/color]C" %[temp_d_color, int(id[sensors["Cube001"][0]])]
+	$RichTextLabel3.bbcode_text = "Temperature Sensor E : [color=%s]%s[/color]C" %[temp_e_color, int(id[sensors["Cube001"][1]])]
+	$RichTextLabel2.bbcode_text = "Temperature Sensor F : [color=%s]%s[/color]C" %[temp_f_color, int(id[sensors["Cube001"][2]])]
+	$RichTextLabel4.bbcode_text = "Avg. Weight (Sensors A, D, C & F) : [color=%s]%s[/color]KG" %[weight_color, weight_avg]
 func _on_FridgeStaticBody_mouse_exited():
 	clear()
