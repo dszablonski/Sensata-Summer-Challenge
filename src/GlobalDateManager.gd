@@ -1,8 +1,10 @@
 extends Node
 
-var GlobalDay=0#Displayed day
-var GlobalMonth=0#Displayed month
-var GlobalYear=0#Displayed year
+signal date_time_changed
+
+var GlobalDay=0 setget _set_GlobalDay  # Displayed day
+var GlobalMonth=0 setget _set_GlobalMonth   # Displayed month
+var GlobalYear=0  setget _set_GlobalYear  # Displayed year
 var weeksD=0
 var monthsD=0
 var yearsD=0
@@ -35,4 +37,24 @@ var MonthName1=""
 var MonthName2=""
 #I'll use this to dettermine the weeks away the display date is from the current date :p
 
-var hour := 0.0
+var hour := 0.0 setget _set_hour
+
+
+func _set_GlobalDay(value: int) -> void:
+	GlobalDay = value
+	emit_signal("date_time_changed")
+
+
+func _set_GlobalMonth(value: int) -> void:
+	GlobalMonth = value
+	emit_signal("date_time_changed")
+
+
+func _set_GlobalYear(value: int) -> void:
+	GlobalYear = value
+	emit_signal("date_time_changed")
+
+
+func _set_hour(value: float) -> void:
+	hour = value
+	emit_signal("date_time_changed")
