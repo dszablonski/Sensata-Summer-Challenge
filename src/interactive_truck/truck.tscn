@@ -1138,10 +1138,10 @@ shape = SubResource( 6 )
 material/0 = SubResource( 9 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Truck Wheel A" index="0"]
+[node name="TruckWheelStaticBody" type="StaticBody" parent="Truck Wheel A" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel A/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel A/TruckWheelStaticBody" index="0" groups=[
 "truckWheelA",
 ]]
 transform = Transform( 1, -3.46945e-18, 0, -1.42109e-14, 1, 1.16423e-10, 0, 5.82077e-11, 1, 0, 0, 0 )
@@ -1151,10 +1151,10 @@ shape = SubResource( 10 )
 material/0 = SubResource( 13 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Truck Wheel B" index="0"]
+[node name="TruckWheelBStaticBody" type="StaticBody" parent="Truck Wheel B" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel B/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel B/TruckWheelBStaticBody" index="0" groups=[
 "truckWheelB",
 ]]
 transform = Transform( 1, -1.77636e-15, 0, 0, 1, 0, 0, 2.91055e-11, 1, 0, 0, 0 )
@@ -1164,10 +1164,10 @@ shape = SubResource( 14 )
 material/0 = SubResource( 17 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Truck Wheel C" index="0"]
+[node name="TruckWheelCStaticBody" type="StaticBody" parent="Truck Wheel C" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel C/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel C/TruckWheelCStaticBody" index="0" groups=[
 "truckWheelC",
 ]]
 transform = Transform( 1, -1.77636e-15, 0, 0, 1, 0, 0, 2.91055e-11, 1, 0, 0, 0 )
@@ -1177,10 +1177,10 @@ shape = SubResource( 18 )
 material/0 = SubResource( 21 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Truck Wheel D" index="0"]
+[node name="TruckWheelDStaticBody" type="StaticBody" parent="Truck Wheel D" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel D/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel D/TruckWheelDStaticBody" index="0" groups=[
 "truckWheelD",
 ]]
 transform = Transform( 1, -1.73472e-18, 0, 0, 1, 1.16423e-10, 0, 2.91038e-11, 1, 0, 0, 0 )
@@ -1190,10 +1190,10 @@ shape = SubResource( 22 )
 material/0 = SubResource( 25 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Truck Wheel E" index="0"]
+[node name="TruckWheelEStaticBody" type="StaticBody" parent="Truck Wheel E" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel E/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel E/TruckWheelEStaticBody" index="0" groups=[
 "truckWheelE",
 ]]
 transform = Transform( 1, -1.77636e-15, 0, 0, 1, 0, 0, 2.91055e-11, 1, 0, 0, 0 )
@@ -1203,10 +1203,10 @@ shape = SubResource( 26 )
 material/0 = SubResource( 29 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Truck Wheel F" index="0"]
+[node name="TruckWheelFStaticBody" type="StaticBody" parent="Truck Wheel F" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel F/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Truck Wheel F/TruckWheelFStaticBody" index="0" groups=[
 "truckWheelF",
 ]]
 transform = Transform( 1, -1.77636e-15, 0, 0, 1, 0, 0, 2.91055e-11, 1, 0, 0, 0 )
@@ -1263,10 +1263,10 @@ transform = Transform( 1.3645e-08, -0.108561, -0.000167656, 0, 7.95126e-05, -0.2
 material/0 = SubResource( 42 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Trailer Wheel A" index="0"]
+[node name="TrailerWheelAStaticBody" type="StaticBody" parent="Trailer Wheel A" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel A/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel A/TrailerWheelAStaticBody" index="0" groups=[
 "trailerWheelA",
 ]]
 transform = Transform( 1, 1.73472e-18, 7.10543e-15, 0, 1, 1.16423e-10, -6.93889e-18, -2.91038e-11, 1, 0, 0, 0 )
@@ -1277,10 +1277,10 @@ transform = Transform( 1.3645e-08, -0.108561, -0.000167656, 0, 7.95126e-05, -0.2
 material/0 = SubResource( 46 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Trailer Wheel B" index="0"]
+[node name="TrailerWheelBStaticBody" type="StaticBody" parent="Trailer Wheel B" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel B/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel B/TrailerWheelBStaticBody" index="0" groups=[
 "trailerWheelB",
 ]]
 transform = Transform( 1, 1.73472e-18, 7.10543e-15, 0, 1, 1.16423e-10, -6.93889e-18, -2.91038e-11, 1, 0, 0, 0 )
@@ -1291,10 +1291,10 @@ transform = Transform( 1.3645e-08, -0.108561, -0.000167656, 0, 7.95126e-05, -0.2
 material/0 = SubResource( 50 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Trailer Wheel C" index="0"]
+[node name="TrailerWheelCStaticBody" type="StaticBody" parent="Trailer Wheel C" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel C/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel C/TrailerWheelCStaticBody" index="0" groups=[
 "trailerWheelC",
 ]]
 transform = Transform( 1, 1.73472e-18, 7.10543e-15, 0, 1, 1.16423e-10, -6.93889e-18, -2.91038e-11, 1, 0, 0, 0 )
@@ -1305,10 +1305,10 @@ transform = Transform( 0, 0.108561, 0.00016767, 1.3645e-08, 7.95126e-05, -0.2289
 material/0 = SubResource( 54 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Trailer Wheel D" index="0"]
+[node name="TrailerWheelDStaticBody" type="StaticBody" parent="Trailer Wheel D" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel D/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel D/TrailerWheelDStaticBody" index="0" groups=[
 "trailerWheelD",
 ]]
 transform = Transform( 1, 1.77636e-15, 0, -6.93889e-18, 1, 1.16415e-10, 0, -2.91021e-11, 1, 0, 0, 0 )
@@ -1319,10 +1319,10 @@ transform = Transform( 0, 0.108561, 0.00016767, 1.3645e-08, 7.95126e-05, -0.2289
 material/0 = SubResource( 58 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Trailer Wheel E" index="0"]
+[node name="TrailerWheelEStaticBody" type="StaticBody" parent="Trailer Wheel E" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel E/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel E/TrailerWheelEStaticBody" index="0" groups=[
 "trailerWheelE",
 ]]
 transform = Transform( 1, 1.77636e-15, 0, -6.93889e-18, 1, 1.16415e-10, 0, -2.91021e-11, 1, 0, 0, 0 )
@@ -1333,10 +1333,10 @@ transform = Transform( 0, 0.108561, 0.00016767, 1.3645e-08, 7.95126e-05, -0.2289
 material/0 = SubResource( 62 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Trailer Wheel F" index="0"]
+[node name="TrailerWheelFStaticBody" type="StaticBody" parent="Trailer Wheel F" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel F/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel F/TrailerWheelFStaticBody" index="0" groups=[
 "trailerWheelF",
 ]]
 transform = Transform( 1, 3.55271e-15, -1.78874e-19, -1.38778e-17, 1, 2.32831e-10, 0, -5.8206e-11, 1, 0, 0, 0 )
@@ -1348,10 +1348,10 @@ mesh = SubResource( 65 )
 material/0 = SubResource( 68 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Cube" index="0"]
+[node name="CubeStaticBody" type="StaticBody" parent="Cube" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Cube/CubeStaticBody" index="0" groups=[
 "freezer",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.83283 )
@@ -1361,10 +1361,10 @@ shape = SubResource( 69 )
 material/0 = SubResource( 72 )
 script = ExtResource( 5 )
 
-[node name="StaticBody" type="StaticBody" parent="Cube001" index="0"]
+[node name="FridgeStaticBody" type="StaticBody" parent="Cube001" index="0"]
 script = ExtResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube001/StaticBody" index="0" groups=[
+[node name="CollisionShape" type="CollisionShape" parent="Cube001/FridgeStaticBody" index="0" groups=[
 "fridge",
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.745749 )
@@ -1385,19 +1385,20 @@ script = ExtResource( 4 )
 shape = SubResource( 77 )
 
 [connection signal="clear" from="Truck/StaticBody" to="Truck" method="_on_StaticBody_clear"]
-[connection signal="truck_wheel_a" from="Truck Wheel A/StaticBody" to="Truck Wheel A" method="_on_StaticBody_truck_wheel_a"]
-[connection signal="truck_wheel_b" from="Truck Wheel B/StaticBody" to="Truck Wheel B" method="_on_StaticBody_truck_wheel_b"]
-[connection signal="truck_wheel_c" from="Truck Wheel C/StaticBody" to="Truck Wheel C" method="_on_StaticBody_truck_wheel_c"]
-[connection signal="truck_wheel_d" from="Truck Wheel D/StaticBody" to="Truck Wheel D" method="_on_StaticBody_truck_wheel_d"]
-[connection signal="truck_wheel_e" from="Truck Wheel E/StaticBody" to="Truck Wheel E" method="_on_StaticBody_truck_wheel_e"]
-[connection signal="truck_wheel_f" from="Truck Wheel F/StaticBody" to="Truck Wheel F" method="_on_StaticBody_truck_wheel_f"]
-[connection signal="trailer_wheel_a" from="Trailer Wheel A/StaticBody" to="Trailer Wheel A" method="_on_StaticBody_trailer_wheel_a"]
-[connection signal="trailer_wheel_b" from="Trailer Wheel B/StaticBody" to="Trailer Wheel B" method="_on_StaticBody_trailer_wheel_b"]
-[connection signal="trailer_wheel_c" from="Trailer Wheel C/StaticBody" to="Trailer Wheel C" method="_on_StaticBody_trailer_wheel_c"]
-[connection signal="trailer_wheel_d" from="Trailer Wheel D/StaticBody" to="Trailer Wheel D" method="_on_StaticBody_trailer_wheel_d"]
-[connection signal="trailer_wheel_e" from="Trailer Wheel E/StaticBody" to="Trailer Wheel E" method="_on_StaticBody_trailer_wheel_e"]
-[connection signal="trailer_wheel_f" from="Trailer Wheel F/StaticBody" to="Trailer Wheel F" method="_on_StaticBody_trailer_wheel_f"]
-[connection signal="freezer" from="Cube/StaticBody" to="Cube" method="_on_StaticBody_freezer"]
-[connection signal="freezer" from="Cube/StaticBody" to="." method="_on_StaticBody_freezer"]
-[connection signal="fridge" from="Cube001/StaticBody" to="Cube001" method="_on_StaticBody_fridge"]
+[connection signal="mouse_entered" from="Truck Wheel A/TruckWheelStaticBody" to="." method="_on_TruckWheelStaticBody_mouse_entered"]
+[connection signal="truck_wheel_a" from="Truck Wheel A/TruckWheelStaticBody" to="Truck Wheel A" method="_on_StaticBody_truck_wheel_a"]
+[connection signal="truck_wheel_b" from="Truck Wheel B/TruckWheelBStaticBody" to="Truck Wheel B" method="_on_StaticBody_truck_wheel_b"]
+[connection signal="truck_wheel_c" from="Truck Wheel C/TruckWheelCStaticBody" to="Truck Wheel C" method="_on_StaticBody_truck_wheel_c"]
+[connection signal="truck_wheel_d" from="Truck Wheel D/TruckWheelDStaticBody" to="Truck Wheel D" method="_on_StaticBody_truck_wheel_d"]
+[connection signal="truck_wheel_e" from="Truck Wheel E/TruckWheelEStaticBody" to="Truck Wheel E" method="_on_StaticBody_truck_wheel_e"]
+[connection signal="truck_wheel_f" from="Truck Wheel F/TruckWheelFStaticBody" to="Truck Wheel F" method="_on_StaticBody_truck_wheel_f"]
+[connection signal="trailer_wheel_a" from="Trailer Wheel A/TrailerWheelAStaticBody" to="Trailer Wheel A" method="_on_StaticBody_trailer_wheel_a"]
+[connection signal="trailer_wheel_b" from="Trailer Wheel B/TrailerWheelBStaticBody" to="Trailer Wheel B" method="_on_StaticBody_trailer_wheel_b"]
+[connection signal="trailer_wheel_c" from="Trailer Wheel C/TrailerWheelCStaticBody" to="Trailer Wheel C" method="_on_StaticBody_trailer_wheel_c"]
+[connection signal="trailer_wheel_d" from="Trailer Wheel D/TrailerWheelDStaticBody" to="Trailer Wheel D" method="_on_StaticBody_trailer_wheel_d"]
+[connection signal="trailer_wheel_e" from="Trailer Wheel E/TrailerWheelEStaticBody" to="Trailer Wheel E" method="_on_StaticBody_trailer_wheel_e"]
+[connection signal="trailer_wheel_f" from="Trailer Wheel F/TrailerWheelFStaticBody" to="Trailer Wheel F" method="_on_StaticBody_trailer_wheel_f"]
+[connection signal="freezer" from="Cube/CubeStaticBody" to="Cube" method="_on_StaticBody_freezer"]
+[connection signal="freezer" from="Cube/CubeStaticBody" to="." method="_on_StaticBody_freezer"]
+[connection signal="fridge" from="Cube001/FridgeStaticBody" to="Cube001" method="_on_StaticBody_fridge"]
 [connection signal="clear" from="void/StaticBody" to="void" method="_on_StaticBody_clear"]
