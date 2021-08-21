@@ -1,9 +1,10 @@
 class_name DateTimeLabel
 extends Label
 func _ready():#This sets the varibles for the time
-	GlobalDate.GlobalDay=GlobalDate.OriginalDay#
-	GlobalDate.GlobalMonth=GlobalDate.OriginalMonth#
-	GlobalDate.GlobalYear=GlobalDate.OriginalYear#
+	var time = OS.get_datetime()
+	GlobalDate.GlobalDay=time["day"]#
+	GlobalDate.GlobalMonth=time["month"]#
+	GlobalDate.GlobalYear=time["year"]#
 	UpdateDate()
 	
 func UpdateDate():#This updates the displayed date text
@@ -185,12 +186,16 @@ func _on_LeftArrow_pressed():
 
 func _on_RightArrow_pressed():
 	var time = OS.get_datetime()
-	var Day=GlobalDate.OriginalDay
-	var Month=GlobalDate.OriginalMonth
-	var Year=GlobalDate.OriginalYear
+	var Day=time["day"]#
+	var Month=time["month"]#
+	var Year=time["year"]#
+	#print(GlobalDate.ArrowFirstClick)
 	if GlobalDate.ArrowFirstClick==0:
+		
 		if Year==GlobalDate.StartYear:
+			#print("succes1")
 			if Month>GlobalDate.StartMonth:
+				#print("succes2")
 				GlobalDate.StartDay=GlobalDate.StartDay+7
 				var month=GlobalDate.StartMonth+1
 				GetDaysInMonth(month)
@@ -201,7 +206,10 @@ func _on_RightArrow_pressed():
 				GlobalDate.ArrowButtonsClicked=GlobalDate.ArrowButtonsClicked+1
 				UpdateButtonText()
 			elif Month==GlobalDate.StartMonth:
+				#print("succes3")
+				#print(Day,GlobalDate.StartDay)
 				if Day>=GlobalDate.StartDay:
+					#print("succes4")
 					GlobalDate.StartDay=GlobalDate.StartDay+7
 					var month=GlobalDate.StartMonth+1
 					GetDaysInMonth(month)
@@ -212,6 +220,7 @@ func _on_RightArrow_pressed():
 					GlobalDate.ArrowButtonsClicked=GlobalDate.ArrowButtonsClicked+1
 					UpdateButtonText()
 		elif Year>GlobalDate.StartYear:
+				#print("succes2")
 				GlobalDate.StartDay=GlobalDate.StartDay+7
 				var month=GlobalDate.StartMonth+1
 				GetDaysInMonth(month)
