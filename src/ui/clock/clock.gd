@@ -36,7 +36,9 @@ var _time_to_buttons := {}
 
 
 func _ready() -> void:
-	_hour_safety_values = _get_hour_safety_values()
+	# When the date/time is changed the clock should be updated.
+	GlobalDate.connect("date_time_changed", self, "_update_safety_values")
+	_update_safety_values()
 	_add_time_buttons()
 	_on_rect_changed()
 
@@ -53,13 +55,18 @@ func force_press_time_button(time: float) -> void:
 	button.disabled = true
 
 
+func _update_safety_values() -> void:
+	_hour_safety_values = _get_hour_safety_values()
+	update()
+
+
 func _get_hour_safety_values() -> Array:
 	var hour_safety_values := []
 	# Iterating through every hour (0 to 23).
 	for i in 24:
 		var safety_value := 0
 		# Grabbing the data for that hour.
-		var hourly_data := DatabaseFetch.read_db_time(PLACEHOLDER_DAY, i)
+		var hourly_data := DatabaseFetch.read_db_time_current_date(i)
 		hourly_data.erase("ID")
 		hourly_data.erase("DateTime")
 		hourly_data.erase("Hour")
