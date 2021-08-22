@@ -151,14 +151,14 @@ func _on_LineChart_clicked(chart: LineChart) -> void:
 		charts_grid.columns = charts_grid_columns_default
 		_selected_chart.x_decim = _selected_chart_old_x_decim
 		_selected_chart.show_points = false
+		if _selected_chart == weight_chart:
+			weight_chart.ChartName.visible = true
+			weight_chart_keys.visible = false
 		_selected_chart = null
 		# Make every chart visible and plot them.
 		for chart in charts_grid.get_children():
 			chart.visible = true
 			chart.plot()
-		if _selected_chart == weight_chart:
-			weight_chart.ChartName.visible = true
-			weight_chart_keys.visible = false
 	else:  # If the chart is not selected.
 		_selected_chart = chart
 		charts_grid.columns = 1
