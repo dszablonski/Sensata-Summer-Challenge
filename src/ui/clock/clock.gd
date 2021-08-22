@@ -123,7 +123,20 @@ func _get_hour_safety_values() -> Array:
 				)
 			if temp_safety_value > safety_value:
 				safety_value = temp_safety_value
-				break
+				# If the safety value is at critical then there is no need to
+				# check further as it can't go any higher.
+				if safety_value == 2:
+					break
+		var weight_differential: int = trailer_weights.max() - trailer_weights.min()
+		var weight_differential_safety_value = _get_safety_value(
+			weight_differential,
+			null,
+			null,
+			CriticalLimits.MAX_WEIGHT_DIFFERENTIAL,
+			CautionLimits.MAX_WEIGHT_DIFFERENTIAL
+		)
+		if weight_differential_safety_value > safety_value:
+			safety_value = weight_differential_safety_value
 		hour_safety_values.append(safety_value)
 	return hour_safety_values
 
