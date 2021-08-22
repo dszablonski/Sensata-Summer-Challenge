@@ -37,11 +37,15 @@ func _ready() -> void:
 func _update_charts() -> void:
 	# Iterate over every chart.
 	for chart in charts_grid.get_children():
-		var sensor_name: String = CHART_TO_SENSORS[chart]
-		_plot_data(chart, sensor_name)
+		_plot_chart(chart)
 	# Update the selected chart's hour marker (if there is one).
 	if _selected_chart:
 		_selected_chart.update()
+
+
+func _plot_chart(chart: Chart) -> void:
+	var sensor_name: String = CHART_TO_SENSORS[chart]
+	_plot_data(chart, sensor_name)
 
 
 func _plot_data(chart: Chart, sensor_name: String) -> void:
@@ -97,8 +101,7 @@ func _on_LineChart_clicked(chart: LineChart) -> void:
 		# Make every chart visible and plot them.
 		for chart in charts_grid.get_children():
 			chart.visible = true
-			var sensor_name: String = CHART_TO_SENSORS[chart]
-			_plot_data(chart, sensor_name)
+			_plot_chart(chart)
 	else:  # If the chart is not selected.
 		_selected_chart = chart
 		charts_grid.columns = 1
@@ -109,5 +112,4 @@ func _on_LineChart_clicked(chart: LineChart) -> void:
 		_selected_chart.x_decim = 1
 		_selected_chart.show_points = true
 		# Plot the selected chart.
-		var sensor_name: String = CHART_TO_SENSORS[chart]
-		_plot_data(_selected_chart, sensor_name)
+		_plot_chart(_selected_chart)
