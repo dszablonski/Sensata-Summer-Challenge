@@ -5,6 +5,8 @@ class_name ScatterChartBase
 # of points in a two-variable space. It handles basic data structure and grid 
 # layout and leaves to child classes the more specific behaviour.
 
+var y_chors_right: Array # Hack ;)
+
 #Stored in the form of [[min_func1, min_func2, min_func3, ...], [max_func1, max_func2, ...]]
 var x_domain := [[], []]
 var y_domain := [[], []]
@@ -112,7 +114,8 @@ func build_property_list():
 	property_list.append(
 	{
 		"hint": PROPERTY_HINT_RANGE,
-		"hint_string": "0.001, 10",
+#		"hint_string": "0.001, 10",
+		"hint_string": "0.001, 100",  # Hack ;)
 		"usage": PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		"name": "Chart_Display/y_decim",
 		"type": TYPE_REAL
@@ -483,7 +486,8 @@ func calculate_tics():
 	
 	y_margin_min = y_range[0]
 	var y_margin_max = y_range[1]
-	v_dist = y_decim * pow(10.0, calculate_position_significant_figure(y_margin_max - y_margin_min) - 1)
+#	v_dist = y_decim * pow(10.0, calculate_position_significant_figure(y_margin_max - y_margin_min) - 1)
+	v_dist = y_decim  # Hack ;)
 	
 	# There are three cases of min/max:
 	# 		For +/+ and -/- we just do the usual and draw tics from min to max
@@ -565,7 +569,6 @@ func calculate_coordinates():
 			point_positions[function].append(Vector2(value_x + origin.x, origin.y - value_y))
 
 
-
 func draw_grid():
 	# ascisse
 	for p in x_chors.size():
@@ -589,6 +592,15 @@ func draw_grid():
 		draw_line(point, point + Vector2(-tic_length, 0), h_lines_color, grid_lines_width, true)
 		draw_string(font, point + Vector2(-size_text.x - tic_length - label_displacement, 
 				size_text.y / 2), y_chors[p], font_color)
+	
+	for p in y_chors_right.size():  # Hack ;)
+		var point : Vector2 = origin - Vector2(0, p * y_pass) + Vector2(SIZE.x - 14, 0)
+		var size_text := Vector2(font.get_string_size(y_chors_right[p]).x, font.get_ascent()) #The y should be ascent instead full height to get correctly centered
+
+		# ordinate
+		draw_line(point, point + Vector2(-tic_length, 0), h_lines_color, grid_lines_width, true)
+		draw_string(font, point + Vector2(-size_text.x - tic_length - label_displacement, 
+				size_text.y / 2), y_chors_right[p], font_color)
 
 
 func draw_chart_outlines():
@@ -617,7 +629,7 @@ func draw_points():
 				var width = get("function_line_width")
 				if not width:
 					width = 1
-				draw_line(marker_start, marker_end, Color.red, width, true)
+				draw_line(marker_start, marker_end, Color.orange, width, true)
 			point.create_point(points_shape[function], function_colors[function], 
 			Color.white, point_positions[function][function_point], 
 			point.format_value(point_values[function][function_point], false, false), 
