@@ -21,6 +21,8 @@ signal _mouse_entered(point)
 signal _mouse_exited()
 signal _point_pressed(point)
 
+var units: String  # Hack ;)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -52,7 +54,7 @@ func draw_point(size : float, color : Color):
 			draw_line(OFFSET-Vector2(size,0), OFFSET+Vector2(size,0), color, size-5, true)
 			draw_line(OFFSET-Vector2(0,size), OFFSET+Vector2(0,size), color, size-5, true)
 
-func create_point(shape : int, color : Color, color_outline : Color, position : Vector2, value : Array, function : String):
+func create_point(shape : int, color : Color, color_outline : Color, position : Vector2, value : Array, function : String, units: String = ""):
 	self.shape = shape
 	self.color = color
 	self.color_outline = color_outline
@@ -60,6 +62,7 @@ func create_point(shape : int, color : Color, color_outline : Color, position : 
 	self.rect_position = point_position - OFFSET
 	self.point_value = value
 	self.function = function
+	self.units = units
 
 
 func _on_Point_mouse_entered():
