@@ -194,7 +194,9 @@ func draw_points_array(
 			Color.white, point_positions_array[function][function_point], 
 			point.format_value(point_values_array[function][function_point], false, false), 
 			y_labels[function],
-			units)
+			units,
+			3,
+			5)
 			
 			PointContainer.add_child(point)
 
