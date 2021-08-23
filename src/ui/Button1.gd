@@ -99,12 +99,37 @@ func _ready():
 				randomize()
 				GlobalDate.CautionLevel1=int(rand_range(1,5))
 	Change_colour()
-
+	GlobalDate.MonthDisplay1=month
+	GlobalDate.YearDisplay1=year
 func _on_LeftArrow_pressed():
 	updateColourLeft()
+	var day=GlobalDate.StartDay-7
+	var month=GlobalDate.StartMonth
+	var year=GlobalDate.StartYear
+	if day<1:
+		month=month-1
+		if month<1:
+			year=year-1
+			month=12
+		GetDaysInMonth(month)
+		day=day+GlobalDate.DaysInMonth
+	GlobalDate.MonthDisplay1=month
+	GlobalDate.YearDisplay1=year
 	
 func _on_RightArrow_pressed():
 	UpdateColourRight()
+	var day=GlobalDate.StartDay-7
+	var month=GlobalDate.StartMonth
+	var year=GlobalDate.StartYear
+	if day<1:
+		month=month-1
+		if month<1:
+			year=year-1
+			month=12
+		GetDaysInMonth(month)
+		day=day+GlobalDate.DaysInMonth
+	GlobalDate.MonthDisplay1=month
+	GlobalDate.YearDisplay1=year
 	
 func GetDaysInMonth(month):
 	if month==2:#checks if month has 28 days and if it does sends 28 back
