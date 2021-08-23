@@ -73,9 +73,10 @@ func _get_hour_safety_values() -> Array:
 		hourly_data.erase("DateTime")
 		hourly_data.erase("Hour")
 		var trailer_weights := Util.get_trailer_weights(hourly_data)
-		# Some sensors can be ignored if there is no cargo (such as the freezer
-		# and fridge temperatures).
-		var has_cargo := Util.has_cargo(trailer_weights)
+		# If the freezer is not in use then its temperature values can be ignored.
+		var is_freezer_in_use := Util.is_freezer_in_use(hourly_data)
+		# If the fridge is not in use then its temperature values can be ignored.
+		var is_fridge_in_use := Util.is_fridge_in_use(hourly_data)
 		# Iterate over the sensors.
 		for sensor in hourly_data:
 			var value: int = hourly_data[sensor]
@@ -117,16 +118,14 @@ func _get_hour_safety_values() -> Array:
 					CautionLimits.MAX_WHEEL_BEARING_TEMP
 				)
 			elif "TrailerTemperature" in sensor:
-				# If there is no cargo then it does not matter what the temperature
-				# values are.
-				if not has_cargo:
-					continue
-				if identifier in ["A", "B", "C"]:  # Freezer sensors
+				# If either the freezer or fridge are not in use then it does not
+				# matter what their temperature values are.
+				if is_freezer_in_use and identifier in ["A", "B", "C"]:  # Freezer sensors
 					temp_safety_value = _get_safety_value(
 						value,
 						CriticalLimits.MIN_FREEZER_TEMP
 					)
-				elif identifier in ["D", "E", "F"]:  # Fridge sensors
+				elif is_fridge_in_use and identifier in ["D", "E", "F"]:  # Fridge sensors
 					temp_safety_value = _get_safety_value(
 						value,
 						null,

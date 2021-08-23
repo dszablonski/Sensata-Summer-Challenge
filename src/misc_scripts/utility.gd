@@ -19,8 +19,13 @@ static func get_trailer_weights(data: Dictionary) -> Array:
 			trailer_weights.append(value)
 	return trailer_weights
 
-static func has_cargo(trailer_weights: Array) -> bool:
-	for weight in trailer_weights:
-		if weight > 0:
-			return true
-	return false
+static func is_freezer_in_use(data: Dictionary) -> bool:
+	return data["TrailerWeightG"] > 0
+
+static func is_fridge_in_use(data: Dictionary) -> bool:
+	return (
+		data["TrailerWeightA"] > 0 or
+		data["TrailerWeightD"] > 0 or
+		data["TrailerWeightC"] > 0 or
+		data["TrailerWeightF"] > 0
+	)
