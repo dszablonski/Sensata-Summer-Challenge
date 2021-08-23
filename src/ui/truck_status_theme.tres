@@ -4,8 +4,6 @@
 bg_color = Color( 0.09, 0.08, 0.15, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
 
 [resource]
 PanelContainer/styles/panel = SubResource( 1 )
