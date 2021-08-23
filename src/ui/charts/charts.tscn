@@ -4,7 +4,7 @@
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/charts/charts.gd" type="Script" id=3]
 [ext_resource path="res://ui/charts/weight_chart.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/main_theme.theme" type="Theme" id=5]
+[ext_resource path="res://ui/main_theme.tres" type="Theme" id=5]
 
 [node name="Charts" type="PanelContainer"]
 anchor_right = 1.0
