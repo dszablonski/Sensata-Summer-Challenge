@@ -9,7 +9,7 @@ const warning = Color(1,0,0)
 
 var current_id
 
-# A dictionary of the meshes and the sensors which they are tied to. 
+	# A dictionary of the meshes and the sensors which they are tied to. 
 var sensors = {
 	"Cube": ["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC", "TrailerWeightG"],
 	"Cube001": ["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF", "TrailerWeightA", "TrailerWeightD", "TrailerWeightC", "TrailerWeightF"],
