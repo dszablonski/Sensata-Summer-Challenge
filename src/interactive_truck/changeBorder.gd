@@ -6,6 +6,7 @@ const selected = Color(0,0,0)
 const clear = Color(1,1,1)
 
 
+
 # Function to make all borders white
 func clear_borders(node, colour):
 	# Fetches the parent node (root of the tree, Truck) and then loops through all its
