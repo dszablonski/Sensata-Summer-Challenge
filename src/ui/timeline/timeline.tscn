@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/Month1 text.gd" type="Script" id=2]
@@ -7,8 +7,6 @@
 [ext_resource path="res://ui/main_theme.tres" type="Theme" id=5]
 [ext_resource path="res://ui/timeline/button.gd" type="Script" id=6]
 [ext_resource path="res://ui/timeline/timeline.gd" type="Script" id=7]
-[ext_resource path="res://RightArrow.png" type="Texture" id=16]
-[ext_resource path="res://LeftArrow.png" type="Texture" id=21]
 
 [node name="Timeline" type="VBoxContainer"]
 margin_right = 502.0
@@ -22,30 +20,29 @@ __meta__ = {
 
 [node name="TopRow" type="HBoxContainer" parent="."]
 margin_right = 502.0
-margin_bottom = 33.0
+margin_bottom = 23.0
 
 [node name="LeftMonth" type="Label" parent="TopRow"]
-margin_top = 10.0
-margin_right = 114.0
-margin_bottom = 23.0
+margin_top = 5.0
+margin_right = 136.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "Month 1"
 align = 1
 script = ExtResource( 2 )
 
 [node name="LeftArrow" type="Button" parent="TopRow"]
-margin_left = 118.0
-margin_right = 189.0
-margin_bottom = 33.0
+margin_left = 140.0
+margin_right = 178.0
+margin_bottom = 23.0
 focus_mode = 0
-icon = ExtResource( 21 )
+text = "Back"
 
 [node name="DateTime" type="Label" parent="TopRow"]
-margin_left = 193.0
-margin_top = 10.0
-margin_right = 308.0
-margin_bottom = 23.0
+margin_left = 182.0
+margin_top = 5.0
+margin_right = 319.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "1/6/2021 00:00"
@@ -53,32 +50,31 @@ align = 1
 script = ExtResource( 4 )
 
 [node name="RightArrow" type="Button" parent="TopRow"]
-margin_left = 312.0
-margin_right = 383.0
-margin_bottom = 33.0
+margin_left = 323.0
+margin_right = 361.0
+margin_bottom = 23.0
 focus_mode = 0
-icon = ExtResource( 16 )
+text = "Next"
 
 [node name="RightMonth" type="Label" parent="TopRow"]
-margin_left = 387.0
-margin_top = 10.0
+margin_left = 365.0
+margin_top = 5.0
 margin_right = 502.0
-margin_bottom = 23.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "Month 2"
 align = 1
 script = ExtResource( 3 )
 
 [node name="Days" type="PanelContainer" parent="."]
-margin_top = 37.0
+margin_top = 27.0
 margin_right = 502.0
 margin_bottom = 104.0
 size_flags_vertical = 3
 
 [node name="DaysMargin" type="MarginContainer" parent="Days"]
 margin_right = 502.0
-margin_bottom = 67.0
+margin_bottom = 77.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -88,15 +84,14 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 492.0
-margin_bottom = 57.0
+margin_bottom = 67.0
 alignment = 1
 
 [node name="Button" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_right = 65.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
@@ -104,10 +99,9 @@ script = ExtResource( 6 )
 [node name="Button2" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 69.0
 margin_right = 134.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
@@ -115,10 +109,9 @@ script = ExtResource( 6 )
 [node name="Button3" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 138.0
 margin_right = 204.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
@@ -126,10 +119,9 @@ script = ExtResource( 6 )
 [node name="Button4" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 208.0
 margin_right = 273.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
@@ -137,10 +129,9 @@ script = ExtResource( 6 )
 [node name="Button5" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 277.0
 margin_right = 343.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
@@ -148,10 +139,9 @@ script = ExtResource( 6 )
 [node name="Button6" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 347.0
 margin_right = 412.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
@@ -159,20 +149,19 @@ script = ExtResource( 6 )
 [node name="Button7" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 416.0
 margin_right = 482.0
-margin_bottom = 47.0
+margin_bottom = 57.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
 text = "1"
 align = 0
 script = ExtResource( 6 )
 
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button" to="TopRow/DateTime" method="_on_Button_pressed"]
 [connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button2" to="TopRow/DateTime" method="_on_Button2_pressed"]
 [connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button3" to="TopRow/DateTime" method="_on_Button3_pressed"]
