@@ -2,9 +2,9 @@ class_name DateTimeLabel
 extends Label
 func _ready():#This sets the varibles for the time
 	var time = OS.get_datetime()
-	GlobalDate.GlobalDay=GlobalDate.OriginalDay#
-	GlobalDate.GlobalMonth=GlobalDate.OriginalMonth#
-	GlobalDate.GlobalYear=GlobalDate.OriginalYear#
+	GlobalDate.GlobalDay=GlobalDate.UpperDay#
+	GlobalDate.GlobalMonth=GlobalDate.UpperMonth#
+	GlobalDate.GlobalYear=GlobalDate.UpperYear#
 	UpdateDate()
 	
 func UpdateDate():#This updates the displayed date text
@@ -28,39 +28,45 @@ func _on_Button_pressed():#button 1 - This makes the first button input the date
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
+				
 func _on_Button2_pressed():#button 2
-	var difference=-6#Makes it go back 6 days
+	var difference=-6#Makes i go back 6 days
 	var day=GlobalDate.StartDay
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
 
 func _on_Button3_pressed():#button 3
 	var difference=-5#Makes it go back 5 days
@@ -68,39 +74,45 @@ func _on_Button3_pressed():#button 3
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
 
 func _on_Button4_pressed():#button 4
-	var difference=-4#Makes it go back 7 days
+	var difference=-4#Makes it go back 4 days
 	var day=GlobalDate.StartDay
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
 
 func _on_Button5_pressed():#button 5
 	var difference=-3#Makes it go back 3 days
@@ -108,19 +120,22 @@ func _on_Button5_pressed():#button 5
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
 
 func _on_Button6_pressed():#button 6
 	var difference=-2#Makes it go back 2 days
@@ -128,39 +143,45 @@ func _on_Button6_pressed():#button 6
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
 
 func _on_Button7_pressed():#button 7
-	var difference=-1#Makes it go back 7 days
+	var difference=-1#Makes it go back 1 days
 	var day=GlobalDate.StartDay
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
 	day = day+difference#Gets the date this button will input
-	if day>0:#Checks if the date iss in the same month
-		GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
-	else:#if it's not in the same month it'll do the following
-		month= month-1#find the previous month
-		GetDaysInMonth(month)#find how many days are in it
-		day=(GlobalDate.DaysInMonth+ day)#use that to calculate the date
-		GlobalDate.GlobalDay=(day)#and then use that date and update the displayed text
-		GlobalDate.GlobalMonth=(month)
-		GlobalDate.GlobalYear=(year)
-		UpdateDate()
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
+		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
+			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
+				GlobalDate.GlobalDay=(day)#if it is it sets the varibles and updates the text
+				GlobalDate.GlobalMonth=(month)
+				GlobalDate.GlobalYear=(year)
+				UpdateDate()
 
 func _on_LeftArrow_pressed():
 	GlobalDate.ArrowFirstClick=0
@@ -185,15 +206,12 @@ func _on_LeftArrow_pressed():
 
 
 func _on_RightArrow_pressed():
-	var Day=GlobalDate.OriginalDay
-	var Month=GlobalDate.OriginalMonth
-	var Year=GlobalDate.OriginalYear
+	var Day=GlobalDate.UpperDay
+	var Month=GlobalDate.UpperMonth
+	var Year=GlobalDate.UpperYear
 	if GlobalDate.ArrowFirstClick==0:
-		
 		if Year==GlobalDate.StartYear:
-			#print("succes1")
 			if Month>GlobalDate.StartMonth:
-				#print("succes2")
 				GlobalDate.StartDay=GlobalDate.StartDay+7
 				var month=GlobalDate.StartMonth+1
 				GetDaysInMonth(month)
@@ -204,10 +222,7 @@ func _on_RightArrow_pressed():
 				GlobalDate.ArrowButtonsClicked=GlobalDate.ArrowButtonsClicked+1
 				UpdateButtonText()
 			elif Month==GlobalDate.StartMonth:
-				#print("succes3")
-				#print(Day,GlobalDate.StartDay)
 				if Day>=GlobalDate.StartDay:
-					#print("succes4")
 					GlobalDate.StartDay=GlobalDate.StartDay+7
 					var month=GlobalDate.StartMonth+1
 					GetDaysInMonth(month)
@@ -218,7 +233,6 @@ func _on_RightArrow_pressed():
 					GlobalDate.ArrowButtonsClicked=GlobalDate.ArrowButtonsClicked+1
 					UpdateButtonText()
 		elif Year>GlobalDate.StartYear:
-				#print("succes2")
 				GlobalDate.StartDay=GlobalDate.StartDay+7
 				var month=GlobalDate.StartMonth+1
 				GetDaysInMonth(month)
