@@ -1,4 +1,4 @@
-tool
+#tool
 extends PanelContainer
 class_name PointData
 
@@ -38,7 +38,11 @@ func update_datas(point : Control):
 	
 	var time_str := Util.to_time_string(int(point.point_value[0]))  # Hack ;)
 	Data.set_text(time_str + ":")
-	var value_text = str(point.point_value[1]) + units  # Hack ;)
+	var value_text: String
+	if point.units:
+		value_text = str(point.point_value[1]) + point.units
+	else:
+		value_text = str(point.point_value[1]) + units
 	Value.set_text(value_text)
 	update()
 	show()
