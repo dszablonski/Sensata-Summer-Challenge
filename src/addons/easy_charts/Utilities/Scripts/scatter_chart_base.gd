@@ -629,7 +629,7 @@ func draw_points():
 				var width = get("function_line_width")
 				if not width:
 					width = 1
-				draw_line(marker_start, marker_end, Color.orange, width, true)
+				draw_line(marker_start, marker_end, Color("F77622"), width, true)
 			point.create_point(points_shape[function], function_colors[function], 
 			Color.white, point_positions[function][function_point], 
 			point.format_value(point_values[function][function_point], false, false), 
