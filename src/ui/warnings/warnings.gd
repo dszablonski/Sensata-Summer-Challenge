@@ -80,11 +80,10 @@ func _update_warnings(data: Dictionary) -> void:
 	_critical_warnings = []
 	_caution_warnings = []
 	var trailer_weights := Util.get_trailer_weights(data)
-	# Many values are only important to take into consideration if the trailer
-	# actually has cargo.
-	# For example, while there is no cargo it does not matter if the freezer
-	# or fridge is at room temperature.
-	var has_cargo := Util.has_cargo(trailer_weights)
+	# If the freezer is not in use then its temperature values can be ignored.
+	var is_freezer_in_use := Util.is_freezer_in_use(data)
+	# If the fridge is not in use then its temperature values can be ignored.
+	var is_fridge_in_use := Util.is_fridge_in_use(data)
 	var unsorted_sensors := data.keys()
 	var sensors := _get_sorted_sensors(data)
 	# The last trailer weight sensor index is necessary as the "weight not
@@ -141,18 +140,16 @@ func _update_warnings(data: Dictionary) -> void:
 				WHEEL_BEARING_CAUTION_WARNING
 			)
 		elif "TrailerTemperature" in sensor:
-			# If there is no cargo then it does not matter what the temperature
-			# values are.
-			if not has_cargo:
-				continue
-			if identifier in ["A", "B", "C"]:  # Freezer sensors
+			# If either the freezer or fridge are not in use then it does not
+			# matter what their temperature values are.
+			if is_freezer_in_use and identifier in ["A", "B", "C"]:  # Freezer sensors
 				_add_warning_text(
 					value,
 					[identifier, value],
 					CriticalLimits.MIN_FREEZER_TEMP,
 					FREEZER_TEMP_COLD_CRITICAL_WARNING
 				)
-			elif identifier in ["D", "E", "F"]:  # Fridge sensors
+			elif is_fridge_in_use and identifier in ["D", "E", "F"]:  # Fridge sensors
 				_add_warning_text(
 					value,
 					[identifier, value],
