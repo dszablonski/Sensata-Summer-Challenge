@@ -120,8 +120,8 @@ func plot_from_array_multiple(
 	y_datas_3 = array3_y_datas
 	y_chors_right = ["-4", "0", "4", "8", "12", "16", "20"]
 	plot_from_array(array)
-	function_colors_2 = PoolColorArray([Color.blue])
-	function_colors_3 = PoolColorArray([Color.red])
+	function_colors_2 = PoolColorArray([Color("0099DB")])
+	function_colors_3 = PoolColorArray([Color("E43B44")])
 	redraw_multiple()
 #	if not is_connected("item_rect_changed", self, "redraw_multiple"):
 #		connect("item_rect_changed", self, "redraw_multiple")

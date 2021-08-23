@@ -1,7 +1,7 @@
 extends Control
 
-onready var date_time: DateTimeLabel = $MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime
-onready var clock: Clock = $"MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection"
+onready var date_time: DateTimeLabel = $UIMargin/UIVSplit/TopRowHSplit/LeftSide/Timeline/TopRow/DateTime
+onready var clock: Clock = $"UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Time Selection"
 
 
 func _ready() -> void:

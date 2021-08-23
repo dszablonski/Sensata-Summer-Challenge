@@ -1,27 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/warnings/warnings.gd" type="Script" id=2]
 [ext_resource path="res://ui/warnings/limits_popup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/button_hover.tres" type="StyleBox" id=4]
-[ext_resource path="res://ui/button_normal.stylebox" type="StyleBox" id=5]
-[ext_resource path="res://ui/button_pressed.tres" type="StyleBox" id=6]
-[ext_resource path="res://ui/warnings/warnings_scroll_container.theme" type="Theme" id=7]
-[ext_resource path="res://ui/panel.stylebox" type="StyleBox" id=8]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource path="res://ui/main_theme.tres" type="Theme" id=4]
+[ext_resource path="res://ui/warnings/warnings_theme.tres" type="Theme" id=5]
 
 [node name="Warnings" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-custom_styles/panel = ExtResource( 8 )
+theme = ExtResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,9 +44,6 @@ margin_right = 526.0
 margin_bottom = 23.0
 focus_mode = 0
 size_flags_horizontal = 4
-custom_styles/hover = ExtResource( 4 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Ping"
 
@@ -67,9 +54,6 @@ margin_bottom = 23.0
 focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
-custom_styles/hover = ExtResource( 4 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "View Limits"
 align = 2
@@ -113,7 +97,7 @@ dragger_visibility = 1
 margin_right = 503.0
 margin_bottom = 563.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 1 )
+theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Critical"]
 margin_right = 503.0
@@ -128,7 +112,6 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 493.0
 margin_bottom = 553.0
-theme = ExtResource( 7 )
 scroll_horizontal_enabled = false
 
 [node name="CriticalWarnings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Critical/MarginContainer/ScrollContainer"]
@@ -140,7 +123,7 @@ margin_left = 511.0
 margin_right = 1014.0
 margin_bottom = 563.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 1 )
+theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Caution"]
 margin_right = 503.0
@@ -155,7 +138,6 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 493.0
 margin_bottom = 553.0
-theme = ExtResource( 7 )
 scroll_horizontal_enabled = false
 
 [node name="CautionWarnings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Caution/MarginContainer/ScrollContainer"]
