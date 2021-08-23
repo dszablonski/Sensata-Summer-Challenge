@@ -125,12 +125,11 @@ text = "Avg Brake Wear (%) over Time"
 margin_bottom = 0.716766
 units = "%"
 
-[node name="BackButton" type="ToolButton" parent="."]
+[node name="BackButton" type="Button" parent="."]
 margin_left = 998.0
 margin_top = 7.0
 margin_right = 1017.0
-margin_bottom = 29.0
-focus_mode = 0
+margin_bottom = 27.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
