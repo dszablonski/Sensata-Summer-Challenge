@@ -123,7 +123,9 @@ func _get_hour_safety_values() -> Array:
 				if is_freezer_in_use and identifier in ["A", "B", "C"]:  # Freezer sensors
 					temp_safety_value = _get_safety_value(
 						value,
-						CriticalLimits.MIN_FREEZER_TEMP
+						null,
+						null,
+						CriticalLimits.MAX_FREEZER_TEMP
 					)
 				elif is_fridge_in_use and identifier in ["D", "E", "F"]:  # Fridge sensors
 					temp_safety_value = _get_safety_value(
