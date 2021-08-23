@@ -8,20 +8,20 @@ var _selected_chart: Chart
 # To do so, we must save the original value.
 var _selected_chart_old_x_decim: float
 
-onready var charts_grid: GridContainer = $ChartsGrid
+onready var charts_grid: GridContainer = $MarginContainer/ChartsGrid
 # When a chart is selected only one chart becomes displayed at a time.
 # When that chart is then unselected, we want to undo that change by reverting
 # the number of columns back to this value.
 onready var charts_grid_columns_default = charts_grid.columns
 
-onready var weight_chart: LineChart = $ChartsGrid/WeightChart
+onready var weight_chart: LineChart = $MarginContainer/ChartsGrid/WeightChart
 onready var weight_chart_keys: VBoxContainer = weight_chart.get_node("Key")
 onready var CHART_TO_SENSORS := {
-	$ChartsGrid/TyrePressureChart: "TyrePressure",
-	$ChartsGrid/TruckWheelBearingTempChart: "TruckWheelBearingTemp",
-	$ChartsGrid/TruckBrakePadsChart: "TruckBrakePads",
+	$MarginContainer/ChartsGrid/TyrePressureChart: "TyrePressure",
+	$MarginContainer/ChartsGrid/TruckWheelBearingTempChart: "TruckWheelBearingTemp",
+	$MarginContainer/ChartsGrid/TruckBrakePadsChart: "TruckBrakePads",
 }
-onready var back_button: Button = $BackButton
+onready var back_button: Button = $MarginContainer/BackButton
 
 
 func _ready() -> void:
