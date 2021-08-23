@@ -3,19 +3,13 @@
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/warnings/warnings.gd" type="Script" id=2]
 [ext_resource path="res://ui/warnings/limits_popup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/warnings/button_hover.tres" type="StyleBox" id=4]
-[ext_resource path="res://ui/warnings/button_normal.stylebox" type="StyleBox" id=5]
-[ext_resource path="res://ui/warnings/button_pressed.tres" type="StyleBox" id=6]
+[ext_resource path="res://ui/button_hover.tres" type="StyleBox" id=4]
+[ext_resource path="res://ui/button_normal.stylebox" type="StyleBox" id=5]
+[ext_resource path="res://ui/button_pressed.tres" type="StyleBox" id=6]
 [ext_resource path="res://ui/warnings/warnings_scroll_container.theme" type="Theme" id=7]
+[ext_resource path="res://ui/panel.stylebox" type="StyleBox" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.14902, 0.168627, 0.266667, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -27,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 8 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,7 +113,7 @@ dragger_visibility = 1
 margin_right = 503.0
 margin_bottom = 563.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Critical"]
 margin_right = 503.0
@@ -146,7 +140,7 @@ margin_left = 511.0
 margin_right = 1014.0
 margin_bottom = 563.0
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Caution"]
 margin_right = 503.0
