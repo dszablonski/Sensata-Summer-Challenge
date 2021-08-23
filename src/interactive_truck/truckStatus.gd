@@ -145,7 +145,7 @@ func freezer_limits(id: Dictionary):
 		# freezer is loaded (the weight is greater than 1) 
 		# i will equal a value inclusive of 0-2, which will when applied below
 		# will results in the freezer temps being returned
-		if int(id[sensors["Cube"][i]]) > CriticalLimits.MIN_FREEZER_TEMP and freezer_weight > 0:
+		if int(id[sensors["Cube"][i]]) > CriticalLimits.MAX_FREEZER_TEMP and freezer_weight > 0:
 			# Will return the warning color (red)
 			return warning
 			break
