@@ -6,7 +6,7 @@
 [ext_resource path="res://interactive_truck/changeBorder.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0, 1, 0, 1 )
+albedo_color = Color( 0.388235, 0.780392, 0.301961, 1 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type spatial;
@@ -476,7 +476,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=32]
 shader = SubResource( 31 )
-shader_param/albedo = Color( 0, 1, 0, 1 )
+shader_param/albedo = Color( 0.388235, 0.780392, 0.301961, 1 )
 shader_param/specular = 0.5
 shader_param/metallic = 0.0
 shader_param/roughness = 1.0
