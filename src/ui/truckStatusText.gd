@@ -1,8 +1,5 @@
 extends GridContainer
 
-# Variable storing the dictionary of values for the corresponding date and time
-onready var id = DatabaseFetch.read_db_time(1, GlobalDate.hour)
-
 # Stores hex value for green
 const good :String = "#00ff00"
 # Stores hex value for red 
@@ -30,19 +27,21 @@ var sensors = {
 
 var freezer_is_loaded
 var fridge_is_loaded
+onready var id = DatabaseFetch.read_db_time_new(GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, GlobalDate.hour)
+
 
 # Runs every frame (capped at 60fps)
 func _physics_process(delta):
+	# Fetches the dictionary of values, checking for an update to current date
+	# and time. 
+	id = DatabaseFetch.read_db_time_new(GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, GlobalDate.hour)
 	# Checks if the freezer is loaded (sensor value greater than 0, returns 
 	# either True or False
 	freezer_is_loaded = id["TrailerWeightG"] > 0
 	# Checks if the freezer is loaded (sensor value greater than 0, returns
 	# either True or False
 	fridge_is_loaded = id["TrailerWeightA"] > 0 or id["TrailerWeightD"] > 0 or id["TrailerWeightC"] > 0 or id["TrailerWeightF"] > 0
-	# Fetches the dictionary of values, checking for an update to current date
-	# and time. 
-	id = DatabaseFetch.read_db_time(1, GlobalDate.hour)
-
+	
 # Clears the labels so the panel is blank
 func clear():
 	$RichTextLabel5.bbcode_text = ""
@@ -50,6 +49,9 @@ func clear():
 	$RichTextLabel2.bbcode_text = ""
 	$RichTextLabel3.bbcode_text = ""
 	$RichTextLabel4.bbcode_text = ""
+	$RichTextLabel7.bbcode_text = ""
+	$RichTextLabel8.bbcode_text = ""
+	$RichTextLabel9.bbcode_text = ""
 
 # Checks the status of tyre pressure
 func check_tyre_pressure(sensor):
@@ -106,7 +108,7 @@ func check_wheel_bearing(sensor):
 func check_temp(sensor, loaded, crit_temp):
 	# If the sensor is greater than the critical temperature limit and the truck
 	# is loaded,
-	if sensor >= crit_temp and loaded:
+	if sensor > crit_temp and loaded:
 		# return warning
 		return warning
 	# Otherwise
@@ -306,10 +308,11 @@ func _on_TruckWheelStaticBody_mouse_exited():
 
 
 func _on_FridgeStaticBody_mouse_entered():
-	# Gets the average of the weight sensors for the fridge
-	var weight_avg = (id[sensors["Cube001"][3]] + id[sensors["Cube001"][4]] + id[sensors["Cube001"][5]] + id[sensors["Cube001"][6]]) / 4
-	# Gets the color status for the average weight of the fridge
-	var weight_color = check_weight(weight_avg)
+	# Gets the color status for each weight sensor on the fridge
+	var weight_color_a = check_weight(id[sensors["Cube001"][3]])
+	var weight_color_d = check_weight(id[sensors["Cube001"][4]])
+	var weight_color_c = check_weight(id[sensors["Cube001"][5]])
+	var weight_color_f = check_weight(id[sensors["Cube001"][6]])
 	# Gets teh color status for temp sensor d
 	var temp_d_color = check_temp(id[sensors["Cube001"][0]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
 	# Gets teh color status for temp sensor e
@@ -326,6 +329,9 @@ func _on_FridgeStaticBody_mouse_entered():
 	# Returns the stat of temp sensor f, coloring it the color of its status
 	$RichTextLabel2.bbcode_text = "Temperature Sensor F : [color=%s]%s[/color]C" %[temp_f_color, int(id[sensors["Cube001"][2]])]
 	# Returns teh stat of the avg weight and colors it the color of its status
-	$RichTextLabel4.bbcode_text = "Avg. Weight (Sensors A, D, C & F) : [color=%s]%s[/color]KG" %[weight_color, weight_avg]
+	$RichTextLabel4.bbcode_text = "Weight Sensor A : [color=%s]%s[/color]KG" %[weight_color_a, id[sensors["Cube001"][3]]]
+	$RichTextLabel7.bbcode_text = "Weight Sensor D : [color=%s]%s[/color]KG" %[weight_color_d, id[sensors["Cube001"][4]]]
+	$RichTextLabel8.bbcode_text = "Weight Sensor C : [color=%s]%s[/color]KG" %[weight_color_c, id[sensors["Cube001"][5]]]
+	$RichTextLabel9.bbcode_text = "Weight Sensor F : [color=%s]%s[/color]KG" %[weight_color_f, id[sensors["Cube001"][6]]]
 func _on_FridgeStaticBody_mouse_exited():
 	clear()
