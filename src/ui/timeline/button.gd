@@ -70,8 +70,8 @@ func _ready() -> void:
 			if day<GlobalDate.LowerDay:
 				GlobalDate.set(_caution_level_string, -1)
 			else:
-				randomize()
-				GlobalDate.set(_caution_level_string, int(rand_range(0,3)))
+				var caution_level = get_caution_level(year, month, day)
+				GlobalDate.set(_caution_level_string, caution_level)
 	Change_colour()
 	GlobalDate.set(_month_display_string, month)
 	GlobalDate.set(_year_display_string, year)
@@ -90,6 +90,15 @@ func _ready() -> void:
 			day_test=(31+ day_test)-_num_days_back
 		set_text(str(day_test))
 
+func get_caution_level(year: int, month: int, day: int) -> int:
+	var safety_value := 0
+	for i in 24:
+		var temp_safety_value := Util.get_safety_value(year, month, day, i)
+		if temp_safety_value > safety_value:
+			safety_value = temp_safety_value
+			if safety_value == 2:
+				break
+	return safety_value
 
 func updateColourLeft():
 	var day=GlobalDate.StartDay
@@ -108,8 +117,8 @@ func updateColourLeft():
 	if year>=GlobalDate.LowerYear:#checks if the year is in range of the minium date
 		if month>=GlobalDate.LowerMonth:#checks if the month is in range of the minium date
 			if day>=GlobalDate.LowerDay:#checks if the month is in the range of the minium date
-				randomize()
-				GlobalDate.set(_caution_level_string, int(rand_range(0,3)))
+				var caution_level = get_caution_level(year, month, day)
+				GlobalDate.set(_caution_level_string, caution_level)
 			else:
 				GlobalDate.set(_caution_level_string, -1)
 		else:
@@ -134,8 +143,8 @@ func UpdateColourRight():
 	if year>=GlobalDate.LowerYear:
 		if month>=GlobalDate.LowerMonth:
 			if day>=GlobalDate.LowerDay:
-				randomize()
-				GlobalDate.set(_caution_level_string, int(rand_range(0,3)))
+				var caution_level = get_caution_level(year, month, day)
+				GlobalDate.set(_caution_level_string, caution_level)
 			else:
 				GlobalDate.set(_caution_level_string, -1)
 		else:
