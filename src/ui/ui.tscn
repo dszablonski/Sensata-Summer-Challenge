@@ -262,6 +262,7 @@ margin_right = 671.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
 source = ";"
+Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
 
 [connection signal="mouse_entered" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer" method="_on_TruckWheelStaticBody_mouse_entered"]
 [connection signal="mouse_exited" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer" method="_on_TruckWheelStaticBody_mouse_exited"]
