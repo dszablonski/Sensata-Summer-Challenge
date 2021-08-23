@@ -21,9 +21,11 @@ onready var CHART_TO_SENSORS := {
 	$ChartsGrid/TruckWheelBearingTempChart: "TruckWheelBearingTemp",
 	$ChartsGrid/TruckBrakePadsChart: "TruckBrakePads",
 }
+onready var back_button: Button = $BackButton
 
 
 func _ready() -> void:
+	back_button.visible = false
 	# When the date/time is changed the charts should be updated
 	GlobalDate.connect("date_time_changed", self, "_update_charts")
 	# Iterate over every chart.
@@ -148,28 +150,42 @@ func _on_LineChart_clicked(chart: LineChart) -> void:
 	# However, if a chart that is already selected is clicked then it should be
 	# unselected.
 	if chart == _selected_chart:  # If the chart is aleady selected.
-		charts_grid.columns = charts_grid_columns_default
-		_selected_chart.x_decim = _selected_chart_old_x_decim
-		_selected_chart.show_points = false
-		if _selected_chart == weight_chart:
-			weight_chart.ChartName.visible = true
-			weight_chart_keys.visible = false
-		_selected_chart = null
-		# Make every chart visible and plot them.
-		for chart in charts_grid.get_children():
-			chart.visible = true
-			chart.plot()
+		_unselect_chart()
 	else:  # If the chart is not selected.
-		_selected_chart = chart
-		charts_grid.columns = 1
-		# Make all the charts invisible (except the selected chart).
-		for chart in charts_grid.get_children():
-			chart.visible = chart == _selected_chart
-		_selected_chart_old_x_decim = _selected_chart.x_decim
-		_selected_chart.x_decim = 1
-		_selected_chart.show_points = true
-		# Plot the selected chart.
-		_selected_chart.plot()
-		if _selected_chart == weight_chart:
-			weight_chart.ChartName.visible = false
-			weight_chart_keys.visible = true
+		_select_chart(chart)
+
+
+func _select_chart(chart: Chart) -> void:
+	_selected_chart = chart
+	charts_grid.columns = 1
+	# Make all the charts invisible (except the selected chart).
+	for chart in charts_grid.get_children():
+		chart.visible = chart == _selected_chart
+	_selected_chart_old_x_decim = _selected_chart.x_decim
+	_selected_chart.x_decim = 1
+	_selected_chart.show_points = true
+	# Plot the selected chart.
+	_selected_chart.plot()
+	if _selected_chart == weight_chart:
+		weight_chart.ChartName.visible = false
+		weight_chart_keys.visible = true
+	back_button.visible = true
+
+
+func _unselect_chart() -> void:
+	charts_grid.columns = charts_grid_columns_default
+	_selected_chart.x_decim = _selected_chart_old_x_decim
+	_selected_chart.show_points = false
+	if _selected_chart == weight_chart:
+		weight_chart.ChartName.visible = true
+		weight_chart_keys.visible = false
+	_selected_chart = null
+	# Make every chart visible and plot them.
+	for chart in charts_grid.get_children():
+		chart.visible = true
+		chart.plot()
+	back_button.visible = false
+
+
+func _on_BackButton_pressed() -> void:
+	_unselect_chart()
