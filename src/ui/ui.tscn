@@ -85,13 +85,13 @@ dragger_visibility = 2
 
 [node name="Panel" type="PanelContainer" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer"]
 margin_right = 482.0
-margin_bottom = 111.0
+margin_bottom = 106.0
 rect_min_size = Vector2( 0, 50 )
 theme = ExtResource( 10 )
 
 [node name="MarginContainer" type="MarginContainer" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel"]
 margin_right = 482.0
-margin_bottom = 111.0
+margin_bottom = 106.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -101,7 +101,7 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 472.0
-margin_bottom = 101.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -109,7 +109,7 @@ script = ExtResource( 23 )
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
 margin_right = 229.0
-margin_bottom = 15.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
@@ -117,81 +117,81 @@ fit_content_height = true
 [node name="RichTextLabel6" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
 margin_left = 233.0
 margin_right = 462.0
-margin_bottom = 15.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
-margin_top = 19.0
+margin_top = 18.0
 margin_right = 229.0
-margin_bottom = 34.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
 margin_left = 233.0
-margin_top = 19.0
+margin_top = 18.0
 margin_right = 462.0
-margin_bottom = 34.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
-margin_top = 38.0
+margin_top = 36.0
 margin_right = 229.0
-margin_bottom = 53.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
 margin_left = 233.0
-margin_top = 38.0
+margin_top = 36.0
 margin_right = 462.0
-margin_bottom = 53.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
-margin_top = 57.0
+margin_top = 54.0
 margin_right = 229.0
-margin_bottom = 72.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel8" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
 margin_left = 233.0
-margin_top = 57.0
+margin_top = 54.0
 margin_right = 462.0
-margin_bottom = 72.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel9" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
-margin_top = 76.0
+margin_top = 72.0
 margin_right = 229.0
-margin_bottom = 91.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="RichTextLabel10" type="RichTextLabel" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer"]
 margin_left = 233.0
-margin_top = 76.0
+margin_top = 72.0
 margin_right = 462.0
-margin_bottom = 91.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content_height = true
 
 [node name="Truck Viewer" type="ViewportContainer" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer"]
-margin_top = 111.0
+margin_top = 106.0
 margin_right = 482.0
 margin_bottom = 395.0
 size_flags_stretch_ratio = 1.5
@@ -202,7 +202,7 @@ __meta__ = {
 }
 
 [node name="TruckViewport" type="Viewport" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer"]
-size = Vector2( 482, 284 )
+size = Vector2( 482, 289 )
 handle_input_locally = false
 render_target_update_mode = 3
 physics_object_picking = true
@@ -211,10 +211,10 @@ physics_object_picking = true
 
 [node name="Time Selection" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer" instance=ExtResource( 2 )]
 visible = false
-margin_left = 5.0
-margin_top = 28.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 10.0
+margin_top = 33.0
+margin_right = -10.0
+margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
