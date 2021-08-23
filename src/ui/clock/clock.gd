@@ -1,10 +1,7 @@
-tool
 class_name Clock
 extends Control
 
 signal time_changed(new_time)
-
-const PLACEHOLDER_DAY := 3
 
 const TIME_BUTTON_SCENE := preload("res://ui/clock/time_button.tscn")
 
@@ -12,6 +9,7 @@ const IS_ANTIALIASED := true
 
 const OUTLINE_COLOR := Color("181425")
 const OUTLINE_THICKNESS := 2.0
+const OUTLINE_NUM_POINTS := 64
 
 const INNER_CIRCLE_RADIUS_PROPORTION := 0.25
 const INNER_CIRCLE_OUTLINE_THICKNESS := 2.0
@@ -32,6 +30,8 @@ const SAFETY_VALUE_TO_COLOR := {
 var _hour_safety_values: Array
 var _center: Vector2
 var _clock_radius: float
+# A dictionary containing time float values that match up to their time button
+# node instances.
 var _time_to_buttons := {}
 
 
@@ -67,15 +67,34 @@ func _get_hour_safety_values() -> Array:
 		var safety_value := 0
 		# Grabbing the data for that hour.
 		var hourly_data := DatabaseFetch.read_db_time_current_date(i)
+		# We only need the sensor values so the ID, DateTime, and Hour can be
+		# erased.
 		hourly_data.erase("ID")
 		hourly_data.erase("DateTime")
 		hourly_data.erase("Hour")
 		var trailer_weights := Util.get_trailer_weights(hourly_data)
-		var has_cargo := Util.has_cargo(trailer_weights)
+		# If the freezer is not in use then its temperature values can be ignored.
+		var is_freezer_in_use := Util.is_freezer_in_use(hourly_data)
+		# If the fridge is not in use then its temperature values can be ignored.
+		var is_fridge_in_use := Util.is_fridge_in_use(hourly_data)
+		# Iterate over the sensors.
 		for sensor in hourly_data:
 			var value: int = hourly_data[sensor]
+			# The identifier refers to the letter at the end of a sensor which
+			# differentiates it from other similar sensors in the same category.
 			var identifier: String = sensor[-1]
+			# The temp safety value is the safety value (0 means safe, 1 means
+			# caution, 2 means critical) for that specific sensor value.
+			# If the temp safety value is greater than the hourly safety value
+			# then the hourly safety value should be replaced with the temp
+			# safety value.
+			# This essentially means that any caution (1) warnings will override
+			# the rest of the sensor values being safe (0).
+			# And any critical (2) warnings will override the rest of the sensor
+			# values being safe (0) or caution (1).
 			var temp_safety_value: int
+			# Match the sensor to the correct type and assign the temp safety
+			# value based on if it fits within its appropriate limits.
 			if "TyrePressure" in sensor:
 				temp_safety_value = _get_safety_value(
 					value,
@@ -99,14 +118,14 @@ func _get_hour_safety_values() -> Array:
 					CautionLimits.MAX_WHEEL_BEARING_TEMP
 				)
 			elif "TrailerTemperature" in sensor:
-				if not has_cargo:
-					continue
-				if identifier in ["A", "B", "C"]:
+				# If either the freezer or fridge are not in use then it does not
+				# matter what their temperature values are.
+				if is_freezer_in_use and identifier in ["A", "B", "C"]:  # Freezer sensors
 					temp_safety_value = _get_safety_value(
 						value,
 						CriticalLimits.MIN_FREEZER_TEMP
 					)
-				elif identifier in ["D", "E", "F"]:
+				elif is_fridge_in_use and identifier in ["D", "E", "F"]:  # Fridge sensors
 					temp_safety_value = _get_safety_value(
 						value,
 						null,
@@ -127,7 +146,10 @@ func _get_hour_safety_values() -> Array:
 				# check further as it can't go any higher.
 				if safety_value == 2:
 					break
+		# Calculate the weight differential (difference between heaviest point
+		# and lightest point).
 		var weight_differential: int = trailer_weights.max() - trailer_weights.min()
+		# Apply the previous logic but just for the weight differential.
 		var weight_differential_safety_value = _get_safety_value(
 			weight_differential,
 			null,
@@ -137,6 +159,8 @@ func _get_hour_safety_values() -> Array:
 		)
 		if weight_differential_safety_value > safety_value:
 			safety_value = weight_differential_safety_value
+		# Append the final hourly safety value to the array of safety values for
+		# that day.
 		hour_safety_values.append(safety_value)
 	return hour_safety_values
 
@@ -152,46 +176,68 @@ func _get_safety_value(
 		(min_value_critical and value < min_value_critical) or
 		(max_value_critical and value > max_value_critical)
 	):
+		# If the value is critical.
 		return 2
 	elif (
 		(min_value_caution and value < min_value_caution) or
 		(max_value_caution and value > max_value_caution)
 	):
+		# If the value is caution.
 		return 1
+	# If the value is safe.
 	return 0
 
 
 func _add_time_buttons() -> void:
+	# Calculate the gap in time between each time button segment based on the
+	# number of time segments there should be.
 	var time_diff := 24.0 / TIME_NUM_SEGMENTS
 	for i in TIME_NUM_SEGMENTS:
+		# Calculate the button's time based on the time gap between each time
+		# button and the index of the current time button.
 		var time: float = time_diff * i
 		var button := TIME_BUTTON_SCENE.instance()
+		# Set the time button's text to a string formatted version of the time.
 		button.text = Util.to_time_string(time)
 		add_child(button)
 		button.connect("pressed", self, "_on_Time_Button_pressed", [button, time])
 		_time_to_buttons[time] = button
 
 
+func _on_Clock_item_rect_changed() -> void:
+	_on_rect_changed()
+
+
 func _on_rect_changed() -> void:
+	# Reset any parameters that are dependent on the clock's rect size if the
+	# rect is changed.
 	_center = rect_size / 2
 	_clock_radius = min(rect_size.x, rect_size.y) / 2
-	if Engine.editor_hint:
-		return
 	_set_time_button_positions()
 
 
 func _set_time_button_positions() -> void:
+	# Get the angle between each time button (relative to the clock's center).
 	var segment_angle := TAU / TIME_NUM_SEGMENTS
 	for i in get_child_count():
 		var button := get_child(i)
+		# Get the total angle deviation from midnight. 
 		var angle: float = segment_angle * i
+		# Get the direction unit vector.
 		var dir := Vector2.UP.rotated(angle)
+		# Calculate the button's position.
 		var vec := dir * _clock_radius
+		# An offset must be applied to the button's position so that it is
+		# centered.
 		var offset: Vector2 = -button.rect_size / 2
+		# The new button position should also take the position of the clock's
+		# center in mind.
 		button.rect_position = _center + vec + offset
 
 
 func _on_Time_Button_pressed(button: Button, time: float) -> void:
+	# If a time button is pressed then it should be disabled
+	# and all the other buttons should be unpressed and undisabled.
 	for child in get_children():
 		if child == button:
 			child.disabled = true
@@ -202,29 +248,61 @@ func _on_Time_Button_pressed(button: Button, time: float) -> void:
 
 
 func _draw_main_circle() -> void:
-	draw_arc(_center, _clock_radius, 0, TAU, 64, OUTLINE_COLOR, OUTLINE_THICKNESS, IS_ANTIALIASED)
+	# Draw the clock's outline.
+	draw_arc(
+		_center,
+		_clock_radius,
+		0,
+		TAU,
+		OUTLINE_NUM_POINTS,
+		OUTLINE_COLOR,
+		OUTLINE_THICKNESS,
+		IS_ANTIALIASED
+	)
 
 
 func _draw_hour_safety_sectors() -> void:
+	# Calculate the angle between each hour (keep in mind there are 24 hours).
 	var hour_angle := TAU / 24
+	# Iterate over every hour.
 	for i in range(24):
-		var start_angle := hour_angle * i - TAU / 4
-		var end_angle := hour_angle * (i + 1) - TAU / 4
+		# Calculate the initial angle for that hour sector.
+		var start_angle := hour_angle * i
+		# Calculate the end angle for that hour sector.
+		var end_angle := hour_angle * (i + 1)
+		# Get the safety value for that hour.
 		var safety_value: int = _hour_safety_values[i]
+		# Get the color based on that safety value.
 		var color: Color = SAFETY_VALUE_TO_COLOR[safety_value]
+		# Draw the sector.
 		_draw_sector(_center, _clock_radius, start_angle, end_angle, color, IS_ANTIALIASED)
 
 
 func _draw_hour_safety_segments() -> void:
+	# Calculate the angle between each hour (keep in mind there are 24 hours).
 	var hour_angle := TAU / 24
+	# Iterate over every hour
 	for i in range(24):
+		# Get the previous safety value (hour - 1).
+		# Keep in mind it should wrap so if it is currently 00:00 then the
+		# previous hour would be 23:00.
 		var prev_safety_value: float = _hour_safety_values[(i - 1) % 24]
+		# Get the current safety value for that hour.
 		var safety_value: float = _hour_safety_values[i]
+		# If the current safety value is different from the previous safety
+		# value then draw a segment division.
 		if safety_value != prev_safety_value:
+			# Calculate the angle of that segment division.
 			var angle := hour_angle * i
+			# Calculate the direction unit vector.
 			var dir := Vector2.UP.rotated(angle)
+			# Calculate the offset the division should end at relative to the
+			# clock's center.
 			var vec := dir * _clock_radius
+			# Calculate the division's final position by taking into account
+			# the clock's center.
 			var final_pos := _center + vec
+			# Draw the segment division line.
 			draw_line(_center, final_pos, OUTLINE_COLOR, OUTLINE_THICKNESS, IS_ANTIALIASED)
 
 
@@ -236,16 +314,19 @@ func _draw_sector(
 	color: Color,
 	antialiased: bool = false
 ) -> void:
+	# Credit: https://docs.godotengine.org/en/stable/tutorials/2d/custom_drawing_in_2d.html#arc-polygon-function
 	var nb_points := 32
+	# The points in the sector should consistent of the center as well as the
+	# points that lie on the sector's arc.
 	var points_arc := PoolVector2Array([center])
 	var colors := PoolColorArray([color])
 	for i in range(nb_points + 1):
-		var angle = start_angle + i * (end_angle - start_angle) / nb_points + TAU / 4
+		# Calculate the angle of this point of the arc.
+		var angle = start_angle + i * (end_angle - start_angle) / nb_points
+		# Calculate the offset of the point relative to the center.
 		var vec := Vector2.UP.rotated(angle) * radius
+		# Calculate the final point position.
 		var point := center + vec
 		points_arc.push_back(point)
+	# Draw the sector.
 	draw_polygon(points_arc, colors, PoolVector2Array(), null, null, antialiased)
-
-
-func _on_Clock_item_rect_changed() -> void:
-	_on_rect_changed()
