@@ -32,31 +32,31 @@ const DATA_CATEGORY_TO_SORT_DESCENDING := {
 	"TrailerBrakePadsA": false,
 }
 
-const TYRE_UNPRESSURIZED_CRITICAL_WARNING := "%s tyre %s [color=#ff0000]pressure too low![/color] (%s psi)"
-const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s [color=#FFFF00]pressure very low![/color] (%s psi)"
-const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s [color=#ff0000]pressure too high![/color] (%s psi)"
-const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s [color=#FFFF00]pressure very high![/color] (%s psi)"
+const TYRE_UNPRESSURIZED_CRITICAL_WARNING := "%s tyre %s [color=#e43b44]pressure too low![/color] (%s psi)"
+const TYRE_UNPRESSURIZED_CAUTION_WARNING := "%s tyre %s [color=#fee761]pressure very low![/color] (%s psi)"
+const TYRE_PRESSURIZED_CRITICAL_WARNING := "%s tyre %s [color=#e43b44]pressure too high![/color] (%s psi)"
+const TYRE_PRESSURIZED_CAUTION_WARNING := "%s tyre %s [color=#fee761]pressure very high![/color] (%s psi)"
 
-const BRAKE_PADS_CRITICAL_WARNING := "%s brake pad %s [color=#ff0000]too worn down![/color] (%s%% left)"
-const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s [color=#FFFF00]very worn down![/color] (%s%% left)"
+const BRAKE_PADS_CRITICAL_WARNING := "%s brake pad %s [color=#e43b44]too worn down![/color] (%s%% left)"
+const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s [color=#fee761]very worn down![/color] (%s%% left)"
 
-const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s [color=#ff0000]too hot![/color] (%s°C)"
-const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s [color=#FFFF00]very hot![/color] (%s°C)"
+const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s [color=#e43b44]too hot![/color] (%s°C)"
+const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s [color=#fee761]very hot![/color] (%s°C)"
 
-const FRIDGE_TEMP_WARM_CRITICAL_WARNING := "Fridge temperature at point %s [color=#ff0000]too warm![/color] (%s°C)"
-const FREEZER_TEMP_WARM_CRITICAL_WARNING := "Freezer temperature at point %s [color=#ff0000]too warm![/color] (%s°C)"
+const FREEZER_TEMP_WARM_CRITICAL_WARNING := "Freezer temperature at point %s [color=#e43b44]too warm![/color] (%s°C)"
+const FRIDGE_TEMP_WARM_CRITICAL_WARNING := "Fridge temperature at point %s [color=#e43b44]too warm![/color] (%s°C)"
 
-const TRAILER_HEAVY_CRITICAL_WARNING := "Trailer weight at point %s [color=#ff0000]too heavy![/color] (%s kg)"
-const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s [color=#FFFF00]very heavy![/color] (%s kg)"
+const TRAILER_HEAVY_CRITICAL_WARNING := "Trailer weight at point %s [color=#e43b44]too heavy![/color] (%s kg)"
+const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s [color=#fee761]very heavy![/color] (%s kg)"
 
-const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight [color=#ff0000]not evenly dispersed![/color]"
-const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight [color=#FFFF00]not very evenly dispersed![/color]"
+const WEIGHT_EVENLY_DISPERSED_CRITICAL_WARNING := "Trailer weight [color=#e43b44]not evenly dispersed![/color]"
+const WEIGHT_EVENLY_DISPERSED_CAUTION_WARNING := "Trailer weight [color=#fee761]not very evenly dispersed![/color]"
 
 var _critical_warnings: Array
 var _caution_warnings: Array
 
-onready var critical_warnings_vbox: VBoxContainer = $VSplitContainer/HSplitContainer/Critical/ScrollContainer/CriticalWarnings
-onready var caution_warnings_vbox: VBoxContainer = $VSplitContainer/HSplitContainer/Caution/ScrollContainer/CautionWarnings
+onready var critical_warnings_vbox: VBoxContainer = $MarginContainer/VBoxContainer/HSplitContainer/Critical/MarginContainer/ScrollContainer/CriticalWarnings
+onready var caution_warnings_vbox: VBoxContainer = $MarginContainer/VBoxContainer/HSplitContainer/Caution/MarginContainer/ScrollContainer/CautionWarnings
 onready var limits_popup: Popup = $LimitsPopup
 
 

@@ -1,110 +1,171 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/warnings/warnings.gd" type="Script" id=2]
 [ext_resource path="res://ui/warnings/limits_popup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/warnings/button_hover.tres" type="StyleBox" id=4]
+[ext_resource path="res://ui/warnings/button_normal.stylebox" type="StyleBox" id=5]
+[ext_resource path="res://ui/warnings/button_pressed.tres" type="StyleBox" id=6]
+[ext_resource path="res://ui/warnings/warnings_scroll_container.theme" type="Theme" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.14902, 0.168627, 0.266667, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Warnings" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LimitsButton" type="Button" parent="."]
-margin_left = 928.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 26.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 595.0
+mouse_filter = 2
+
+[node name="TopRow" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 1014.0
+margin_bottom = 23.0
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+
+[node name="PingButton" type="Button" parent="MarginContainer/VBoxContainer/TopRow"]
+margin_left = 488.0
+margin_right = 526.0
+margin_bottom = 23.0
+focus_mode = 0
+size_flags_horizontal = 4
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Ping"
+
+[node name="LimitsButton" type="Button" parent="MarginContainer/VBoxContainer/TopRow"]
+margin_left = 917.0
+margin_right = 1004.0
+margin_bottom = 23.0
+focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "View Limits"
 align = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
-mouse_filter = 2
-collapsed = true
-dragger_visibility = 2
-
-[node name="TopRow" type="HBoxContainer" parent="VSplitContainer"]
-margin_right = 1010.0
-margin_bottom = 19.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopRow"]
+margin_left = 10.0
+margin_right = 1004.0
+margin_bottom = 23.0
 mouse_filter = 2
 
-[node name="CriticalLabel" type="Label" parent="VSplitContainer/TopRow"]
-margin_top = 3.0
-margin_right = 481.0
-margin_bottom = 16.0
+[node name="CriticalLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow/HBoxContainer"]
+margin_top = 5.0
+margin_right = 495.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 0.894118, 0.231373, 0.266667, 1 )
 text = "Critical"
 align = 1
 
-[node name="PingButton" type="Button" parent="VSplitContainer/TopRow"]
-margin_left = 485.0
-margin_right = 525.0
-margin_bottom = 19.0
-custom_fonts/font = ExtResource( 1 )
-text = "Ping"
-
-[node name="CautionLabel" type="Label" parent="VSplitContainer/TopRow"]
-margin_left = 529.0
-margin_top = 3.0
-margin_right = 1010.0
-margin_bottom = 16.0
+[node name="CautionLabel" type="Label" parent="MarginContainer/VBoxContainer/TopRow/HBoxContainer"]
+margin_left = 499.0
+margin_top = 5.0
+margin_right = 994.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_colors/font_color = Color( 0.996078, 0.905882, 0.380392, 1 )
 text = "Caution"
 align = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
-margin_top = 19.0
-margin_right = 1010.0
-margin_bottom = 586.0
-collapsed = true
-dragger_visibility = 2
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 27.0
+margin_right = 1014.0
+margin_bottom = 590.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+dragger_visibility = 1
 
-[node name="Critical" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
-margin_right = 505.0
-margin_bottom = 567.0
+[node name="Critical" type="PanelContainer" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+margin_right = 503.0
+margin_bottom = 563.0
 size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/Critical"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 498.0
-margin_bottom = 560.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Critical"]
+margin_right = 503.0
+margin_bottom = 563.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Critical/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 493.0
+margin_bottom = 553.0
+theme = ExtResource( 7 )
 scroll_horizontal_enabled = false
 
-[node name="CriticalWarnings" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/Critical/ScrollContainer"]
-margin_right = 491.0
+[node name="CriticalWarnings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Critical/MarginContainer/ScrollContainer"]
+margin_right = 483.0
 size_flags_horizontal = 3
 
-[node name="Caution" type="PanelContainer" parent="VSplitContainer/HSplitContainer"]
-margin_left = 505.0
-margin_right = 1010.0
-margin_bottom = 567.0
+[node name="Caution" type="PanelContainer" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+margin_left = 511.0
+margin_right = 1014.0
+margin_bottom = 563.0
 size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer/HSplitContainer/Caution"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 498.0
-margin_bottom = 560.0
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Caution"]
+margin_right = 503.0
+margin_bottom = 563.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Caution/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 493.0
+margin_bottom = 553.0
+theme = ExtResource( 7 )
 scroll_horizontal_enabled = false
 
-[node name="CautionWarnings" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/Caution/ScrollContainer"]
-margin_right = 491.0
+[node name="CautionWarnings" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/Caution/MarginContainer/ScrollContainer"]
+margin_right = 483.0
 size_flags_horizontal = 3
 
 [node name="LimitsPopup" parent="." instance=ExtResource( 3 )]
@@ -117,5 +178,5 @@ margin_bottom = 164.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[connection signal="pressed" from="LimitsButton" to="." method="_on_LimitsButton_pressed"]
-[connection signal="pressed" from="VSplitContainer/TopRow/PingButton" to="." method="_on_PingButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopRow/PingButton" to="." method="_on_PingButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopRow/LimitsButton" to="." method="_on_LimitsButton_pressed"]
