@@ -186,11 +186,11 @@ func truck_wheel_ab(wheels:String):
 
 func _on_CubeStaticBody_mouse_entered():
 	# Sets the color of temp sensor a on its status
-	var temp_a_color = check_temp(id[sensors["Cube"][0]], freezer_is_loaded, CriticalLimits.MIN_FREEZER_TEMP)
+	var temp_a_color = check_temp(id[sensors["Cube"][0]], freezer_is_loaded, CriticalLimits.MAX_FREEZER_TEMP)
 	# Sets the color of temp sensor b based on its status
-	var temp_b_color = check_temp(id[sensors["Cube"][1]], freezer_is_loaded, CriticalLimits.MIN_FREEZER_TEMP)
+	var temp_b_color = check_temp(id[sensors["Cube"][1]], freezer_is_loaded, CriticalLimits.MAX_FREEZER_TEMP)
 	# Sets the color of temp sensor c based on its status
-	var temp_c_color = check_temp(id[sensors["Cube"][2]], freezer_is_loaded, CriticalLimits.MIN_FREEZER_TEMP)
+	var temp_c_color = check_temp(id[sensors["Cube"][2]], freezer_is_loaded, CriticalLimits.MAX_FREEZER_TEMP)
 	# Sets the color of weight sensor g based on its status
 	var weight_g_color = check_weight(id[sensors["Cube"][3]])
 	

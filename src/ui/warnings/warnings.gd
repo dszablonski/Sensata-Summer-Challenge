@@ -43,8 +43,8 @@ const BRAKE_PADS_CAUTION_WARNING := "%s brake pad %s [color=#FFFF00]very worn do
 const WHEEL_BEARING_CRITICAL_WARNING := "%s wheel bearing %s [color=#ff0000]too hot![/color] (%s°C)"
 const WHEEL_BEARING_CAUTION_WARNING := "%s wheel bearing %s [color=#FFFF00]very hot![/color] (%s°C)"
 
-const FREEZER_TEMP_COLD_CRITICAL_WARNING := "Freezer temperature at point %s [color=#ff0000]too cold![/color] (%s°C)"
 const FRIDGE_TEMP_WARM_CRITICAL_WARNING := "Fridge temperature at point %s [color=#ff0000]too warm![/color] (%s°C)"
+const FREEZER_TEMP_WARM_CRITICAL_WARNING := "Freezer temperature at point %s [color=#ff0000]too warm![/color] (%s°C)"
 
 const TRAILER_HEAVY_CRITICAL_WARNING := "Trailer weight at point %s [color=#ff0000]too heavy![/color] (%s kg)"
 const TRAILER_HEAVY_CAUTION_WARNING := "Trailer weight at point %s [color=#FFFF00]very heavy![/color] (%s kg)"
@@ -146,8 +146,12 @@ func _update_warnings(data: Dictionary) -> void:
 				_add_warning_text(
 					value,
 					[identifier, value],
-					CriticalLimits.MIN_FREEZER_TEMP,
-					FREEZER_TEMP_COLD_CRITICAL_WARNING
+					null,
+					"",
+					null,
+					"",
+					CriticalLimits.MAX_FREEZER_TEMP,
+					FREEZER_TEMP_WARM_CRITICAL_WARNING
 				)
 			elif is_fridge_in_use and identifier in ["D", "E", "F"]:  # Fridge sensors
 				_add_warning_text(

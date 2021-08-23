@@ -11,5 +11,5 @@ const MAX_WHEEL_BEARING_TEMP := 55  # deg C
 const MAX_WEIGHT := 650  # kg - On any 1 sensor
 const MAX_WEIGHT_DIFFERENTIAL := 90  # kg
 
-const MIN_FREEZER_TEMP := -4  # deg C - While in use
+const MAX_FREEZER_TEMP := -4  # deg C - While in use
 const MAX_FRIDGE_TEMP := 6  # deg C - While in use
