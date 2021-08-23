@@ -1,11 +1,11 @@
 extends GridContainer
 
 # Stores hex value for green
-const good :String = "#00ff00"
+const good :String = "#63c74d"
 # Stores hex value for red 
-const warning :String = "#ff0000"
+const warning :String = "#e43b44"
 # Stores hex value for yellow
-const caution :String = "#ffff00"
+const caution :String = "#fee761"
 
 # Dictionary of the meshes and their corresponding 
 var sensors = {
