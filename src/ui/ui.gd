@@ -1,6 +1,6 @@
 extends Control
 
-onready var date_time: DateTimeLabel = $MarginContainer/VSplitContainer/HSplitContainer/LeftSide/MarginContainer/DateTime
+onready var date_time: DateTimeLabel = $MarginContainer/VSplitContainer/HSplitContainer/LeftSide/Timeline/MarginContainer/DateTime
 onready var clock: Clock = $"MarginContainer/VSplitContainer/HSplitContainer/RightSide/TabContainer/Time Selection"
 
 

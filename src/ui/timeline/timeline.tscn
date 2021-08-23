@@ -1,0 +1,227 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/Month1 text.gd" type="Script" id=2]
+[ext_resource path="res://ui/Month2 Text.gd" type="Script" id=3]
+[ext_resource path="res://ui/DateTimeDisplayer.gd" type="Script" id=4]
+[ext_resource path="res://ui/main_theme.theme" type="Theme" id=5]
+[ext_resource path="res://ui/Button4.gd" type="Script" id=7]
+[ext_resource path="res://ui/Button7.gd" type="Script" id=8]
+[ext_resource path="res://ui/Button3.gd" type="Script" id=10]
+[ext_resource path="res://ui/Button2.gd" type="Script" id=11]
+[ext_resource path="res://ui/Button6.gd" type="Script" id=12]
+[ext_resource path="res://ui/Button1.gd" type="Script" id=13]
+[ext_resource path="res://ui/Button5.gd" type="Script" id=14]
+[ext_resource path="res://RightArrow.png" type="Texture" id=16]
+[ext_resource path="res://LeftArrow.png" type="Texture" id=21]
+
+[node name="Timeline" type="VBoxContainer"]
+margin_right = 502.0
+margin_bottom = 104.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="HBoxContainer" parent="."]
+margin_right = 502.0
+margin_bottom = 33.0
+
+[node name="LeftMonth" type="Label" parent="MarginContainer"]
+margin_top = 10.0
+margin_right = 114.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Month 1"
+align = 1
+script = ExtResource( 2 )
+
+[node name="LeftArrow" type="Button" parent="MarginContainer"]
+margin_left = 118.0
+margin_right = 189.0
+margin_bottom = 33.0
+icon = ExtResource( 21 )
+
+[node name="DateTime" type="Label" parent="MarginContainer"]
+margin_left = 193.0
+margin_top = 10.0
+margin_right = 308.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1/6/2021 00:00"
+align = 1
+script = ExtResource( 4 )
+
+[node name="RightArrow" type="Button" parent="MarginContainer"]
+margin_left = 312.0
+margin_right = 383.0
+margin_bottom = 33.0
+icon = ExtResource( 16 )
+
+[node name="RightMonth" type="Label" parent="MarginContainer"]
+margin_left = 387.0
+margin_top = 10.0
+margin_right = 502.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Month 2"
+align = 1
+script = ExtResource( 3 )
+
+[node name="Days" type="PanelContainer" parent="."]
+margin_top = 37.0
+margin_right = 502.0
+margin_bottom = 104.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Days"]
+margin_right = 502.0
+margin_bottom = 67.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Days/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 492.0
+margin_bottom = 57.0
+alignment = 1
+
+[node name="Day" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_right = 65.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day"]
+margin_right = 65.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 13 )
+
+[node name="Day2" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_left = 69.0
+margin_right = 134.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day2"]
+margin_right = 65.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 11 )
+
+[node name="Day3" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_left = 138.0
+margin_right = 204.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day3"]
+margin_right = 66.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 10 )
+
+[node name="Day4" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_left = 208.0
+margin_right = 273.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day4"]
+margin_right = 65.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 7 )
+
+[node name="Day5" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_left = 277.0
+margin_right = 343.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day5"]
+margin_right = 66.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 14 )
+
+[node name="Day6" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_left = 347.0
+margin_right = 412.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day6"]
+margin_right = 65.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 12 )
+
+[node name="Day7" type="MarginContainer" parent="Days/MarginContainer/HBoxContainer"]
+margin_left = 416.0
+margin_right = 482.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Days/MarginContainer/HBoxContainer/Day7"]
+margin_right = 66.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+align = 0
+script = ExtResource( 8 )
+
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day3/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="MarginContainer/DateTime" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="MarginContainer/LeftMonth" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="MarginContainer/RightMonth" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day2/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day7/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day4/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day5/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/LeftArrow" to="Days/MarginContainer/HBoxContainer/Day6/Button" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day3/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="MarginContainer/DateTime" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="MarginContainer/LeftMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="MarginContainer/RightMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day2/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day7/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day4/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day5/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="MarginContainer/RightArrow" to="Days/MarginContainer/HBoxContainer/Day6/Button" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day/Button" to="MarginContainer/DateTime" method="_on_Button_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day2/Button" to="MarginContainer/DateTime" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day3/Button" to="MarginContainer/DateTime" method="_on_Button3_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day4/Button" to="MarginContainer/DateTime" method="_on_Button4_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day5/Button" to="MarginContainer/DateTime" method="_on_Button5_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day6/Button" to="MarginContainer/DateTime" method="_on_Button6_pressed"]
+[connection signal="pressed" from="Days/MarginContainer/HBoxContainer/Day7/Button" to="MarginContainer/DateTime" method="_on_Button7_pressed"]

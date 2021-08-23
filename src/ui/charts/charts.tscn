@@ -1,20 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/easy_charts/LineChart/line_chart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/charts/charts.gd" type="Script" id=3]
 [ext_resource path="res://ui/charts/weight_chart.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/panel.stylebox" type="StyleBox" id=5]
-[ext_resource path="res://ui/button_pressed.tres" type="StyleBox" id=6]
-[ext_resource path="res://ui/button_normal.stylebox" type="StyleBox" id=7]
-[ext_resource path="res://ui/button_hover.tres" type="StyleBox" id=8]
+[ext_resource path="res://ui/main_theme.theme" type="Theme" id=5]
 
 [node name="Charts" type="PanelContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
-custom_styles/panel = ExtResource( 5 )
+theme = ExtResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,7 +56,6 @@ Chart_Display/min_y_range = 0
 Chart_Display/max_y_range = 200.0
 Chart_Display/y_decim = 100.0
 Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/font = ExtResource( 2 )
@@ -92,7 +88,6 @@ Chart_Display/min_y_range = 0
 Chart_Display/max_y_range = 60.0
 Chart_Display/y_decim = 10.0
 Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/font = ExtResource( 2 )
@@ -126,7 +121,6 @@ Chart_Display/min_y_range = 0
 Chart_Display/max_y_range = 70.0
 Chart_Display/y_decim = 10.0
 Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
 Chart_Style/font = ExtResource( 2 )
@@ -150,9 +144,6 @@ rect_min_size = Vector2( 24, 24 )
 focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
-custom_styles/hover = ExtResource( 8 )
-custom_styles/pressed = ExtResource( 6 )
-custom_styles/normal = ExtResource( 7 )
 text = "x"
 
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_BackButton_pressed"]
