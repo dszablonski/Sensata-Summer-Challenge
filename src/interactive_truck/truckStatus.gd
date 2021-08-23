@@ -1,11 +1,11 @@
 extends Spatial
 
 # When everything is okay, green
-const good = Color(0,1,0)
+const good = Color(0.38823,0.78039,0.30196)
 # When something is near a limit, yellow
-const caution = Color(1,1,0)
+const caution = Color(0.99607,0.90588,0.38039)
 # When something is at a critical point, red
-const warning = Color(1,0,0)
+const warning = Color(0.89411,0.23137,0.26666)
 
 var current_id
 
