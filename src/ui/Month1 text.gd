@@ -50,6 +50,9 @@ func GetMonthName(MonthNum):
 
 
 func _on_LeftArrow_pressed():
+	# Hack: wait for all the other methods connected to the pressed signal to
+	# fire first.
+	yield(get_tree(), "idle_frame")
 	var Month=0
 	var Day=GlobalDate.StartDay-7
 	if Day<1:
@@ -62,6 +65,9 @@ func _on_LeftArrow_pressed():
 
 
 func _on_RightArrow_pressed():
+	# Hack: wait for all the other methods connected to the pressed signal to
+	# fire first.
+	yield(get_tree(), "idle_frame")
 	var Month=0
 	var Day=GlobalDate.StartDay-7
 	if Day<1:
