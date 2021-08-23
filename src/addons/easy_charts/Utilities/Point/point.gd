@@ -17,9 +17,14 @@ enum SHAPES {
 
 var shape : int = 0 setget set_shape, get_shape
 
+var size: int  # Hack ;)
+var size_highlighted: int
+
 signal _mouse_entered(point)
 signal _mouse_exited()
 signal _point_pressed(point)
+
+var units: String  # Hack ;)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,8 +32,8 @@ func _ready():
 
 func _draw():
 	if mouse_entered:
-		draw_point(7,color_outline)
-	draw_point(5,color)
+		draw_point(size_highlighted,color_outline)
+	draw_point(size,color)
 
 func draw_point(size : float, color : Color):
 	var factor : float
@@ -52,7 +57,7 @@ func draw_point(size : float, color : Color):
 			draw_line(OFFSET-Vector2(size,0), OFFSET+Vector2(size,0), color, size-5, true)
 			draw_line(OFFSET-Vector2(0,size), OFFSET+Vector2(0,size), color, size-5, true)
 
-func create_point(shape : int, color : Color, color_outline : Color, position : Vector2, value : Array, function : String):
+func create_point(shape : int, color : Color, color_outline : Color, position : Vector2, value : Array, function : String, units: String = "", size := 5, size_highlighted := 7):
 	self.shape = shape
 	self.color = color
 	self.color_outline = color_outline
@@ -60,6 +65,9 @@ func create_point(shape : int, color : Color, color_outline : Color, position : 
 	self.rect_position = point_position - OFFSET
 	self.point_value = value
 	self.function = function
+	self.units = units
+	self.size = size
+	self.size_highlighted = size_highlighted
 
 
 func _on_Point_mouse_entered():

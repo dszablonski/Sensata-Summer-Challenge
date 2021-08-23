@@ -158,9 +158,11 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Sensata Summer Challenge"
+config/name="Truck Viewer"
 run/main_scene="res://ui/ui.tscn"
+boot_splash/image="res://splash.png"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
