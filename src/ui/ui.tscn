@@ -253,11 +253,6 @@ margin_right = 329.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
 source = ";"
-Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
 [node name="LineChart2" parent="Chartspopup/HSplitContainer" instance=ExtResource( 22 )]
 anchor_right = 0.0
@@ -267,11 +262,6 @@ margin_right = 671.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
 source = ";"
-Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
 [connection signal="mouse_entered" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer" method="_on_TruckWheelStaticBody_mouse_entered"]
 [connection signal="mouse_exited" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer" method="_on_TruckWheelStaticBody_mouse_exited"]
