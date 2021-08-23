@@ -536,6 +536,7 @@ anchor_bottom = 0.0
 margin_right = 329.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
+
 source = ";"
 delimiter = ";"
 Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
