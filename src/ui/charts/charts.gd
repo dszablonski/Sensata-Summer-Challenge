@@ -21,7 +21,7 @@ onready var CHART_TO_SENSORS := {
 	$ChartsGrid/TruckWheelBearingTempChart: "TruckWheelBearingTemp",
 	$ChartsGrid/TruckBrakePadsChart: "TruckBrakePads",
 }
-onready var back_button: ToolButton = $BackButton
+onready var back_button: Button = $BackButton
 
 
 func _ready() -> void:
