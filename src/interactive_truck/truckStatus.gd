@@ -1,11 +1,11 @@
 extends Spatial
 
 # When everything is okay, green
-const good = Color(0,1,0)
+const good = Color(0.38823,0.78039,0.30196)
 # When something is near a limit, yellow
-const caution = Color(1,1,0)
+const caution = Color(0.99607,0.90588,0.38039)
 # When something is at a critical point, red
-const warning = Color(1,0,0)
+const warning = Color(0.89411,0.23137,0.26666)
 
 var current_id
 
@@ -61,13 +61,13 @@ func fridge_limits(id: Dictionary):
 			else:
 				pass
 		for j in range(2, 7):
-			if int(id[sensor[j]]) >= CriticalLimits.MAX_WEIGHT:
+			if int(id[sensor[j]]) > CriticalLimits.MAX_WEIGHT:
 				return warning
-			elif int(id[sensor[j]]) >= CautionLimits.MAX_WEIGHT:
+			elif int(id[sensor[j]]) > CautionLimits.MAX_WEIGHT:
 				return caution
-			elif weight_differential >= CriticalLimits.MAX_WEIGHT_DIFFERENTIAL:
+			elif weight_differential > CriticalLimits.MAX_WEIGHT_DIFFERENTIAL:
 				return warning
-			elif weight_differential >= CautionLimits.MAX_WEIGHT_DIFFERENTIAL:
+			elif weight_differential > CautionLimits.MAX_WEIGHT_DIFFERENTIAL:
 				return caution
 			else:
 				return good
@@ -77,17 +77,17 @@ func fridge_limits(id: Dictionary):
 func truck_wheel_ab_limits(id: Dictionary, wheel: String):
 	var sensor = sensors[wheel]
 	
-	if int(id[sensor[0]]) >= CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CriticalLimits.MIN_TYRE_PRESSURE:
+	if int(id[sensor[0]]) > CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CriticalLimits.MIN_TYRE_PRESSURE:
 			return warning
-	elif int(id[sensor[0]]) >= CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CautionLimits.MIN_TYRE_PRESSURE:
+	elif int(id[sensor[0]]) > CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CautionLimits.MIN_TYRE_PRESSURE:
 		return caution
-	elif int(id[sensor[1]]) <= CriticalLimits.MIN_BRAKE_PADS:
+	elif int(id[sensor[1]]) < CriticalLimits.MIN_BRAKE_PADS:
 		return warning
-	elif int(id[sensor[1]]) <= CautionLimits.MIN_BRAKE_PADS:
+	elif int(id[sensor[1]]) < CautionLimits.MIN_BRAKE_PADS:
 		return caution
-	elif int(id[sensor[2]]) >= CriticalLimits.MAX_WHEEL_BEARING_TEMP:
+	elif int(id[sensor[2]]) > CriticalLimits.MAX_WHEEL_BEARING_TEMP:
 		return warning
-	elif int(id[sensor[2]]) >= CautionLimits.MAX_WHEEL_BEARING_TEMP:
+	elif int(id[sensor[2]]) > CautionLimits.MAX_WHEEL_BEARING_TEMP:
 		return caution
 	else:
 		return good
@@ -95,13 +95,13 @@ func truck_wheel_ab_limits(id: Dictionary, wheel: String):
 func truck_wheel_df_limits(id: Dictionary, wheel: String):
 	var sensor = sensors[wheel]
 	
-	if int(id[sensor[0]]) >= CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CriticalLimits.MIN_TYRE_PRESSURE:
+	if int(id[sensor[0]]) > CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CriticalLimits.MIN_TYRE_PRESSURE:
 		return warning
-	elif int(id[sensor[0]]) >= CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CautionLimits.MIN_TYRE_PRESSURE:
+	elif int(id[sensor[0]]) > CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CautionLimits.MIN_TYRE_PRESSURE:
 		return caution
-	elif int(id[sensor[1]]) >= CriticalLimits.MAX_WHEEL_BEARING_TEMP:
+	elif int(id[sensor[1]]) > CriticalLimits.MAX_WHEEL_BEARING_TEMP:
 		return warning
-	elif int(id[sensor[1]]) >= CautionLimits.MAX_WHEEL_BEARING_TEMP:
+	elif int(id[sensor[1]]) > CautionLimits.MAX_WHEEL_BEARING_TEMP:
 		return caution
 	else:
 		return good
@@ -109,9 +109,9 @@ func truck_wheel_df_limits(id: Dictionary, wheel: String):
 func truck_wheel_ce_limits(id: Dictionary, wheel:String):
 	var sensor = sensors[wheel]
 	
-	if int(id[sensor[0]]) >= CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CriticalLimits.MIN_TYRE_PRESSURE:
+	if int(id[sensor[0]]) > CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CriticalLimits.MIN_TYRE_PRESSURE:
 			return warning
-	elif int(id[sensor[0]]) >= CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CautionLimits.MIN_TYRE_PRESSURE:
+	elif int(id[sensor[0]]) > CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CautionLimits.MIN_TYRE_PRESSURE:
 		return caution
 	else:
 		return good
@@ -119,13 +119,13 @@ func truck_wheel_ce_limits(id: Dictionary, wheel:String):
 func trailer_wheel_limits(id: Dictionary, wheel: String):
 	var sensor = sensors[wheel]
 	
-	if int(id[sensor[0]]) >= CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CriticalLimits.MIN_TYRE_PRESSURE:
+	if int(id[sensor[0]]) > CriticalLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CriticalLimits.MIN_TYRE_PRESSURE:
 			return warning
-	elif int(id[sensor[0]]) >= CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) <= CautionLimits.MIN_TYRE_PRESSURE:
+	elif int(id[sensor[0]]) > CautionLimits.MAX_TYRE_PRESSURE or int(id[sensor[0]]) < CautionLimits.MIN_TYRE_PRESSURE:
 		return caution
-	elif int(id[sensor[1]]) <= CriticalLimits.MIN_BRAKE_PADS:
+	elif int(id[sensor[1]]) < CriticalLimits.MIN_BRAKE_PADS:
 		return warning
-	elif int(id[sensor[1]]) <= CautionLimits.MIN_BRAKE_PADS:
+	elif int(id[sensor[1]]) < CautionLimits.MIN_BRAKE_PADS:
 		return caution
 	else:
 		return good
@@ -152,10 +152,10 @@ func freezer_limits(id: Dictionary):
 		else:
 			pass
 	# Compares the freezer weight to the critical limit
-	if freezer_weight >= CriticalLimits.MAX_WEIGHT:
+	if freezer_weight > CriticalLimits.MAX_WEIGHT:
 		# Will return warning color (red) and break the loop
 		return warning
-	elif freezer_weight >= CautionLimits.MAX_WEIGHT:
+	elif freezer_weight > CautionLimits.MAX_WEIGHT:
 		return caution
 	else:
 		return good
