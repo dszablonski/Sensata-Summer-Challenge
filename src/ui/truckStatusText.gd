@@ -1,11 +1,11 @@
 extends GridContainer
 
 # Stores hex value for green
-const good :String = "#00ff00"
+const good :String = "#63c74d"
 # Stores hex value for red 
-const warning :String = "#ff0000"
+const warning :String = "#e43b44"
 # Stores hex value for yellow
-const caution :String = "#ffff00"
+const caution :String = "#fee761"
 
 # Dictionary of the meshes and their corresponding 
 var sensors = {
@@ -57,12 +57,12 @@ func clear():
 func check_tyre_pressure(sensor):
 	# If the sensor passed through is less than or equal to the critical minimum for tyre 
 	# pressure or more than the critical maximum,  
-	if sensor <= CriticalLimits.MIN_TYRE_PRESSURE or sensor >= CriticalLimits.MAX_TYRE_PRESSURE:
+	if sensor < CriticalLimits.MIN_TYRE_PRESSURE or sensor > CriticalLimits.MAX_TYRE_PRESSURE:
 		# Return the variable warning
 		return warning
 	# If the sensor passed through is less than or equal to the caution minimum for tyre
 	# pressure or more than the caution maxium,
-	elif sensor <= CautionLimits.MIN_TYRE_PRESSURE or sensor >= CautionLimits.MAX_TYRE_PRESSURE: 
+	elif sensor < CautionLimits.MIN_TYRE_PRESSURE or sensor > CautionLimits.MAX_TYRE_PRESSURE: 
 		# Return the variable caution
 		return caution
 	# Otherwise
@@ -74,12 +74,12 @@ func check_tyre_pressure(sensor):
 func check_break_pads(sensor):
 	# If the sensor passed through is less than or equal to the critical minimum
 	#  for brake pad percentage,
-	if sensor <= CriticalLimits.MIN_BRAKE_PADS:
+	if sensor < CriticalLimits.MIN_BRAKE_PADS:
 		# Return the variable warning
 		return warning
 	# If the sensor passed through is less than or equal to  the caution minimum
 	#  for brake pad percentage,
-	elif sensor <= CautionLimits.MIN_BRAKE_PADS:
+	elif sensor < CautionLimits.MIN_BRAKE_PADS:
 		# Return the variable caution
 		return caution
 	# Otherwise
@@ -91,12 +91,12 @@ func check_break_pads(sensor):
 func check_wheel_bearing(sensor):
 	# If the sensor passed through is higher or equal to the maximum critical
 	# wheel bearing temperature,
-	if sensor >= CriticalLimits.MAX_WHEEL_BEARING_TEMP:
+	if sensor > CriticalLimits.MAX_WHEEL_BEARING_TEMP:
 		# Return the warning variable
 		return warning
 	# If the sensor passed through is higher or equal to the maximum caution
 	# wheel bearing temperature
-	elif sensor >= CautionLimits.MAX_WHEEL_BEARING_TEMP:
+	elif sensor > CautionLimits.MAX_WHEEL_BEARING_TEMP:
 		# Returnt the caution variable
 		return caution
 	# Otherwise
@@ -119,11 +119,11 @@ func check_temp(sensor, loaded, crit_temp):
 # Checks weight status
 func check_weight(sensor):
 	# If the sensor is greater than or equal to the crticial weight limit,
-	if sensor >= CriticalLimits.MAX_WEIGHT:
+	if sensor > CriticalLimits.MAX_WEIGHT:
 		# return the variable warning
 		return warning
 	# If the sensor is greater than or equal to the caution weight limit,
-	elif sensor >= CautionLimits.MAX_WEIGHT:
+	elif sensor > CautionLimits.MAX_WEIGHT:
 		# return the variable caution
 		return caution
 	# Otherwise
@@ -207,6 +207,36 @@ func _on_CubeStaticBody_mouse_entered():
 	$RichTextLabel4.bbcode_text = "Weight Sensor G : [color=%s]%s[/color]KG" %[weight_g_color, int(id[sensors["Cube"][3]])]
 
 
+func _on_FridgeStaticBody_mouse_entered():
+	# Gets the color status for each weight sensor on the fridge
+	var weight_color_a = check_weight(id[sensors["Cube001"][3]])
+	var weight_color_d = check_weight(id[sensors["Cube001"][4]])
+	var weight_color_c = check_weight(id[sensors["Cube001"][5]])
+	var weight_color_f = check_weight(id[sensors["Cube001"][6]])
+	# Gets teh color status for temp sensor d
+	var temp_d_color = check_temp(id[sensors["Cube001"][0]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
+	# Gets teh color status for temp sensor e
+	var temp_e_color = check_temp(id[sensors["Cube001"][1]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
+	# gets the color satus for temp sensor f
+	var temp_f_color = check_temp(id[sensors["Cube001"][2]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
+	
+	# The word fridge colored blue
+	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
+	# Returns the stat of temp sensor d, coloring it the color of its status
+	$RichTextLabel.bbcode_text = "Temperature Sensor D : [color=%s]%s[/color]C" %[temp_d_color, int(id[sensors["Cube001"][0]])]
+	# Returns the stat of temp sensor e, coloring it the color of its status
+	$RichTextLabel3.bbcode_text = "Temperature Sensor E : [color=%s]%s[/color]C" %[temp_e_color, int(id[sensors["Cube001"][1]])]
+	# Returns the stat of temp sensor f, coloring it the color of its status
+	$RichTextLabel2.bbcode_text = "Temperature Sensor F : [color=%s]%s[/color]C" %[temp_f_color, int(id[sensors["Cube001"][2]])]
+	# Returns teh stat of the avg weight and colors it the color of its status
+	$RichTextLabel4.bbcode_text = "Weight Sensor A : [color=%s]%s[/color]KG" %[weight_color_a, id[sensors["Cube001"][3]]]
+	$RichTextLabel7.bbcode_text = "Weight Sensor D : [color=%s]%s[/color]KG" %[weight_color_d, id[sensors["Cube001"][4]]]
+	$RichTextLabel8.bbcode_text = "Weight Sensor C : [color=%s]%s[/color]KG" %[weight_color_c, id[sensors["Cube001"][5]]]
+	$RichTextLabel9.bbcode_text = "Weight Sensor F : [color=%s]%s[/color]KG" %[weight_color_f, id[sensors["Cube001"][6]]]
+
+func _on_FridgeStaticBody_mouse_exited():
+	clear()
+	
 # The following functions are called when the mouse enters a mesh or exits a mesh
 #
 #
@@ -307,31 +337,3 @@ func _on_TruckWheelStaticBody_mouse_exited():
 	clear()
 
 
-func _on_FridgeStaticBody_mouse_entered():
-	# Gets the color status for each weight sensor on the fridge
-	var weight_color_a = check_weight(id[sensors["Cube001"][3]])
-	var weight_color_d = check_weight(id[sensors["Cube001"][4]])
-	var weight_color_c = check_weight(id[sensors["Cube001"][5]])
-	var weight_color_f = check_weight(id[sensors["Cube001"][6]])
-	# Gets teh color status for temp sensor d
-	var temp_d_color = check_temp(id[sensors["Cube001"][0]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
-	# Gets teh color status for temp sensor e
-	var temp_e_color = check_temp(id[sensors["Cube001"][1]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
-	# gets the color satus for temp sensor f
-	var temp_f_color = check_temp(id[sensors["Cube001"][2]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP)
-	
-	# The word fridge colored blue
-	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
-	# Returns the stat of temp sensor d, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Temperature Sensor D : [color=%s]%s[/color]C" %[temp_d_color, int(id[sensors["Cube001"][0]])]
-	# Returns the stat of temp sensor e, coloring it the color of its status
-	$RichTextLabel3.bbcode_text = "Temperature Sensor E : [color=%s]%s[/color]C" %[temp_e_color, int(id[sensors["Cube001"][1]])]
-	# Returns the stat of temp sensor f, coloring it the color of its status
-	$RichTextLabel2.bbcode_text = "Temperature Sensor F : [color=%s]%s[/color]C" %[temp_f_color, int(id[sensors["Cube001"][2]])]
-	# Returns teh stat of the avg weight and colors it the color of its status
-	$RichTextLabel4.bbcode_text = "Weight Sensor A : [color=%s]%s[/color]KG" %[weight_color_a, id[sensors["Cube001"][3]]]
-	$RichTextLabel7.bbcode_text = "Weight Sensor D : [color=%s]%s[/color]KG" %[weight_color_d, id[sensors["Cube001"][4]]]
-	$RichTextLabel8.bbcode_text = "Weight Sensor C : [color=%s]%s[/color]KG" %[weight_color_c, id[sensors["Cube001"][5]]]
-	$RichTextLabel9.bbcode_text = "Weight Sensor F : [color=%s]%s[/color]KG" %[weight_color_f, id[sensors["Cube001"][6]]]
-func _on_FridgeStaticBody_mouse_exited():
-	clear()
