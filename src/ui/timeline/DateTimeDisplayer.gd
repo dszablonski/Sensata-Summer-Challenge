@@ -2,6 +2,7 @@ class_name DateTimeLabel
 extends Label
 
 var _selected_button: Button
+var _selected_button_date: Dictionary
 
 onready var days_hbox = get_parent().get_parent().get_node("Days/DaysMargin/DaysHBox")
 
@@ -32,6 +33,7 @@ func force_press_day_button(year: int, month: int, day: int):
 		var date = button.get_date()
 		if date.year == year and date.month == month and date.day == day:
 			_selected_button = button
+			_selected_button_date = _selected_button.get_date()
 			_selected_button.disabled = true
 			return
 
@@ -40,6 +42,7 @@ func _on_Button_pressed(button):#button 1 - This makes the first button input th
 	if _selected_button:
 		_selected_button.disabled = false
 	_selected_button = button
+	_selected_button_date = _selected_button.get_date()
 	_selected_button.disabled = true
 	var date = button.get_date()
 	var year = date.year
@@ -52,6 +55,9 @@ func _on_Button_pressed(button):#button 1 - This makes the first button input th
 				GlobalDate.GlobalMonth=(month)
 				GlobalDate.GlobalYear=(year)
 				UpdateDate()
+
+func _are_dates_equal(date1: Dictionary, date2: Dictionary) -> bool:
+	return date1.year == date2.year and date1.month == date2.month and date1.day == date2.day
 
 func _on_LeftArrow_pressed():
 	GlobalDate.ArrowFirstClick=0
@@ -72,7 +78,9 @@ func _on_LeftArrow_pressed():
 			GetDaysInMonth(GlobalDate.StartMonth)
 			GlobalDate.StartDay=GlobalDate.StartDay+GlobalDate.DaysInMonth
 	UpdateButtonText()
-	pass # Replace with function body.
+	var current_selected_button_date = _selected_button.get_date()
+	var are_dates_equal = _are_dates_equal(_selected_button_date, current_selected_button_date)
+	_selected_button.disabled = are_dates_equal
 
 
 func _on_RightArrow_pressed():
@@ -115,7 +123,9 @@ func _on_RightArrow_pressed():
 					GlobalDate.StartYear=GlobalDate.StartYear+1
 					GlobalDate.StartMonth=1
 				UpdateButtonText()
-	pass # Replace with function body.
+	var current_selected_button_date = _selected_button.get_date()
+	var are_dates_equal = _are_dates_equal(_selected_button_date, current_selected_button_date)
+	_selected_button.disabled = are_dates_equal
 
 func GetDaysInMonth(month):
 	if month==2:#checks if month has 28 days and if it does sends 28 back
