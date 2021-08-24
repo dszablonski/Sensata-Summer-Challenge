@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/warnings/limits_popup.gd" type="Script" id=1]
+[ext_resource path="res://ui/warnings/limits_popup_theme.tres" type="Theme" id=2]
 
 [node name="LimitsPopup" type="PopupPanel"]
 anchor_right = 0.384
 anchor_bottom = 0.262
 margin_right = -0.216003
 margin_bottom = -0.200012
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,10 +17,6 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -28,21 +26,22 @@ __meta__ = {
 }
 
 [node name="CloseButton" type="ToolButton" parent="MarginContainer"]
-margin_left = 362.0
+margin_left = 366.0
 margin_top = 4.0
-margin_right = 381.0
-margin_bottom = 26.0
+margin_right = 389.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 23, 23 )
 focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
-align = 2
+flat = false
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
-margin_left = 4.0
+margin_left = 6.0
 margin_top = 4.0
-margin_right = 381.0
-margin_bottom = 145.0
+margin_right = 387.0
+margin_bottom = 151.0
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -50,8 +49,8 @@ custom_constants/hseparation = 6
 columns = 4
 
 [node name="SafeLimits" type="RichTextLabel" parent="MarginContainer/GridContainer"]
-margin_right = 163.0
-margin_bottom = 15.0
+margin_right = 161.0
+margin_bottom = 28.0
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center][u]Safe Limits"
@@ -60,9 +59,9 @@ fit_content_height = true
 scroll_active = false
 
 [node name="Value" type="RichTextLabel" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
+margin_left = 167.0
 margin_right = 230.0
-margin_bottom = 15.0
+margin_bottom = 28.0
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center][u]Value"
@@ -73,7 +72,7 @@ scroll_active = false
 [node name="Units" type="RichTextLabel" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
 margin_right = 270.0
-margin_bottom = 15.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 34, 0 )
 mouse_filter = 2
 bbcode_enabled = true
@@ -84,8 +83,8 @@ scroll_active = false
 
 [node name="Notes" type="RichTextLabel" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_right = 377.0
-margin_bottom = 15.0
+margin_right = 381.0
+margin_bottom = 28.0
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[center][u]Notes"
@@ -94,215 +93,215 @@ fit_content_height = true
 scroll_active = false
 
 [node name="TyrePressure" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 19.0
-margin_right = 163.0
-margin_bottom = 33.0
+margin_top = 32.0
+margin_right = 161.0
+margin_bottom = 45.0
 text = "Tyre Pressure"
 align = 1
 
 [node name="TyrePressureValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 19.0
+margin_left = 167.0
+margin_top = 32.0
 margin_right = 230.0
-margin_bottom = 33.0
+margin_bottom = 45.0
 text = "95 to 125"
 align = 1
 
 [node name="TyrePressureUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 19.0
+margin_top = 32.0
 margin_right = 270.0
-margin_bottom = 33.0
+margin_bottom = 45.0
 text = "psi"
 align = 1
 
 [node name="TyrePressureNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 19.0
-margin_right = 377.0
-margin_bottom = 33.0
+margin_top = 32.0
+margin_right = 381.0
+margin_bottom = 45.0
 align = 1
 
 [node name="BrakePads" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 37.0
-margin_right = 163.0
-margin_bottom = 51.0
+margin_top = 49.0
+margin_right = 161.0
+margin_bottom = 62.0
 text = "Brake Pads Min %"
 align = 1
 
 [node name="BrakePadsValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 37.0
+margin_left = 167.0
+margin_top = 49.0
 margin_right = 230.0
-margin_bottom = 51.0
+margin_bottom = 62.0
 text = "15"
 align = 1
 
 [node name="BrakePadsUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 37.0
+margin_top = 49.0
 margin_right = 270.0
-margin_bottom = 51.0
+margin_bottom = 62.0
 text = "%"
 align = 1
 
 [node name="BrakePadsNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 37.0
-margin_right = 377.0
-margin_bottom = 51.0
+margin_top = 49.0
+margin_right = 381.0
+margin_bottom = 62.0
 align = 1
 
 [node name="WheelBearingTemp" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 55.0
-margin_right = 163.0
-margin_bottom = 69.0
+margin_top = 66.0
+margin_right = 161.0
+margin_bottom = 79.0
 text = "Max Wheel Bearing Temp"
 align = 1
 
 [node name="WheelBearingTempValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 55.0
+margin_left = 167.0
+margin_top = 66.0
 margin_right = 230.0
-margin_bottom = 69.0
+margin_bottom = 79.0
 text = "55"
 align = 1
 
 [node name="WheelBearingTempUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 55.0
+margin_top = 66.0
 margin_right = 270.0
-margin_bottom = 69.0
+margin_bottom = 79.0
 text = "°C"
 align = 1
 
 [node name="WheelBearingTempNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 55.0
-margin_right = 377.0
-margin_bottom = 69.0
+margin_top = 66.0
+margin_right = 381.0
+margin_bottom = 79.0
 align = 1
 
 [node name="Weight" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 73.0
-margin_right = 163.0
-margin_bottom = 87.0
+margin_top = 83.0
+margin_right = 161.0
+margin_bottom = 96.0
 text = "Weight"
 align = 1
 
 [node name="WeightValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 73.0
+margin_left = 167.0
+margin_top = 83.0
 margin_right = 230.0
-margin_bottom = 87.0
+margin_bottom = 96.0
 text = "650"
 align = 1
 
 [node name="WeightUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 73.0
+margin_top = 83.0
 margin_right = 270.0
-margin_bottom = 87.0
+margin_bottom = 96.0
 text = "kg"
 align = 1
 
 [node name="WeightNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 73.0
-margin_right = 377.0
-margin_bottom = 87.0
+margin_top = 83.0
+margin_right = 381.0
+margin_bottom = 96.0
 text = "on any 1 sensor"
 align = 1
 
 [node name="MaxWeightDifferential" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 91.0
-margin_right = 163.0
-margin_bottom = 105.0
+margin_top = 100.0
+margin_right = 161.0
+margin_bottom = 113.0
 text = "Max Weight Differential"
 align = 1
 
 [node name="MaxWeightDifferentialValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 91.0
+margin_left = 167.0
+margin_top = 100.0
 margin_right = 230.0
-margin_bottom = 105.0
+margin_bottom = 113.0
 text = "90"
 align = 1
 
 [node name="MaxWeightDifferentialUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 91.0
+margin_top = 100.0
 margin_right = 270.0
-margin_bottom = 105.0
+margin_bottom = 113.0
 text = "kg"
 align = 1
 
 [node name="MaxWeightDifferentialNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 91.0
-margin_right = 377.0
-margin_bottom = 105.0
+margin_top = 100.0
+margin_right = 381.0
+margin_bottom = 113.0
 align = 1
 
 [node name="FreezerTemp" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 109.0
-margin_right = 163.0
-margin_bottom = 123.0
+margin_top = 117.0
+margin_right = 161.0
+margin_bottom = 130.0
 text = "Refrigeration Temp"
 align = 1
 
 [node name="FreezerTempValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 109.0
+margin_left = 167.0
+margin_top = 117.0
 margin_right = 230.0
-margin_bottom = 123.0
+margin_bottom = 130.0
 text = "-4"
 align = 1
 
 [node name="FreezerTempUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 109.0
+margin_top = 117.0
 margin_right = 270.0
-margin_bottom = 123.0
+margin_bottom = 130.0
 text = "°C"
 align = 1
 
 [node name="FreezerTempNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 109.0
-margin_right = 377.0
-margin_bottom = 123.0
+margin_top = 117.0
+margin_right = 381.0
+margin_bottom = 130.0
 text = "while in use"
 align = 1
 
 [node name="FridgeTemp" type="Label" parent="MarginContainer/GridContainer"]
-margin_top = 127.0
-margin_right = 163.0
-margin_bottom = 141.0
+margin_top = 134.0
+margin_right = 161.0
+margin_bottom = 147.0
 text = "Freezer Temp"
 align = 1
 
 [node name="FridgeTempValue" type="Label" parent="MarginContainer/GridContainer"]
-margin_left = 169.0
-margin_top = 127.0
+margin_left = 167.0
+margin_top = 134.0
 margin_right = 230.0
-margin_bottom = 141.0
+margin_bottom = 147.0
 text = "6"
 align = 1
 
 [node name="FridgeTempUnits" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 236.0
-margin_top = 127.0
+margin_top = 134.0
 margin_right = 270.0
-margin_bottom = 141.0
+margin_bottom = 147.0
 text = "°C"
 align = 1
 
 [node name="FridgeTempNotes" type="Label" parent="MarginContainer/GridContainer"]
 margin_left = 276.0
-margin_top = 127.0
-margin_right = 377.0
-margin_bottom = 141.0
+margin_top = 134.0
+margin_right = 381.0
+margin_bottom = 147.0
 text = "while in use"
 align = 1
 
