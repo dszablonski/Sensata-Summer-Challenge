@@ -1,30 +1,46 @@
 extends Button
 
 const CAUTION_LEVEL_TO_NORMAL_COLOR := {
-	-1: Color("3A4466"),  # No data
+	-1: Color("181425"),  # No data
 	0: Color("63C74D"),  # Safe
 	1: Color("FEE761"),  # Caution
 	2: Color("E43B44"),  # Critical
 }
 
 const CAUTION_LEVEL_TO_HOVER_COLOR := {
-	-1: Color("3A4466"),  # No data
+	-1: Color("181425"),  # No data
 	0: Color("3E8948"),  # Safe
 	1: Color("FEAE34"),  # Caution
 	2: Color("A22633"),  # Critical
 }
 
 const CAUTION_LEVEL_TO_PRESSED_COLOR := {
-	-1: Color("3A4466"),  # No data
+	-1: Color("181425"),  # No data
 	0: Color("193C3E"),  # Safe
 	1: Color("733E39"),  # Caution
 	2: Color("3E2731"),  # Critical
 }
 
+const CAUTION_LEVEL_TO_DISABLED_COLOR := {
+	-1: Color("181425"),  # No data
+	0: Color("193C3E"),  # Safe
+	1: Color("733E39"),  # Caution
+	2: Color("3E2731"),  # Critical
+}
+
+const CAUTION_LEVEL_TO_FONT_COLOR := {
+	-1: Color("3A4466"),  # No data
+	0: Color.black,  # Safe
+	1: Color.black,  # Caution
+	2: Color.black,  # Critical
+}
+
+var num_days_back: int
+
 var _stylebox_normal: StyleBoxFlat
 var _stylebox_hover: StyleBoxFlat
 var _stylebox_pressed: StyleBoxFlat
-var _num_days_back: int
+var _stylebox_disabled: StyleBoxFlat
 var _caution_level_string: String
 var _month_display_string: String
 var _year_display_string: String
@@ -35,23 +51,26 @@ func _ready() -> void:
 	_stylebox_normal = get_stylebox("normal").duplicate()
 	_stylebox_hover = get_stylebox("hover").duplicate()
 	_stylebox_pressed = get_stylebox("pressed").duplicate()
+	_stylebox_disabled = get_stylebox("disabled").duplicate()
 	add_stylebox_override("normal", _stylebox_normal)
 	add_stylebox_override("hover", _stylebox_hover)
 	add_stylebox_override("pressed", _stylebox_pressed)
+	add_stylebox_override("disabled", _stylebox_disabled)
 	add_color_override("font_color", Color.black)
 	add_color_override("font_color_hover", Color.black)
 	add_color_override("font_color_pressed", Color.black)
+	add_color_override("font_color_disabled", Color.black)
 
 	var pos_in_parent := get_position_in_parent()
 	var button_num := pos_in_parent + 1
 	var button_num_string := str(button_num)
-	_num_days_back = 7 - pos_in_parent
+	num_days_back = 7 - pos_in_parent
 	_caution_level_string = "CautionLevel" + button_num_string
 	_month_display_string = "MonthDisplay" + button_num_string
 	_year_display_string = "YearDisplay" + button_num_string
 	_time_button_display_string = "TimeButtonDisplay" + button_num_string
 
-	var day=GlobalDate.StartDay-_num_days_back
+	var day=GlobalDate.StartDay-num_days_back
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear
 	if day<1:
@@ -76,18 +95,18 @@ func _ready() -> void:
 	GlobalDate.set(_month_display_string, month)
 	GlobalDate.set(_year_display_string, year)
 
-	var day_test = GlobalDate.StartDay-_num_days_back
+	var day_test = GlobalDate.StartDay-num_days_back
 	if day_test>0:
 		set_text(str(day_test))
 	else:
 		var month_test=GlobalDate.StartMonth
 		var month2= month_test-1
 		if month2==2:
-			day_test=(28+ day_test)-_num_days_back
+			day_test=(28+ day_test)-num_days_back
 		elif month2 in [4, 11, 6, 9]:
 			day_test=(30+ day_test)-7
 		elif month2 in [1, 3, 5, 7, 8, 10, 12]:
-			day_test=(31+ day_test)-_num_days_back
+			day_test=(31+ day_test)-num_days_back
 		set_text(str(day_test))
 
 func get_caution_level(year: int, month: int, day: int) -> int:
@@ -100,11 +119,31 @@ func get_caution_level(year: int, month: int, day: int) -> int:
 				break
 	return safety_value
 
+func get_date() -> Dictionary:
+	var day=GlobalDate.StartDay
+	var month=GlobalDate.StartMonth
+	var year=GlobalDate.StartYear#
+	day = day-num_days_back#Gets the date this button will input
+	if day<1:#checks if the day is in the day is in the same month
+		month=month-1#if it's not it goes back a month 
+		if month<1:#this checks if the month is in the same year
+			year=year-1#this goes back a year 
+			month=12#this sends the date to december (the last month)
+			day=day+31#this restores the date 
+		else:#if the month is in the year
+			GetDaysInMonth(month)#it gets the amount of days are in the month
+			day=day+GlobalDate.DaysInMonth#and adds them to restore the date
+	return {
+		"year": year,
+		"month": month,
+		"day": day,
+	}
+
 func updateColourLeft():
 	var day=GlobalDate.StartDay
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
-	day = day-_num_days_back#Gets the date this button will input
+	day = day-num_days_back#Gets the date this button will input
 	if day<1:#checks if the day is in the day is in the same month
 		month=month-1#if it's not it goes back a month 
 		if month<1:#this checks if the month is in the same year
@@ -131,7 +170,7 @@ func UpdateColourRight():
 	var day=GlobalDate.StartDay
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear#
-	day = day-_num_days_back#Gets the date this button will input
+	day = day-num_days_back#Gets the date this button will input
 	GetDaysInMonth(month)
 	if day>GlobalDate.DaysInMonth:
 		month=month-1
@@ -158,13 +197,20 @@ func Change_colour():
 	var stylebox_normal_color: Color = CAUTION_LEVEL_TO_NORMAL_COLOR[CautionLevel]
 	var stylebox_hover_color: Color = CAUTION_LEVEL_TO_HOVER_COLOR[CautionLevel]
 	var stylebox_pressed_color: Color = CAUTION_LEVEL_TO_PRESSED_COLOR[CautionLevel]
+	var stylebox_disabled_color: Color = CAUTION_LEVEL_TO_DISABLED_COLOR[CautionLevel]
 	_stylebox_normal.bg_color = stylebox_normal_color
 	_stylebox_hover.bg_color = stylebox_hover_color
 	_stylebox_pressed.bg_color = stylebox_pressed_color
+	_stylebox_disabled.bg_color = stylebox_disabled_color
+	var font_color: Color = CAUTION_LEVEL_TO_FONT_COLOR[CautionLevel]
+	add_color_override("font_color", font_color)
+	add_color_override("font_color_hover", font_color)
+	add_color_override("font_color_pressed", font_color)
+	add_color_override("font_color_disabled", font_color)
 
 func _on_LeftArrow_pressed():
 	updateColourLeft()
-	var day=GlobalDate.StartDay-_num_days_back
+	var day=GlobalDate.StartDay-num_days_back
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear
 	if day<1:
@@ -181,7 +227,7 @@ func _on_LeftArrow_pressed():
 	
 func _on_RightArrow_pressed():
 	UpdateColourRight()
-	var day=GlobalDate.StartDay-_num_days_back
+	var day=GlobalDate.StartDay-num_days_back
 	var month=GlobalDate.StartMonth
 	var year=GlobalDate.StartYear
 	if day<1:
