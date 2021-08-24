@@ -18,7 +18,6 @@ onready var tree := get_tree()
 onready var root := tree.get_root()
 
 onready var viewport := get_viewport()
-onready var viewport_size := viewport.size
 
 onready var camera_pivot: Spatial = $CameraPivot
 onready var camera: Camera = $CameraPivot/Camera
@@ -57,8 +56,8 @@ func _wrap_mouse_around_viewport() -> void:
 	var mouse_pos := get_global_mouse_position()
 	var root_mouse_pos_diff := root_mouse_pos - mouse_pos
 	var new_mouse_pos := Vector2(
-		fposmod(mouse_pos.x, viewport_size.x),
-		fposmod(mouse_pos.y, viewport_size.y)
+		fposmod(mouse_pos.x, viewport.size.x),
+		fposmod(mouse_pos.y, viewport.size.y)
 	)
 	var new_root_mouse_pos := root_mouse_pos_diff + new_mouse_pos
 	Input.warp_mouse_position(new_root_mouse_pos)
