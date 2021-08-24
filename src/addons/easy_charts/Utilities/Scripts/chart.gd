@@ -12,7 +12,6 @@ signal point_pressed(point)
 onready var PointData = $PointData/PointData
 onready var Points = $Points
 onready var Legend = $Legend
-onready var ChartName : Label = $ChartName
 
 # Scenes and Reosurces ......................
 var point_node : PackedScene = preload("../Point/point.tscn")
@@ -98,18 +97,18 @@ var x_decim : float = 1.0					setget set_x_decim
 var y_decim : float = 1.0					setget set_y_decim
 
 var points_shape : Array = [PointShapes.Dot]	setget set_points_shape
-var function_colors = [Color("#1e1e1e")]		setget set_function_colors
+var function_colors = [Color("#000000")]		setget set_function_colors
 var outline_color : Color = Color("#1e1e1e")	setget set_outline_color
-var box_color : Color = Color("#1e1e1e")		setget set_box_color
+var box_color : Color = Color("#181425")		setget set_box_color
 var grid_lines_width : int = 1					setget set_grid_lines_width
-var v_lines_color : Color = Color("#cacaca")	setget set_v_lines_color
-var h_lines_color : Color = Color("#cacaca")	setget set_h_lines_color
+var v_lines_color : Color = Color("#00cacaca")	setget set_v_lines_color
+var h_lines_color : Color = Color("#00cacaca")	setget set_h_lines_color
 var grid_color : Color = Color("#1e1e1e")		setget set_grid_color
 var font : Font									setget set_font
 var bold_font : Font							setget set_bold_font
-var font_color : Color = Color("#1e1e1e")		setget set_font_color
+var font_color : Color = Color("#000000")		setget set_font_color
 
-var use_template : bool = true		setget set_use_template
+var use_template : bool = false		setget set_use_template
 var template : int = 0		setget set_template
 
 # modifiers
