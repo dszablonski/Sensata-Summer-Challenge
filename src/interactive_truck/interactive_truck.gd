@@ -6,7 +6,11 @@ extends Node2D
 # distances the InputEventMouseMotion.relative property becomes very large.
 # Therefore, by ignoring all events which move the mouse too far, we can
 # essentially ignore all events caused by forcibly setting the mouse's position.
-const MAX_MOUSE_MOTION_DIST := 300
+# This isn't a perfect solution though.
+# If the user moves the mouse very fast (without wrapping around the viewport),
+# then that input may be unwantedly ignored.
+# However, this works fine for reasonable inputs.
+const MAX_MOUSE_MOTION_DIST := 200
 const ZOOM_IN_SPEED := 1.0
 const ZOOM_OUT_SPEED := 1.0
 const MIN_CAMERA_SIZE := 4.0
