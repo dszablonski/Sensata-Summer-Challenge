@@ -84,7 +84,7 @@ size_flags_horizontal = 3
 [node name="TabContainer" type="TabContainer" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide"]
 margin_right = 502.0
 margin_bottom = 438.0
-mouse_filter = 2
+mouse_filter = 1
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 custom_fonts/font = ExtResource( 6 )
