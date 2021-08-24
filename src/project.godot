@@ -52,7 +52,12 @@ _global_script_classes=[ {
 "base": "Label",
 "class": "DateTimeLabel",
 "language": "GDScript",
-"path": "res://ui/DateTimeDisplayer.gd"
+"path": "res://ui/timeline/DateTimeDisplayer.gd"
+}, {
+"base": "Node2D",
+"class": "InteractiveTruck",
+"language": "GDScript",
+"path": "res://interactive_truck/interactive_truck.gd"
 }, {
 "base": "VBoxContainer",
 "class": "LegendElement",
@@ -139,6 +144,7 @@ _global_script_class_icons={
 "CriticalLimits": "",
 "DataFrame": "",
 "DateTimeLabel": "",
+"InteractiveTruck": "",
 "LegendElement": "",
 "LineChart": "",
 "LineChart2D": "",
