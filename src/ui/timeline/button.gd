@@ -28,7 +28,28 @@ const CAUTION_LEVEL_TO_DISABLED_COLOR := {
 	2: Color("3E2731"),  # Critical
 }
 
-const CAUTION_LEVEL_TO_FONT_COLOR := {
+const CAUTION_LEVEL_TO_NORMAL_FONT_COLOR := {
+	-1: Color("3A4466"),  # No data
+	0: Color.black,  # Safe
+	1: Color.black,  # Caution
+	2: Color.black,  # Critical
+}
+
+const CAUTION_LEVEL_TO_HOVER_FONT_COLOR := {
+	-1: Color("3A4466"),  # No data
+	0: Color.black,  # Safe
+	1: Color.black,  # Caution
+	2: Color.black,  # Critical
+}
+
+const CAUTION_LEVEL_TO_PRESSED_FONT_COLOR := {
+	-1: Color("3A4466"),  # No data
+	0: Color.black,  # Safe
+	1: Color.black,  # Caution
+	2: Color.black,  # Critical
+}
+
+const CAUTION_LEVEL_TO_DISABLED_FONT_COLOR := {
 	-1: Color("3A4466"),  # No data
 	0: Color.black,  # Safe
 	1: Color.black,  # Caution
@@ -37,6 +58,7 @@ const CAUTION_LEVEL_TO_FONT_COLOR := {
 
 var num_days_back: int
 
+var _is_random_colors := false
 var _stylebox_normal: StyleBoxFlat
 var _stylebox_hover: StyleBoxFlat
 var _stylebox_pressed: StyleBoxFlat
@@ -56,10 +78,6 @@ func _ready() -> void:
 	add_stylebox_override("hover", _stylebox_hover)
 	add_stylebox_override("pressed", _stylebox_pressed)
 	add_stylebox_override("disabled", _stylebox_disabled)
-	add_color_override("font_color", Color.black)
-	add_color_override("font_color_hover", Color.black)
-	add_color_override("font_color_pressed", Color.black)
-	add_color_override("font_color_disabled", Color.black)
 
 	var pos_in_parent := get_position_in_parent()
 	var button_num := pos_in_parent + 1
@@ -193,7 +211,9 @@ func UpdateColourRight():
 	Change_colour()
 
 func Change_colour():
-	var CautionLevel=GlobalDate.get(_caution_level_string)
+	var CautionLevel = GlobalDate.get(_caution_level_string)
+	if _is_random_colors and CautionLevel > 0:
+		CautionLevel = Util.randi_range(0, 2)
 	var stylebox_normal_color: Color = CAUTION_LEVEL_TO_NORMAL_COLOR[CautionLevel]
 	var stylebox_hover_color: Color = CAUTION_LEVEL_TO_HOVER_COLOR[CautionLevel]
 	var stylebox_pressed_color: Color = CAUTION_LEVEL_TO_PRESSED_COLOR[CautionLevel]
@@ -202,11 +222,14 @@ func Change_colour():
 	_stylebox_hover.bg_color = stylebox_hover_color
 	_stylebox_pressed.bg_color = stylebox_pressed_color
 	_stylebox_disabled.bg_color = stylebox_disabled_color
-	var font_color: Color = CAUTION_LEVEL_TO_FONT_COLOR[CautionLevel]
-	add_color_override("font_color", font_color)
-	add_color_override("font_color_hover", font_color)
-	add_color_override("font_color_pressed", font_color)
-	add_color_override("font_color_disabled", font_color)
+	var normal_font_color: Color = CAUTION_LEVEL_TO_NORMAL_FONT_COLOR[CautionLevel]
+	var hover_font_color: Color = CAUTION_LEVEL_TO_HOVER_FONT_COLOR[CautionLevel]
+	var pressed_font_color: Color = CAUTION_LEVEL_TO_PRESSED_FONT_COLOR[CautionLevel]
+	var disabled_font_color: Color = CAUTION_LEVEL_TO_DISABLED_FONT_COLOR[CautionLevel]
+	add_color_override("font_color", normal_font_color)
+	add_color_override("font_color_hover", hover_font_color)
+	add_color_override("font_color_pressed", pressed_font_color)
+	add_color_override("font_color_disabled", disabled_font_color)
 
 func _on_LeftArrow_pressed():
 	updateColourLeft()
