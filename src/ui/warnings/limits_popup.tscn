@@ -25,7 +25,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CloseButton" type="ToolButton" parent="MarginContainer"]
+[node name="CloseButton" type="Button" parent="MarginContainer"]
 margin_left = 390.0
 margin_top = 10.0
 margin_right = 413.0
@@ -35,7 +35,6 @@ focus_mode = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "x"
-flat = false
 
 [node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
 margin_left = 10.0
