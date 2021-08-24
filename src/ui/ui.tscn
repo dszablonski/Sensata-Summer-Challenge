@@ -42,13 +42,13 @@ margin_bottom = 596.0
 
 [node name="TopRowHSplit" type="HSplitContainer" parent="UIMargin/UIVSplit"]
 margin_right = 1016.0
-margin_bottom = 425.0
+margin_bottom = 308.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
 [node name="LeftSide" type="VBoxContainer" parent="UIMargin/UIVSplit/TopRowHSplit"]
 margin_right = 502.0
-margin_bottom = 425.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="Timeline" parent="UIMargin/UIVSplit/TopRowHSplit/LeftSide" instance=ExtResource( 3 )]
@@ -59,17 +59,17 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 90.0
 margin_right = 502.0
-margin_bottom = 425.0
+margin_bottom = 308.0
 
 [node name="RightSide" type="VBoxContainer" parent="UIMargin/UIVSplit/TopRowHSplit"]
 margin_left = 514.0
 margin_right = 1016.0
-margin_bottom = 425.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 
 [node name="TabContainer" type="TabContainer" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide"]
 margin_right = 502.0
-margin_bottom = 425.0
+margin_bottom = 308.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 custom_fonts/font = ExtResource( 6 )
@@ -193,7 +193,7 @@ fit_content_height = true
 [node name="Truck Viewer" type="ViewportContainer" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer"]
 margin_top = 106.0
 margin_right = 482.0
-margin_bottom = 382.0
+margin_bottom = 265.0
 size_flags_stretch_ratio = 1.5
 stretch = true
 script = ExtResource( 7 )
@@ -202,7 +202,7 @@ __meta__ = {
 }
 
 [node name="TruckViewport" type="Viewport" parent="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer"]
-size = Vector2( 482, 276 )
+size = Vector2( 482, 159 )
 handle_input_locally = false
 render_target_update_mode = 3
 physics_object_picking = true
@@ -221,7 +221,7 @@ size_flags_vertical = 3
 [node name="Warnings" parent="UIMargin/UIVSplit" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 437.0
+margin_top = 320.0
 margin_right = 1016.0
 margin_bottom = 592.0
 size_flags_stretch_ratio = 1.0
@@ -253,11 +253,6 @@ margin_right = 329.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
 source = ";"
-Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
 [node name="LineChart2" parent="Chartspopup/HSplitContainer" instance=ExtResource( 22 )]
 anchor_right = 0.0
@@ -267,11 +262,6 @@ margin_right = 671.0
 margin_bottom = 477.0
 size_flags_horizontal = 3
 source = ";"
-Chart_Style/function_colors = PoolColorArray( 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1, 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/box_color = Color( 0.117647, 0.117647, 0.117647, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 1 )
-Chart_Style/font_color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
 [connection signal="mouse_entered" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer" method="_on_TruckWheelStaticBody_mouse_entered"]
 [connection signal="mouse_exited" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Truck Viewer/TruckViewport/InteractiveTruck/Truck/Truck Wheel A/TruckWheelStaticBody" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer/Panel/MarginContainer/GridContainer" method="_on_TruckWheelStaticBody_mouse_exited"]
