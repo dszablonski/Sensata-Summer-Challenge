@@ -11,8 +11,10 @@ const ZOOM_IN_SPEED := 1.0
 const ZOOM_OUT_SPEED := 1.0
 const MIN_CAMERA_SIZE := 4.0
 const MAX_CAMERA_SIZE := 25.0
+const AUTOMATIC_TRUCK_ROTATION_SPEED := 135 # Degrees/second
 
 var _was_prev_panning_camera := false
+var _last_y_rotation: float
 
 onready var tree := get_tree()
 onready var root := tree.get_root()
@@ -21,6 +23,18 @@ onready var viewport := get_viewport()
 
 onready var camera_pivot: Spatial = $CameraPivot
 onready var camera: Camera = $CameraPivot/Camera
+
+
+func _process(delta: float) -> void:
+	if _is_mouse_inside_viewport():
+		return
+	# If the mouse is not inside the viewport, rotate the truck automatically.
+	var dir := sign(_last_y_rotation)
+	if dir == 0:
+		dir = 1
+	var rot := deg2rad(AUTOMATIC_TRUCK_ROTATION_SPEED) * dir * delta
+	camera_pivot.rotation.y += rot
+
 
 func _input(event: InputEvent) -> void:
 	if not _is_mouse_inside_viewport():
@@ -34,6 +48,7 @@ func _input(event: InputEvent) -> void:
 		_was_prev_panning_camera = true
 		camera_pivot.rotation.y -= deg2rad(event.relative.x)
 		camera_pivot.rotation.z -= deg2rad(event.relative.y)
+		_last_y_rotation = -event.relative.x
 	else:
 		_was_prev_panning_camera = false
 
