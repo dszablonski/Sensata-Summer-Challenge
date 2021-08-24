@@ -2,7 +2,7 @@ class_name CautionLimits
 extends Object
 
 const MIN_TYRE_PRESSURE := 100  # psi
-const MAX_TYRE_PRESSURE := 119  # psi
+const MAX_TYRE_PRESSURE := 120  # psi
 
 const MIN_BRAKE_PADS := 20  # %
 
