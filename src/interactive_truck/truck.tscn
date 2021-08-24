@@ -1398,6 +1398,5 @@ shape = SubResource( 77 )
 [connection signal="trailer_wheel_e" from="Trailer Wheel E/TrailerWheelEStaticBody" to="Trailer Wheel E" method="_on_StaticBody_trailer_wheel_e"]
 [connection signal="trailer_wheel_f" from="Trailer Wheel F/TrailerWheelFStaticBody" to="Trailer Wheel F" method="_on_StaticBody_trailer_wheel_f"]
 [connection signal="freezer" from="Cube/CubeStaticBody" to="Cube" method="_on_StaticBody_freezer"]
-[connection signal="freezer" from="Cube/CubeStaticBody" to="." method="_on_StaticBody_freezer"]
 [connection signal="fridge" from="Cube001/FridgeStaticBody" to="Cube001" method="_on_StaticBody_fridge"]
 [connection signal="clear" from="void/StaticBody" to="void" method="_on_StaticBody_clear"]
