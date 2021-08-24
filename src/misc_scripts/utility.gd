@@ -11,6 +11,10 @@ static func to_time_string(num_hours: float) -> String:
 	var remaining_mins := remaining_hours * 60
 	return "%02d:%02d" % [whole_hours, remaining_mins]
 
+static func randi_range(from: int, to: int) -> int:
+	var r := range(from, to + 1)
+	return r[randi() % r.size()]
+
 static func get_trailer_weights(data: Dictionary) -> Array:
 	var trailer_weights := []
 	for sensor in data:
