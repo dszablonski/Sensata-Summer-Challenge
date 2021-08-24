@@ -141,7 +141,7 @@ func trailer_wheels(wheel:String):
 	# Name of the wheel passed through, colored light blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheel]
 	# Returns the stat of the tyre pressure, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheel][0]]]
+	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color] psi" %[tyre_pressure_color, id[sensors[wheel][0]]]
 	# Returns the stat of the brake pad wear %, coloring it the color of its 
 	# status
 	$RichTextLabel2.bbcode_text = "Brake Pad Wear: [color=%s]%s[/color]%%" %[wheel_brake_color, id[sensors[wheel][1]]]
@@ -156,9 +156,9 @@ func truck_wheel_df(wheels:String):
 	# Name of the wheel passed through, colored light blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheels]
 	# Returns the stat of the tyre pressure, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheels][0]]]
+	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color] psi" %[tyre_pressure_color, id[sensors[wheels][0]]]
 	# Returns the stat of the wheel bearing temp, coloring it the color of its status
-	$RichTextLabel2.bbcode_text = "Wheel Bearing Temperature: [color=%s]%s[/color]C" %[wheel_bearing_color, id[sensors[wheels][1]]]
+	$RichTextLabel2.bbcode_text = "Wheel Bearing Temperature: [color=%s]%s[/color]°C" %[wheel_bearing_color, id[sensors[wheels][1]]]
 
 func truck_wheel_ce(wheels:String):
 	# Sets the color of the tyre pressure based on its status
@@ -167,7 +167,7 @@ func truck_wheel_ce(wheels:String):
 	# Name of the wheel passed through, colored light blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheels]
 	# Returns the stat of the tyre pressure, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheels][0]]]
+	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color] psi" %[tyre_pressure_color, id[sensors[wheels][0]]]
 
 func truck_wheel_ab(wheels:String):
 	var tyre_pressure_color = check_tyre_pressure(id[sensors[wheels][0]])
@@ -177,12 +177,12 @@ func truck_wheel_ab(wheels:String):
 	# Name of the wheel passed through, colored light blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]%s[/color]" %[wheels]
 	# Returns the stat of the tyre pressure, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color]PSI" %[tyre_pressure_color, id[sensors[wheels][0]]]
+	$RichTextLabel.bbcode_text = "Tyre Pressure: [color=%s]%s[/color] psi" %[tyre_pressure_color, id[sensors[wheels][0]]]
 	# Returns the stat of the brake pad wear %, coloring it the color of its 
 	# status
 	$RichTextLabel2.bbcode_text = "Brake Pad Wear: [color=%s]%s[/color]%%" %[wheel_brake_color, id[sensors[wheels][1]]]
 	# Returns the stat of the wheel bearing temp, coloring it the color of its status
-	$RichTextLabel3.bbcode_text = "Wheel Bearing Temperature: [color=%s]%s[/color]C" %[wheel_bearing_color, id[sensors[wheels][2]]]
+	$RichTextLabel3.bbcode_text = "Wheel Bearing Temperature: [color=%s]%s[/color]°C" %[wheel_bearing_color, id[sensors[wheels][2]]]
 
 func _on_CubeStaticBody_mouse_entered():
 	# Sets the color of temp sensor a on its status
@@ -198,13 +198,13 @@ func _on_CubeStaticBody_mouse_entered():
 	# The word Freezer colored blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Freezer[/color]"
 	# Returns the stat of temp sensor a, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Temperature Sensor A : [color=%s]%s[/color]C" %[temp_a_color, int(id[sensors["Cube"][0]])]
+	$RichTextLabel.bbcode_text = "Temperature Sensor A : [color=%s]%s[/color]°C" %[temp_a_color, int(id[sensors["Cube"][0]])]
 	# Returns the stat of temp sensor b, coloring it the color of its status
-	$RichTextLabel3.bbcode_text = "Temperature Sensor B : [color=%s]%s[/color]C" %[temp_b_color, int(id[sensors["Cube"][1]])]
+	$RichTextLabel3.bbcode_text = "Temperature Sensor B : [color=%s]%s[/color]°C" %[temp_b_color, int(id[sensors["Cube"][1]])]
 	# Returns the stat of temp sensor c, coloring it the color of its status
-	$RichTextLabel2.bbcode_text = "Temperature Sensor C : [color=%s]%s[/color]C" %[temp_c_color, int(id[sensors["Cube"][2]])]
+	$RichTextLabel2.bbcode_text = "Temperature Sensor C : [color=%s]%s[/color]°C" %[temp_c_color, int(id[sensors["Cube"][2]])]
 	# Returns the stat of weight sensor g, coloring it the color of its status
-	$RichTextLabel4.bbcode_text = "Weight Sensor G : [color=%s]%s[/color]KG" %[weight_g_color, int(id[sensors["Cube"][3]])]
+	$RichTextLabel4.bbcode_text = "Weight Sensor G : [color=%s]%s[/color] kg" %[weight_g_color, int(id[sensors["Cube"][3]])]
 
 
 func _on_FridgeStaticBody_mouse_entered():
@@ -223,16 +223,16 @@ func _on_FridgeStaticBody_mouse_entered():
 	# The word fridge colored blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
 	# Returns the stat of temp sensor d, coloring it the color of its status
-	$RichTextLabel.bbcode_text = "Temperature Sensor D : [color=%s]%s[/color]C" %[temp_d_color, int(id[sensors["Cube001"][0]])]
+	$RichTextLabel.bbcode_text = "Temperature Sensor D : [color=%s]%s[/color]°C" %[temp_d_color, int(id[sensors["Cube001"][0]])]
 	# Returns the stat of temp sensor e, coloring it the color of its status
-	$RichTextLabel3.bbcode_text = "Temperature Sensor E : [color=%s]%s[/color]C" %[temp_e_color, int(id[sensors["Cube001"][1]])]
+	$RichTextLabel3.bbcode_text = "Temperature Sensor E : [color=%s]%s[/color]°C" %[temp_e_color, int(id[sensors["Cube001"][1]])]
 	# Returns the stat of temp sensor f, coloring it the color of its status
-	$RichTextLabel2.bbcode_text = "Temperature Sensor F : [color=%s]%s[/color]C" %[temp_f_color, int(id[sensors["Cube001"][2]])]
+	$RichTextLabel2.bbcode_text = "Temperature Sensor F : [color=%s]%s[/color]°C" %[temp_f_color, int(id[sensors["Cube001"][2]])]
 	# Returns teh stat of the avg weight and colors it the color of its status
-	$RichTextLabel4.bbcode_text = "Weight Sensor A : [color=%s]%s[/color]KG" %[weight_color_a, id[sensors["Cube001"][3]]]
-	$RichTextLabel7.bbcode_text = "Weight Sensor D : [color=%s]%s[/color]KG" %[weight_color_d, id[sensors["Cube001"][4]]]
-	$RichTextLabel8.bbcode_text = "Weight Sensor C : [color=%s]%s[/color]KG" %[weight_color_c, id[sensors["Cube001"][5]]]
-	$RichTextLabel9.bbcode_text = "Weight Sensor F : [color=%s]%s[/color]KG" %[weight_color_f, id[sensors["Cube001"][6]]]
+	$RichTextLabel4.bbcode_text = "Weight Sensor A : [color=%s]%s[/color] kg" %[weight_color_a, id[sensors["Cube001"][3]]]
+	$RichTextLabel7.bbcode_text = "Weight Sensor D : [color=%s]%s[/color] kg" %[weight_color_d, id[sensors["Cube001"][4]]]
+	$RichTextLabel8.bbcode_text = "Weight Sensor C : [color=%s]%s[/color] kg" %[weight_color_c, id[sensors["Cube001"][5]]]
+	$RichTextLabel9.bbcode_text = "Weight Sensor F : [color=%s]%s[/color] kg" %[weight_color_f, id[sensors["Cube001"][6]]]
 
 func _on_FridgeStaticBody_mouse_exited():
 	clear()
