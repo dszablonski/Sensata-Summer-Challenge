@@ -2,7 +2,7 @@
 extends PanelContainer
 class_name PointData
 
-export var units := ""  # Hack ;)
+var units := ""  # Hack ;)
 
 var value : String = ""
 var position : Vector2 = Vector2()

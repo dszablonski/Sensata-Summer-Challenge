@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/easy_charts/LineChart/line_chart.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/charts/trailer_tyre_pressure_chart_detailed.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/charts/charts.gd" type="Script" id=3]
-[ext_resource path="res://ui/charts/weight_chart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/charts/weight_chart_detailed.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/main_theme.tres" type="Theme" id=5]
+[ext_resource path="res://ui/charts/truck_tyre_pressure_chart_detailed.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/charts/truck_brake_pads_chart_detailed.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/charts/truck_wheel_bearing_temp_chart_detailed.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/charts/chart_tab_container_theme.tres" type="Theme" id=9]
+[ext_resource path="res://ui/charts/trailer_brake_pads_chart_detailed.tscn" type="PackedScene" id=10]
 
 [node name="Charts" type="PanelContainer"]
 anchor_right = 1.0
@@ -31,12 +36,17 @@ margin_right = 1014.0
 margin_bottom = 590.0
 columns = 2
 
-[node name="WeightChart" parent="MarginContainer/ChartsGrid" instance=ExtResource( 4 )]
+[node name="WeightChart" parent="MarginContainer/ChartsGrid" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 500.0
 margin_bottom = 288.0
-Chart_Style/box_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+chart_name = "Avg Trailer Weight (kg) / Time"
+Chart_Display/max_y_range = 1000.0
+Chart_Display/y_decim = 100.0
+Chart_Style/function_colors = [ Color( 0, 0, 0, 1 ) ]
 
 [node name="TyrePressureChart" parent="MarginContainer/ChartsGrid" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -46,30 +56,10 @@ margin_right = 1004.0
 margin_bottom = 288.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-chart_name = "Avg Tyre Pressure (psi) over Time"
-Chart_Display/autoscale_x = false
-Chart_Display/min_x_range = 0
-Chart_Display/max_x_range = 23.0
-Chart_Display/x_decim = 4.0
-Chart_Display/autoscale_y = false
-Chart_Display/min_y_range = 0
-Chart_Display/max_y_range = 200.0
-Chart_Display/y_decim = 100.0
-Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
-Chart_Style/font = ExtResource( 2 )
-Chart_Style/font_color = Color( 0, 0, 0, 1 )
-Chart_Style/use_template = false
-Chart_Display/show_points = false
-
-[node name="ChartName" parent="MarginContainer/ChartsGrid/TyrePressureChart" index="1"]
-text = "Avg Tyre Pressure (psi) over Time"
-
-[node name="PointData" parent="MarginContainer/ChartsGrid/TyrePressureChart/PointData" index="0"]
-margin_bottom = 0.716766
-units = " psi"
+chart_name = "Avg Tyre Pressure (psi) / Time"
+Chart_Display/max_y_range = 120.0
+Chart_Display/y_decim = 20.0
+Chart_Style/function_colors = [ Color( 0, 0, 0, 1 ) ]
 
 [node name="TruckWheelBearingTempChart" parent="MarginContainer/ChartsGrid" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -79,30 +69,11 @@ margin_right = 500.0
 margin_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-chart_name = "Avg Wheel Bearing Temp (°C) over Time"
-Chart_Display/autoscale_x = false
-Chart_Display/min_x_range = 0
-Chart_Display/max_x_range = 23.0
-Chart_Display/x_decim = 4.0
-Chart_Display/autoscale_y = false
-Chart_Display/min_y_range = 0
+chart_name = "Avg Wheel Bearing Temp (°C) / Time"
+Chart_Display/min_y_range = 10.0
 Chart_Display/max_y_range = 60.0
 Chart_Display/y_decim = 10.0
-Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
-Chart_Style/font = ExtResource( 2 )
-Chart_Style/font_color = Color( 0, 0, 0, 1 )
-Chart_Style/use_template = false
-Chart_Display/show_points = false
-
-[node name="ChartName" parent="MarginContainer/ChartsGrid/TruckWheelBearingTempChart" index="1"]
-text = "Avg Wheel Bearing Temp (°C) over Time"
-
-[node name="PointData" parent="MarginContainer/ChartsGrid/TruckWheelBearingTempChart/PointData" index="0"]
-margin_bottom = 0.716766
-units = "°C"
+Chart_Style/function_colors = [ Color( 0, 0, 0, 1 ) ]
 
 [node name="TruckBrakePadsChart" parent="MarginContainer/ChartsGrid" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -113,30 +84,74 @@ margin_right = 1004.0
 margin_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-chart_name = "Avg Brake Wear (%) over Time"
-Chart_Display/autoscale_x = false
-Chart_Display/min_x_range = 0
-Chart_Display/max_x_range = 23.0
-Chart_Display/x_decim = 4.0
-Chart_Display/autoscale_y = false
-Chart_Display/min_y_range = 0
-Chart_Display/max_y_range = 70.0
+chart_name = "Avg Brake Wear (%) / Time"
+Chart_Display/min_y_range = 50.0
+Chart_Display/max_y_range = 100.0
 Chart_Display/y_decim = 10.0
-Chart_Style/function_colors = PoolColorArray( 0, 0, 0, 1 )
-Chart_Style/box_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
-Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
-Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
-Chart_Style/font = ExtResource( 2 )
-Chart_Style/font_color = Color( 0, 0, 0, 1 )
-Chart_Style/use_template = false
-Chart_Display/show_points = false
+Chart_Style/function_colors = [ Color( 0, 0, 0, 1 ) ]
 
-[node name="ChartName" parent="MarginContainer/ChartsGrid/TruckBrakePadsChart" index="1"]
-text = "Avg Brake Wear (%) over Time"
+[node name="WeightTabContainer" type="TabContainer" parent="MarginContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+theme = ExtResource( 9 )
 
-[node name="PointData" parent="MarginContainer/ChartsGrid/TruckBrakePadsChart/PointData" index="0"]
-margin_bottom = 0.716766
-units = "%"
+[node name="Trailer Weight" parent="MarginContainer/WeightTabContainer" instance=ExtResource( 4 )]
+margin_top = 28.0
+margin_bottom = -5.0
+chart_name = "Trailer Weight (kg) over Time"
+units = " kg"
+
+[node name="TyrePressureTabContainer" type="TabContainer" parent="MarginContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+theme = ExtResource( 9 )
+
+[node name="Truck Tyre Pressure" parent="MarginContainer/TyrePressureTabContainer" instance=ExtResource( 6 )]
+margin_top = 28.0
+margin_bottom = -5.0
+chart_name = "Tyre Pressure (psi) over Time"
+
+[node name="Trailer Tyre Pressure" parent="MarginContainer/TyrePressureTabContainer" instance=ExtResource( 2 )]
+visible = false
+margin_top = 28.0
+margin_bottom = -5.0
+
+[node name="WheelBearingTabContainer" type="TabContainer" parent="MarginContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+theme = ExtResource( 9 )
+
+[node name="Truck Wheel Bearing Temp" parent="MarginContainer/WheelBearingTabContainer" instance=ExtResource( 8 )]
+margin_top = 28.0
+margin_bottom = -5.0
+chart_name = "Wheel Bearing Temp (°C) over Time"
+
+[node name="BrakePadsTabContainer" type="TabContainer" parent="MarginContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+theme = ExtResource( 9 )
+
+[node name="Truck Brake Wear %" parent="MarginContainer/BrakePadsTabContainer" instance=ExtResource( 7 )]
+margin_top = 28.0
+margin_bottom = -5.0
+chart_name = "Brake Wear (%) over Time"
+
+[node name="Trailer Brake Wear %" parent="MarginContainer/BrakePadsTabContainer" instance=ExtResource( 10 )]
+visible = false
+margin_top = 28.0
+margin_bottom = -5.0
 
 [node name="BackButton" type="Button" parent="MarginContainer"]
 margin_left = 990.0
@@ -150,10 +165,3 @@ size_flags_vertical = 0
 text = "x"
 
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_BackButton_pressed"]
-
-[editable path="MarginContainer/ChartsGrid/TyrePressureChart"]
-[editable path="MarginContainer/ChartsGrid/TyrePressureChart/PointData"]
-[editable path="MarginContainer/ChartsGrid/TruckWheelBearingTempChart"]
-[editable path="MarginContainer/ChartsGrid/TruckWheelBearingTempChart/PointData"]
-[editable path="MarginContainer/ChartsGrid/TruckBrakePadsChart"]
-[editable path="MarginContainer/ChartsGrid/TruckBrakePadsChart/PointData"]
