@@ -11,7 +11,6 @@
 [node name="Timeline" type="VBoxContainer"]
 margin_right = 502.0
 margin_bottom = 104.0
-size_flags_vertical = 3
 theme = ExtResource( 5 )
 script = ExtResource( 7 )
 __meta__ = {
@@ -69,12 +68,11 @@ script = ExtResource( 3 )
 [node name="Days" type="PanelContainer" parent="."]
 margin_top = 27.0
 margin_right = 502.0
-margin_bottom = 104.0
-size_flags_vertical = 3
+margin_bottom = 86.0
 
 [node name="DaysMargin" type="MarginContainer" parent="Days"]
 margin_right = 502.0
-margin_bottom = 77.0
+margin_bottom = 59.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -84,12 +82,13 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 492.0
-margin_bottom = 67.0
+margin_bottom = 49.0
 alignment = 1
 
 [node name="Button" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_right = 65.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
@@ -99,7 +98,8 @@ script = ExtResource( 6 )
 [node name="Button2" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 69.0
 margin_right = 134.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
@@ -109,7 +109,8 @@ script = ExtResource( 6 )
 [node name="Button3" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 138.0
 margin_right = 204.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
@@ -119,7 +120,8 @@ script = ExtResource( 6 )
 [node name="Button4" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 208.0
 margin_right = 273.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
@@ -129,7 +131,8 @@ script = ExtResource( 6 )
 [node name="Button5" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 277.0
 margin_right = 343.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
@@ -139,7 +142,8 @@ script = ExtResource( 6 )
 [node name="Button6" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 347.0
 margin_right = 412.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
@@ -149,7 +153,8 @@ script = ExtResource( 6 )
 [node name="Button7" type="Button" parent="Days/DaysMargin/DaysHBox"]
 margin_left = 416.0
 margin_right = 482.0
-margin_bottom = 57.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 39 )
 focus_mode = 0
 size_flags_horizontal = 3
 text = "1"
