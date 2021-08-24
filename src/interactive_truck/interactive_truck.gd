@@ -1,3 +1,4 @@
+class_name InteractiveTruck
 extends Node2D
 
 # When the mouse wraps around the viewport it forcibly sets the mouse's position.
@@ -17,6 +18,8 @@ const MIN_CAMERA_SIZE := 4.0
 const MAX_CAMERA_SIZE := 25.0
 const AUTOMATIC_TRUCK_ROTATION_SPEED := 135 # Degrees/second
 
+var is_enabled := false
+
 var _was_prev_panning_camera := false
 var _last_y_rotation: float
 
@@ -30,7 +33,7 @@ onready var camera: Camera = $CameraPivot/Camera
 
 
 func _process(delta: float) -> void:
-	if _is_mouse_inside_viewport():
+	if not is_enabled or _is_mouse_inside_viewport():
 		return
 	# If the mouse is not inside the viewport, rotate the truck automatically.
 	var dir := sign(_last_y_rotation)
@@ -41,6 +44,8 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not is_enabled:
+		return
 	if not _is_mouse_inside_viewport():
 		if not _was_prev_panning_camera:
 			return
