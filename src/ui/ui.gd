@@ -13,6 +13,11 @@ func _ready() -> void:
 	)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+
+
 func _on_Time_Selection_time_changed(new_time) -> void:
 	GlobalDate.hour = new_time
 	date_time.UpdateDate()
