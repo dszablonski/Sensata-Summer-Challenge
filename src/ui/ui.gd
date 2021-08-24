@@ -16,7 +16,3 @@ func _ready() -> void:
 func _on_Time_Selection_time_changed(new_time) -> void:
 	GlobalDate.hour = new_time
 	date_time.UpdateDate()
-
-
-func _on_HelpButton_pressed() -> void:
-	print("Help button pressed!")
