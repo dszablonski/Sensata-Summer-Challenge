@@ -156,16 +156,9 @@ text = "1"
 align = 0
 script = ExtResource( 6 )
 
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button" to="TopRow/DateTime" method="_on_Button_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button2" to="TopRow/DateTime" method="_on_Button2_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button3" to="TopRow/DateTime" method="_on_Button3_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button4" to="TopRow/DateTime" method="_on_Button4_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button5" to="TopRow/DateTime" method="_on_Button5_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button6" to="TopRow/DateTime" method="_on_Button6_pressed"]
-[connection signal="pressed" from="Days/DaysMargin/DaysHBox/Button7" to="TopRow/DateTime" method="_on_Button7_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]
