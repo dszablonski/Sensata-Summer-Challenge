@@ -2,6 +2,7 @@ extends Control
 
 onready var date_time: DateTimeLabel = $UIMargin/UIVSplit/TopRowHSplit/LeftSide/Timeline/TopRow/DateTime
 onready var clock: Clock = $"UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Time Selection"
+onready var help_popup: PopupPanel = $UIMargin/HelpPopup
 
 
 func _ready() -> void:
@@ -22,4 +23,4 @@ func _on_Time_Selection_time_changed(new_time) -> void:
 
 
 func _on_HelpButton_pressed() -> void:
-	print("Help button pressed!")
+	help_popup.popup_centered()
