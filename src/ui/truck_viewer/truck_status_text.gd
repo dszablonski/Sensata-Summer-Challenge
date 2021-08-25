@@ -579,68 +579,68 @@ func _on_TruckWheelEStaticBody_truck_wheel_e():
 func _on_TruckWheelFStaticBody_truck_wheel_f():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Truck Wheel F")
+		truck_wheel_df("Truck Wheel F")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Truck Wheel F")
+		truck_wheel_df("Truck Wheel F")
 
 
 func _on_TrailerWheelAStaticBody_trailer_wheel_a():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Trailer Wheel A")
+		trailer_wheels("Trailer Wheel A")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Trailer Wheel A")
+		trailer_wheels("Trailer Wheel A")
 
 func _on_TrailerWheelBStaticBody_trailer_wheel_b():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Trailer Wheel B")
+		trailer_wheels("Trailer Wheel B")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Trailer Wheel B")
+		trailer_wheels("Trailer Wheel B")
 
 func _on_TrailerWheelCStaticBody_trailer_wheel_c():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Trailer Wheel C")
+		trailer_wheels("Trailer Wheel C")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Trailer Wheel C")
+		trailer_wheels("Trailer Wheel C")
 
 func _on_TrailerWheelDStaticBody_trailer_wheel_d():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Trailer Wheel D")
+		trailer_wheels("Trailer Wheel D")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Trailer Whee D")
+		trailer_wheels("Trailer Wheel D")
 
 
 func _on_TrailerWheelEStaticBody_trailer_wheel_e():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Trailer Wheel E")
+		trailer_wheels("Trailer Wheel E")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Trailer Wheel E")
+		trailer_wheels("Trailer Wheel E")
 
 
 func _on_TrailerWheelFStaticBody_trailer_wheel_f():
 	if not clicked:
 		clicked = true
-		truck_wheel_ab("Trailer Wheel F")
+		trailer_wheels("Trailer Wheel F")
 	else:
 		clear()
 		clicked = true
-		truck_wheel_ab("Trailer Wheel F")
+		trailer_wheels("Trailer Wheel F")
 
 
 func _on_CubeStaticBody_freezer():
