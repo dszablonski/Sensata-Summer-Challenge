@@ -7,15 +7,13 @@ onready var clock: Clock = $"UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContain
 func _ready() -> void:
 	clock.force_press_time_button(GlobalDate.hour)
 	date_time.force_press_day_button(
-		GlobalDate.GlobalYear,
-		GlobalDate.GlobalMonth,
-		GlobalDate.GlobalDay
+		GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay
 	)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
+		OS.window_fullscreen = not OS.window_fullscreen
 
 
 func _on_Time_Selection_time_changed(new_time) -> void:

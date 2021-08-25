@@ -67,7 +67,7 @@ func _ready() -> void:
 
 
 func _update_warnings_based_on_date_time() -> void:
-	var data := DatabaseFetch.read_db_time_current()
+	var data := DatabaseFetch.read_db_current_date_time()
 	# The ID, DateTime, and Hour columns are not sensors so they can be discarded.
 	data.erase("ID")
 	data.erase("DateTime")
@@ -334,7 +334,7 @@ func _add_warning_labels() -> void:
 		caution_warnings_vbox.add_child(warning_label)
 
 
-func _on_PingButton_pressed() -> void:  # Left unimplemented
+func _on_PingButton_pressed() -> void:  # Left unimplemented.
 	# This is left as a proof of concept for how the ping button could work.
 	# Upon clicking the ping button the truck driver should receive some kind
 	# of notification.
