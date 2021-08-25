@@ -17,7 +17,6 @@ signal freezer
 signal fridge
 signal clear
 
-
 func get_data():
 	# Plan is to then fetch the data for that part and do something with it
 	# and then change the albedo of outline texture for that part to highlight
@@ -117,7 +116,6 @@ func get_data():
 	# is cleared.
 	else:
 		emit_signal("clear")
-
 
 func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
