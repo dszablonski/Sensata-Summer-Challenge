@@ -181,14 +181,14 @@ By holding the middle mouse button (or right click) and moving the cursor, the [
 
 By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
 
-If you click one of the [color=#8B9BB4]truck's[/color] components, then the status popup will stay visible until it is either clicked again or another component is clicked."
+If you click one of the [color=#8B9BB4]truck's[/color] components, then the status popup will stay visible."
 text = "Located in the second tab of the right panel is the truck viewer.
 
 By holding the middle mouse button (or right click) and moving the cursor, the truck will rotate. If the cursor is not on top of the truck viewer, the truck will automatically rotate as well.
 
 By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
 
-If you click one of the truck's components, then the status popup will stay visible until it is either clicked again or another component is clicked."
+If you click one of the truck's components, then the status popup will stay visible."
 fit_content_height = true
 
 [node name="CloseButton" type="Button" parent="MarginContainer"]
