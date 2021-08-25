@@ -8,7 +8,6 @@ onready var days_hbox = get_parent().get_parent().get_node("Days/DaysMargin/Days
 
 
 func _ready():  #This sets the varibles for the time
-	var time = OS.get_datetime()
 	GlobalDate.GlobalDay = GlobalDate.UpperDay  #
 	GlobalDate.GlobalMonth = GlobalDate.UpperMonth  #
 	GlobalDate.GlobalYear = GlobalDate.UpperYear  #
