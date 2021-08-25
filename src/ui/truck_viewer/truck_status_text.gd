@@ -1,11 +1,13 @@
 extends GridContainer
 
+signal clear
 # Stores hex value for green
 const good: String = "#63c74d"
 # Stores hex value for red 
 const warning: String = "#e43b44"
 # Stores hex value for yellow
 const caution: String = "#fee761"
+var clicked = false
 
 # Dictionary of the meshes and their corresponding 
 var sensors = {
@@ -236,8 +238,61 @@ func truck_wheel_ab(wheels: String):
 		% [wheel_bearing_color, id[sensors[wheels][2]]]
 	)
 
+func fridge():
+	# Gets the color status for each weight sensor on the fridge
+	var weight_color_a = check_weight(id[sensors["Cube001"][3]])
+	var weight_color_d = check_weight(id[sensors["Cube001"][4]])
+	var weight_color_c = check_weight(id[sensors["Cube001"][5]])
+	var weight_color_f = check_weight(id[sensors["Cube001"][6]])
+	# Gets teh color status for temp sensor d
+	var temp_d_color = check_temp(
+		id[sensors["Cube001"][0]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
+	)
+	# Gets teh color status for temp sensor e
+	var temp_e_color = check_temp(
+		id[sensors["Cube001"][1]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
+	)
+	# gets the color satus for temp sensor f
+	var temp_f_color = check_temp(
+		id[sensors["Cube001"][2]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
+	)
+		
+	# The word fridge colored blue
+	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
+	# Returns the stat of temp sensor d, coloring it the color of its status
+	$RichTextLabel.bbcode_text = (
+		"Temperature Sensor D : [color=%s]%s[/color]°C"
+		% [temp_d_color, int(id[sensors["Cube001"][0]])]
+	)
+	# Returns the stat of temp sensor e, coloring it the color of its status
+	$RichTextLabel3.bbcode_text = (
+		"Temperature Sensor E : [color=%s]%s[/color]°C"
+		% [temp_e_color, int(id[sensors["Cube001"][1]])]
+	)
+	# Returns the stat of temp sensor f, coloring it the color of its status
+	$RichTextLabel2.bbcode_text = (
+		"Temperature Sensor F : [color=%s]%s[/color]°C"
+		% [temp_f_color, int(id[sensors["Cube001"][2]])]
+	)
+	# Returns teh stat of the avg weight and colors it the color of its status
+	$RichTextLabel4.bbcode_text = (
+		"Weight Sensor A : [color=%s]%s[/color] kg"
+		% [weight_color_a, id[sensors["Cube001"][3]]]
+	)
+	$RichTextLabel7.bbcode_text = (
+		"Weight Sensor D : [color=%s]%s[/color] kg"
+		% [weight_color_d, id[sensors["Cube001"][4]]]
+	)
+	$RichTextLabel8.bbcode_text = (
+		"Weight Sensor C : [color=%s]%s[/color] kg"
+		% [weight_color_c, id[sensors["Cube001"][5]]]
+	)
+	$RichTextLabel9.bbcode_text = (
+		"Weight Sensor F : [color=%s]%s[/color] kg"
+		% [weight_color_f, id[sensors["Cube001"][6]]]
+	)
 
-func _on_CubeStaticBody_mouse_entered():
+func freezer():
 	# Sets the color of temp sensor a on its status
 	var temp_a_color = check_temp(
 		id[sensors["Cube"][0]], freezer_is_loaded, CriticalLimits.MAX_FREEZER_TEMP
@@ -276,103 +331,89 @@ func _on_CubeStaticBody_mouse_entered():
 		% [weight_g_color, int(id[sensors["Cube"][3]])]
 	)
 
+func _on_CubeStaticBody_mouse_entered():
+	if not clicked:
+		freezer()
+	else:
+		pass
+
 
 func _on_FridgeStaticBody_mouse_entered():
-	# Gets the color status for each weight sensor on the fridge
-	var weight_color_a = check_weight(id[sensors["Cube001"][3]])
-	var weight_color_d = check_weight(id[sensors["Cube001"][4]])
-	var weight_color_c = check_weight(id[sensors["Cube001"][5]])
-	var weight_color_f = check_weight(id[sensors["Cube001"][6]])
-	# Gets teh color status for temp sensor d
-	var temp_d_color = check_temp(
-		id[sensors["Cube001"][0]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
-	)
-	# Gets teh color status for temp sensor e
-	var temp_e_color = check_temp(
-		id[sensors["Cube001"][1]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
-	)
-	# gets the color satus for temp sensor f
-	var temp_f_color = check_temp(
-		id[sensors["Cube001"][2]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
-	)
-
-	# The word fridge colored blue
-	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
-	# Returns the stat of temp sensor d, coloring it the color of its status
-	$RichTextLabel.bbcode_text = (
-		"Temperature Sensor D : [color=%s]%s[/color]°C"
-		% [temp_d_color, int(id[sensors["Cube001"][0]])]
-	)
-	# Returns the stat of temp sensor e, coloring it the color of its status
-	$RichTextLabel3.bbcode_text = (
-		"Temperature Sensor E : [color=%s]%s[/color]°C"
-		% [temp_e_color, int(id[sensors["Cube001"][1]])]
-	)
-	# Returns the stat of temp sensor f, coloring it the color of its status
-	$RichTextLabel2.bbcode_text = (
-		"Temperature Sensor F : [color=%s]%s[/color]°C"
-		% [temp_f_color, int(id[sensors["Cube001"][2]])]
-	)
-	# Returns teh stat of the avg weight and colors it the color of its status
-	$RichTextLabel4.bbcode_text = (
-		"Weight Sensor A : [color=%s]%s[/color] kg"
-		% [weight_color_a, id[sensors["Cube001"][3]]]
-	)
-	$RichTextLabel7.bbcode_text = (
-		"Weight Sensor D : [color=%s]%s[/color] kg"
-		% [weight_color_d, id[sensors["Cube001"][4]]]
-	)
-	$RichTextLabel8.bbcode_text = (
-		"Weight Sensor C : [color=%s]%s[/color] kg"
-		% [weight_color_c, id[sensors["Cube001"][5]]]
-	)
-	$RichTextLabel9.bbcode_text = (
-		"Weight Sensor F : [color=%s]%s[/color] kg"
-		% [weight_color_f, id[sensors["Cube001"][6]]]
-	)
-
+	if not clicked:
+		fridge()
+	else:
+		pass
 
 func _on_FridgeStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 # The following functions are called when the mouse enters a mesh or exits a mesh
 #
 #
 func _on_CubeStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TrailerWheelFStaticBody_mouse_entered():
-	trailer_wheels("Trailer Wheel F")
-
+	if not clicked:
+		trailer_wheels("Trailer Wheel F")
+	else:
+		pass
 
 func _on_TrailerWheelFStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TrailerWheelEStaticBody_mouse_entered():
-	trailer_wheels("Trailer Wheel E")
+	if not clicked:
+		trailer_wheels("Trailer Wheel E")
+	else:
+		pass
 
 
 func _on_TrailerWheelEStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TrailerWheelDStaticBody_mouse_entered():
-	trailer_wheels("Trailer Wheel D")
+	if not clicked:
+		trailer_wheels("Trailer Wheel D")
+	else:
+		pass
 
 
 func _on_TrailerWheelDStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TrailerWheelCStaticBody_mouse_entered():
-	trailer_wheels("Trailer Wheel C")
+	if not clicked:
+		trailer_wheels("Trailer Wheel C")
+	else:
+		pass
 
 
 func _on_TrailerWheelCStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TrailerWheelBStaticBody_mouse_entered():
@@ -380,15 +421,24 @@ func _on_TrailerWheelBStaticBody_mouse_entered():
 
 
 func _on_TrailerWheelBStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TrailerWheelAStaticBody_mouse_entered():
-	trailer_wheels("Trailer Wheel A")
+	if not clicked:
+		trailer_wheels("Trailer Wheel A")
+	else:
+		pass
 
 
 func _on_TrailerWheelAStaticBody_mouse_exited():
-	clear()
+	if clicked == false:
+		clear()
+	else:
+		pass
 
 
 func _on_TruckWheelFStaticBody_mouse_entered():
@@ -396,44 +446,218 @@ func _on_TruckWheelFStaticBody_mouse_entered():
 
 
 func _on_TruckWheelFStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TruckWheelEStaticBody_mouse_entered():
-	truck_wheel_ce("Truck Wheel E")
+	if not clicked:
+		truck_wheel_ce("Truck Wheel E")
+	else:
+		pass
 
 
 func _on_TruckWheelEStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TruckWheelDStaticBody_mouse_entered():
-	truck_wheel_df("Truck Wheel D")
+	if not clicked:
+		truck_wheel_df("Truck Wheel D")
+	else:
+		pass
 
 
 func _on_TruckWheelDStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TruckWheelCStaticBody_mouse_entered():
-	truck_wheel_ce("Truck Wheel C")
+	if not clicked:
+		truck_wheel_ce("Truck Wheel C")
+	else:
+		pass
 
 
 func _on_TruckWheelCStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TruckWheelBStaticBody_mouse_entered():
-	truck_wheel_ab("Truck Wheel B")
+	if not clicked:
+		truck_wheel_ab("Truck Wheel B")
+	else:
+		pass
 
 
 func _on_TruckWheelBStaticBody_mouse_exited():
-	clear()
+	if not clicked:
+		clear()
+	else:
+		pass
 
 
 func _on_TruckWheelStaticBody_mouse_entered():
-	truck_wheel_ab("Truck Wheel A")
+	if not clicked:
+		truck_wheel_ab("Truck Wheel A")
+	else:
+		pass
 
 
 func _on_TruckWheelStaticBody_mouse_exited():
+	if not clicked:
+		clear()
+	else:
+		pass
+
+func _on_TruckWheelStaticBody_truck_wheel_a():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Truck Wheel A")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Truck Wheel A")
+
+
+func _on_StaticBody_clear():
+	clicked = false
 	clear()
+
+
+func _on_TruckWheelBStaticBody_truck_wheel_b():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Truck Wheel B")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Truck Wheel B")
+
+
+func _on_TruckWheelCStaticBody_truck_wheel_c():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Truck Wheel C")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Truck Wheel C")
+
+
+func _on_TruckWheelDStaticBody_truck_wheel_d():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Truck Wheel D")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Truck Wheel D")
+
+
+func _on_TruckWheelEStaticBody_truck_wheel_e():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Truck Wheel E")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Truck Wheel E")
+
+
+func _on_TruckWheelFStaticBody_truck_wheel_f():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Truck Wheel F")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Truck Wheel F")
+
+
+func _on_TrailerWheelAStaticBody_trailer_wheel_a():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Trailer Wheel A")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Trailer Wheel A")
+
+func _on_TrailerWheelBStaticBody_trailer_wheel_b():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Trailer Wheel B")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Trailer Wheel B")
+
+func _on_TrailerWheelCStaticBody_trailer_wheel_c():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Trailer Wheel C")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Trailer Wheel C")
+
+func _on_TrailerWheelDStaticBody_trailer_wheel_d():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Trailer Wheel D")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Trailer Whee D")
+
+
+func _on_TrailerWheelEStaticBody_trailer_wheel_e():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Trailer Wheel E")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Trailer Wheel E")
+
+
+func _on_TrailerWheelFStaticBody_trailer_wheel_f():
+	if not clicked:
+		clicked = true
+		truck_wheel_ab("Trailer Wheel F")
+	else:
+		clear()
+		clicked = true
+		truck_wheel_ab("Trailer Wheel F")
+
+
+func _on_CubeStaticBody_freezer():
+	if not clicked:
+		clicked = true
+		freezer()
+	else:
+		clear()
+		clicked = true
+		freezer()
+
+
+func _on_FridgeStaticBody_fridge():
+	if not clicked:
+		clicked = true
+		fridge()
+	else:
+		clear()
+		clicked = true
+		fridge()
