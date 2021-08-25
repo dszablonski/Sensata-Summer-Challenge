@@ -307,7 +307,7 @@ func _get_formatted_chart_data(sensor_names: Array, just_y_axis := false) -> Arr
 	# Iterating through every hour (0 to 23).
 	for i in 24:
 		# Grabbing the data for that hour.
-		var hourly_data := DatabaseFetch.read_db_time_current_date(i)
+		var hourly_data := DatabaseFetch.read_db_current_date(i)
 		# To calculate the average for that hour we need the total and the
 		# number of sensors (because average = total / num).
 		var total := 0.0
