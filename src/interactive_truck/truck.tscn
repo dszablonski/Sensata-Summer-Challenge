@@ -2,7 +2,7 @@
 
 [ext_resource path="res://interactive_truck/truck.glb" type="PackedScene" id=1]
 [ext_resource path="res://interactive_truck/truck_status.gd" type="Script" id=2]
-[ext_resource path="res://interactive_truck/truck_click.gd" type="Script" id=4]
+[ext_resource path="res://truck_click.gd" type="Script" id=3]
 [ext_resource path="res://interactive_truck/change_border.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -1114,7 +1114,7 @@ material/0 = SubResource( 3 )
 script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Break Wear Sensor A  B" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Break Wear Sensor A  B/StaticBody" index="0" groups=[
 "brakeWearSensorAB",
@@ -1127,7 +1127,7 @@ material/0 = SubResource( 5 )
 script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Truck" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck/StaticBody" index="0" groups=[
 "truck",
@@ -1139,7 +1139,7 @@ material/0 = SubResource( 9 )
 script = ExtResource( 5 )
 
 [node name="TruckWheelStaticBody" type="StaticBody" parent="Truck Wheel A" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck Wheel A/TruckWheelStaticBody" index="0" groups=[
 "truckWheelA",
@@ -1152,7 +1152,7 @@ material/0 = SubResource( 13 )
 script = ExtResource( 5 )
 
 [node name="TruckWheelBStaticBody" type="StaticBody" parent="Truck Wheel B" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck Wheel B/TruckWheelBStaticBody" index="0" groups=[
 "truckWheelB",
@@ -1165,7 +1165,7 @@ material/0 = SubResource( 17 )
 script = ExtResource( 5 )
 
 [node name="TruckWheelCStaticBody" type="StaticBody" parent="Truck Wheel C" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck Wheel C/TruckWheelCStaticBody" index="0" groups=[
 "truckWheelC",
@@ -1178,7 +1178,7 @@ material/0 = SubResource( 21 )
 script = ExtResource( 5 )
 
 [node name="TruckWheelDStaticBody" type="StaticBody" parent="Truck Wheel D" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck Wheel D/TruckWheelDStaticBody" index="0" groups=[
 "truckWheelD",
@@ -1191,7 +1191,7 @@ material/0 = SubResource( 25 )
 script = ExtResource( 5 )
 
 [node name="TruckWheelEStaticBody" type="StaticBody" parent="Truck Wheel E" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck Wheel E/TruckWheelEStaticBody" index="0" groups=[
 "truckWheelE",
@@ -1204,7 +1204,7 @@ material/0 = SubResource( 29 )
 script = ExtResource( 5 )
 
 [node name="TruckWheelFStaticBody" type="StaticBody" parent="Truck Wheel F" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Truck Wheel F/TruckWheelFStaticBody" index="0" groups=[
 "truckWheelF",
@@ -1221,7 +1221,7 @@ material/0 = SubResource( 34 )
 script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Break Wear and Weight Sensor E B" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Break Wear and Weight Sensor E B/StaticBody" index="0" groups=[
 "brakeWearAndWeightSensorEB",
@@ -1235,7 +1235,7 @@ material/0 = SubResource( 36 )
 script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Break Wear annd Weight Seonsor D  A" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Break Wear annd Weight Seonsor D  A/StaticBody" index="0" groups=[
 "brakeWearAndWeightSensorDA",
@@ -1250,7 +1250,7 @@ script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Break Wear Sensor F  C" index="0"]
 transform = Transform( 1, 2.27374e-13, 0, 1.11022e-16, 1, 0, 0, 0, 1, 0, 0, 0 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Break Wear Sensor F  C/StaticBody" index="0" groups=[
 "brakeWearSensorFC",
@@ -1264,7 +1264,7 @@ material/0 = SubResource( 42 )
 script = ExtResource( 5 )
 
 [node name="TrailerWheelAStaticBody" type="StaticBody" parent="Trailer Wheel A" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel A/TrailerWheelAStaticBody" index="0" groups=[
 "trailerWheelA",
@@ -1278,7 +1278,7 @@ material/0 = SubResource( 46 )
 script = ExtResource( 5 )
 
 [node name="TrailerWheelBStaticBody" type="StaticBody" parent="Trailer Wheel B" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel B/TrailerWheelBStaticBody" index="0" groups=[
 "trailerWheelB",
@@ -1292,7 +1292,7 @@ material/0 = SubResource( 50 )
 script = ExtResource( 5 )
 
 [node name="TrailerWheelCStaticBody" type="StaticBody" parent="Trailer Wheel C" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel C/TrailerWheelCStaticBody" index="0" groups=[
 "trailerWheelC",
@@ -1306,7 +1306,7 @@ material/0 = SubResource( 54 )
 script = ExtResource( 5 )
 
 [node name="TrailerWheelDStaticBody" type="StaticBody" parent="Trailer Wheel D" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel D/TrailerWheelDStaticBody" index="0" groups=[
 "trailerWheelD",
@@ -1320,7 +1320,7 @@ material/0 = SubResource( 58 )
 script = ExtResource( 5 )
 
 [node name="TrailerWheelEStaticBody" type="StaticBody" parent="Trailer Wheel E" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel E/TrailerWheelEStaticBody" index="0" groups=[
 "trailerWheelE",
@@ -1334,7 +1334,7 @@ material/0 = SubResource( 62 )
 script = ExtResource( 5 )
 
 [node name="TrailerWheelFStaticBody" type="StaticBody" parent="Trailer Wheel F" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Trailer Wheel F/TrailerWheelFStaticBody" index="0" groups=[
 "trailerWheelF",
@@ -1349,7 +1349,7 @@ material/0 = SubResource( 68 )
 script = ExtResource( 5 )
 
 [node name="CubeStaticBody" type="StaticBody" parent="Cube" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cube/CubeStaticBody" index="0" groups=[
 "freezer",
@@ -1362,7 +1362,7 @@ material/0 = SubResource( 72 )
 script = ExtResource( 5 )
 
 [node name="FridgeStaticBody" type="StaticBody" parent="Cube001" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cube001/FridgeStaticBody" index="0" groups=[
 "fridge",
@@ -1377,7 +1377,7 @@ material/0 = SubResource( 76 )
 script = ExtResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="void" index="0"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="void/StaticBody" index="0" groups=[
 "void",
