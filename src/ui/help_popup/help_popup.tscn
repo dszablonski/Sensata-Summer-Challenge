@@ -31,7 +31,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 520.0
-margin_bottom = 403.0
+margin_bottom = 459.0
 rect_min_size = Vector2( 510, 0 )
 use_hidden_tabs_for_min_size = true
 
@@ -175,14 +175,14 @@ margin_top = 33.0
 margin_right = -10.0
 margin_bottom = -10.0
 bbcode_enabled = true
-bbcode_text = "Location in the second tab of the right panel is the truck viewer.
+bbcode_text = "Located in the second tab of the right panel is the truck viewer.
 
 By holding the middle mouse button (or right click) and moving the cursor, the [color=#8B9BB4]truck[/color] will rotate. If the cursor is not on top of the truck viewer, the [color=#8B9BB4]truck[/color] will automatically rotate as well.
 
 By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
 
 If you click one of the [color=#8B9BB4]truck's[/color] components, then the status popup will stay visible until it is either clicked again or another component is clicked."
-text = "Location in the second tab of the right panel is the truck viewer.
+text = "Located in the second tab of the right panel is the truck viewer.
 
 By holding the middle mouse button (or right click) and moving the cursor, the truck will rotate. If the cursor is not on top of the truck viewer, the truck will automatically rotate as well.
 

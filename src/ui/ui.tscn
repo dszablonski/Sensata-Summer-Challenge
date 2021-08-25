@@ -246,7 +246,7 @@ anchor_bottom = 0.0
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 534.0
-margin_bottom = 417.0
+margin_bottom = 473.0
 
 [connection signal="time_changed" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Time Selection" to="." method="_on_Time_Selection_time_changed"]
 [connection signal="visibility_changed" from="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer" to="UIMargin/UIVSplit/TopRowHSplit/RightSide/TabContainer/Truck Viewer" method="_on_Truck_Viewer_visibility_changed"]
