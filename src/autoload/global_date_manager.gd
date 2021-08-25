@@ -5,7 +5,6 @@ signal date_time_changed
 var GlobalDay = 1 setget _set_GlobalDay  #Displayed day
 var GlobalMonth = 6 setget _set_GlobalMonth  #Displayed month
 var GlobalYear = 2021 setget _set_GlobalYear  #Displayed year
-var time = OS.get_datetime()  #This gets the time,date,month,etc but I don't think it's actually used but I don't want to break anything
 var StartDay = 10 + 1  #This is the day the timeline starts on 
 var StartMonth = 6  #This is the month the timeline starts on 
 var StartYear = 2021  ##This is the year the timeline starts on 
