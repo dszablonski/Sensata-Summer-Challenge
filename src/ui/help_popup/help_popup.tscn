@@ -1,0 +1,205 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/popup.gd" type="Script" id=1]
+[ext_resource path="res://ui/help_popup/help_popup_theme.tres" type="Theme" id=2]
+
+[node name="HelpPopup" type="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -504.0
+margin_bottom = -327.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 520.0
+margin_bottom = 459.0
+rect_min_size = Vector2( 510, 0 )
+use_hidden_tabs_for_min_size = true
+
+[node name="Timeline" type="RichTextLabel" parent="MarginContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 33.0
+margin_right = -10.0
+margin_bottom = -10.0
+bbcode_enabled = true
+bbcode_text = "Located in the top left menu panel is the timeline.
+
+The timeline consists of several buttons that allow you to choose which day you want. The color of each day represents the state of the truck's data.
+
+[color=#181425]Black[/color]: No data found
+[color=#63C74D]Green[/color]: There were no problems found with the truck
+[color=#FEE761]Yellow[/color]: There is at least one value in the truck's sensors which you should be cautious of
+[color=#E43B44]Red[/color]: There is at least one value in the truck's sensors which is exceeding the safety limits
+
+There are also two buttons for navigating to the next 7 days and for navigating to the previous 7 days."
+text = "Located in the top left menu panel is the timeline.
+
+The timeline consists of several buttons that allow you to choose which day you want. The color of each day represents the state of the truck's data.
+
+Black: No data found
+Green: There were no problems found with the truck
+Yellow: There is at least one value in the truck's sensors which you should be cautious of
+Red: There is at least one value in the truck's sensors which is exceeding the safety limits
+
+There are also two buttons for navigating to the next 7 days and for navigating to the previous 7 days."
+fit_content_height = true
+
+[node name="Time Selection" type="RichTextLabel" parent="MarginContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 33.0
+margin_right = -10.0
+margin_bottom = -10.0
+bbcode_enabled = true
+bbcode_text = "Location in the first tab of the right panel is the time selection menu.
+
+This interface is shaped like a 24-hour clock with the time buttons allowing you to choose which time you want.
+
+The clock is split into colored segments based on the following traffic light system:
+[color=#63C74D]Green[/color]: There were no problems found with the truck
+[color=#FEE761]Yellow[/color]: There is at least one value in the truck's sensors which you should be cautious of
+[color=#E43B44]Red[/color]: There is at least one value in the truck's sensors which is exceeding the safety limits"
+text = "Location in the first tab of the right panel is the time selection menu.
+
+This interface is shaped like a 24-hour clock with the time buttons allowing you to choose which time you want.
+
+The clock is split into colored segments based on the following traffic light system:
+Green: There were no problems found with the truck
+Yellow: There is at least one value in the truck's sensors which you should be cautious of
+Red: There is at least one value in the truck's sensors which is exceeding the safety limits"
+fit_content_height = true
+
+[node name="Warnings" type="RichTextLabel" parent="MarginContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 33.0
+margin_right = -10.0
+margin_bottom = -10.0
+bbcode_enabled = true
+bbcode_text = "Located in the bottom panel are the warnings.
+
+Warnings are categorised as either [color=#E43B44]\"danger\"[/color] or [color=#FEE761]\"caution\"[/color] based on if they exceed any of the safety limits.
+
+The ping button allows you to send a notification to the truck driver so that they can respond accordingly. [color=#181425]Note that the act of actually sending the ping has been left unimplemented.[/color]
+
+The view limits button allows you to see both the caution limits and the safe limits. If a value is within the caution limits then it will be marked as [color=#63C74D]safe[/color] and so no warning will be displayed. However, if it is outside the caution limits then it will be either marked as [color=#FEE761]caution[/color] or as [color=#E43B44]danger[/color]. This is determined by if it also falls outside the safe limits (in which it will be marked as [color=#E43B44]danger[/color])."
+text = "Located in the bottom panel are the warnings.
+
+Warnings are categorised as either \"danger\" or \"caution\" based on if they exceed any of the safety limits.
+
+The ping button allows you to send a notification to the truck driver so that they can respond accordingly. Note that the act of actually sending the ping has been left unimplemented.
+
+The view limits button allows you to see both the caution limits and the safe limits. If a value is within the caution limits then it will be marked as safe and so no warning will be displayed. However, if it is outside the caution limits then it will be either marked as caution or as danger. This is determined by if it also falls outside the safe limits (in which it will be marked as danger)."
+fit_content_height = true
+
+[node name="Charts" type="RichTextLabel" parent="MarginContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 33.0
+margin_right = -10.0
+margin_bottom = -10.0
+bbcode_enabled = true
+bbcode_text = "Located in the left panel is the charts.
+
+There are 4 charts by default which show a minimalistic visualization of the following:
+- [color=#63C74D]Trailer[/color] weight compared to [color=#E43B44]fridge[/color] and [color=#0099DB]freezer[/color] temps
+- [color=#8B9BB4]Truck[/color] and [color=#63C74D]Trailer[/color] tyre pressure
+- [color=#8B9BB4]Truck[/color] wheel bearing temp
+- [color=#8B9BB4]Truck[/color] and [color=#63C74D]Trailer[/color] brake wear
+
+Upon selecting one of these graphs, a more sophisticated version will appear.
+
+For the [color=#63C74D]trailer[/color] weight chart, each of the 5 weight sensors will now be visible.
+
+For the tyre pressure chart, each of the 6 [color=#8B9BB4]Truck[/color] tyre pressure sensors will be visible. Another tab will also be available which will allow you to view the 6 [color=#63C74D]Trailer[/color] tyre pressure sensors.
+
+For the [color=#8B9BB4]truck[/color] wheel bearing temp chart, each of the four temperature sensors will be visible.
+
+For the brake wear chart, both [color=#8B9BB4]Truck[/color] brake wear sensors will be visible. Another tab will also be available which will allow you to view the 6 [color=#63C74D]Trailer[/color] brake wear sensors.
+
+There will also be an [color=#F77622]orange[/color] vertical line which will signify the current time (see the time selection tab for more information on how to change that)."
+text = "Located in the left panel is the charts.
+
+There are 4 charts by default which show a minimalistic visualization of the following:
+- Trailer weight compared to fridge and freezer temps
+- Truck and Trailer tyre pressure
+- Truck wheel bearing temp
+- Truck and Trailer brake wear
+
+Upon selecting one of these graphs, a more sophisticated version will appear.
+
+For the trailer weight chart, each of the 5 weight sensors will now be visible.
+
+For the tyre pressure chart, each of the 6 Truck tyre pressure sensors will be visible. Another tab will also be available which will allow you to view the 6 Trailer tyre pressure sensors.
+
+For the truck wheel bearing temp chart, each of the four temperature sensors will be visible.
+
+For the brake wear chart, both Truck brake wear sensors will be visible. Another tab will also be available which will allow you to view the 6 Trailer brake wear sensors.
+
+There will also be an orange vertical line which will signify the current time (see the time selection tab for more information on how to change that)."
+fit_content_height = true
+
+[node name="Truck Viewer" type="RichTextLabel" parent="MarginContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 33.0
+margin_right = -10.0
+margin_bottom = -10.0
+bbcode_enabled = true
+bbcode_text = "Located in the second tab of the right panel is the truck viewer.
+
+By holding the middle mouse button (or right click) and moving the cursor, the [color=#8B9BB4]truck[/color] will rotate. If the cursor is not on top of the truck viewer, the [color=#8B9BB4]truck[/color] will automatically rotate as well.
+
+By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
+
+If you click one of the [color=#8B9BB4]truck's[/color] components, then the status popup will stay visible until it is either clicked again or another component is clicked."
+text = "Located in the second tab of the right panel is the truck viewer.
+
+By holding the middle mouse button (or right click) and moving the cursor, the truck will rotate. If the cursor is not on top of the truck viewer, the truck will automatically rotate as well.
+
+By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
+
+If you click one of the truck's components, then the status popup will stay visible until it is either clicked again or another component is clicked."
+fit_content_height = true
+
+[node name="CloseButton" type="Button" parent="MarginContainer"]
+margin_left = 497.0
+margin_top = 10.0
+margin_right = 520.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 23, 23 )
+focus_mode = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x"
+
+[connection signal="pressed" from="MarginContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
