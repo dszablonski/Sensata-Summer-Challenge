@@ -30,35 +30,54 @@ onready var wheel_bearing_chart: LineChart = $"TabContainerMargin/WheelBearingTa
 onready var truck_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Truck Brake Wear %"
 onready var trailer_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Trailer Brake Wear %"
 onready var CHART_TO_LINE_SENSORS := {
-	avg_weight_chart: [
+	avg_weight_chart:
+	[
 		["TrailerWeightA", "TrailerWeightC", "TrailerWeightD", "TrailerWeightF", "TrailerWeightG"],
 		["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC"],
 		["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF"],
 	],
-	avg_tyre_pressure_chart: [
+	avg_tyre_pressure_chart:
+	[
 		[
-			"TruckTyrePressureA", "TruckTyrePressureB", "TruckTyrePressureC",
-			"TruckTyrePressureD", "TruckTyrePressureE", "TruckTyrePressureF"
+			"TruckTyrePressureA",
+			"TruckTyrePressureB",
+			"TruckTyrePressureC",
+			"TruckTyrePressureD",
+			"TruckTyrePressureE",
+			"TruckTyrePressureF"
 		],
 		[
-			"TrailerTyrePressureA", "TrailerTyrePressureB", "TrailerTyrePressureC",
-			"TrailerTyrePressureD", "TrailerTyrePressureE", "TrailerTyrePressureF"
+			"TrailerTyrePressureA",
+			"TrailerTyrePressureB",
+			"TrailerTyrePressureC",
+			"TrailerTyrePressureD",
+			"TrailerTyrePressureE",
+			"TrailerTyrePressureF"
 		],
 	],
-	avg_wheel_bearing_chart: [
+	avg_wheel_bearing_chart:
+	[
 		[
-			"TruckWheelBearingTempA", "TruckWheelBearingTempB",
-			"TruckWheelBearingTempC", "TruckWheelBearingTempD"
+			"TruckWheelBearingTempA",
+			"TruckWheelBearingTempB",
+			"TruckWheelBearingTempC",
+			"TruckWheelBearingTempD"
 		],
 	],
-	avg_brake_pads_chart: [
+	avg_brake_pads_chart:
+	[
 		["TruckBrakePadsA", "TruckBrakePadsB"],
 		[
-			"TrailerBrakePadsA", "TrailerBrakePadsB", "TrailerBrakePadsC",
-			"TrailerBrakePadsD", "TrailerBrakePadsE", "TrailerBrakePadsF",
+			"TrailerBrakePadsA",
+			"TrailerBrakePadsB",
+			"TrailerBrakePadsC",
+			"TrailerBrakePadsD",
+			"TrailerBrakePadsE",
+			"TrailerBrakePadsF",
 		],
 	],
-	trailer_weight_chart: [
+	trailer_weight_chart:
+	[
 		["TrailerWeightA"],
 		["TrailerWeightC"],
 		["TrailerWeightD"],
@@ -67,7 +86,8 @@ onready var CHART_TO_LINE_SENSORS := {
 		["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC"],
 		["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF"],
 	],
-	truck_tyre_pressure_chart: [
+	truck_tyre_pressure_chart:
+	[
 		["TruckTyrePressureA"],
 		["TruckTyrePressureB"],
 		["TruckTyrePressureC"],
@@ -75,7 +95,8 @@ onready var CHART_TO_LINE_SENSORS := {
 		["TruckTyrePressureE"],
 		["TruckTyrePressureF"],
 	],
-	trailer_tyre_pressure_chart: [
+	trailer_tyre_pressure_chart:
+	[
 		["TrailerTyrePressureA"],
 		["TrailerTyrePressureB"],
 		["TrailerTyrePressureC"],
@@ -83,65 +104,96 @@ onready var CHART_TO_LINE_SENSORS := {
 		["TrailerTyrePressureE"],
 		["TrailerTyrePressureF"],
 	],
-	wheel_bearing_chart: [
+	wheel_bearing_chart:
+	[
 		["TruckWheelBearingTempA"],
 		["TruckWheelBearingTempB"],
 		["TruckWheelBearingTempC"],
 		["TruckWheelBearingTempD"],
 	],
-	truck_brake_wear: [
+	truck_brake_wear:
+	[
 		["TruckBrakePadsA"],
 		["TruckBrakePadsB"],
 	],
-	trailer_brake_wear: [
+	trailer_brake_wear:
+	[
 		[
-			"TrailerBrakePadsA", "TrailerBrakePadsB", "TrailerBrakePadsC",
-			"TrailerBrakePadsD", "TrailerBrakePadsE", "TrailerBrakePadsF",
+			"TrailerBrakePadsA",
+			"TrailerBrakePadsB",
+			"TrailerBrakePadsC",
+			"TrailerBrakePadsD",
+			"TrailerBrakePadsE",
+			"TrailerBrakePadsF",
 		],
 	],
 }
 onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
-	avg_weight_chart: PoolColorArray([
-		BLUE,
-		RED,
-	]),
-	avg_tyre_pressure_chart: PoolColorArray([
-		GREEN,
-	]),
+	avg_weight_chart:
+	PoolColorArray(
+		[
+			BLUE,
+			RED,
+		]
+	),
+	avg_tyre_pressure_chart:
+	PoolColorArray(
+		[
+			GREEN,
+		]
+	),
 	avg_wheel_bearing_chart: PoolColorArray(),
-	avg_brake_pads_chart: PoolColorArray([
-		GREEN,
-	]),
-	trailer_weight_chart: PoolColorArray([
-		GREY_3,
-		GREY_4,
-		GREY_5,
-		GREY_6,
-		BLUE,
-		RED,
-	]),
-	truck_tyre_pressure_chart: PoolColorArray([
-		GREY_3,
-		GREY_4,
-		GREY_5,
-		GREY_6,
-		Color.white,
-	]),
-	trailer_tyre_pressure_chart: PoolColorArray([
-		GREY_3,
-		GREY_4,
-		GREY_5,
-		GREY_6,
-		Color.white,
-	]),
-	wheel_bearing_chart: PoolColorArray([
-		GREY_3,
-		GREY_4,
-		GREY_5,
-	]),
-	truck_brake_wear: PoolColorArray([
-		GREY_3,
-	]),
+	avg_brake_pads_chart:
+	PoolColorArray(
+		[
+			GREEN,
+		]
+	),
+	trailer_weight_chart:
+	PoolColorArray(
+		[
+			GREY_3,
+			GREY_4,
+			GREY_5,
+			GREY_6,
+			BLUE,
+			RED,
+		]
+	),
+	truck_tyre_pressure_chart:
+	PoolColorArray(
+		[
+			GREY_3,
+			GREY_4,
+			GREY_5,
+			GREY_6,
+			Color.white,
+		]
+	),
+	trailer_tyre_pressure_chart:
+	PoolColorArray(
+		[
+			GREY_3,
+			GREY_4,
+			GREY_5,
+			GREY_6,
+			Color.white,
+		]
+	),
+	wheel_bearing_chart:
+	PoolColorArray(
+		[
+			GREY_3,
+			GREY_4,
+			GREY_5,
+		]
+	),
+	truck_brake_wear:
+	PoolColorArray(
+		[
+			GREY_3,
+		]
+	),
 	trailer_brake_wear: PoolColorArray(),
 }
 onready var CHART_TO_ADDITIONAL_UNITS := {
@@ -229,17 +281,11 @@ func _plot_chart(chart: LineChart) -> void:
 		)
 	else:
 		chart.plot_from_array_multiple(
-			main_formatted_data,
-			additional_y_datas,
-			additional_function_colors,
-			additional_units
+			main_formatted_data, additional_y_datas, additional_function_colors, additional_units
 		)
 
 
-func _get_formatted_chart_data(
-	sensor_names: Array,
-	just_y_axis := false
-) -> Array:
+func _get_formatted_chart_data(sensor_names: Array, just_y_axis := false) -> Array:
 	# sensor_names represents the sensors we want to take the values from.
 	# If there are multiple elements in sensor_names then an average will be taken.
 
