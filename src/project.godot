@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "Label",
 "class": "DateTimeLabel",
 "language": "GDScript",
-"path": "res://ui/timeline/DateTimeDisplayer.gd"
+"path": "res://ui/timeline/date_time_displayer.gd"
 }, {
 "base": "Node2D",
 "class": "InteractiveTruck",
@@ -174,7 +174,7 @@ config/windows_native_icon="res://icon.ico"
 
 Utilities="*res://addons/easy_charts/Utilities/Scripts/utilities.gd"
 DatabaseFetch="*res://autoload/database_fetch.tscn"
-GlobalDate="*res://autoload/GlobalDateManager.gd"
+GlobalDate="*res://autoload/global_date_manager.gd"
 
 [debug]
 
