@@ -27,21 +27,25 @@ var sensors = {
 
 var freezer_is_loaded
 var fridge_is_loaded
-onready var id = DatabaseFetch.read_db_time_new(GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, GlobalDate.hour)
+var id
 
 
-# Runs every frame (capped at 60fps)
-func _physics_process(delta):
-	# Fetches the dictionary of values, checking for an update to current date
-	# and time. 
-	id = DatabaseFetch.read_db_time_new(GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, GlobalDate.hour)
+func _ready() -> void:
+	# When the date/time is changed the id should be updated.
+	GlobalDate.connect("date_time_changed", self, "_on_date_time_changed")
+	_on_date_time_changed()
+
+
+func _on_date_time_changed() -> void:
+	# Fetches the dictionary of values
+	id = DatabaseFetch.read_db_time_current()
 	# Checks if the freezer is loaded (sensor value greater than 0, returns 
 	# either True or False
 	freezer_is_loaded = id["TrailerWeightG"] > 0
 	# Checks if the freezer is loaded (sensor value greater than 0, returns
 	# either True or False
 	fridge_is_loaded = id["TrailerWeightA"] > 0 or id["TrailerWeightD"] > 0 or id["TrailerWeightC"] > 0 or id["TrailerWeightF"] > 0
-	
+
 # Clears the labels so the panel is blank
 func clear():
 	$RichTextLabel5.bbcode_text = ""
