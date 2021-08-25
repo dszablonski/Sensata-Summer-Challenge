@@ -4,7 +4,6 @@
 [ext_resource path="res://ui/help_popup/help_popup_theme.tres" type="Theme" id=2]
 
 [node name="HelpPopup" type="PopupPanel"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -504.0
@@ -37,7 +36,6 @@ rect_min_size = Vector2( 510, 0 )
 use_hidden_tabs_for_min_size = true
 
 [node name="Timeline" type="RichTextLabel" parent="MarginContainer/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -169,6 +167,7 @@ There will also be an orange vertical line which will signify the current time (
 fit_content_height = true
 
 [node name="Truck Viewer" type="RichTextLabel" parent="MarginContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
