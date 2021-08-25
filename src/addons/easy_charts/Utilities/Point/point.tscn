@@ -3,11 +3,11 @@
 [ext_resource path="res://addons/easy_charts/Utilities/Point/point.gd" type="Script" id=1]
 
 [node name="Point" type="Control"]
-margin_left = -13.0
-margin_top = -13.0
-margin_right = 13.0
-margin_bottom = 13.0
-rect_min_size = Vector2( 16, 16 )
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 4.0
+margin_bottom = 4.0
+rect_min_size = Vector2( 12, 12 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

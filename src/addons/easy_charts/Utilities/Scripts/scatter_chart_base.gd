@@ -548,7 +548,10 @@ func count_functions():
 func calculate_pass():
 	# Calculate distance in pixel between 2 consecutive values/datas
 	x_pass = (SIZE.x - OFFSET.x) / (x_chors.size() - 1 if x_chors.size() > 1 else x_chors.size())
-	y_pass = (origin.y - ChartName.get_rect().size.y * 2) / (y_chors.size() - 1 if y_chors.size() > 1 else y_chors.size())
+	if has_node("Key"):  # Hack ;)
+		y_pass = (origin.y - $Key.get_rect().size.y * 2) / (y_chors.size() - 1 if y_chors.size() > 1 else y_chors.size())
+		return
+	y_pass = (origin.y - $ChartName.get_rect().size.y * 2) / (y_chors.size() - 1 if y_chors.size() > 1 else y_chors.size())
 
 
 func calculate_coordinates():

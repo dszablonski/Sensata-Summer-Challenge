@@ -9,11 +9,6 @@ const IS_ANTIALIASED := true
 
 const OUTLINE_COLOR := Color("181425")
 const OUTLINE_THICKNESS := 2.0
-const OUTLINE_NUM_POINTS := 64
-
-const INNER_CIRCLE_RADIUS_PROPORTION := 0.25
-const INNER_CIRCLE_OUTLINE_THICKNESS := 2.0
-const INNER_CIRCLE_NUM_SEGMENTS := 8
 
 const TIME_NUM_SEGMENTS := 24
 
@@ -46,7 +41,6 @@ func _ready() -> void:
 func _draw() -> void:
 	_draw_hour_safety_sectors()
 	_draw_hour_safety_segments()
-	_draw_main_circle()
 
 
 func force_press_time_button(time: float) -> void:
@@ -128,20 +122,6 @@ func _on_Time_Button_pressed(button: Button, time: float) -> void:
 		child.pressed = false
 		child.disabled = false
 	emit_signal("time_changed", time)
-
-
-func _draw_main_circle() -> void:
-	# Draw the clock's outline.
-	draw_arc(
-		_center,
-		_clock_radius,
-		0,
-		TAU,
-		OUTLINE_NUM_POINTS,
-		OUTLINE_COLOR,
-		OUTLINE_THICKNESS,
-		IS_ANTIALIASED
-	)
 
 
 func _draw_hour_safety_sectors() -> void:
