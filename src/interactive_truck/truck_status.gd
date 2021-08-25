@@ -53,6 +53,16 @@ onready var trailer_wheel_e = get_node("Trailer Wheel E")
 onready var trailer_wheel_f = get_node("Trailer Wheel F")
 
 
+func _ready() -> void:
+	GlobalDate.connect("date_time_changed", self, "_on_date_time_changed")
+	_on_date_time_changed()
+
+
+func _on_date_time_changed() -> void:
+	current_id = DatabaseFetch.read_db_current_date_time()
+	set_status(current_id)
+
+
 func fridge_limits(id: Dictionary):
 	var sensor = sensors["Cube001"]
 
@@ -216,10 +226,3 @@ func set_status(id):
 	set_material(trailer_wheel_d, trailer_wheel_limits(id, "Trailer Wheel D"))
 	set_material(trailer_wheel_e, trailer_wheel_limits(id, "Trailer Wheel E"))
 	set_material(trailer_wheel_f, trailer_wheel_limits(id, "Trailer Wheel F"))
-
-
-func _physics_process(delta):
-	current_id = DatabaseFetch.read_db_time_new(
-		GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, GlobalDate.hour
-	)
-	set_status(current_id)

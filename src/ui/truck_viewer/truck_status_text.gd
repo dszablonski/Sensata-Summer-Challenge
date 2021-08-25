@@ -47,7 +47,7 @@ func _ready() -> void:
 
 func _on_date_time_changed() -> void:
 	# Fetches the dictionary of values
-	id = DatabaseFetch.read_db_time_current()
+	id = DatabaseFetch.read_db_current_date_time()
 	# Checks if the freezer is loaded (sensor value greater than 0, returns 
 	# either True or False
 	freezer_is_loaded = id["TrailerWeightG"] > 0

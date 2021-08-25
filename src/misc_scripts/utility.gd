@@ -59,7 +59,7 @@ static func _get_individual_safety_value(
 static func get_safety_value(year: int, month: int, day: int, hour: int) -> int:
 	var safety_value := 0
 	# Grabbing the data for that hour.
-	var hourly_data := DatabaseFetch.read_db_time_new(year, month, day, hour)
+	var hourly_data := DatabaseFetch.read_db(year, month, day, hour)
 	# We only need the sensor values so the ID, DateTime, and Hour can be
 	# erased.
 	hourly_data.erase("ID")
