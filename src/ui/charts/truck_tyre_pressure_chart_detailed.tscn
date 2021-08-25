@@ -1,0 +1,258 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
+[ext_resource path="res://addons/easy_charts/LineChart/line_chart.gd" type="Script" id=2]
+[ext_resource path="res://addons/easy_charts/Utilities/Point/point_data.tscn" type="PackedScene" id=3]
+
+[node name="TruckTyrePressureChartDetailed" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 70, 50 )
+rect_pivot_offset = Vector2( -1392.44, 64 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "[Linechart] - General purpose node for Line Charts
+A line chart or line plot or line graph or curve chart is a type of chart which 
+displays information as a series of data points called 'markers' 
+connected by straight line segments.
+It is a basic type of chart common in many fields. It is similar to a scatter plot 
+except that the measurement points are ordered (typically by their x-axis value) 
+and joined with straight line segments. 
+A line chart is often used to visualize a trend in data over intervals of time – 
+a time series – thus the line is often drawn chronologically. 
+In these cases they are known as run charts."
+}
+chart_name = "Avg Tyre Pressure (psi) over Time"
+units = " psi"
+Chart_Properties/are_values_columns = false
+Chart_Properties/labels_index = 0
+Chart_Properties/show_x_values_as_labels = false
+Chart_Display/autoscale_x = false
+Chart_Display/min_x_range = 0
+Chart_Display/max_x_range = 23.0
+Chart_Display/x_decim = 1.0
+Chart_Display/autoscale_y = false
+Chart_Display/min_y_range = 0
+Chart_Display/max_y_range = 120.0
+Chart_Display/y_decim = 10.0
+Chart_Style/points_shape = [ 0 ]
+Chart_Style/function_colors = [ Color( 0.14902, 0.168627, 0.266667, 1 ) ]
+Chart_Style/function_line_width = 2
+Chart_Style/box_color = Color( 0.14902, 0.168627, 0.266667, 1 )
+Chart_Style/grid_lines_width = 1
+Chart_Style/v_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/h_lines_color = Color( 0.792157, 0.792157, 0.792157, 0 )
+Chart_Style/font = ExtResource( 1 )
+Chart_Style/bold_font = null
+Chart_Style/font_color = Color( 0.227451, 0.266667, 0.4, 1 )
+Chart_Style/use_template = false
+Chart_Style/template = 0
+Chart_Modifiers/treshold = Vector2( 0, 0 )
+Chart_Modifiers/only_disp_values = Vector2( 0, 0 )
+Chart_Modifiers/invert_chart = false
+Chart_Display/show_points = true
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.882353, 0.882353, 0.882353, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.01
+anchor_right = 0.5
+anchor_bottom = 0.01
+margin_left = -512.0
+margin_right = 512.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreA" type="HBoxContainer" parent="Key"]
+margin_left = 429.0
+margin_right = 449.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreA"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.14902, 0.168627, 0.266667, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreA"]
+margin_left = 11.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreB" type="HBoxContainer" parent="Key"]
+margin_left = 459.0
+margin_right = 479.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreB"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.227451, 0.266667, 0.4, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreB"]
+margin_left = 11.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "B"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreC" type="HBoxContainer" parent="Key"]
+margin_left = 489.0
+margin_right = 508.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreC"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.352941, 0.411765, 0.533333, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreC"]
+margin_left = 11.0
+margin_right = 19.0
+margin_bottom = 14.0
+text = "C"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreD" type="HBoxContainer" parent="Key"]
+margin_left = 518.0
+margin_right = 539.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreD"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.545098, 0.607843, 0.705882, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreD"]
+margin_left = 11.0
+margin_right = 21.0
+margin_bottom = 14.0
+text = "D"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreE" type="HBoxContainer" parent="Key"]
+margin_left = 549.0
+margin_right = 567.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreE"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.752941, 0.796078, 0.862745, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreE"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 14.0
+text = "E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreF" type="HBoxContainer" parent="Key"]
+margin_left = 577.0
+margin_right = 595.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreF"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+
+[node name="ChartName" type="Label" parent="Key/TyreF"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 14.0
+text = "F"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Points" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Legend" type="HBoxContainer" parent="."]
+visible = false
+margin_right = 1024.0
+margin_bottom = 64.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PointData" parent="." instance=ExtResource( 3 )]
+
+[connection signal="gui_input" from="Points" to="." method="_on_Points_gui_input"]

@@ -1,34 +1,175 @@
 extends PanelContainer
 
+const BLUE := Color("0099DB")
+const RED := Color("E43B44")
+const GREEN := Color("63C74D")
+const GREY_3 := Color("3A4466")
+const GREY_4 := Color("5A6988")
+const GREY_5 := Color("8B9BB4")
+const GREY_6 := Color("C0CBDC")
+
 # If a chart has been clicked on then it is considered "selected".
 var _selected_chart: Chart
-# When a chart is selected the x-axis scale becomes more "zoomed in" so you can
-# see more of the x-axis values (0 all the way to 23).
-# However, when it is unselected after being selected, we want to undo this change.
-# To do so, we must save the original value.
-var _selected_chart_old_x_decim: float
 
-onready var charts_grid: GridContainer = $MarginContainer/ChartsGrid
-# When a chart is selected only one chart becomes displayed at a time.
-# When that chart is then unselected, we want to undo that change by reverting
-# the number of columns back to this value.
-onready var charts_grid_columns_default = charts_grid.columns
+onready var charts_grid_margin: MarginContainer = $ChartsGridMargin
+onready var charts_grid: GridContainer = $ChartsGridMargin/ChartsGrid
+onready var charts_grid_key_margin: MarginContainer = $ChartsGridKeyMargin
 
-onready var weight_chart: LineChart = $MarginContainer/ChartsGrid/WeightChart
-onready var weight_chart_keys: VBoxContainer = weight_chart.get_node("Key")
-onready var CHART_TO_SENSORS := {
-	$MarginContainer/ChartsGrid/TyrePressureChart: "TyrePressure",
-	$MarginContainer/ChartsGrid/TruckWheelBearingTempChart: "TruckWheelBearingTemp",
-	$MarginContainer/ChartsGrid/TruckBrakePadsChart: "TruckBrakePads",
+onready var avg_weight_chart: LineChart = $ChartsGridMargin/ChartsGrid/WeightChart
+onready var avg_tyre_pressure_chart: LineChart = $ChartsGridMargin/ChartsGrid/TyrePressureChart
+onready var avg_wheel_bearing_chart: LineChart = $ChartsGridMargin/ChartsGrid/TruckWheelBearingTempChart
+onready var avg_brake_pads_chart: LineChart = $ChartsGridMargin/ChartsGrid/TruckBrakePadsChart
+onready var weight_tab_container: TabContainer = $TabContainerMargin/WeightTabContainer
+onready var tyre_pressure_tab_container: TabContainer = $TabContainerMargin/TyrePressureTabContainer
+onready var wheel_bearing_tab_container: TabContainer = $TabContainerMargin/WheelBearingTabContainer
+onready var brake_pads_tab_container: TabContainer = $TabContainerMargin/BrakePadsTabContainer
+onready var trailer_weight_chart: LineChart = $"TabContainerMargin/WeightTabContainer/Trailer Weight"
+onready var truck_tyre_pressure_chart: LineChart = $"TabContainerMargin/TyrePressureTabContainer/Truck Tyre Pressure"
+onready var trailer_tyre_pressure_chart: LineChart = $"TabContainerMargin/TyrePressureTabContainer/Trailer Tyre Pressure"
+onready var wheel_bearing_chart: LineChart = $"TabContainerMargin/WheelBearingTabContainer/Truck Wheel Bearing Temp"
+onready var truck_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Truck Brake Wear %"
+onready var trailer_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Trailer Brake Wear %"
+onready var CHART_TO_LINE_SENSORS := {
+	avg_weight_chart: [
+		["TrailerWeightA", "TrailerWeightC", "TrailerWeightD", "TrailerWeightF", "TrailerWeightG"],
+		["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC"],
+		["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF"],
+	],
+	avg_tyre_pressure_chart: [
+		[
+			"TruckTyrePressureA", "TruckTyrePressureB", "TruckTyrePressureC",
+			"TruckTyrePressureD", "TruckTyrePressureE", "TruckTyrePressureF"
+		],
+		[
+			"TrailerTyrePressureA", "TrailerTyrePressureB", "TrailerTyrePressureC",
+			"TrailerTyrePressureD", "TrailerTyrePressureE", "TrailerTyrePressureF"
+		],
+	],
+	avg_wheel_bearing_chart: [
+		[
+			"TruckWheelBearingTempA", "TruckWheelBearingTempB",
+			"TruckWheelBearingTempC", "TruckWheelBearingTempD"
+		],
+	],
+	avg_brake_pads_chart: [
+		["TruckBrakePadsA", "TruckBrakePadsB"],
+		[
+			"TrailerBrakePadsA", "TrailerBrakePadsB", "TrailerBrakePadsC",
+			"TrailerBrakePadsD", "TrailerBrakePadsE", "TrailerBrakePadsF",
+		],
+	],
+	trailer_weight_chart: [
+		["TrailerWeightA"],
+		["TrailerWeightC"],
+		["TrailerWeightD"],
+		["TrailerWeightF"],
+		["TrailerWeightG"],
+		["TrailerTemperatureA", "TrailerTemperatureB", "TrailerTemperatureC"],
+		["TrailerTemperatureD", "TrailerTemperatureE", "TrailerTemperatureF"],
+	],
+	truck_tyre_pressure_chart: [
+		["TruckTyrePressureA"],
+		["TruckTyrePressureB"],
+		["TruckTyrePressureC"],
+		["TruckTyrePressureD"],
+		["TruckTyrePressureE"],
+		["TruckTyrePressureF"],
+	],
+	trailer_tyre_pressure_chart: [
+		["TrailerTyrePressureA"],
+		["TrailerTyrePressureB"],
+		["TrailerTyrePressureC"],
+		["TrailerTyrePressureD"],
+		["TrailerTyrePressureE"],
+		["TrailerTyrePressureF"],
+	],
+	wheel_bearing_chart: [
+		["TruckWheelBearingTempA"],
+		["TruckWheelBearingTempB"],
+		["TruckWheelBearingTempC"],
+		["TruckWheelBearingTempD"],
+	],
+	truck_brake_wear: [
+		["TruckBrakePadsA"],
+		["TruckBrakePadsB"],
+	],
+	trailer_brake_wear: [
+		[
+			"TrailerBrakePadsA", "TrailerBrakePadsB", "TrailerBrakePadsC",
+			"TrailerBrakePadsD", "TrailerBrakePadsE", "TrailerBrakePadsF",
+		],
+	],
 }
-onready var back_button: Button = $MarginContainer/BackButton
+onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
+	avg_weight_chart: PoolColorArray([
+		BLUE,
+		RED,
+	]),
+	avg_tyre_pressure_chart: PoolColorArray([
+		GREEN,
+	]),
+	avg_wheel_bearing_chart: PoolColorArray(),
+	avg_brake_pads_chart: PoolColorArray([
+		GREEN,
+	]),
+	trailer_weight_chart: PoolColorArray([
+		GREY_3,
+		GREY_4,
+		GREY_5,
+		GREY_6,
+		BLUE,
+		RED,
+	]),
+	truck_tyre_pressure_chart: PoolColorArray([
+		GREY_3,
+		GREY_4,
+		GREY_5,
+		GREY_6,
+		Color.white,
+	]),
+	trailer_tyre_pressure_chart: PoolColorArray([
+		GREY_3,
+		GREY_4,
+		GREY_5,
+		GREY_6,
+		Color.white,
+	]),
+	wheel_bearing_chart: PoolColorArray([
+		GREY_3,
+		GREY_4,
+		GREY_5,
+	]),
+	truck_brake_wear: PoolColorArray([
+		GREY_3,
+	]),
+	trailer_brake_wear: PoolColorArray(),
+}
+onready var CHART_TO_ADDITIONAL_UNITS := {
+	avg_weight_chart: ["°C", "°C"],
+	avg_tyre_pressure_chart: [" psi"],
+	avg_wheel_bearing_chart: [],
+	avg_brake_pads_chart: ["%"],
+	trailer_weight_chart: [" kg", " kg", " kg", " kg", "°C", "°C"],
+	truck_tyre_pressure_chart: [" psi", " psi", " psi", " psi", " psi"],
+	trailer_tyre_pressure_chart: [" psi", " psi", " psi", " psi", " psi"],
+	wheel_bearing_chart: ["°C", "°C", "°C"],
+	truck_brake_wear: ["%"],
+	trailer_brake_wear: [],
+}
+onready var CHART_TO_TAB_CONTAINER := {
+	avg_weight_chart: weight_tab_container,
+	avg_tyre_pressure_chart: tyre_pressure_tab_container,
+	avg_wheel_bearing_chart: wheel_bearing_tab_container,
+	avg_brake_pads_chart: brake_pads_tab_container,
+}
+onready var back_button: Button = $TabContainerMargin/BackButton
 
 
 func _ready() -> void:
 	back_button.visible = false
 	# When the date/time is changed the charts should be updated
 	GlobalDate.connect("date_time_changed", self, "_update_charts")
-	# Iterate over every chart.
+	# Iterate over every basic chart.
 	for chart in charts_grid.get_children():
 		# Connects the chart's clicked signal so that when it is clicked it
 		# becomes selected.
@@ -37,62 +178,77 @@ func _ready() -> void:
 
 
 func _update_charts() -> void:
-	# Iterate over every chart.
-	for chart in charts_grid.get_children():
-		_plot_chart(chart)
-	# Update the selected chart's hour marker (if there is one).
-	if _selected_chart:
-		_selected_chart.update()
+	# Iterate over every chart if its parent is visible.
+	if charts_grid.visible:
+		for chart in charts_grid.get_children():
+			_plot_chart(chart)
+	if weight_tab_container.visible:
+		for chart in weight_tab_container.get_children():
+			_plot_chart(chart)
+	if tyre_pressure_tab_container.visible:
+		for chart in tyre_pressure_tab_container.get_children():
+			_plot_chart(chart)
+	if wheel_bearing_tab_container.visible:
+		for chart in wheel_bearing_tab_container.get_children():
+			_plot_chart(chart)
+	if brake_pads_tab_container.visible:
+		for chart in brake_pads_tab_container.get_children():
+			_plot_chart(chart)
 
 
-func _plot_chart(chart: Chart) -> void:
-	if chart == weight_chart:
-		_plot_weight_chart()
+func _plot_chart(chart: LineChart) -> void:
+	var line_sensors: Array = CHART_TO_LINE_SENSORS[chart]
+	var additional_function_colors: PoolColorArray = CHART_TO_ADDITIONAL_FUNCTION_COLORS[chart]
+	var additional_units: Array = CHART_TO_ADDITIONAL_UNITS[chart]
+	var sensor_names_line_one: Array = line_sensors[0]
+	var main_formatted_data := _get_formatted_chart_data(sensor_names_line_one)
+	var additional_y_datas := []
+	for i in range(1, line_sensors.size()):
+		var sensor_names: Array = line_sensors[i]
+		var y_data := _get_formatted_chart_data(sensor_names, true)
+		additional_y_datas.append(y_data)
+	if chart == avg_weight_chart:
+		chart.plot_from_array_multiple(
+			main_formatted_data,
+			additional_y_datas,
+			additional_function_colors,
+			additional_units,
+			[[-4, 20], [-4, 20]],
+			[4, 4],
+			["-4", "0", "4", "8", "12", "16", "20"]
+		)
+	elif chart == trailer_weight_chart:
+		chart.plot_from_array_multiple(
+			main_formatted_data,
+			additional_y_datas,
+			additional_function_colors,
+			additional_units,
+			[[], [], [], [], [-4, 20], [-4, 20]],
+			[0, 0, 0, 0, 4, 4],
+			["-4", "0", "4", "8", "12", "16", "20"]
+		)
 	else:
-		var sensor_name: String = CHART_TO_SENSORS[chart]
-		_plot_data(chart, sensor_name)
-
-
-func _plot_weight_chart() -> void:
-	var weight_formatted_data = _get_formatted_chart_data("TrailerWeight")
-	var freezer_formatted_y_datas = _get_formatted_chart_data(
-		"TrailerTemperature",
-		PoolStringArray(["A", "B", "C"]),
-		true
-	)
-	var fridge_formatted_y_datas = _get_formatted_chart_data(
-		"TrailerTemperature",
-		PoolStringArray(["D", "E", "F"]),
-		true
-	)
-	weight_chart.plot_from_array_multiple(
-		weight_formatted_data,
-		freezer_formatted_y_datas,
-		fridge_formatted_y_datas
-	)
+		chart.plot_from_array_multiple(
+			main_formatted_data,
+			additional_y_datas,
+			additional_function_colors,
+			additional_units
+		)
 
 
 func _get_formatted_chart_data(
-	sensor_name: String,
-	identifiers := PoolStringArray(),
-	just_average := false
+	sensor_names: Array,
+	just_y_axis := false
 ) -> Array:
-	# sensor_name represents the kind of sensors we want to take the values from.
-	# For example, if sensor_name was "TrailerWeight" it would get the average
-	# of every trailer weight sensor.
+	# sensor_names represents the sensors we want to take the values from.
+	# If there are multiple elements in sensor_names then an average will be taken.
 
-	# The identifier represents the letter at the end of the sensor.
-	# identifiers is a PoolStringArray containing identifiers.
-	# This allows the data to be even more specific.
-	# For example ["B", "C", "D"] would only average the sensor values for the
-	# sensor {sensor_name} that also either end in B, C, or D.
-
-	# just_average allows you to determine if it returns a one dimensional array
-	# containing just the average (y-axis) values or a two dimensional array
-	# containing both the average (y-axis) and the time (x-axis).
+	# just_y_axis allows you to determine if it returns a one dimensional array
+	# with just the y-axis values or a two dimensional array with both the y-axis
+	# and the x-axis (where the x-axis has the hours 0-23).
 
 	var formatted_data := []
-	if not just_average:
+	if not just_y_axis:
 		# The data array contains two nested arrays.
 		# The first row (index 0 array) contains the x-axis values.
 		# The second row (index 1 array) contains the y-axis values.
@@ -109,24 +265,19 @@ func _get_formatted_chart_data(
 		# To calculate the average for that hour we need the total and the
 		# number of sensors (because average = total / num).
 		var total := 0.0
-		var num := 0
+		var num := len(sensor_names)
 		# The hourly data is a dictionary containing the sensor name as the key
 		# and the sensor's value as the dictionary's value.
 		# This iterates over every sensor name.
 		for sensor in hourly_data:
-			# Ignore every sensor that isn't the sensor we want.
-			if not sensor_name in sensor:
-				continue
-			# Ignore identifiers that we don't want.
-			var identifier: String = sensor[-1]
-			if not identifiers.empty() and not identifier in identifiers:
+			# Ignore every sensor that isn't one of the sensors we want.
+			if not sensor in sensor_names:
 				continue
 			var value: int = hourly_data[sensor]
 			total += value
-			num += 1
 		# Calculate the average.
 		var average := int(total / num)
-		if just_average:
+		if just_y_axis:
 			formatted_data.append(average)
 		else:
 			formatted_data[0].append(i)
@@ -134,58 +285,29 @@ func _get_formatted_chart_data(
 	return formatted_data
 
 
-func _plot_data(chart: Chart, sensor_name: String) -> void:
-	# chart represents the chart we want to plot the data to.
-	# sensor_name represents the kind of sensors we want to take the values from.
-	# For example, if sensor_name was "TrailerWeight" it would plot the average
-	# of every trailer weight sensor.
-	
-	var formatted_data = _get_formatted_chart_data(sensor_name)
-	# Plot the data on the chart.
-	chart.plot_from_array(formatted_data)
-
-
 func _on_LineChart_clicked(chart: LineChart) -> void:
-	# When a chart is clicked it should become bigger.
-	# However, if a chart that is already selected is clicked then it should be
-	# unselected.
-	if chart == _selected_chart:  # If the chart is aleady selected.
-		_unselect_chart()
-	else:  # If the chart is not selected.
-		_select_chart(chart)
-
-
-func _select_chart(chart: Chart) -> void:
-	_selected_chart = chart
-	charts_grid.columns = 1
-	# Make all the charts invisible (except the selected chart).
-	for chart in charts_grid.get_children():
-		chart.visible = chart == _selected_chart
-	_selected_chart_old_x_decim = _selected_chart.x_decim
-	_selected_chart.x_decim = 1
-	_selected_chart.show_points = true
-	# Plot the selected chart.
-	_selected_chart.plot()
-	if _selected_chart == weight_chart:
-		weight_chart.ChartName.visible = false
-		weight_chart_keys.visible = true
-	back_button.visible = true
-
-
-func _unselect_chart() -> void:
-	charts_grid.columns = charts_grid_columns_default
-	_selected_chart.x_decim = _selected_chart_old_x_decim
-	_selected_chart.show_points = false
-	if _selected_chart == weight_chart:
-		weight_chart.ChartName.visible = true
-		weight_chart_keys.visible = false
-	_selected_chart = null
-	# Make every chart visible and plot them.
-	for chart in charts_grid.get_children():
-		chart.visible = true
-		chart.plot()
-	back_button.visible = false
+	_select_chart(chart)
+	_update_charts()
 
 
 func _on_BackButton_pressed() -> void:
 	_unselect_chart()
+	_update_charts()
+
+
+func _select_chart(chart: Chart) -> void:
+	_selected_chart = chart
+	charts_grid_margin.visible = false
+	charts_grid_key_margin.visible = false
+	var tab_container: TabContainer = CHART_TO_TAB_CONTAINER[_selected_chart]
+	tab_container.visible = true
+	back_button.visible = true
+
+
+func _unselect_chart() -> void:
+	var tab_container: TabContainer = CHART_TO_TAB_CONTAINER[_selected_chart]
+	tab_container.visible = false
+	charts_grid_margin.visible = true
+	charts_grid_key_margin.visible = true
+	_selected_chart = null
+	back_button.visible = false

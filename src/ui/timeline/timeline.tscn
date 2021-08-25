@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/timeline/Month1 text.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/main_theme.tres" type="Theme" id=5]
 [ext_resource path="res://ui/timeline/button.gd" type="Script" id=6]
 [ext_resource path="res://ui/timeline/timeline.gd" type="Script" id=7]
+[ext_resource path="res://ui/lighter_buttons_theme.tres" type="Theme" id=8]
 
 [node name="Timeline" type="VBoxContainer"]
 margin_right = 502.0
@@ -35,6 +36,7 @@ margin_left = 140.0
 margin_right = 178.0
 margin_bottom = 23.0
 focus_mode = 0
+theme = ExtResource( 8 )
 text = "Back"
 
 [node name="DateTime" type="Label" parent="TopRow"]
@@ -53,6 +55,7 @@ margin_left = 323.0
 margin_right = 361.0
 margin_bottom = 23.0
 focus_mode = 0
+theme = ExtResource( 8 )
 text = "Next"
 
 [node name="RightMonth" type="Label" parent="TopRow"]
@@ -161,9 +164,9 @@ text = "1"
 align = 0
 script = ExtResource( 6 )
 
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]

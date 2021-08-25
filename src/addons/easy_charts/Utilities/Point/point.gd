@@ -2,7 +2,7 @@ tool
 extends Control
 class_name Point
 
-const OFFSET : Vector2 = Vector2(13,13)
+const OFFSET : Vector2 = Vector2(6,6)
 var point_value : Array setget set_value,get_value
 var point_position : Vector2
 var color : Color setget set_color_point, get_color_point
@@ -57,7 +57,7 @@ func draw_point(size : float, color : Color):
 			draw_line(OFFSET-Vector2(size,0), OFFSET+Vector2(size,0), color, size-5, true)
 			draw_line(OFFSET-Vector2(0,size), OFFSET+Vector2(0,size), color, size-5, true)
 
-func create_point(shape : int, color : Color, color_outline : Color, position : Vector2, value : Array, function : String, units: String = "", size := 5, size_highlighted := 7):
+func create_point(shape : int, color : Color, color_outline : Color, position : Vector2, value : Array, function : String, units: String = "", size := 3, size_highlighted := 5):
 	self.shape = shape
 	self.color = color
 	self.color_outline = color_outline
