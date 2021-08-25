@@ -10,32 +10,25 @@ const GREY_6 := Color("C0CBDC")
 
 # If a chart has been clicked on then it is considered "selected".
 var _selected_chart: Chart
-# When a chart is selected the x-axis scale becomes more "zoomed in" so you can
-# see more of the x-axis values (0 all the way to 23).
-# However, when it is unselected after being selected, we want to undo this change.
-# To do so, we must save the original value.
-var _selected_chart_old_x_decim: float
 
-onready var charts_grid: GridContainer = $MarginContainer/ChartsGrid
-# When a chart is selected only one chart becomes displayed at a time.
-# When that chart is then unselected, we want to undo that change by reverting
-# the number of columns back to this value.
-onready var charts_grid_columns_default = charts_grid.columns
+onready var charts_grid_margin: MarginContainer = $ChartsGridMargin
+onready var charts_grid: GridContainer = $ChartsGridMargin/ChartsGrid
+onready var charts_grid_key_margin: MarginContainer = $ChartsGridKeyMargin
 
-onready var avg_weight_chart: LineChart = $MarginContainer/ChartsGrid/WeightChart
-onready var avg_tyre_pressure_chart: LineChart = $MarginContainer/ChartsGrid/TyrePressureChart
-onready var avg_wheel_bearing_chart: LineChart = $MarginContainer/ChartsGrid/TruckWheelBearingTempChart
-onready var avg_brake_pads_chart: LineChart = $MarginContainer/ChartsGrid/TruckBrakePadsChart
-onready var weight_tab_container: TabContainer = $MarginContainer/WeightTabContainer
-onready var tyre_pressure_tab_container: TabContainer = $MarginContainer/TyrePressureTabContainer
-onready var wheel_bearing_tab_container: TabContainer = $MarginContainer/WheelBearingTabContainer
-onready var brake_pads_tab_container: TabContainer = $MarginContainer/BrakePadsTabContainer
-onready var trailer_weight_chart: LineChart = $"MarginContainer/WeightTabContainer/Trailer Weight"
-onready var truck_tyre_pressure_chart: LineChart = $"MarginContainer/TyrePressureTabContainer/Truck Tyre Pressure"
-onready var trailer_tyre_pressure_chart: LineChart = $"MarginContainer/TyrePressureTabContainer/Trailer Tyre Pressure"
-onready var wheel_bearing_chart: LineChart = $"MarginContainer/WheelBearingTabContainer/Truck Wheel Bearing Temp"
-onready var truck_brake_wear: LineChart = $"MarginContainer/BrakePadsTabContainer/Truck Brake Wear %"
-onready var trailer_brake_wear: LineChart = $"MarginContainer/BrakePadsTabContainer/Trailer Brake Wear %"
+onready var avg_weight_chart: LineChart = $ChartsGridMargin/ChartsGrid/WeightChart
+onready var avg_tyre_pressure_chart: LineChart = $ChartsGridMargin/ChartsGrid/TyrePressureChart
+onready var avg_wheel_bearing_chart: LineChart = $ChartsGridMargin/ChartsGrid/TruckWheelBearingTempChart
+onready var avg_brake_pads_chart: LineChart = $ChartsGridMargin/ChartsGrid/TruckBrakePadsChart
+onready var weight_tab_container: TabContainer = $TabContainerMargin/WeightTabContainer
+onready var tyre_pressure_tab_container: TabContainer = $TabContainerMargin/TyrePressureTabContainer
+onready var wheel_bearing_tab_container: TabContainer = $TabContainerMargin/WheelBearingTabContainer
+onready var brake_pads_tab_container: TabContainer = $TabContainerMargin/BrakePadsTabContainer
+onready var trailer_weight_chart: LineChart = $"TabContainerMargin/WeightTabContainer/Trailer Weight"
+onready var truck_tyre_pressure_chart: LineChart = $"TabContainerMargin/TyrePressureTabContainer/Truck Tyre Pressure"
+onready var trailer_tyre_pressure_chart: LineChart = $"TabContainerMargin/TyrePressureTabContainer/Trailer Tyre Pressure"
+onready var wheel_bearing_chart: LineChart = $"TabContainerMargin/WheelBearingTabContainer/Truck Wheel Bearing Temp"
+onready var truck_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Truck Brake Wear %"
+onready var trailer_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Trailer Brake Wear %"
 onready var CHART_TO_LINE_SENSORS := {
 	avg_weight_chart: [
 		["TrailerWeightA", "TrailerWeightC", "TrailerWeightD", "TrailerWeightF", "TrailerWeightG"],
@@ -164,12 +157,12 @@ onready var CHART_TO_ADDITIONAL_UNITS := {
 	trailer_brake_wear: [],
 }
 onready var CHART_TO_TAB_CONTAINER := {
-	avg_weight_chart: $MarginContainer/WeightTabContainer,
-	avg_tyre_pressure_chart: $MarginContainer/TyrePressureTabContainer,
-	avg_wheel_bearing_chart: $MarginContainer/WheelBearingTabContainer,
-	avg_brake_pads_chart: $MarginContainer/BrakePadsTabContainer,
+	avg_weight_chart: weight_tab_container,
+	avg_tyre_pressure_chart: tyre_pressure_tab_container,
+	avg_wheel_bearing_chart: wheel_bearing_tab_container,
+	avg_brake_pads_chart: brake_pads_tab_container,
 }
-onready var back_button: Button = $MarginContainer/BackButton
+onready var back_button: Button = $TabContainerMargin/BackButton
 
 
 func _ready() -> void:
@@ -304,7 +297,8 @@ func _on_BackButton_pressed() -> void:
 
 func _select_chart(chart: Chart) -> void:
 	_selected_chart = chart
-	charts_grid.visible = false
+	charts_grid_margin.visible = false
+	charts_grid_key_margin.visible = false
 	var tab_container: TabContainer = CHART_TO_TAB_CONTAINER[_selected_chart]
 	tab_container.visible = true
 	back_button.visible = true
@@ -313,6 +307,7 @@ func _select_chart(chart: Chart) -> void:
 func _unselect_chart() -> void:
 	var tab_container: TabContainer = CHART_TO_TAB_CONTAINER[_selected_chart]
 	tab_container.visible = false
-	charts_grid.visible = true
+	charts_grid_margin.visible = true
+	charts_grid_key_margin.visible = true
 	_selected_chart = null
 	back_button.visible = false
