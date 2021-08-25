@@ -103,18 +103,18 @@ margin_bottom = -10.0
 bbcode_enabled = true
 bbcode_text = "Located in the bottom panel are the warnings.
 
-Warnings are categorised as either [color=#E43B44]\"danger\"[/color] or [color=#FEE761]\"caution\"[/color] based on if they exceed any of the safety limits.
+Warnings are categorised as either [color=#E43B44]\"critical\"[/color] or [color=#FEE761]\"caution\"[/color] based on if they exceed any of the safety limits.
 
 The ping button allows you to send a notification to the truck driver so that they can respond accordingly. [color=#181425]Note that the act of actually sending the ping has been left unimplemented.[/color]
 
-The view limits button allows you to see both the caution limits and the safe limits. If a value is within the caution limits then it will be marked as [color=#63C74D]safe[/color] and so no warning will be displayed. However, if it is outside the caution limits then it will be either marked as [color=#FEE761]caution[/color] or as [color=#E43B44]danger[/color]. This is determined by if it also falls outside the safe limits (in which it will be marked as [color=#E43B44]danger[/color])."
+The view limits button allows you to see both the caution limits and the safe limits. If a value is within the caution limits then it will be marked as [color=#63C74D]safe[/color] and so no warning will be displayed. However, if it is outside the caution limits then it will be either marked as [color=#FEE761]caution[/color] or as [color=#E43B44]critical[/color]. This is determined by if it also falls outside the critical limits (in which case it will be marked as [color=#E43B44]critical[/color])."
 text = "Located in the bottom panel are the warnings.
 
-Warnings are categorised as either \"danger\" or \"caution\" based on if they exceed any of the safety limits.
+Warnings are categorised as either \"critical\" or \"caution\" based on if they exceed any of the safety limits.
 
 The ping button allows you to send a notification to the truck driver so that they can respond accordingly. Note that the act of actually sending the ping has been left unimplemented.
 
-The view limits button allows you to see both the caution limits and the safe limits. If a value is within the caution limits then it will be marked as safe and so no warning will be displayed. However, if it is outside the caution limits then it will be either marked as caution or as danger. This is determined by if it also falls outside the safe limits (in which it will be marked as danger)."
+The view limits button allows you to see both the caution limits and the safe limits. If a value is within the caution limits then it will be marked as safe and so no warning will be displayed. However, if it is outside the caution limits then it will be either marked as caution or as critical. This is determined by if it also falls outside the critical limits (in which case it will be marked as critical)."
 fit_content_height = true
 
 [node name="Charts" type="RichTextLabel" parent="MarginContainer/TabContainer"]
