@@ -2,7 +2,7 @@ tool
 extends Control
 class_name Point
 
-const OFFSET : Vector2 = Vector2(6,6)
+const OFFSET : Vector2 = Vector2(7,7)
 var point_value : Array setget set_value,get_value
 var point_position : Vector2
 var color : Color setget set_color_point, get_color_point
