@@ -67,7 +67,7 @@ func _ready() -> void:
 
 
 func _update_warnings_based_on_date_time() -> void:
-	var data = DatabaseFetch.read_db_current_date_time()
+	var data := DatabaseFetch.read_db_current_date_time()
 	# The ID, DateTime, and Hour columns are not sensors so they can be discarded.
 	data.erase("ID")
 	data.erase("DateTime")
