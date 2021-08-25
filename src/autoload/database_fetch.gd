@@ -1,7 +1,7 @@
 extends Node
 const SQLite=preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
-var db_path="res://Database/database.db"
+var db_path="res://database/database.db"
 var tablename="Database"
 onready var timer=get_node("Timer")
 var ID=1

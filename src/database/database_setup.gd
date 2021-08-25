@@ -2,8 +2,8 @@ extends Spatial
 
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
-var db_name = "res://Database/database"
-var csv_path= "res://Database/Telemetrydatacommaseperated.csv"
+var db_name = "res://database/database"
+var csv_path= "res://database/Telemetrydatacommaseperated.csv"
 
 func _ready():
 	db=SQLite.new()
