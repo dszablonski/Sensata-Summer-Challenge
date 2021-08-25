@@ -118,14 +118,12 @@ onready var CHART_TO_LINE_SENSORS := {
 	],
 	trailer_brake_wear:
 	[
-		[
-			"TrailerBrakePadsA",
-			"TrailerBrakePadsB",
-			"TrailerBrakePadsC",
-			"TrailerBrakePadsD",
-			"TrailerBrakePadsE",
-			"TrailerBrakePadsF",
-		],
+		["TrailerBrakePadsA"],
+		["TrailerBrakePadsB"],
+		["TrailerBrakePadsC"],
+		["TrailerBrakePadsD"],
+		["TrailerBrakePadsE"],
+		["TrailerBrakePadsF"],
 	],
 }
 onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
@@ -194,7 +192,15 @@ onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
 			GREY_3,
 		]
 	),
-	trailer_brake_wear: PoolColorArray(),
+	trailer_brake_wear: PoolColorArray(
+		[
+			GREY_3,
+			GREY_4,
+			GREY_5,
+			GREY_6,
+			Color.white,
+		]
+	),
 }
 onready var CHART_TO_ADDITIONAL_UNITS := {
 	avg_weight_chart: ["°C", "°C"],
@@ -206,7 +212,7 @@ onready var CHART_TO_ADDITIONAL_UNITS := {
 	trailer_tyre_pressure_chart: [" psi", " psi", " psi", " psi", " psi"],
 	wheel_bearing_chart: ["°C", "°C", "°C"],
 	truck_brake_wear: ["%"],
-	trailer_brake_wear: [],
+	trailer_brake_wear: ["%", "%", "%", "%", "%"],
 }
 onready var CHART_TO_TAB_CONTAINER := {
 	avg_weight_chart: weight_tab_container,

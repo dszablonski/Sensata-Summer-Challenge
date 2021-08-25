@@ -71,31 +71,165 @@ anchor_top = 0.01
 anchor_right = 0.5
 anchor_bottom = 0.01
 margin_left = -512.0
-margin_top = 0.33
 margin_right = 512.0
-margin_bottom = 14.33
+margin_bottom = 14.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_constants/separation = 3
+custom_constants/separation = 10
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="Key"]
-margin_left = 434.0
+[node name="TyreA" type="HBoxContainer" parent="Key"]
+margin_left = 429.0
+margin_right = 449.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreA"]
 margin_top = 3.0
-margin_right = 442.0
+margin_right = 8.0
 margin_bottom = 11.0
 rect_min_size = Vector2( 8, 8 )
 size_flags_vertical = 4
 color = Color( 0.14902, 0.168627, 0.266667, 1 )
 
-[node name="ChartName" type="Label" parent="Key"]
-margin_left = 445.0
-margin_right = 589.0
+[node name="ChartName" type="Label" parent="Key/TyreA"]
+margin_left = 11.0
+margin_right = 20.0
 margin_bottom = 14.0
-text = "Average Brake Wear %"
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreB" type="HBoxContainer" parent="Key"]
+margin_left = 459.0
+margin_right = 479.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreB"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.227451, 0.266667, 0.4, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreB"]
+margin_left = 11.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "B"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreC" type="HBoxContainer" parent="Key"]
+margin_left = 489.0
+margin_right = 508.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreC"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.352941, 0.411765, 0.533333, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreC"]
+margin_left = 11.0
+margin_right = 19.0
+margin_bottom = 14.0
+text = "C"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreD" type="HBoxContainer" parent="Key"]
+margin_left = 518.0
+margin_right = 539.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreD"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.545098, 0.607843, 0.705882, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreD"]
+margin_left = 11.0
+margin_right = 21.0
+margin_bottom = 14.0
+text = "D"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreE" type="HBoxContainer" parent="Key"]
+margin_left = 549.0
+margin_right = 567.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreE"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+color = Color( 0.752941, 0.796078, 0.862745, 1 )
+
+[node name="ChartName" type="Label" parent="Key/TyreE"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 14.0
+text = "E"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TyreF" type="HBoxContainer" parent="Key"]
+margin_left = 577.0
+margin_right = 595.0
+margin_bottom = 14.0
+size_flags_horizontal = 0
+custom_constants/separation = 3
+
+[node name="ColorRect" type="ColorRect" parent="Key/TyreF"]
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+
+[node name="ChartName" type="Label" parent="Key/TyreF"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 14.0
+text = "F"
 align = 1
 valign = 1
 __meta__ = {
