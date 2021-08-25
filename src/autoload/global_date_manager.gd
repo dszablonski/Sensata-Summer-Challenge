@@ -48,7 +48,7 @@ var ArrowFirstClick = 1  #This varible makes sure you can't go past the upper da
 var ButtonClickedLimit = 0  #This varible makes sure you can't go past the upper date
 var MonthName1 = ""  #This is used to display the first month on "Month1" text
 var MonthName2 = ""  #This is used to display the second month on "Month2" text
-var hour := 0.0 setget _set_hour
+var hour := 0 setget _set_hour
 
 
 func _set_GlobalDay(value: int) -> void:
@@ -66,6 +66,6 @@ func _set_GlobalYear(value: int) -> void:
 	emit_signal("date_time_changed")
 
 
-func _set_hour(value: float) -> void:
+func _set_hour(value: int) -> void:
 	hour = value
 	emit_signal("date_time_changed")
