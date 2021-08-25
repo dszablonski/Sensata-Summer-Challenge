@@ -28,10 +28,10 @@ static func is_freezer_in_use(data: Dictionary) -> bool:
 
 static func is_fridge_in_use(data: Dictionary) -> bool:
 	return (
-		data["TrailerWeightA"] > 0 or
-		data["TrailerWeightD"] > 0 or
-		data["TrailerWeightC"] > 0 or
-		data["TrailerWeightF"] > 0
+		data["TrailerWeightA"] > 0
+		or data["TrailerWeightD"] > 0
+		or data["TrailerWeightC"] > 0
+		or data["TrailerWeightF"] > 0
 	)
 
 static func _get_individual_safety_value(
@@ -42,14 +42,14 @@ static func _get_individual_safety_value(
 	max_value_caution = null
 ) -> int:
 	if (
-		(min_value_critical and value < min_value_critical) or
-		(max_value_critical and value > max_value_critical)
+		(min_value_critical and value < min_value_critical)
+		or (max_value_critical and value > max_value_critical)
 	):
 		# If the value is critical.
 		return 2
 	elif (
-		(min_value_caution and value < min_value_caution) or
-		(max_value_caution and value > max_value_caution)
+		(min_value_caution and value < min_value_caution)
+		or (max_value_caution and value > max_value_caution)
 	):
 		# If the value is caution.
 		return 1
@@ -59,7 +59,7 @@ static func _get_individual_safety_value(
 static func get_safety_value(year: int, month: int, day: int, hour: int) -> int:
 	var safety_value := 0
 	# Grabbing the data for that hour.
-	var hourly_data := DatabaseFetch.read_db_time_new(year, month, day, hour)
+	var hourly_data := DatabaseFetch.read_db(year, month, day, hour)
 	# We only need the sensor values so the ID, DateTime, and Hour can be
 	# erased.
 	hourly_data.erase("ID")
@@ -98,9 +98,7 @@ static func get_safety_value(year: int, month: int, day: int, hour: int) -> int:
 			)
 		elif "BrakePads" in sensor:
 			temp_safety_value = _get_individual_safety_value(
-				value,
-				CriticalLimits.MIN_BRAKE_PADS,
-				CautionLimits.MIN_BRAKE_PADS
+				value, CriticalLimits.MIN_BRAKE_PADS, CautionLimits.MIN_BRAKE_PADS
 			)
 		elif "TruckWheelBearingTemp" in sensor:
 			temp_safety_value = _get_individual_safety_value(
@@ -115,25 +113,15 @@ static func get_safety_value(year: int, month: int, day: int, hour: int) -> int:
 			# matter what their temperature values are.
 			if is_freezer_in_use and identifier in ["A", "B", "C"]:  # Freezer sensors
 				temp_safety_value = _get_individual_safety_value(
-					value,
-					null,
-					null,
-					CriticalLimits.MAX_FREEZER_TEMP
+					value, null, null, CriticalLimits.MAX_FREEZER_TEMP
 				)
 			elif is_fridge_in_use and identifier in ["D", "E", "F"]:  # Fridge sensors
 				temp_safety_value = _get_individual_safety_value(
-					value,
-					null,
-					null,
-					CriticalLimits.MAX_FRIDGE_TEMP
+					value, null, null, CriticalLimits.MAX_FRIDGE_TEMP
 				)
 		elif "TrailerWeight" in sensor:
 			temp_safety_value = _get_individual_safety_value(
-				value,
-				null,
-				null,
-				CriticalLimits.MAX_WEIGHT,
-				CautionLimits.MAX_WEIGHT
+				value, null, null, CriticalLimits.MAX_WEIGHT, CautionLimits.MAX_WEIGHT
 			)
 		if temp_safety_value > safety_value:
 			safety_value = temp_safety_value
@@ -158,8 +146,5 @@ static func get_safety_value(year: int, month: int, day: int, hour: int) -> int:
 
 static func get_safety_value_current_date(hour: int) -> int:
 	return get_safety_value(
-		GlobalDate.GlobalYear,
-		GlobalDate.GlobalMonth,
-		GlobalDate.GlobalDay,
-		hour
+		GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, hour
 	)

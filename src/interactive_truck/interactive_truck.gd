@@ -16,7 +16,7 @@ const ZOOM_IN_SPEED := 1.0
 const ZOOM_OUT_SPEED := 1.0
 const MIN_CAMERA_SIZE := 4.0
 const MAX_CAMERA_SIZE := 25.0
-const AUTOMATIC_TRUCK_ROTATION_SPEED := 135 # Degrees/second
+const AUTOMATIC_TRUCK_ROTATION_SPEED := 135  # Degrees/second
 
 var is_enabled := false
 
@@ -80,8 +80,7 @@ func _wrap_mouse_around_viewport() -> void:
 	var mouse_pos := get_global_mouse_position()
 	var root_mouse_pos_diff := root_mouse_pos - mouse_pos
 	var new_mouse_pos := Vector2(
-		fposmod(mouse_pos.x, viewport.size.x),
-		fposmod(mouse_pos.y, viewport.size.y)
+		fposmod(mouse_pos.x, viewport.size.x), fposmod(mouse_pos.y, viewport.size.y)
 	)
 	var new_root_mouse_pos := root_mouse_pos_diff + new_mouse_pos
 	Input.warp_mouse_position(new_root_mouse_pos)

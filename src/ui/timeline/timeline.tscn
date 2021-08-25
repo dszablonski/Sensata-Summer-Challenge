@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/fonts/lucon.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ui/timeline/Month1 text.gd" type="Script" id=2]
-[ext_resource path="res://ui/timeline/Month2 Text.gd" type="Script" id=3]
-[ext_resource path="res://ui/timeline/DateTimeDisplayer.gd" type="Script" id=4]
+[ext_resource path="res://ui/timeline/left_month.gd" type="Script" id=2]
+[ext_resource path="res://ui/timeline/right_month.gd" type="Script" id=3]
+[ext_resource path="res://ui/timeline/date_time_displayer.gd" type="Script" id=4]
 [ext_resource path="res://ui/main_theme.tres" type="Theme" id=5]
 [ext_resource path="res://ui/timeline/button.gd" type="Script" id=6]
 [ext_resource path="res://ui/timeline/timeline.gd" type="Script" id=7]
@@ -165,8 +165,8 @@ align = 0
 script = ExtResource( 6 )
 
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]
