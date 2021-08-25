@@ -334,7 +334,7 @@ func _add_warning_labels() -> void:
 		caution_warnings_vbox.add_child(warning_label)
 
 
-func _on_PingButton_pressed() -> void:  # Left unimplemented
+func _on_PingButton_pressed() -> void:  # Left unimplemented.
 	# This is left as a proof of concept for how the ping button could work.
 	# Upon clicking the ping button the truck driver should receive some kind
 	# of notification.

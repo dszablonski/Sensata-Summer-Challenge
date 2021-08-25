@@ -33,5 +33,5 @@ func read_db_current_date(hour: int) -> Dictionary:
 	return read_db(GlobalDate.GlobalYear, GlobalDate.GlobalMonth, GlobalDate.GlobalDay, hour)
 
 
-func _on_RefreshDatabaseTimer_timeout() -> void:  # Left unimplemented
+func _on_RefreshDatabaseTimer_timeout() -> void:  # Left unimplemented.
 	print("Database to be refreshed!")
