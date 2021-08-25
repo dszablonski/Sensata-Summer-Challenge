@@ -34,4 +34,9 @@ func read_db_current_date(hour: int) -> Dictionary:
 
 
 func _on_RefreshDatabaseTimer_timeout() -> void:  # Left unimplemented.
+	# This is left as a proof of concept for how receiving real-time data could
+	# work.
+	# Every 60 seconds the database could be refreshed which would bring in any
+	# new data and possibly any corrections for old data that was incorrectly
+	# inputted.
 	print("Database to be refreshed!")
