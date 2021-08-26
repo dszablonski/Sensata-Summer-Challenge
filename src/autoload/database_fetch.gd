@@ -1,11 +1,16 @@
 extends Node
 const SQLite = preload("res://addons/godot-sqlite/bin/gdsqlite.gdns")
 var db
-var db_path = "res://database/database.db"
+var res_db_path = "res://database/database.db"
+var db_path = "user://database.db"
 var tablename = "Database"
 
 
 func _ready():
+	var directory = Directory.new()
+	# The database must be copied from res:// to user:// as res:// is read-only.
+	# user:// is accessible at AppData/Roaming/Godot/app_userdata/Truck Viewer/
+	directory.copy(res_db_path, db_path)
 	db = SQLite.new()
 	db.path = db_path
 	db.open_db(db)
