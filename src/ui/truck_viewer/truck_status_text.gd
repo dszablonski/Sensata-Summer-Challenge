@@ -7,6 +7,7 @@ const warning: String = "#e43b44"
 # Stores hex value for yellow
 const caution: String = "#fee761"
 var clicked = false
+var selected_mesh: String = ""
 
 # Dictionary of the meshes and their corresponding 
 var sensors = {
@@ -60,6 +61,35 @@ func _on_date_time_changed() -> void:
 		or id["TrailerWeightC"] > 0
 		or id["TrailerWeightF"] > 0
 	)
+	match selected_mesh:
+		"Truck Wheel A":
+			truck_wheel_ab("Truck Wheel A")
+		"Truck Wheel B":
+			truck_wheel_ab("Truck Wheel B")
+		"Truck Wheel C":
+			truck_wheel_ce("Truck Wheel C")
+		"Truck Wheel D":
+			truck_wheel_df("Truck Wheel D")
+		"Truck Wheel E":
+			truck_wheel_ce("Truck Wheel E")
+		"Truck Wheel F":
+			truck_wheel_df("Truck Wheel F")
+		"Trailer Wheel A":
+			trailer_wheels("Trailer Wheel A")
+		"Trailer Wheel B":
+			trailer_wheels("Trailer Wheel B")
+		"Trailer Wheel C":
+			trailer_wheels("Trailer Wheel C")
+		"Trailer Wheel D":
+			trailer_wheels("Trailer Wheel D")
+		"Trailer Wheel E":
+			trailer_wheels("Trailer Wheel E")
+		"Trailer Wheel F":
+			trailer_wheels("Trailer Wheel F")
+		"Freezer":
+			freezer()
+		"Fridge":
+			fridge()
 
 
 # Clears the labels so the panel is blank
@@ -521,6 +551,7 @@ func _on_TruckWheelStaticBody_mouse_exited():
 		pass
 
 func _on_TruckWheelStaticBody_truck_wheel_a():
+	selected_mesh = "Truck Wheel A"
 	if not clicked:
 		clicked = true
 		truck_wheel_ab("Truck Wheel A")
@@ -531,11 +562,13 @@ func _on_TruckWheelStaticBody_truck_wheel_a():
 
 
 func _on_StaticBody_clear():
+	selected_mesh = ""
 	clicked = false
 	clear()
 
 
 func _on_TruckWheelBStaticBody_truck_wheel_b():
+	selected_mesh = "Truck Wheel B"
 	if not clicked:
 		clicked = true
 		truck_wheel_ab("Truck Wheel B")
@@ -546,6 +579,7 @@ func _on_TruckWheelBStaticBody_truck_wheel_b():
 
 
 func _on_TruckWheelCStaticBody_truck_wheel_c():
+	selected_mesh = "Truck Wheel C"
 	if not clicked:
 		clicked = true
 		truck_wheel_ce("Truck Wheel C")
@@ -556,6 +590,7 @@ func _on_TruckWheelCStaticBody_truck_wheel_c():
 
 
 func _on_TruckWheelDStaticBody_truck_wheel_d():
+	selected_mesh = "Truck Wheel D"
 	if not clicked:
 		clicked = true
 		truck_wheel_df("Truck Wheel D")
@@ -566,6 +601,7 @@ func _on_TruckWheelDStaticBody_truck_wheel_d():
 
 
 func _on_TruckWheelEStaticBody_truck_wheel_e():
+	selected_mesh = "Truck Wheel E"
 	if not clicked:
 		clicked = true
 		truck_wheel_ce("Truck Wheel E")
@@ -576,6 +612,7 @@ func _on_TruckWheelEStaticBody_truck_wheel_e():
 
 
 func _on_TruckWheelFStaticBody_truck_wheel_f():
+	selected_mesh = "Truck Wheel F"
 	if not clicked:
 		clicked = true
 		truck_wheel_df("Truck Wheel F")
@@ -586,6 +623,7 @@ func _on_TruckWheelFStaticBody_truck_wheel_f():
 
 
 func _on_TrailerWheelAStaticBody_trailer_wheel_a():
+	selected_mesh = "Trailer Wheel A"
 	if not clicked:
 		clicked = true
 		trailer_wheels("Trailer Wheel A")
@@ -595,6 +633,7 @@ func _on_TrailerWheelAStaticBody_trailer_wheel_a():
 		trailer_wheels("Trailer Wheel A")
 
 func _on_TrailerWheelBStaticBody_trailer_wheel_b():
+	selected_mesh = "Trailer Wheel B"
 	if not clicked:
 		clicked = true
 		trailer_wheels("Trailer Wheel B")
@@ -604,6 +643,7 @@ func _on_TrailerWheelBStaticBody_trailer_wheel_b():
 		trailer_wheels("Trailer Wheel B")
 
 func _on_TrailerWheelCStaticBody_trailer_wheel_c():
+	selected_mesh = "Trailer Wheel C"
 	if not clicked:
 		clicked = true
 		trailer_wheels("Trailer Wheel C")
@@ -613,6 +653,7 @@ func _on_TrailerWheelCStaticBody_trailer_wheel_c():
 		trailer_wheels("Trailer Wheel C")
 
 func _on_TrailerWheelDStaticBody_trailer_wheel_d():
+	selected_mesh = "Trailer Wheel D"
 	if not clicked:
 		clicked = true
 		trailer_wheels("Trailer Wheel D")
@@ -623,6 +664,7 @@ func _on_TrailerWheelDStaticBody_trailer_wheel_d():
 
 
 func _on_TrailerWheelEStaticBody_trailer_wheel_e():
+	selected_mesh = "Trailer Wheel E"
 	if not clicked:
 		clicked = true
 		trailer_wheels("Trailer Wheel E")
@@ -633,6 +675,7 @@ func _on_TrailerWheelEStaticBody_trailer_wheel_e():
 
 
 func _on_TrailerWheelFStaticBody_trailer_wheel_f():
+	selected_mesh = "Trailer Wheel F"
 	if not clicked:
 		clicked = true
 		trailer_wheels("Trailer Wheel F")
@@ -643,6 +686,7 @@ func _on_TrailerWheelFStaticBody_trailer_wheel_f():
 
 
 func _on_CubeStaticBody_freezer():
+	selected_mesh = "Freezer"
 	if not clicked:
 		clicked = true
 		freezer()
@@ -653,6 +697,7 @@ func _on_CubeStaticBody_freezer():
 
 
 func _on_FridgeStaticBody_fridge():
+	selected_mesh = "Fridge"
 	if not clicked:
 		clicked = true
 		fridge()
