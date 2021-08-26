@@ -1,4 +1,4 @@
-tool
+#tool
 extends ScatterChartBase
 class_name LineChart
 
