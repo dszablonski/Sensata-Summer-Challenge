@@ -379,7 +379,7 @@ func plot_from_array(array : Array) -> void:
 	calculate_colors()
 	calculate_coordinates()
 	set_shapes()
-	create_legend()
+#	create_legend()  # Hack for fixing resources still in use at exit error
 	emit_signal("chart_plotted",self)
 	
 	if not is_connected("item_rect_changed",self, "redraw"): connect("item_rect_changed", self, "redraw")
