@@ -1,6 +1,5 @@
 extends GridContainer
 
-signal clear
 # Stores hex value for green
 const good: String = "#63c74d"
 # Stores hex value for red 
