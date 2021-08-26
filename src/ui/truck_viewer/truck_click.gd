@@ -119,4 +119,4 @@ func get_data():
 
 func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		print(get_data())
+		get_data()

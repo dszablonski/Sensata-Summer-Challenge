@@ -29,7 +29,7 @@ func clear_borders(node, colour):
 
 # Function to change the border
 func change_border(get_mesh, get_colour):
-	print("Border texture changed")
+#	print("Border texture changed")
 	# Gets the material of the mesh passed into the function
 	var material = get_mesh.get_surface_material(0)
 	# Sets the albedo of the shader to the colour passed into the function
