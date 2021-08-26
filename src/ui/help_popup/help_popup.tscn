@@ -183,7 +183,8 @@ You can also zoom in/out using the scroll wheel (or WS/UpDown arrows).
 
 By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
 
-If you click one of the [color=#8B9BB4]truck's[/color] components, then the status popup will stay visible."
+If you click one of the [color=#8B9BB4]truck's[/color] components, then the status popup will stay visible.
+Clicking the void will return it to normal."
 text = "Located in the second tab of the right panel is the truck viewer.
 
 By holding the middle mouse button (or right click) and moving the cursor, the truck will rotate. If the cursor is not on top of the truck viewer, the truck will automatically rotate as well.
@@ -192,7 +193,8 @@ You can also zoom in/out using the scroll wheel (or WS/UpDown arrows).
 
 By hovering the cursor over one of the truck's components, a status popup will also appear which will give you information about specific sensor values for that date and time.
 
-If you click one of the truck's components, then the status popup will stay visible."
+If you click one of the truck's components, then the status popup will stay visible.
+Clicking the void will return it to normal."
 fit_content_height = true
 
 [node name="CloseButton" type="Button" parent="MarginContainer"]
