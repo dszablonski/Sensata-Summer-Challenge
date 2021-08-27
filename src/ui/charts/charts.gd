@@ -29,6 +29,10 @@ onready var trailer_tyre_pressure_chart: LineChart = $"TabContainerMargin/TyrePr
 onready var wheel_bearing_chart: LineChart = $"TabContainerMargin/WheelBearingTabContainer/Truck Wheel Bearing Temp"
 onready var truck_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Truck Brake Wear %"
 onready var trailer_brake_wear: LineChart = $"TabContainerMargin/BrakePadsTabContainer/Trailer Brake Wear %"
+# The keys for the following dictionaries are references to a chart node.
+# The value for this dictionary is a 2D list where the nested strings represent
+# the sensors that should be plotted onto the graph.
+# If a nested list contains multiple strings then an average will be calculated.
 onready var CHART_TO_LINE_SENSORS := {
 	avg_weight_chart:
 	[
@@ -126,6 +130,9 @@ onready var CHART_TO_LINE_SENSORS := {
 		["TrailerBrakePadsF"],
 	],
 }
+# The value for this dictionary is a PoolColorArray which represents the colour
+# of each line plotted on the graph.
+# The first line will use the graph's "function_colors" property.
 onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
 	avg_weight_chart:
 	PoolColorArray(
@@ -203,6 +210,9 @@ onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
 		]
 	),
 }
+# The value for this dictionary is a list which represents the units each line
+# plotted on the graph should use for the y-axis.
+# The first line will use the graph's "units" property.
 onready var CHART_TO_ADDITIONAL_UNITS := {
 	avg_weight_chart: ["°C", "°C"],
 	avg_tyre_pressure_chart: [" psi"],
@@ -215,6 +225,9 @@ onready var CHART_TO_ADDITIONAL_UNITS := {
 	truck_brake_wear: ["%"],
 	trailer_brake_wear: ["%", "%", "%", "%", "%"],
 }
+# The key for this dictionary references a chart node for one of the 4 default
+# average charts.
+# The value references its corresponding tab container node.
 onready var CHART_TO_TAB_CONTAINER := {
 	avg_weight_chart: weight_tab_container,
 	avg_tyre_pressure_chart: tyre_pressure_tab_container,
@@ -266,6 +279,8 @@ func _plot_chart(chart: LineChart) -> void:
 		var sensor_names: Array = line_sensors[i]
 		var y_data := _get_formatted_chart_data(sensor_names, true)
 		additional_y_datas.append(y_data)
+	# The weight charts must have a second y-axis on the right side.
+	# They also require a separate scale.
 	if chart == avg_weight_chart:
 		chart.plot_from_array_multiple(
 			main_formatted_data,
