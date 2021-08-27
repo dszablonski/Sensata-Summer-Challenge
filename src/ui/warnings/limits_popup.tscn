@@ -458,7 +458,7 @@ align = 1
 margin_top = 103.0
 margin_right = 182.0
 margin_bottom = 116.0
-text = "Warmest Refrigeration Temp"
+text = "Warmest Freezer Temp"
 align = 1
 
 [node name="FreezerTempValue" type="Label" parent="MarginContainer/VSplitContainer/CriticalLimits"]
@@ -489,7 +489,7 @@ align = 1
 margin_top = 120.0
 margin_right = 182.0
 margin_bottom = 133.0
-text = "Warmest Freezer Temp"
+text = "Warmest Refrigeration Temp"
 align = 1
 
 [node name="FridgeTempValue" type="Label" parent="MarginContainer/VSplitContainer/CriticalLimits"]
