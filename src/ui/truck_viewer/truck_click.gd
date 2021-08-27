@@ -17,6 +17,7 @@ signal freezer
 signal fridge
 signal clear
 
+
 # This function will check if a certain part of the truck has been clicked,
 # emitting a signal and returning a string which will then be printed in the 
 # console.
@@ -108,6 +109,7 @@ func get_data():
 	# is cleared.
 	else:
 		emit_signal("clear")
+
 
 # This function is run whenever a collision object is clicked
 func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):

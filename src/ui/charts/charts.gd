@@ -192,7 +192,8 @@ onready var CHART_TO_ADDITIONAL_FUNCTION_COLORS := {
 			GREY_3,
 		]
 	),
-	trailer_brake_wear: PoolColorArray(
+	trailer_brake_wear:
+	PoolColorArray(
 		[
 			GREY_3,
 			GREY_4,

@@ -54,12 +54,14 @@ onready var trailer_wheel_d = get_node("Trailer Wheel D")
 onready var trailer_wheel_e = get_node("Trailer Wheel E")
 onready var trailer_wheel_f = get_node("Trailer Wheel F")
 
+
 # When the program is first run, the signal for the global date and time changing
 # will be connected 
 func _ready() -> void:
 	GlobalDate.connect("date_time_changed", self, "_on_date_time_changed")
 	# The date and time is fetched here through this function
 	_on_date_time_changed()
+
 
 # This is run whent he date and time is changed
 func _on_date_time_changed() -> void:
@@ -68,25 +70,24 @@ func _on_date_time_changed() -> void:
 	# Gets the stats for the fridgge and checks if any of the weight sensors are 
 	# above 0 (meaning they are loaded), returning either true or false
 	fridge_is_loaded = (
-		current_id[sensors["Cube001"][3]] > 0 
-		or current_id[sensors["Cube001"][4]] > 0 
-		or current_id[sensors["Cube001"][5]] > 0 
+		current_id[sensors["Cube001"][3]] > 0
+		or current_id[sensors["Cube001"][4]] > 0
+		or current_id[sensors["Cube001"][5]] > 0
 		or current_id[sensors["Cube001"][6]] > 0
-					)
+	)
 	# Gets the weight stats of the freezer and if any of the sensors read above
 	# 0 (meaningg they are loaded), they return true, otherwise they return false
-	freezer_is_loaded = (
-		current_id[sensors["Cube"][3]] > 0
-	)
+	freezer_is_loaded = (current_id[sensors["Cube"][3]] > 0)
 	# The set_status function is run (see below) with the current ID being passed
 	# through
 	set_status(current_id)
+
 
 # Function which sets the status of the fridge
 func fridge_limits(id: Dictionary):
 	# The sensor used will be "Cube001" (the fridge mesh)
 	var sensor = sensors["Cube001"]
-	
+
 	# Stores the weight sensor vallues in an array
 	var weight_array = [id[sensor[3]], id[sensor[4]], id[sensor[5]], id[sensor[6]]]
 	# Gets the weight differential by taking the max weight value away from the
@@ -129,6 +130,7 @@ func fridge_limits(id: Dictionary):
 		else:
 			# Return the constant good (green)
 			return good
+
 
 # This function checks teh status of the truck wheels a and b, since they share
 # common sernsors
@@ -178,7 +180,7 @@ func truck_wheel_ab_limits(id: Dictionary, wheel: String):
 
 func truck_wheel_df_limits(id: Dictionary, wheel: String):
 	var sensor = sensors[wheel]
-	
+
 	# If the tyre pressure sensor exceeds or underceeds the critical limits for
 	# tyre pressure,
 	if (
@@ -213,7 +215,7 @@ func truck_wheel_df_limits(id: Dictionary, wheel: String):
 
 func truck_wheel_ce_limits(id: Dictionary, wheel: String):
 	var sensor = sensors[wheel]
-	
+
 	# If the tyre pressure sensor exceeds or underceeds the critical limits for
 	# tyre pressure,
 	if (
@@ -238,7 +240,7 @@ func truck_wheel_ce_limits(id: Dictionary, wheel: String):
 
 func trailer_wheel_limits(id: Dictionary, wheel: String):
 	var sensor = sensors[wheel]
-	
+
 	# If the tyre pressure sensor exceeds or underceeds the critical limits for
 	# tyre pressure,
 	if (
@@ -279,10 +281,7 @@ func freezer_limits(id: Dictionary):
 		# freezer is loaded (the weight is greater than 1) 
 		# i will equal a value inclusive of 0-2, which will when applied below
 		# will results in the freezer temps being returned
-		if ( 
-			int(id[sensors["Cube"][i]]) > CriticalLimits.MAX_FREEZER_TEMP 
-			and freezer_is_loaded
-			):
+		if int(id[sensors["Cube"][i]]) > CriticalLimits.MAX_FREEZER_TEMP and freezer_is_loaded:
 			# Will return the warning color (red)
 			return warning
 	# Compares the freezer weight to the critical limit
@@ -298,13 +297,15 @@ func freezer_limits(id: Dictionary):
 		# Return the constant good (green)
 		return good
 
+
 # This function sets the color (which is passed through) of the material
 # of the node passed through
 func set_material(node, color):
 	# The node's next pass surface material has the it's albedo (colour) parameter
 	# changed to whatever colour is passed through
 	node.get_surface_material(0).next_pass.set_shader_param("albedo", color)
-	
+
+
 # This sets the status for all the meshes on the truck, passing through the variable
 # holdingg their nodes in througgh the "set_material" function, then setting the 
 # colour to whatever is returned by their respective satus returning function.

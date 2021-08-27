@@ -267,6 +267,7 @@ func truck_wheel_ab(wheels: String):
 		% [wheel_bearing_color, id[sensors[wheels][2]]]
 	)
 
+
 func fridge():
 	# Gets the color status for each weight sensor on the fridge
 	var weight_color_a = check_weight(id[sensors["Cube001"][3]])
@@ -285,7 +286,7 @@ func fridge():
 	var temp_f_color = check_temp(
 		id[sensors["Cube001"][2]], fridge_is_loaded, CriticalLimits.MAX_FRIDGE_TEMP
 	)
-		
+
 	# The word fridge colored blue
 	$RichTextLabel5.bbcode_text = "[color=#00e1ff]Fridge[/color]"
 	# Returns the stat of temp sensor d, coloring it the color of its status
@@ -320,6 +321,7 @@ func fridge():
 		"Weight Sensor F : [color=%s]%s[/color] kg"
 		% [weight_color_f, id[sensors["Cube001"][6]]]
 	)
+
 
 func freezer():
 	# Sets the color of temp sensor a on its status
@@ -360,6 +362,7 @@ func freezer():
 		% [weight_g_color, int(id[sensors["Cube"][3]])]
 	)
 
+
 # The following functions are called when the mouse enters a mesh or exits a mesh
 # On mouse enter, they will show the stats of their respective sensors, but if
 # the mesh is clicked nothing will happen. 
@@ -376,12 +379,12 @@ func _on_FridgeStaticBody_mouse_entered():
 	else:
 		pass
 
+
 func _on_FridgeStaticBody_mouse_exited():
 	if not clicked:
 		clear()
 	else:
 		pass
-
 
 
 func _on_CubeStaticBody_mouse_exited():
@@ -396,6 +399,7 @@ func _on_TrailerWheelFStaticBody_mouse_entered():
 		trailer_wheels("Trailer Wheel F")
 	else:
 		pass
+
 
 func _on_TrailerWheelFStaticBody_mouse_exited():
 	if not clicked:
@@ -551,6 +555,7 @@ func _on_TruckWheelStaticBody_mouse_exited():
 	else:
 		pass
 
+
 # This will be called when the user clicks into the void to clear the selection.
 # The clicked variable will be set to false and the clear() function will be 
 # called.
@@ -558,6 +563,7 @@ func _on_StaticBody_clear():
 	selected_mesh = ""
 	clicked = false
 	clear()
+
 
 # These functions are run when a certain mesh is clicked.
 # They will check whether a mesh is clicked first, if not they will set the #
@@ -640,6 +646,7 @@ func _on_TrailerWheelAStaticBody_trailer_wheel_a():
 		clicked = true
 		trailer_wheels("Trailer Wheel A")
 
+
 func _on_TrailerWheelBStaticBody_trailer_wheel_b():
 	selected_mesh = "Trailer Wheel B"
 	if not clicked:
@@ -650,6 +657,7 @@ func _on_TrailerWheelBStaticBody_trailer_wheel_b():
 		clicked = true
 		trailer_wheels("Trailer Wheel B")
 
+
 func _on_TrailerWheelCStaticBody_trailer_wheel_c():
 	selected_mesh = "Trailer Wheel C"
 	if not clicked:
@@ -659,6 +667,7 @@ func _on_TrailerWheelCStaticBody_trailer_wheel_c():
 		clear()
 		clicked = true
 		trailer_wheels("Trailer Wheel C")
+
 
 func _on_TrailerWheelDStaticBody_trailer_wheel_d():
 	selected_mesh = "Trailer Wheel D"
