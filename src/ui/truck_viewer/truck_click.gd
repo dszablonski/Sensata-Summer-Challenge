@@ -17,18 +17,10 @@ signal freezer
 signal fridge
 signal clear
 
+# This function will check if a certain part of the truck has been clicked,
+# emitting a signal and returning a string which will then be printed in the 
+# console.
 func get_data():
-	# Plan is to then fetch the data for that part and do something with it
-	# and then change the albedo of outline texture for that part to highlight
-	# that it is selected.
-	# certain parts (such as the actual truck and some of the connecting cyllinders
-	# won't be clickable because they don't have sensors, meaning they don't
-	# need to be clicked.
-	#
-	#
-	# Also think it would be a good idea to try and make this look a little 
-	# or making it look less clunky
-
 	if $CollisionShape.is_in_group("truckWheelA"):
 		# Will get sensors for Tire Pressure Truck Wheel A, Brake Wear Truck Wheel
 		# A, and Wheel Bearing Temp Truck Wheel A
@@ -117,6 +109,9 @@ func get_data():
 	else:
 		emit_signal("clear")
 
+# This function is run whenever a collision object is clicked
 func _input_event(_camera, event, _click_position, _click_normal, _shape_idx):
+	# If the event (the click of a mouse) is a left button clicked and the button is pressed,
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		# Run the function "get_data()"
 		get_data()
