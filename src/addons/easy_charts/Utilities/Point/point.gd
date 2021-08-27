@@ -17,14 +17,14 @@ enum SHAPES {
 
 var shape : int = 0 setget set_shape, get_shape
 
-var size: int  # Hack ;)
+var size: int  # Hack
 var size_highlighted: int
 
 signal _mouse_entered(point)
 signal _mouse_exited()
 signal _point_pressed(point)
 
-var units: String  # Hack ;)
+var units: String  # Hack
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

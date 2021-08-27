@@ -5,7 +5,7 @@ class_name ScatterChartBase
 # of points in a two-variable space. It handles basic data structure and grid 
 # layout and leaves to child classes the more specific behaviour.
 
-var y_chors_right: Array # Hack ;)
+var y_chors_right: Array # Hack
 
 #Stored in the form of [[min_func1, min_func2, min_func3, ...], [max_func1, max_func2, ...]]
 var x_domain := [[], []]
@@ -115,7 +115,7 @@ func build_property_list():
 	{
 		"hint": PROPERTY_HINT_RANGE,
 #		"hint_string": "0.001, 10",
-		"hint_string": "0.001, 100",  # Hack ;)
+		"hint_string": "0.001, 100",  # Hack
 		"usage": PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		"name": "Chart_Display/y_decim",
 		"type": TYPE_REAL
@@ -487,7 +487,7 @@ func calculate_tics():
 	y_margin_min = y_range[0]
 	var y_margin_max = y_range[1]
 #	v_dist = y_decim * pow(10.0, calculate_position_significant_figure(y_margin_max - y_margin_min) - 1)
-	v_dist = y_decim  # Hack ;)
+	v_dist = y_decim  # Hack
 	
 	# There are three cases of min/max:
 	# 		For +/+ and -/- we just do the usual and draw tics from min to max
@@ -508,7 +508,7 @@ func calculate_tics():
 		x_margin_min = x_range[0]
 		var x_margin_max = x_range[1]
 #		h_dist = x_decim * pow(10.0, calculate_position_significant_figure(x_margin_max - x_margin_min) - 1)
-		h_dist = x_decim  # Hack ;)
+		h_dist = x_decim  # Hack
 
 		if x_margin_min < 0 and x_margin_max >= 0:
 			calculate_interval_tics(0, x_margin_min, -h_dist, x_labels, true, true) #Negative tics
@@ -548,7 +548,7 @@ func count_functions():
 func calculate_pass():
 	# Calculate distance in pixel between 2 consecutive values/datas
 	x_pass = (SIZE.x - OFFSET.x) / (x_chors.size() - 1 if x_chors.size() > 1 else x_chors.size())
-	if has_node("Key"):  # Hack ;)
+	if has_node("Key"):  # Hack
 		y_pass = (origin.y - $Key.get_rect().size.y * 2) / (y_chors.size() - 1 if y_chors.size() > 1 else y_chors.size())
 		return
 	y_pass = (origin.y - $ChartName.get_rect().size.y * 2) / (y_chors.size() - 1 if y_chors.size() > 1 else y_chors.size())
@@ -596,7 +596,7 @@ func draw_grid():
 		draw_string(font, point + Vector2(-size_text.x - tic_length - label_displacement, 
 				size_text.y / 2), y_chors[p], font_color)
 	
-	for p in y_chors_right.size():  # Hack ;)
+	for p in y_chors_right.size():  # Hack
 		var point : Vector2 = origin - Vector2(0, p * y_pass) + Vector2(SIZE.x - 14, 0)
 		var size_text := Vector2(font.get_string_size(y_chors_right[p]).x, font.get_ascent()) #The y should be ascent instead full height to get correctly centered
 
@@ -624,7 +624,7 @@ func draw_points():
 			point.connect("_mouse_entered",self,"show_data")
 			point.connect("_mouse_exited",self,"hide_data")
 			
-			var pos = point_positions[function][function_point]  # Hack ;)
+			var pos = point_positions[function][function_point]  # Hack
 			var value = point_values[function][function_point]
 			if value[0] == GlobalDate.hour:
 				var marker_start = Vector2(pos.x, 25)
@@ -670,5 +670,5 @@ func calculate_interval_tics(v_from:float, v_to:float, dist:float, chords:Array,
 		p = (dist * multi) + v_from
 		missing_tics = p < v_to if dist > 0 else p > v_to
 		chords.append(p)
-	if dont_surpass_to and chords[-1] > v_to:  # Hack ;)
+	if dont_surpass_to and chords[-1] > v_to:  # Hack
 		chords[-1] = ""

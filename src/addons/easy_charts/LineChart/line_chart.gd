@@ -14,11 +14,11 @@ class_name LineChart
 # In these cases they are known as run charts.
 # Source: Wikipedia
 
-signal clicked  # Hack ;)
+signal clicked  # Hack
 
-export var units := ""  # Hack ;)
+export var units := ""  # Hack
 
-var additional_y_datas: Array  # Hack ;)
+var additional_y_datas: Array  # Hack
 var additional_point_values: Array
 var additional_point_positions: Array
 var additional_function_colors: Array
@@ -30,7 +30,7 @@ var show_points := true
 var function_line_width : int = 2
 
 
-func _ready() -> void:  # Hack ;)
+func _ready() -> void:  # Hack
 	$PointData/PointData.units = units
 
 
@@ -97,7 +97,7 @@ func _draw():
 
 func draw_lines():
 	draw_lines_array(point_values, point_positions, function_colors)
-	for i in additional_y_datas.size():  # Hack ;)
+	for i in additional_y_datas.size():  # Hack
 		var add_point_values = additional_point_values[i]
 		var add_point_positions = additional_point_positions[i]
 		var add_function_colors = PoolColorArray([additional_function_colors[i]])
@@ -108,7 +108,7 @@ func draw_lines_array(
 	point_values_array: Array,
 	point_positions_array: Array,
 	function_colors_array: Array
-) -> void:  # Hack ;)
+) -> void:  # Hack
 	for function in point_values_array.size():
 		for function_point in range(1, point_values_array[function].size()):
 			draw_line(
@@ -128,7 +128,7 @@ func plot_from_array_multiple(
 	additional_y_ranges := [],
 	additional_y_decims := [],
 	y_chors_right := []
-) -> void:  # Hack ;)
+) -> void:  # Hack
 	self.additional_y_datas = additional_y_datas
 	self.additional_function_colors = additional_function_colors
 	self.additional_units = additional_units
@@ -143,7 +143,7 @@ func calculate_coords(
 	point_values_array: Array,
 	point_positions_array: Array,
 	y_datas_array: Array
-) -> void:  # Hack ;)
+) -> void:  # Hack
 	point_values_array.clear()
 	point_positions_array.clear()
 	
@@ -161,13 +161,13 @@ func calculate_coords(
 			point_positions_array[function].append(Vector2(value_x + origin.x, origin.y - value_y))
 
 
-func redraw():  # Hack ;)
+func redraw():  # Hack
 	.redraw()
 	if additional_y_datas:
 		redraw_multiple()
 
 
-func redraw_multiple() -> void:  # Hack ;)
+func redraw_multiple() -> void:  # Hack
 	additional_point_values = []
 	additional_point_positions = []
 	for i in additional_y_datas.size():
@@ -191,9 +191,9 @@ func redraw_multiple() -> void:  # Hack ;)
 		calculate_tics()
 
 
-func draw_points() -> void:  # Hack ;)
+func draw_points() -> void:  # Hack
 	.draw_points()
-	for i in additional_y_datas.size():  # Hack ;)
+	for i in additional_y_datas.size():  # Hack
 		var add_point_values = additional_point_values[i]
 		var add_point_positions = additional_point_positions[i]
 		var add_function_colors = PoolColorArray([additional_function_colors[i]])
@@ -206,7 +206,7 @@ func draw_points_array(
 	point_positions_array: Array,
 	function_colors_array: PoolColorArray,
 	units: String
-) -> void:  # Hack ;)
+) -> void:  # Hack
 	for function in point_values_array.size():
 		var PointContainer : Control = Control.new()
 		Points.add_child(PointContainer)
@@ -226,6 +226,6 @@ func draw_points_array(
 			PointContainer.add_child(point)
 
 
-func _on_Points_gui_input(event: InputEvent) -> void:  # Hack ;)
+func _on_Points_gui_input(event: InputEvent) -> void:  # Hack
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
 		emit_signal("clicked")

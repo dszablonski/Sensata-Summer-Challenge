@@ -2,7 +2,7 @@
 extends PanelContainer
 class_name PointData
 
-var units := ""  # Hack ;)
+var units := ""  # Hack
 
 var value : String = ""
 var position : Vector2 = Vector2()
@@ -36,7 +36,7 @@ func update_datas(point : Control):
 	Value.set("custom_colors/font_color",font_color)
 	get("custom_styles/panel").set("border_color",font_color)
 	
-	var time_str := Util.to_time_string(int(point.point_value[0]))  # Hack ;)
+	var time_str := Util.to_time_string(int(point.point_value[0]))  # Hack
 	Data.set_text(time_str + ":")
 	var value_text: String
 	if point.units:

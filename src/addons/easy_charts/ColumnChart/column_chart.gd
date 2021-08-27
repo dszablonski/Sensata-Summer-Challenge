@@ -223,7 +223,7 @@ func structure_datas(database : Array):
 		multi += 1
 		p = (v_dist * multi) + ((y_margin_min) if not origin_at_zero else 0)
 		y_chors.append(p as String)
-	if y_chors.size() == 1:  # Hack ;)
+	if y_chors.size() == 1:  # Hack
 		y_chors.append("700")
 
 	# draw x_labels
@@ -354,7 +354,7 @@ func draw_grid():
 		draw_line(point,point+Vector2(SIZE.x-OFFSET.x,0),h_lines_color,0.2,true)
 		# ordinate
 		draw_line(point,point+Vector2(5,0),h_lines_color,1,true)
-		var offset := Vector2(-1, 0)  # Hack ;)
+		var offset := Vector2(-1, 0)  # Hack
 		draw_string(
 			font,
 			point - Vector2(y_chors[p].length() * const_width, -const_height) + offset,

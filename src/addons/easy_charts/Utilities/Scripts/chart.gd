@@ -538,7 +538,7 @@ func apply_template(template_name : int):
 # !!! API v2 
 func set_chart_name(ch_name : String):
 	chart_name = ch_name
-	if has_node("ChartName"):  # Hack ;)
+	if has_node("ChartName"):  # Hack
 		get_node("ChartName").set_text(chart_name)
 
 # !!! API v2
