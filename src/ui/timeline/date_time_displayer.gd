@@ -34,8 +34,11 @@ func force_press_day_button(year: int, month: int, day: int):
 
 
 func _on_Button_pressed(button):  #button 1 - This makes the first button input the date
+	# If a button is already selected then it should be enabled again.
 	if _selected_button:
 		_selected_button.disabled = false
+	# This button should be selected and then disabled so it can't be pressed
+	# again.
 	_selected_button = button
 	_selected_button_date = _selected_button.get_date()
 	_selected_button.disabled = true
@@ -57,6 +60,7 @@ func _are_dates_equal(date1: Dictionary, date2: Dictionary) -> bool:
 
 
 func _on_LeftArrow_pressed():
+	#The first bit is just code to stop the dates going above the maximum date that’s allowed
 	GlobalDate.ArrowFirstClick = 0
 	GlobalDate.ButtonClickedLimit = 1
 	if GlobalDate.ArrowFirstClick == 1:
@@ -64,39 +68,55 @@ func _on_LeftArrow_pressed():
 		UpdateButtonText()
 	else:
 		GlobalDate.ArrowButtonsClicked = GlobalDate.ArrowButtonsClicked - 1
+	#Then the variable goes back 7days (a week) on the days
 	GlobalDate.StartDay = GlobalDate.StartDay - 7
 	if GlobalDate.StartDay < 1:
 		if GlobalDate.StartMonth <= 1:
+			# if the days are negative and the month is below one then it’ll go back a year and to December and add 31 days to calculate the positive date
 			GlobalDate.StartYear = GlobalDate.StartYear - 1
 			GlobalDate.StartMonth = 12
 			GlobalDate.StartDay = GlobalDate.StartDay + 31
-		else:
+		else:  # if the month is positive
+			# it’ll go back a month and use a function to get the days in that month.
 			GlobalDate.StartMonth = GlobalDate.StartMonth - 1
 			GetDaysInMonth(GlobalDate.StartMonth)
+			# then add those days back to the date to get the actual date.
 			GlobalDate.StartDay = GlobalDate.StartDay + GlobalDate.DaysInMonth
+	# finally, it uses the update text function to update all the button values.
 	UpdateButtonText()
+	# Enable/disable the selected button if the correct week is displayed.
 	var current_selected_button_date = _selected_button.get_date()
 	var are_dates_equal = _are_dates_equal(_selected_button_date, current_selected_button_date)
 	_selected_button.disabled = are_dates_equal
 
 
 func _on_RightArrow_pressed():
+	#the first lines are just setting variables to the maximum database value
 	var Day = GlobalDate.UpperDay
 	var Month = GlobalDate.UpperMonth
 	var Year = GlobalDate.UpperYear
 	if GlobalDate.ArrowFirstClick == 0:
+		# this checks that the year is the right year for database values
 		if Year == GlobalDate.StartYear:
+			# this checks that the month is under the maximum month.
 			if Month > GlobalDate.StartMonth:
+				#This adds seven days
 				GlobalDate.StartDay = GlobalDate.StartDay + 7
+				# we then use a temporary variable to get the month ahead and use a function to see how many days are in it.
 				var month = GlobalDate.StartMonth + 1
 				GetDaysInMonth(month)
+				# if the days is more than the days in that month this code executes
 				if GlobalDate.StartDay > GlobalDate.DaysInMonth:
 					GetDaysInMonth(GlobalDate.StartMonth)
+					# it gets the amount of days in the month ahead and then subtracts them from the total.
 					GlobalDate.StartDay = GlobalDate.StartDay - GlobalDate.DaysInMonth
+					# it then updates the main month as we’ve gone forward a month
 					GlobalDate.StartMonth = GlobalDate.StartMonth + 1
 				GlobalDate.ArrowButtonsClicked = GlobalDate.ArrowButtonsClicked + 1
 				UpdateButtonText()
 			elif Month == GlobalDate.StartMonth:
+				# this code is used to check the user hasn’t gone forward too far
+				# the text then updates if it’s been in range.
 				if Day >= GlobalDate.StartDay:
 					GlobalDate.StartDay = GlobalDate.StartDay + 7
 					var month = GlobalDate.StartMonth + 1
@@ -107,7 +127,7 @@ func _on_RightArrow_pressed():
 						GlobalDate.StartMonth = GlobalDate.StartMonth + 1
 					GlobalDate.ArrowButtonsClicked = GlobalDate.ArrowButtonsClicked + 1
 					UpdateButtonText()
-		elif Year > GlobalDate.StartYear:
+		elif Year > GlobalDate.StartYear:  # if the year is under the max year
 			GlobalDate.StartDay = GlobalDate.StartDay + 7
 			var month = GlobalDate.StartMonth + 1
 			GetDaysInMonth(month)
@@ -116,10 +136,12 @@ func _on_RightArrow_pressed():
 				GlobalDate.StartDay = GlobalDate.StartDay - GlobalDate.DaysInMonth
 				GlobalDate.StartMonth = GlobalDate.StartMonth + 1
 			GlobalDate.ArrowButtonsClicked = GlobalDate.ArrowButtonsClicked + 1
+			# it’s basically the same too except if the month is over 12 it goes forward a year
 			if GlobalDate.StartMonth > 12:
 				GlobalDate.StartYear = GlobalDate.StartYear + 1
 				GlobalDate.StartMonth = 1
 			UpdateButtonText()
+	# Enable/disable the selected button if the correct week is displayed.
 	var current_selected_button_date = _selected_button.get_date()
 	var are_dates_equal = _are_dates_equal(_selected_button_date, current_selected_button_date)
 	_selected_button.disabled = are_dates_equal

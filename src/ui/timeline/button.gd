@@ -207,16 +207,16 @@ func UpdateColourRight():
 	var year = GlobalDate.StartYear  #
 	day = day - num_days_back  #Gets the date this button will input
 	GetDaysInMonth(month)
-	if day > GlobalDate.DaysInMonth:
-		month = month - 1
-		if month < 1:
-			year = year - 1
-			month = 12
-		GetDaysInMonth(month)
-		day = day - GlobalDate.DaysInMonth
-	if year >= GlobalDate.LowerYear:
-		if month >= GlobalDate.LowerMonth:
-			if day >= GlobalDate.LowerDay:
+	if day > GlobalDate.DaysInMonth:  #checks if the day is in the day is in the same month
+		month = month - 1  #if it's not it goes back a month 
+		if month < 1:  #this checks if the month is in the same year
+			year = year - 1  #this goes back a year 
+			month = 12  #this sends the date to december (the last month)
+		GetDaysInMonth(month)  #it gets the amount of days are in the month
+		day = day - GlobalDate.DaysInMonth  #and adds them to restore the date
+	if year >= GlobalDate.LowerYear:  #checks if the year is in range of the minium date
+		if month >= GlobalDate.LowerMonth:  #checks if the month is in range of the minium date
+			if day >= GlobalDate.LowerDay:  #checks if the month is in the range of the minium date
 				var caution_level = get_caution_level(year, month, day)
 				GlobalDate.set(_caution_level_string, caution_level)
 			else:

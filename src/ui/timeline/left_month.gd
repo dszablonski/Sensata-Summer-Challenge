@@ -2,13 +2,22 @@ extends Label
 
 
 func _ready():
+	update_text()
+
+
+func update_text() -> void:
+	# this declares the month variable and subtracts 7 from the date to get the month on the 1 at button
 	var Month = 0
 	var Day = GlobalDate.StartDay - 7
 	if Day < 1:
+		#if the day is negative it goes back a month
 		Month = GlobalDate.StartMonth - 1
 	else:
+		# if the number is positive  it just gets the already used month
 		Month = GlobalDate.StartMonth
+	# then it uses a function to convert the month that’s in numbers into the name of the month eg “1” to “January”
 	GetMonthName(Month)
+	#Then it displays this month
 	set_text(GlobalDate.MonthName1)
 
 
@@ -43,25 +52,11 @@ func _on_LeftArrow_pressed():
 	# Hack: wait for all the other methods connected to the pressed signal to
 	# fire first.
 	yield(get_tree(), "idle_frame")
-	var Month = 0
-	var Day = GlobalDate.StartDay - 7
-	if Day < 1:
-		Month = GlobalDate.StartMonth - 1
-	else:
-		Month = GlobalDate.StartMonth
-	GetMonthName(Month)
-	set_text(GlobalDate.MonthName1)
+	update_text()
 
 
 func _on_RightArrow_pressed():
 	# Hack: wait for all the other methods connected to the pressed signal to
 	# fire first.
 	yield(get_tree(), "idle_frame")
-	var Month = 0
-	var Day = GlobalDate.StartDay - 7
-	if Day < 1:
-		Month = GlobalDate.StartMonth - 1
-	else:
-		Month = GlobalDate.StartMonth
-	GetMonthName(Month)
-	set_text(GlobalDate.MonthName1)
+	update_text()
