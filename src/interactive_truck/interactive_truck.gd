@@ -47,17 +47,19 @@ func _input(event: InputEvent) -> void:
 	if not is_enabled:
 		return
 	if not _is_mouse_inside_viewport():
+		# The mouse should only be wrapped around the viewport if the user was
+		# just panning the camera immediately before.
 		if not _was_prev_panning_camera:
 			return
 		_wrap_mouse_around_viewport()
 
 	if Input.is_action_pressed("pan_camera") and event is InputEventMouseMotion:
-		if event.relative.length() > MAX_MOUSE_MOTION_DIST:
-			return
-		_was_prev_panning_camera = true
-		camera_pivot.rotation.y -= deg2rad(event.relative.x)
-		camera_pivot.rotation.z -= deg2rad(event.relative.y)
-		_last_y_rotation = -event.relative.x
+		# If the cursor is not being moved too fast, then rotate the camera.
+		if event.relative.length() <= MAX_MOUSE_MOTION_DIST:
+			_was_prev_panning_camera = true
+			camera_pivot.rotation.y -= deg2rad(event.relative.x)
+			camera_pivot.rotation.z -= deg2rad(event.relative.y)
+			_last_y_rotation = -event.relative.x
 	else:
 		_was_prev_panning_camera = false
 
