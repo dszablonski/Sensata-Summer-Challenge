@@ -1,32 +1,25 @@
 extends Label
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	GetMonthName(GlobalDate.StartMonth)
 	set_text(GlobalDate.MonthName2)
-	pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_RightArrow_pressed():
-	GetMonthName(GlobalDate.StartMonth)
-	set_text(GlobalDate.MonthName2)
-	pass  # Replace with function body.
 
 
 func _on_LeftArrow_pressed():
+	# Hack: wait for all the other methods connected to the pressed signal to
+	# fire first.
+	yield(get_tree(), "idle_frame")
 	GetMonthName(GlobalDate.StartMonth)
 	set_text(GlobalDate.MonthName2)
-	pass  # Replace with function body.
+
+
+func _on_RightArrow_pressed():
+	# Hack: wait for all the other methods connected to the pressed signal to
+	# fire first.
+	yield(get_tree(), "idle_frame")
+	GetMonthName(GlobalDate.StartMonth)
+	set_text(GlobalDate.MonthName2)
 
 
 func GetMonthName(MonthNum):

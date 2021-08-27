@@ -164,9 +164,9 @@ text = "1"
 align = 0
 script = ExtResource( 6 )
 
-[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/LeftMonth" method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/DateTime" method="_on_LeftArrow_pressed"]
 [connection signal="pressed" from="TopRow/LeftArrow" to="TopRow/RightMonth" method="_on_LeftArrow_pressed"]
-[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/LeftMonth" method="_on_RightArrow_pressed"]
+[connection signal="pressed" from="TopRow/RightArrow" to="TopRow/DateTime" method="_on_RightArrow_pressed"]
 [connection signal="pressed" from="TopRow/RightArrow" to="TopRow/RightMonth" method="_on_RightArrow_pressed"]

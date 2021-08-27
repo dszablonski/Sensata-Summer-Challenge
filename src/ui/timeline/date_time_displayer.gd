@@ -21,12 +21,6 @@ func UpdateDate():  #This updates the displayed date text
 	var time_string = str(day, "/", month, "/", year)
 	var hour_string = Util.to_time_string(GlobalDate.hour)
 	set_text("%s %s" % [time_string, hour_string])
-	pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func force_press_day_button(year: int, month: int, day: int):
@@ -163,64 +157,14 @@ func GetDaysInMonth(month):
 
 
 func UpdateButtonText():
-	var Day = GlobalDate.StartDay - 7  #This makes the it go back 7
-	if Day > 0:  #if it's positive it sends the value to be displayed
-		GlobalDate.TimeButtonDisplay1 = Day
-	else:  #if it's not then it goes back a month
-		var month = GlobalDate.StartMonth - 1  #gets the month before
-		GetDaysInMonth(month)  #uses this function to get the amount of days
-		Day = GlobalDate.DaysInMonth + Day  #makes the negative positive
-		GlobalDate.TimeButtonDisplay1 = Day  #sends it to be displayed
-	Day = GlobalDate.StartDay - 6  #repeats for all the other buttons
-	if Day > 0:
-		GlobalDate.TimeButtonDisplay2 = Day
-	else:
-		var month = GlobalDate.StartMonth - 1
-		GetDaysInMonth(month)
-		Day = GlobalDate.DaysInMonth + Day
-		GlobalDate.TimeButtonDisplay2 = Day
-
-	Day = GlobalDate.StartDay - 5
-	if Day > 0:
-		GlobalDate.TimeButtonDisplay3 = Day
-	else:
-		var month = GlobalDate.StartMonth - 1
-		GetDaysInMonth(month)
-		Day = GlobalDate.DaysInMonth + Day
-		GlobalDate.TimeButtonDisplay3 = Day
-
-	Day = GlobalDate.StartDay - 4
-	if Day > 0:
-		GlobalDate.TimeButtonDisplay4 = Day
-	else:
-		var month = GlobalDate.StartMonth - 1
-		GetDaysInMonth(month)
-		Day = GlobalDate.DaysInMonth + Day
-		GlobalDate.TimeButtonDisplay4 = Day
-
-	Day = GlobalDate.StartDay - 3
-	if Day > 0:
-		GlobalDate.TimeButtonDisplay5 = Day
-	else:
-		var month = GlobalDate.StartMonth - 1
-		GetDaysInMonth(month)
-		Day = GlobalDate.DaysInMonth + Day
-		GlobalDate.TimeButtonDisplay5 = Day
-
-	Day = GlobalDate.StartDay - 2
-	if Day > 0:
-		GlobalDate.TimeButtonDisplay6 = Day
-	else:
-		var month = GlobalDate.StartMonth - 1
-		GetDaysInMonth(month)
-		Day = GlobalDate.DaysInMonth + Day
-		GlobalDate.TimeButtonDisplay6 = Day
-
-	Day = GlobalDate.StartDay - 1
-	if Day > 0:
-		GlobalDate.TimeButtonDisplay7 = Day
-	else:
-		var month = GlobalDate.StartMonth - 1
-		GetDaysInMonth(month)
-		Day = GlobalDate.DaysInMonth + Day
-		GlobalDate.TimeButtonDisplay7 = Day
+	for i in range(7):
+		var time_button_display_string = "TimeButtonDisplay" + str(i + 1)
+		var num_days_back = 7 - i
+		var Day = GlobalDate.StartDay - num_days_back
+		if Day > 0:  #if it's positive it sends the value to be displayed
+			GlobalDate.set(time_button_display_string, Day)
+		else:  #if it's not then it goes back a month
+			var month = GlobalDate.StartMonth - 1  #gets the month before
+			GetDaysInMonth(month)  #uses this function to get the amount of days
+			Day = GlobalDate.DaysInMonth + Day  #makes the negative positive
+			GlobalDate.set(time_button_display_string, Day)  #sends it to be displayed

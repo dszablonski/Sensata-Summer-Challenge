@@ -88,35 +88,45 @@ func _ready() -> void:
 	_year_display_string = "YearDisplay" + button_num_string
 	_time_button_display_string = "TimeButtonDisplay" + button_num_string
 
+	#this makes the days go back from the current displayed week to get the day needs to input.
+	#this sets the month and year to the current one on the timeline
 	var day = GlobalDate.StartDay - num_days_back
 	var month = GlobalDate.StartMonth
 	var year = GlobalDate.StartYear
 	if day < 1:
+		#if the day is negative it goes back a month and adds those days to get the proper date
 		month = month - 1
 		if month < 1:
+			# if the month is negative it goes back a year
 			year = year - 1
 			month = 12
 		GetDaysInMonth(month)
 		day = day + GlobalDate.DaysInMonth
 	if year < GlobalDate.LowerYear:
+		# if the year is less than the minimum data base year it will send a caution level of -1 showing a grey button
 		GlobalDate.set(_caution_level_string, -1)
 	else:
+		#same for the month and day
 		if month < GlobalDate.LowerMonth:
 			GlobalDate.set(_caution_level_string, -1)
 		else:
 			if day < GlobalDate.LowerDay:
 				GlobalDate.set(_caution_level_string, -1)
 			else:
+				#this sends the year, month and day to a function to get the caution level and sends that to the change_colour() function to update the colour
 				var caution_level = get_caution_level(year, month, day)
 				GlobalDate.set(_caution_level_string, caution_level)
 	Change_colour()
 	GlobalDate.set(_month_display_string, month)
 	GlobalDate.set(_year_display_string, year)
 
+	#gets the current weeks date and goes back enough to calculate the date for this button.
 	var day_test = GlobalDate.StartDay - num_days_back
 	if day_test > 0:
+		#if it’s a positive normal number it’ll set the text to the day.
 		set_text(str(day_test))
-	else:
+	else:  # if it’s negative
+		# it goes back a month and adds the amount of days in the month to correct the date # then it sets the rich text to this text
 		var month_test = GlobalDate.StartMonth
 		var month2 = month_test - 1
 		if month2 == 2:
@@ -140,17 +150,20 @@ func get_caution_level(year: int, month: int, day: int) -> int:
 
 
 func get_date() -> Dictionary:
+	# these variables set the day month and year to the weeks current day month and year
 	var day = GlobalDate.StartDay
 	var month = GlobalDate.StartMonth
 	var year = GlobalDate.StartYear  #
 	day = day - num_days_back  #Gets the date this button will input
 	if day < 1:  #checks if the day is in the day is in the same month
-		month = month - 1  #if it's not it goes back a month 
+		month = month - 1  #if it's not it goes back a month
 		if month < 1:  #this checks if the month is in the same year
-			year = year - 1  #this goes back a year 
+			# if the month is negative it goes back a year and to December and ads 31 days to the negative day to make it the correct date
+			year = year - 1  #this goes back a year
 			month = 12  #this sends the date to december (the last month)
-			day = day + 31  #this restores the date 
+			day = day + 31  #this restores the date
 		else:  #if the month is in the year
+			# if the month is a positive number it’ll use a function to get the days in that month and add those days onto the negative number to get the correct date
 			GetDaysInMonth(month)  #it gets the amount of days are in the month
 			day = day + GlobalDate.DaysInMonth  #and adds them to restore the date
 	return {

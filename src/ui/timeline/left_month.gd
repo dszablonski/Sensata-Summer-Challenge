@@ -10,12 +10,6 @@ func _ready():
 		Month = GlobalDate.StartMonth
 	GetMonthName(Month)
 	set_text(GlobalDate.MonthName1)
-	pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func GetMonthName(MonthNum):
