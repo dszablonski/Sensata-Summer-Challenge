@@ -360,6 +360,9 @@ func freezer():
 		% [weight_g_color, int(id[sensors["Cube"][3]])]
 	)
 
+# The following functions are called when the mouse enters a mesh or exits a mesh
+# On mouse enter, they will show the stats of their respective sensors, but if
+# the mesh is clicked nothing will happen. 
 func _on_CubeStaticBody_mouse_entered():
 	if not clicked:
 		freezer()
@@ -380,9 +383,7 @@ func _on_FridgeStaticBody_mouse_exited():
 		pass
 
 
-# The following functions are called when the mouse enters a mesh or exits a mesh
-#
-#
+
 func _on_CubeStaticBody_mouse_exited():
 	if not clicked:
 		clear()
@@ -550,6 +551,19 @@ func _on_TruckWheelStaticBody_mouse_exited():
 	else:
 		pass
 
+# This will be called when the user clicks into the void to clear the selection.
+# The clicked variable will be set to false and the clear() function will be 
+# called.
+func _on_StaticBody_clear():
+	selected_mesh = ""
+	clicked = false
+	clear()
+
+# These functions are run when a certain mesh is clicked.
+# They will check whether a mesh is clicked first, if not they will set the #
+# "clicked" function to "true" and call upon their respective function. 
+# If clicked is true, the status panel will be clerd before its respective
+# function is called again.
 func _on_TruckWheelStaticBody_truck_wheel_a():
 	selected_mesh = "Truck Wheel A"
 	if not clicked:
@@ -559,12 +573,6 @@ func _on_TruckWheelStaticBody_truck_wheel_a():
 		clear()
 		clicked = true
 		truck_wheel_ab("Truck Wheel A")
-
-
-func _on_StaticBody_clear():
-	selected_mesh = ""
-	clicked = false
-	clear()
 
 
 func _on_TruckWheelBStaticBody_truck_wheel_b():
