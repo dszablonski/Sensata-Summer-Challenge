@@ -122,7 +122,7 @@ func _ready() -> void:
 		if month2 == 2:
 			day_test = (28 + day_test) - num_days_back
 		elif month2 in [4, 11, 6, 9]:
-			day_test = (30 + day_test) - 7
+			day_test = (30 + day_test) - num_days_back
 		elif month2 in [1, 3, 5, 7, 8, 10, 12]:
 			day_test = (31 + day_test) - num_days_back
 		set_text(str(day_test))
